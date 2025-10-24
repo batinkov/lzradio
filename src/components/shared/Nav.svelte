@@ -30,8 +30,8 @@
 
     <!-- Desktop Navigation -->
     <div class="nav-links desktop">
-      <a href="/callbook" use:link class:active={$location === '/callbook'}>
-        Callbook
+      <a href="/logbook" use:link class:active={$location === '/logbook'}>
+        LogBook
       </a>
       <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
         Exam Prep
@@ -53,8 +53,8 @@
   <!-- Mobile Menu -->
   {#if showMobileMenu}
     <div class="mobile-menu">
-      <a href="/callbook" use:link class:active={$location === '/callbook'}>
-        Callbook
+      <a href="/logbook" use:link class:active={$location === '/logbook'}>
+        LogBook
       </a>
       <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
         Exam Prep
@@ -79,7 +79,7 @@
 
         <h3>Features</h3>
 
-        <p><strong>📻 Callbook</strong><br>
+        <p><strong>📻 LogBook</strong><br>
         Log contacts during operation. All data stored locally in your browser - no server needed.</p>
 
         <p><strong>📝 Exam Prep</strong><br>
@@ -90,7 +90,7 @@
 
         <h3>Keyboard Shortcuts</h3>
         <ul>
-          <li><code>Alt+C</code> → Callbook</li>
+          <li><code>Alt+L</code> → LogBook</li>
           <li><code>Alt+E</code> → Exam Prep</li>
           <li><code>Esc</code> → Close modals</li>
         </ul>

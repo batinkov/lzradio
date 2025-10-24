@@ -2,7 +2,8 @@
   import Router from 'svelte-spa-router'
   import Nav from './components/shared/Nav.svelte'
   import Home from './routes/Home.svelte'
-  import Callbook from './routes/Callbook.svelte'
+  import LogBook from './routes/LogBook.svelte'
+  import LogBookAdd from './routes/LogBookAdd.svelte'
   import ExamHome from './routes/ExamHome.svelte'
   import ExamTechnician from './routes/ExamTechnician.svelte'
   import ExamGeneral from './routes/ExamGeneral.svelte'
@@ -11,7 +12,8 @@
 
   const routes = {
     '/': Home,
-    '/callbook': Callbook,
+    '/logbook': LogBook,
+    '/logbook/add': LogBookAdd,
     '/exam': ExamHome,
     '/exam/technician': ExamTechnician,
     '/exam/general': ExamGeneral,

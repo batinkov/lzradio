@@ -10,8 +10,8 @@
   </div>
 
   <div class="features">
-    <a href="/callbook" use:link class="feature-card">
-      <h2>📻 Callbook</h2>
+    <a href="/logbook" use:link class="feature-card">
+      <h2>📻 LogBook</h2>
       <p>Log and track your radio contacts</p>
     </a>
 
