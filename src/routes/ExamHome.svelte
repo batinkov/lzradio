@@ -1,53 +1,99 @@
 <script>
   import { link } from 'svelte-spa-router'
+  import { questionCounts } from '../lib/examConfig.js'
 </script>
 
 <div class="page">
-  <h1>Exam Prep</h1>
-  <p>Route: <code>/exam</code></p>
-  <p>Select an exam level to practice:</p>
-
-  <div class="exam-links">
-    <a href="/exam/technician" use:link class="exam-card">Technician</a>
-    <a href="/exam/general" use:link class="exam-card">General</a>
-    <a href="/exam/extra" use:link class="exam-card">Extra</a>
+  <div class="header">
+    <h1>Exam Preparation</h1>
   </div>
+
+  <!-- Class Selection -->
+  <section class="class-selection">
+    <h2>Select Class</h2>
+    <div class="class-cards">
+      <a href="/exam/class1" use:link class="class-card">
+        <h3>Class 1</h3>
+        <p class="question-count">{questionCounts[1]} questions</p>
+        <span class="btn-link">Select →</span>
+      </a>
+      <a href="/exam/class2" use:link class="class-card">
+        <h3>Class 2</h3>
+        <p class="question-count">{questionCounts[2]} questions</p>
+        <span class="btn-link">Select →</span>
+      </a>
+    </div>
+  </section>
 </div>
 
 <style>
   .page {
     padding: var(--space-4) 0;
+    max-width: 900px;
+    margin: 0 auto;
   }
 
-  code {
-    font-family: var(--font-mono);
-    background: var(--color-bg);
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-8);
   }
 
-  .exam-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-4);
-    margin-top: var(--space-6);
+  .header h1 {
+    margin: 0;
   }
 
-  .exam-card {
-    padding: var(--space-6);
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+  /* Class Selection */
+  .class-selection h2 {
+    margin-bottom: var(--space-6);
     text-align: center;
-    text-decoration: none;
-    color: var(--color-text);
-    font-weight: 500;
-    transition: all 0.15s ease;
   }
 
-  .exam-card:hover {
+  .class-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .class-card {
+    background: white;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .class-card:hover {
     border-color: var(--color-primary);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .class-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+    color: var(--color-primary);
+  }
+
+  .question-count {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .btn-link {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .class-cards {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

@@ -5,9 +5,9 @@
   import LogBook from './routes/LogBook.svelte'
   import LogBookAdd from './routes/LogBookAdd.svelte'
   import ExamHome from './routes/ExamHome.svelte'
-  import ExamTechnician from './routes/ExamTechnician.svelte'
-  import ExamGeneral from './routes/ExamGeneral.svelte'
-  import ExamExtra from './routes/ExamExtra.svelte'
+  import ExamClassHome from './routes/ExamClassHome.svelte'
+  import ExamPrep from './routes/ExamPrep.svelte'
+  import ExamSimulated from './routes/ExamSimulated.svelte'
   import NotFound from './routes/NotFound.svelte'
 
   const routes = {
@@ -15,9 +15,12 @@
     '/logbook': LogBook,
     '/logbook/add': LogBookAdd,
     '/exam': ExamHome,
-    '/exam/technician': ExamTechnician,
-    '/exam/general': ExamGeneral,
-    '/exam/extra': ExamExtra,
+    '/exam/class1': ExamClassHome,
+    '/exam/class2': ExamClassHome,
+    '/exam/class1/prep': ExamPrep,
+    '/exam/class2/prep': ExamPrep,
+    '/exam/class1/simulated': ExamSimulated,
+    '/exam/class2/simulated': ExamSimulated,
     '*': NotFound
   }
 </script>

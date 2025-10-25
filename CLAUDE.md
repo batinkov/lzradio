@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 LZ Radio is a fully client-side web application for amateur radio operators. It provides:
-- **Callbook**: Log and track radio contacts
+- **LogBook**: Log and track radio contacts
 - **Exam Prep**: Practice for amateur radio license exams (Technician, General, Extra)
 
 **Technology Stack:**
@@ -47,20 +47,20 @@ No linter configured yet.
 Fully client-side single-page application (SPA). No backend server. All data stored locally in user's browser using IndexedDB.
 
 ### Key Components
-- **Routes** (`src/routes/`): Page-level components (Home, Callbook, Exam pages)
+- **Routes** (`src/routes/`): Page-level components (Home, LogBook, Exam pages)
 - **Shared Components** (`src/components/shared/`): Navigation, modals
-- **Feature Components** (`src/components/callbook/`, `src/components/exam/`): Feature-specific UI
+- **Feature Components** (`src/components/logbook/`, `src/components/exam/`): Feature-specific UI
 - **Library** (`src/lib/`): Storage utilities, export/import logic, question bank loader
 
 ### Routing
 **Hash-based routing** using `svelte-spa-router`:
-- URLs use `#` for routes: `/#/callbook`, `/#/exam/technician`
+- URLs use `#` for routes: `/#/logbook`, `/#/exam/technician`
 - Works on ANY static hosting with zero configuration
 - **Important limitation**: Cannot use traditional in-page anchors (`#section-id`)
 - If in-page anchors become necessary, can migrate to history mode (requires server config)
 
 ### Data Storage
-- **Callbook contacts**: IndexedDB (via Dexie.js) - persistent local storage
+- **LogBook contacts**: IndexedDB (via Dexie.js) - persistent local storage
 - **Exam progress**: LocalStorage - simple key-value pairs
 - **Question banks**: Static JSON files bundled with app
 - **Export/Import**: JSON files for data backup/restore
