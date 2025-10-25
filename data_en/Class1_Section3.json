@@ -1,0 +1,43 @@
+{
+    "class": "Amateur Radio Class 1",
+    "section": "Section 3 – Radio Wave Propagation",
+    "update": "Mock data for development 2025",
+    "questions": [
+        {
+            "question_number": 1,
+            "question_body": "What is the primary cause of ionospheric propagation?",
+            "correct_answer": "Б",
+            "А": "Moon reflection",
+            "Б": "Solar radiation",
+            "В": "Atmospheric pressure",
+            "Г": "Earth's magnetic field"
+        },
+        {
+            "question_number": 2,
+            "question_body": "During which time of day is HF propagation typically best?",
+            "correct_answer": "В",
+            "А": "Early morning",
+            "Б": "Midday",
+            "В": "Evening",
+            "Г": "Midnight"
+        },
+        {
+            "question_number": 3,
+            "question_body": "What is the skip zone in radio propagation?",
+            "correct_answer": "А",
+            "А": "Area where signals cannot be received",
+            "Б": "Area of maximum signal strength",
+            "В": "Area near the transmitter",
+            "Г": "Area with ground wave coverage"
+        },
+        {
+            "question_number": 4,
+            "question_body": "Which band is most affected by solar activity?",
+            "correct_answer": "В",
+            "А": "VHF band",
+            "Б": "UHF band",
+            "В": "HF band",
+            "Г": "Microwave band"
+        }
+    ]
+}

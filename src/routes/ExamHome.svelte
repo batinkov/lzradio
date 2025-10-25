@@ -1,6 +1,10 @@
 <script>
   import { link } from 'svelte-spa-router'
-  import { questionCounts } from '../lib/examConfig.js'
+  import { getAllQuestions } from '../lib/questions.js'
+
+  // Calculate question counts dynamically from loaded data
+  $: class1Count = getAllQuestions(1).length
+  $: class2Count = getAllQuestions(2).length
 </script>
 
 <div class="page">
@@ -14,12 +18,12 @@
     <div class="class-cards">
       <a href="/exam/class1" use:link class="class-card">
         <h3>Class 1</h3>
-        <p class="question-count">{questionCounts[1]} questions</p>
+        <p class="question-count">{class1Count} questions</p>
         <span class="btn-link">Select →</span>
       </a>
       <a href="/exam/class2" use:link class="class-card">
         <h3>Class 2</h3>
-        <p class="question-count">{questionCounts[2]} questions</p>
+        <p class="question-count">{class2Count} questions</p>
         <span class="btn-link">Select →</span>
       </a>
     </div>

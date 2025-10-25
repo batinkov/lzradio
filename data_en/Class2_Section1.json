@@ -1,0 +1,1006 @@
+{
+    "class": "Amateur Radio Class 2",
+    "section": "Section 1 – Electrical Engineering and Radio Engineering",
+    "update": "Updated syllabus 31.05.2022",
+    "questions": [
+        {
+            "question_number": 1,
+            "question_body": "How many megahertz (MHz) are equal to 144432 kilohertz (kHz)?",
+            "correct_answer": "Б",
+            "А": "0.144432 MHz",
+            "Б": "144.432 MHz",
+            "В": "144432000 MHz",
+            "Г": "0.000144432 MHz"
+        },
+        {
+            "question_number": 2,
+            "question_body": "If the radio station scale reads 145.550 MHz, how many kilohertz (kHz) does this correspond to?",
+            "correct_answer": "В",
+            "А": "0.000145550 kHz",
+            "Б": "0.145550 kHz",
+            "В": "145550 kHz",
+            "Г": "145550000 kHz"
+        },
+        {
+            "question_number": 3,
+            "question_body": "If a current of 3000 mA flows through an ammeter graduated in amperes (A), what will its reading be?",
+            "correct_answer": "Б",
+            "А": "0.3 A",
+            "Б": "3 A",
+            "В": "30 A",
+            "Г": "3000000 A"
+        },
+        {
+            "question_number": 4,
+            "question_body": "If a voltmeter graduated in volts (V) measures a voltage of 3500 mV, what will its reading be?",
+            "correct_answer": "В",
+            "А": "3500000 V",
+            "Б": "35 V",
+            "В": "3.5 V",
+            "Г": "0.35 V"
+        },
+        {
+            "question_number": 5,
+            "question_body": "How many farads (F) are 500000 microfarads (µF)?",
+            "correct_answer": "Б",
+            "А": "0.0005 F",
+            "Б": "0.5 F",
+            "В": "500 F",
+            "Г": "500000000 F"
+        },
+        {
+            "question_number": 6,
+            "question_body": "How many nanofarads (nF) are 1000000 picofarads (pF)?",
+            "correct_answer": "В",
+            "А": "0.001 nF",
+            "Б": "1 nF",
+            "В": "1000 nF",
+            "Г": "1000000000 nF"
+        },
+        {
+            "question_number": 7,
+            "question_body": "How many hertz (Hz) are in one kHz?",
+            "correct_answer": "Г",
+            "А": "0.1 Hz",
+            "Б": "10 Hz",
+            "В": "100 Hz",
+            "Г": "1000 Hz"
+        },
+        {
+            "question_number": 8,
+            "question_body": "How many kilohertz (kHz) are in one MHz?",
+            "correct_answer": "В",
+            "А": "10 kHz",
+            "Б": "100 kHz",
+            "В": "1000 kHz",
+            "Г": "1000000 kHz"
+        },
+        {
+            "question_number": 9,
+            "question_body": "If you have a portable radio station with a power of 500 milliwatts (mW), how many W is this?",
+            "correct_answer": "Б",
+            "А": "0.05 W",
+            "Б": "0.5 W",
+            "В": "5 W",
+            "Г": "50 W"
+        },
+        {
+            "question_number": 10,
+            "question_body": "What is the flow of electrons passing through an electrical circuit called?",
+            "correct_answer": "Г",
+            "А": "Voltage",
+            "Б": "Resistance",
+            "В": "Capacitance",
+            "Г": "Current"
+        },
+        {
+            "question_number": 11,
+            "question_body": "What is the basic unit for measuring electric current strength?",
+            "correct_answer": "В",
+            "А": "Volt",
+            "Б": "Watt",
+            "В": "Ampere",
+            "Г": "Ohm"
+        },
+        {
+            "question_number": 12,
+            "question_body": "What forces electrons to move through an electrical circuit?",
+            "correct_answer": "Б",
+            "А": "Magnetomotive force, or inductance",
+            "Б": "Electromotive force, or electrical voltage",
+            "В": "Farad's force, or capacitance",
+            "Г": "Temperature force, or heat"
+        },
+        {
+            "question_number": 13,
+            "question_body": "What is the basic unit for measuring electrical voltage?",
+            "correct_answer": "А",
+            "А": "Volt",
+            "Б": "Watt",
+            "В": "Ampere",
+            "Г": "Ohm"
+        },
+        {
+            "question_number": 14,
+            "question_body": "What voltage can be obtained from a car battery?",
+            "correct_answer": "Б",
+            "А": "Approximately 9 V",
+            "Б": "Approximately 12 V",
+            "В": "Approximately 30 V",
+            "Г": "Approximately 220 V"
+        },
+        {
+            "question_number": 15,
+            "question_body": "What voltage can be obtained from a household wall socket?",
+            "correct_answer": "В",
+            "А": "Approximately 12 V",
+            "Б": "Approximately 30 V",
+            "В": "Approximately 220 V",
+            "Г": "Approximately 380 V"
+        },
+        {
+            "question_number": 16,
+            "question_body": "Which three materials are good electrical conductors?",
+            "correct_answer": "В",
+            "А": "Copper, gold, mica",
+            "Б": "Gold, silver, wood",
+            "В": "Gold, silver, aluminum",
+            "Г": "Copper, aluminum, paper"
+        },
+        {
+            "question_number": 17,
+            "question_body": "Which four substances (materials) are good electrical insulators?",
+            "correct_answer": "А",
+            "А": "Glass, air, plastic, porcelain",
+            "Б": "Glass, water, copper, porcelain",
+            "В": "Paper, glass, air, aluminum",
+            "Г": "Plastic, rubber, water, carbon"
+        },
+        {
+            "question_number": 18,
+            "question_body": "What does an electrical insulator do?",
+            "correct_answer": "Б",
+            "А": "Allows electric current to pass in one direction",
+            "Б": "Does not allow electric current to pass",
+            "В": "When illuminated, allows electric current to pass",
+            "Г": "Allows electric current to pass"
+        },
+        {
+            "question_number": 19,
+            "question_body": "What limits the current flowing through an electrical circuit if the voltage does not change?",
+            "correct_answer": "Г",
+            "А": "Reactance",
+            "Б": "Saturation",
+            "В": "Inductance",
+            "Г": "Resistance"
+        },
+        {
+            "question_number": 20,
+            "question_body": "What is the basic unit for measuring resistance?",
+            "correct_answer": "Г",
+            "А": "Volt",
+            "Б": "Watt",
+            "В": "Ampere",
+            "Г": "Ohm"
+        },
+        {
+            "question_number": 21,
+            "question_body": "What is the name of the law showing the relationship between voltage, current and resistance in an electrical circuit?",
+            "correct_answer": "А",
+            "А": "Ohm's Law",
+            "Б": "Kirchhoff's Law",
+            "В": "Ampere's Law",
+            "Г": "Tesla's Law"
+        },
+        {
+            "question_number": 22,
+            "question_body": "If a current of 2 amperes flows through a resistor with a resistance of 50 ohms, what voltage will we measure at the terminals of the resistor?",
+            "correct_answer": "В",
+            "А": "25 V",
+            "Б": "52 V",
+            "В": "100 V",
+            "Г": "200 V"
+        },
+        {
+            "question_number": 23,
+            "question_body": "If we apply a voltage of 200 volts to a 100 ohm resistor, what current will flow through the resistor?",
+            "correct_answer": "Б",
+            "А": "0.5 A",
+            "Б": "2 A",
+            "В": "300 A",
+            "Г": "20000 A"
+        },
+        {
+            "question_number": 24,
+            "question_body": "If a current of 3 amperes flows through a resistor connected to a voltage of 90 volts, what is the resistance of the resistor?",
+            "correct_answer": "А",
+            "А": "30 ohms",
+            "Б": "93 ohms",
+            "В": "270 ohms",
+            "Г": "1/30 ohm"
+        },
+        {
+            "question_number": 25,
+            "question_body": "What is the quantity we use to describe how quickly electrical energy is used (consumed)?",
+            "correct_answer": "В",
+            "А": "Resistance",
+            "Б": "Current",
+            "В": "Power",
+            "Г": "Voltage"
+        },
+        {
+            "question_number": 26,
+            "question_body": "If you use three electric bulbs labeled 60 W, 75 W and 100 W, which one will consume electrical energy the fastest?",
+            "correct_answer": "В",
+            "А": "60 W bulb",
+            "Б": "75 W bulb",
+            "В": "100 W bulb",
+            "Г": "There will be no difference"
+        },
+        {
+            "question_number": 27,
+            "question_body": "What is the basic unit for measuring electrical power?",
+            "correct_answer": "Б",
+            "А": "Ohm",
+            "Б": "Watt",
+            "В": "Volt",
+            "Г": "Ampere"
+        },
+        {
+            "question_number": 28,
+            "question_body": "Through which electrical circuit does no electric current flow?",
+            "correct_answer": "В",
+            "А": "Closed circuit",
+            "Б": "Short circuit",
+            "В": "Open circuit",
+            "Г": "Auxiliary circuit"
+        },
+        {
+            "question_number": 29,
+            "question_body": "Through which electrical circuit flows too much current?",
+            "correct_answer": "Г",
+            "А": "Open circuit",
+            "Б": "Auxiliary circuit",
+            "В": "Closed circuit",
+            "Г": "Short circuit"
+        },
+        {
+            "question_number": 30,
+            "question_body": "What is current that flows only in one direction called?",
+            "correct_answer": "Б",
+            "А": "Alternating current",
+            "Б": "Direct current",
+            "В": "Normal current",
+            "Г": "Directed current"
+        },
+        {
+            "question_number": 31,
+            "question_body": "What is current that flows in both directions, first in one, then in the other, called?",
+            "correct_answer": "А",
+            "А": "Alternating current",
+            "Б": "Direct current",
+            "В": "Bidirectional current",
+            "Г": "Normal current"
+        },
+        {
+            "question_number": 32,
+            "question_body": "What term denotes the number of times alternating current changes direction per second?",
+            "correct_answer": "Г",
+            "А": "Pulsation rate",
+            "Б": "Current rate",
+            "В": "Wavelength",
+            "Г": "Frequency"
+        },
+        {
+            "question_number": 33,
+            "question_body": "What is the basic unit for measuring frequency?",
+            "correct_answer": "А",
+            "А": "Hertz",
+            "Б": "Watt",
+            "В": "Ampere",
+            "Г": "Ohm"
+        },
+        {
+            "question_number": 34,
+            "question_body": "What frequencies can humans hear?",
+            "correct_answer": "Б",
+            "А": "0 - 20 Hz",
+            "Б": "20 - 20000 Hz",
+            "В": "200 - 200000 Hz",
+            "Г": "10000 - 30000 Hz"
+        },
+        {
+            "question_number": 35,
+            "question_body": "Why are frequencies in the range 20 - 20000 Hz called audio frequencies?",
+            "correct_answer": "Б",
+            "А": "Because the human ear is not sensitive in this range",
+            "Б": "Because the human ear hears sounds in this range",
+            "В": "Because the human ear hears radio waves in this range",
+            "Г": "Because it is too low for radio wave propagation"
+        },
+        {
+            "question_number": 36,
+            "question_body": "Which of the following frequencies do we call radio frequency?",
+            "correct_answer": "Г",
+            "А": "0.02 Hz",
+            "Б": "2 Hz",
+            "В": "200 Hz",
+            "Г": "200000 Hz"
+        },
+        {
+            "question_number": 37,
+            "question_body": "In which frequency range does an electrical oscillation with a frequency of 145450 kHz fall?",
+            "correct_answer": "Б",
+            "А": "In the audio frequency range",
+            "Б": "In the radio frequency range",
+            "В": "In the ultraviolet ray range",
+            "Г": "In the X-ray range"
+        },
+        {
+            "question_number": 38,
+            "question_body": "If a radio wave has 3725000 periods per second, what does this mean?",
+            "correct_answer": "Б",
+            "А": "That its voltage is 3725 kilovolts",
+            "Б": "That its frequency is 3725 kilohertz",
+            "В": "That its wavelength is 3725 kilometers",
+            "Г": "That its speed is 3725 kilometers per second"
+        },
+        {
+            "question_number": 39,
+            "question_body": "What is the distance that an alternating current signal travels in one period called?",
+            "correct_answer": "В",
+            "А": "Wave speed",
+            "Б": "Wave shape",
+            "В": "Wavelength",
+            "Г": "Wave frequency"
+        },
+        {
+            "question_number": 40,
+            "question_body": "What happens to the wavelength if its frequency increases?",
+            "correct_answer": "А",
+            "А": "It decreases",
+            "Б": "It increases",
+            "В": "It does not change",
+            "Г": "It tends to infinity"
+        },
+        {
+            "question_number": 41,
+            "question_body": "What happens to the frequency of a signal if its wavelength increases?",
+            "correct_answer": "А",
+            "А": "It decreases",
+            "Б": "It increases",
+            "В": "It does not change",
+            "Г": "It tends to infinity"
+        },
+        {
+            "question_number": 42,
+            "question_body": "What does 50 hertz (Hz) mean?",
+            "correct_answer": "Б",
+            "А": "50,000 periods per second",
+            "Б": "50 periods per second",
+            "В": "50 kilometers per second",
+            "Г": "50 meters per second"
+        },
+        {
+            "question_number": 43,
+            "question_body": "What is the frequency of the voltage from the household wall socket?",
+            "correct_answer": "А",
+            "А": "50 Hz",
+            "Б": "60 Hz",
+            "В": "380 Hz",
+            "Г": "220 Hz"
+        },
+        {
+            "question_number": 44,
+            "question_body": "What is the basic unit for measuring inductance?",
+            "correct_answer": "В",
+            "А": "Farad",
+            "Б": "Ohm",
+            "В": "Henry",
+            "Г": "Watt"
+        },
+        {
+            "question_number": 45,
+            "question_body": "Which of the symbols represents a resistor (resistance)?",
+            "correct_answer": "В",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 46,
+            "question_body": "Which of the circuit components is a variable resistor (potentiometer)?",
+            "correct_answer": "Г",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 47,
+            "question_body": "Which of the circuit components is a switch?",
+            "correct_answer": "Г",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 48,
+            "question_body": "Which of the circuit components is a fuse?",
+            "correct_answer": "Б",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 49,
+            "question_body": "Which of the circuit components is a battery?",
+            "correct_answer": "А",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 50,
+            "question_body": "Which of the symbols represents a ground?",
+            "correct_answer": "А",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 51,
+            "question_body": "Which of the symbols represents an antenna?",
+            "correct_answer": "Г",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 52,
+            "question_body": "Which of the symbols represents a capacitor?",
+            "correct_answer": "Г",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 53,
+            "question_body": "Which of the symbols represents an n-p-n bipolar transistor?",
+            "correct_answer": "А",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 54,
+            "question_body": "Which of the symbols represents a p-n-p bipolar transistor?",
+            "correct_answer": "Б",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 55,
+            "question_body": "Which of the symbols represents a diode?",
+            "correct_answer": "Б",
+            "А": "",
+            "Б": "",
+            "В": "",
+            "Г": ""
+        },
+        {
+            "question_number": 56,
+            "question_body": "What is the approximate length of a half-wave dipole for the 144 - 146 MHz range?",
+            "correct_answer": "Б",
+            "А": "20 cm",
+            "Б": "1 m",
+            "В": "2 m",
+            "Г": "10 m"
+        },
+        {
+            "question_number": 57,
+            "question_body": "What is the approximate length of a quarter-wave vertical antenna for the 432 - 438 MHz range?",
+            "correct_answer": "Г",
+            "А": "2 m",
+            "Б": "1 m",
+            "В": "35 cm",
+            "Г": "17 cm"
+        },
+        {
+            "question_number": 58,
+            "question_body": "Due to what advantage do many radio amateurs use a 5/8 λ antenna instead of a quarter-wave vertical antenna when operating in VHF bands from a car?",
+            "correct_answer": "Б",
+            "А": "It can handle more power",
+            "Б": "It has higher gain",
+            "В": "It has lower losses",
+            "Г": "It is safer"
+        },
+        {
+            "question_number": 59,
+            "question_body": "What is the radiation pattern of a 5/8 λ vertical antenna?",
+            "correct_answer": "В",
+            "А": "Slightly directional, signal concentrates in two opposite directions",
+            "Б": "Omnidirectional in horizontal plane, in vertical plane signal concentrates high above horizon",
+            "В": "Omnidirectional in horizontal plane, in vertical plane signal concentrates close to horizon",
+            "Г": "Directional with one clearly defined maximum"
+        },
+        {
+            "question_number": 60,
+            "question_body": "What type of antenna has a radiation pattern in which the signal concentrates in a specific direction?",
+            "correct_answer": "Г",
+            "А": "Dipole antenna",
+            "Б": "Vertical antenna",
+            "В": "Isotropic antenna",
+            "Г": "Directional antenna"
+        },
+        {
+            "question_number": 61,
+            "question_body": "What radiation pattern does a horizontally positioned Yagi antenna have?",
+            "correct_answer": "Б",
+            "А": "Circular pattern",
+            "Б": "Directional pattern with one pronounced maximum",
+            "В": "Slightly directional with two equal maxima in opposite directions",
+            "Г": "Pattern with maximum radiation in vertical direction"
+        },
+        {
+            "question_number": 62,
+            "question_body": "What are the elements of a three-element Yagi antenna called?",
+            "correct_answer": "А",
+            "А": "Director, driven element, reflector",
+            "Б": "Mast, support tube, reflector",
+            "В": "Emitter, base, reflector",
+            "Г": "Driven element, mast, feed line"
+        },
+        {
+            "question_number": 63,
+            "question_body": "Why should you position your antennas so that no one can touch them while you are transmitting?",
+            "correct_answer": "Б",
+            "А": "Such contact will detune the antenna and cause interference in television reception",
+            "Б": "Such contact can burn the person who touched it",
+            "В": "Such contact can reflect the transmitted signal back to the transmitter and damage the output stage",
+            "Г": "Such contact will lead to emission of harmonic frequencies from the antenna"
+        },
+        {
+            "question_number": 64,
+            "question_body": "What is a coaxial cable?",
+            "correct_answer": "Г",
+            "А": "Two parallel conductors in flexible plastic insulation",
+            "Б": "Two parallel conductors fixed with fasteners at a constant distance from each other",
+            "В": "Two twisted conductors with rubber insulation between them",
+            "Г": "A central conductor covered with insulation and surrounded by a conductive shield"
+        },
+        {
+            "question_number": 65,
+            "question_body": "What is the main advantage of coaxial cable?",
+            "correct_answer": "Б",
+            "А": "Any radio amateur can make it at home",
+            "Б": "Its impedance matches that of the most commonly used amateur radio antennas",
+            "В": "It is waterproof",
+            "Г": "It has a low price"
+        },
+        {
+            "question_number": 66,
+            "question_body": "Which of the most commonly used antenna cables can be run underground without adverse effects?",
+            "correct_answer": "Б",
+            "А": "Balanced line",
+            "Б": "Coaxial cable",
+            "В": "Twisted pair",
+            "Г": "Two-wire cable"
+        },
+        {
+            "question_number": 67,
+            "question_body": "When the antenna line must pass near metal objects, which cable should be used?",
+            "correct_answer": "Б",
+            "А": "Twisted pair",
+            "Б": "Coaxial cable",
+            "В": "Balanced line",
+            "Г": "Cable with rubber insulation"
+        },
+        {
+            "question_number": 68,
+            "question_body": "What is a balanced feed line?",
+            "correct_answer": "Г",
+            "А": "Two conductors twisted together",
+            "Б": "A conductor with insulator applied to it and then covered with a shield and waterproof jacket",
+            "В": "A metal tube whose diameter is equal to or slightly larger than the wavelength of the signal",
+            "Г": "Two parallel conductors at a constant distance from each other"
+        },
+        {
+            "question_number": 69,
+            "question_body": "Can balanced cable for television antennas be used as an antenna feed line for an amateur radio station and how?",
+            "correct_answer": "В",
+            "А": "By carefully laying it close to the outer walls of the building",
+            "Б": "By using a more powerful output stage",
+            "В": "By installing a matching device between the transmitter and the line",
+            "Г": "It cannot be used at all"
+        },
+        {
+            "question_number": 70,
+            "question_body": "What is an advantage of balanced feed line over coaxial cable?",
+            "correct_answer": "Г",
+            "А": "Provides safer operation with the radio station",
+            "Б": "Is not affected by nearby metal objects",
+            "В": "Has significantly lower impedance",
+            "Г": "Has lower losses"
+        },
+        {
+            "question_number": 71,
+            "question_body": "What is the polarization of the signal radiated by a horizontal four-element Yagi antenna whose elements are positioned parallel to the ground?",
+            "correct_answer": "В",
+            "А": "Wideband",
+            "Б": "Circular",
+            "В": "Horizontal",
+            "Г": "Vertical"
+        },
+        {
+            "question_number": 72,
+            "question_body": "What is the polarization of the signal radiated by a horizontal four-element Yagi antenna whose elements are positioned perpendicular to the ground?",
+            "correct_answer": "Г",
+            "А": "Wideband",
+            "Б": "Circular",
+            "В": "Horizontal",
+            "Г": "Vertical"
+        },
+        {
+            "question_number": 73,
+            "question_body": "What can happen if you over-modulate the microphone amplifier of your FM transmitter?",
+            "correct_answer": "Б",
+            "А": "You may cause digital interference in nearby computers",
+            "Б": "You may cause interference to radio stations operating on adjacent frequencies",
+            "В": "You may cause atmospheric interference around the antenna",
+            "Г": "You may cause interference in the radio station's microprocessor and frequency drift"
+        },
+        {
+            "question_number": 74,
+            "question_body": "When a signal reaches in a straight line from one antenna to another, what is this called?",
+            "correct_answer": "А",
+            "А": "Line of sight",
+            "Б": "Straight-line propagation",
+            "В": "Diffraction",
+            "Г": "Tunnel effect"
+        },
+        {
+            "question_number": 75,
+            "question_body": "How does a VHF signal usually reach from the transmitting antenna to the receiving antenna?",
+            "correct_answer": "Б",
+            "А": "By reflection from the ionosphere",
+            "Б": "In a straight line",
+            "В": "Going around the Earth",
+            "Г": "Following a random direction"
+        },
+        {
+            "question_number": 76,
+            "question_body": "What happens to a VHF signal when it hits a metal structure?",
+            "correct_answer": "В",
+            "А": "It goes around the structure",
+            "Б": "It is directed toward the ionosphere",
+            "В": "It is relatively easily reflected",
+            "Г": "It disperses in the surface atmospheric layer"
+        },
+        {
+            "question_number": 77,
+            "question_body": "What is a signal that propagates along the Earth's surface called?",
+            "correct_answer": "Г",
+            "А": "Ionospheric propagation",
+            "Б": "Diffraction",
+            "В": "Sporadic E layer",
+            "Г": "Ground wave"
+        },
+        {
+            "question_number": 78,
+            "question_body": "What is the propagation distance of ionospheric reflection compared to ground wave?",
+            "correct_answer": "Б",
+            "А": "Much smaller",
+            "Б": "Much larger",
+            "В": "Approximately the same",
+            "Г": "Depending on weather conditions"
+        },
+        {
+            "question_number": 79,
+            "question_body": "What is the layer of ionized gases above the Earth called?",
+            "correct_answer": "А",
+            "А": "Ionosphere",
+            "Б": "Troposphere",
+            "В": "Gas layer",
+            "Г": "Ion zone"
+        },
+        {
+            "question_number": 80,
+            "question_body": "Why should you ground your antenna when not using your radio station?",
+            "correct_answer": "Г",
+            "А": "So that it is not used by another radio amateur",
+            "Б": "To avoid propagating interference",
+            "В": "To save electricity",
+            "Г": "To protect the radio station and building from lightning damage"
+        },
+        {
+            "question_number": 81,
+            "question_body": "How will amateur radio equipment be best protected from lightning damage?",
+            "correct_answer": "Г",
+            "А": "By placing it in an insulating housing",
+            "Б": "By never turning it off",
+            "В": "By disconnecting the ground conductor",
+            "Г": "By disconnecting it from the mains and antenna cables if there is no lightning protection"
+        },
+        {
+            "question_number": 82,
+            "question_body": "What should be grounded in an amateur radio station for best protection from electric shock?",
+            "correct_answer": "Б",
+            "А": "The power supply",
+            "Б": "The entire radio station",
+            "В": "The antenna cable",
+            "Г": "The mains sockets"
+        },
+        {
+            "question_number": 83,
+            "question_body": "What is the most suitable place inside a building for grounding an amateur radio station?",
+            "correct_answer": "А",
+            "А": "The grounding bus of the electrical panel",
+            "Б": "A plastic cold water pipe",
+            "В": "A window frame",
+            "Г": "A metal gas cylinder"
+        },
+        {
+            "question_number": 84,
+            "question_body": "Where should you connect the housing of your radio station for best protection from electric shock?",
+            "correct_answer": "В",
+            "А": "To an insulated desk top",
+            "Б": "To the antenna",
+            "В": "To a good ground connection",
+            "Г": "To a circuit breaker"
+        },
+        {
+            "question_number": 85,
+            "question_body": "Which of these materials is best as a conductor for ground connection?",
+            "correct_answer": "Б",
+            "А": "Plastic",
+            "Б": "Copper",
+            "В": "Iron",
+            "Г": "Fiberglass"
+        },
+        {
+            "question_number": 86,
+            "question_body": "Why should you use quality coaxial cable for the connection between transmitter and antenna?",
+            "correct_answer": "А",
+            "А": "To deliver maximum power to the antenna",
+            "Б": "To avoid interfering with television reception",
+            "В": "To prevent excessive power to the antenna",
+            "Г": "To ensure maximum high SWR"
+        },
+        {
+            "question_number": 87,
+            "question_body": "Why is a high voltage breaker needed in the radio station rectifier that disconnects it when the radio station housing is removed?",
+            "correct_answer": "Г",
+            "А": "To prevent leakage and propagation of dangerous RF energy from the radio station",
+            "Б": "To prevent penetration of dangerous RF energy into the radio station",
+            "В": "To turn off the rectifier when not in use and save electricity",
+            "Г": "To protect the operator removing the housing from electric shock"
+        },
+        {
+            "question_number": 88,
+            "question_body": "What safety measures should you take if working at the top of an antenna mast (tower)?",
+            "correct_answer": "Г",
+            "А": "Ground yourself with a suitable metal rope",
+            "Б": "Wear reflective clothing in an appropriate color",
+            "В": "Turn on a flashing red, yellow or white light",
+            "Г": "Use a safety belt, helmet and safety glasses"
+        },
+        {
+            "question_number": 89,
+            "question_body": "Why should you use a safety belt if working at the top of an antenna mast (tower)?",
+            "correct_answer": "Г",
+            "А": "So there is no danger of an accidentally dropped tool falling and injuring someone under the mast",
+            "Б": "To keep the mast balanced while you work",
+            "В": "So you can lift the maximum number of tools to the top of the mast",
+            "Г": "To be protected from accidental falling"
+        },
+        {
+            "question_number": 90,
+            "question_body": "For safety reasons, how high should you mount your antenna?",
+            "correct_answer": "А",
+            "А": "High enough so that no one from the ground can touch it",
+            "Б": "As close to the ground surface as possible",
+            "В": "High enough that you can easily reach it for tuning and repair",
+            "Г": "Above a high-voltage line"
+        },
+        {
+            "question_number": 91,
+            "question_body": "Why should you put a helmet on your head if you are helping someone from the ground who is working at the top of an antenna mast (tower)?",
+            "correct_answer": "В",
+            "А": "So you won't be injured if the mast accidentally falls",
+            "Б": "To protect yourself from dangerous RF radiation when testing the antenna",
+            "В": "To protect your head from something accidentally dropped from the top of the mast",
+            "Г": "So that casual passers-by understand that work is being done at the top of the mast and bypass it at a distance"
+        },
+        {
+            "question_number": 92,
+            "question_body": "What actions should you take immediately if someone around you is struck by electric shock?",
+            "correct_answer": "Г",
+            "А": "Bury them in the ground to drain the electric charge",
+            "Б": "Call an ambulance",
+            "В": "Measure their temperature",
+            "Г": "Call an ambulance, unbutton their clothes and start artificial respiration"
+        },
+        {
+            "question_number": 93,
+            "question_body": "What device is used to measure the standing wave ratio?",
+            "correct_answer": "В",
+            "А": "Ohmmeter",
+            "Б": "Ammeter",
+            "В": "SWR meter",
+            "Г": "Bridge"
+        },
+        {
+            "question_number": 94,
+            "question_body": "What device is used to measure the match between the antenna and feed line?",
+            "correct_answer": "Г",
+            "А": "Ammeter",
+            "Б": "Ohmmeter",
+            "В": "Voltmeter",
+            "Г": "SWR meter"
+        },
+        {
+            "question_number": 95,
+            "question_body": "Where should you connect the SWR meter to measure the standing wave ratio?",
+            "correct_answer": "А",
+            "А": "Between the feed line and antenna",
+            "Б": "Between the transmitter and rectifier",
+            "В": "Between the transmitter and receiver",
+            "Г": "Between the transmitter and ground"
+        },
+        {
+            "question_number": 96,
+            "question_body": "What does SWR = 1 mean?",
+            "correct_answer": "Б",
+            "А": "Probably an antenna for another band is connected",
+            "Б": "The best match is achieved",
+            "В": "No power is entering the antenna",
+            "Г": "The SWR meter is damaged"
+        },
+        {
+            "question_number": 97,
+            "question_body": "What does SWR = 1.5 mean?",
+            "correct_answer": "В",
+            "А": "Quite poor match",
+            "Б": "Lack of match, some failure has occurred in the antenna",
+            "В": "Quite good match",
+            "Г": "The antenna has a gain of 1.5"
+        },
+        {
+            "question_number": 98,
+            "question_body": "What does SWR = 4 mean?",
+            "correct_answer": "Г",
+            "А": "Relatively poor match",
+            "Б": "Relatively good match",
+            "В": "The antenna has a gain of 4",
+            "Г": "Lack of match, some failure has occurred in the antenna"
+        },
+        {
+            "question_number": 99,
+            "question_body": "What SWR meter reading indicates poor electrical contact between separate parts of the antenna system?",
+            "correct_answer": "А",
+            "А": "Continuous jumps in readings",
+            "Б": "Reading close to 1",
+            "В": "Lack of reading",
+            "Г": "Negative reading"
+        },
+        {
+            "question_number": 100,
+            "question_body": "What does a very high SWR meter reading mean?",
+            "correct_answer": "А",
+            "А": "The antenna has inappropriate dimensions or there is a break in the feed line",
+            "Б": "The signals radiated by the antenna are very strong, indicating good match",
+            "В": "The transmitter is radiating more energy than normal, which is a warning of imminent failure",
+            "Г": "Very strong solar activity, indicating poor propagation"
+        },
+        {
+            "question_number": 101,
+            "question_body": "If your neighbor complains of television reception interference when you are conducting amateur radio contacts with your radio station, what is the most likely cause of the interference?",
+            "correct_answer": "Г",
+            "А": "Poor grounding of your antenna",
+            "Б": "Deionization of the ionosphere around your neighbor's antenna",
+            "В": "Factory defect in the television",
+            "Г": "Spurious and harmonic emissions from your transmitter"
+        },
+        {
+            "question_number": 102,
+            "question_body": "What does \"harmonic emissions\" mean?",
+            "correct_answer": "А",
+            "А": "Unwanted signals with a frequency that is a multiple of the selected fundamental frequency",
+            "Б": "Unwanted signals containing 50 Hz mains hum",
+            "В": "Perfect signals in harmony with all standards",
+            "Г": "Signals that cause the appearance of sporadic propagation"
+        },
+        {
+            "question_number": 103,
+            "question_body": "Why are harmonic emissions from an amateur radio station undesirable?",
+            "correct_answer": "А",
+            "А": "Because they can cause interference to other radio stations and emission outside the permitted bands",
+            "Б": "Because they lead to high electricity consumption",
+            "В": "Because they can cause resonance in nearby transmitters",
+            "Г": "Because they cause ionization of the air"
+        },
+        {
+            "question_number": 104,
+            "question_body": "What is the main purpose of the shielding metal housing of the transmitter?",
+            "correct_answer": "В",
+            "А": "Improves the operation of the antenna filter",
+            "Б": "Improves speech intelligibility",
+            "В": "Protects against unwanted emission of RF energy",
+            "Г": "Maintains the temperature of electronic elements to keep them stable"
+        },
+        {
+            "question_number": 105,
+            "question_body": "What problem can arise if you use your radio station without the outer metal housing?",
+            "correct_answer": "А",
+            "А": "Spurious emissions may appear",
+            "Б": "The quality of modulation may deteriorate",
+            "В": "The power of the output stage may decrease",
+            "Г": "You may cause microphonics"
+        },
+        {
+            "question_number": 106,
+            "question_body": "If you are notified that your radio station is causing television reception interference, what action should you take?",
+            "correct_answer": "А",
+            "А": "Make sure first that the station is being used correctly and that it does not cause interference to your television",
+            "Б": "Turn off the transmitter immediately and request a measurement by the regulatory authority",
+            "В": "Install an appropriate filter at the transmitter output",
+            "Г": "Continue to work with the radio station because you have no reason to worry about interference"
+        },
+        {
+            "question_number": 107,
+            "question_body": "What connects your radio station to the antenna?",
+            "correct_answer": "Г",
+            "А": "Dummy load",
+            "Б": "Ground conductor",
+            "В": "Guy wires and other fasteners",
+            "Г": "Feed line (cable)"
+        },
+        {
+            "question_number": 108,
+            "question_body": "Which of the following should you never connect to the output of your transmitter?",
+            "correct_answer": "Г",
+            "А": "Antenna switch",
+            "Б": "SWR meter",
+            "В": "Antenna",
+            "Г": "Receiver"
+        },
+        {
+            "question_number": 109,
+            "question_body": "Which device converts mains voltage to 12 V DC voltage?",
+            "correct_answer": "В",
+            "А": "Battery",
+            "Б": "Low-pass filter",
+            "В": "Rectifier",
+            "Г": "RS-232 interface"
+        },
+        {
+            "question_number": 110,
+            "question_body": "Which device usually requires a power supply with the highest power?",
+            "correct_answer": "Б",
+            "А": "SWR meter",
+            "Б": "Transmitter",
+            "В": "Receiver",
+            "Г": "Antenna switch"
+        },
+        {
+            "question_number": 111,
+            "question_body": "If your transmitter has a peak envelope power (PEP) of 2 W, which power supply is most suitable for it?",
+            "correct_answer": "В",
+            "А": "With a power of 30 kW",
+            "Б": "With a power of 300 W",
+            "В": "With a power of 3 W",
+            "Г": "With a power of 30 mW"
+        }
+    ]
+}

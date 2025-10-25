@@ -1,6 +1,6 @@
 <script>
   import { link, push, location } from 'svelte-spa-router'
-  import { examConfig, questionCounts } from '../lib/examConfig.js'
+  import { examConfig } from '../lib/examConfig.js'
 
   // Extract class number from URL path (/exam/class1 or /exam/class2)
   $: classNum = $location.includes('class2') ? '2' : '1'

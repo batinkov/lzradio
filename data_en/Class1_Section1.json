@@ -1,0 +1,43 @@
+{
+    "class": "Amateur Radio Class 1",
+    "section": "Section 1 – Regulations and Operating Procedures",
+    "update": "Mock data for development 2025",
+    "questions": [
+        {
+            "question_number": 1,
+            "question_body": "What is the maximum power output allowed for Class 1 amateur radio stations?",
+            "correct_answer": "В",
+            "А": "5 watts",
+            "Б": "50 watts",
+            "В": "100 watts",
+            "Г": "500 watts"
+        },
+        {
+            "question_number": 2,
+            "question_body": "Which frequency band is reserved for emergency communications?",
+            "correct_answer": "А",
+            "А": "144-148 MHz",
+            "Б": "430-440 MHz",
+            "В": "50-54 MHz",
+            "Г": "1240-1300 MHz"
+        },
+        {
+            "question_number": 3,
+            "question_body": "What is the minimum age requirement for obtaining a Class 1 amateur radio license?",
+            "correct_answer": "В",
+            "А": "14 years",
+            "Б": "16 years",
+            "В": "18 years",
+            "Г": "21 years"
+        },
+        {
+            "question_number": 4,
+            "question_body": "How long is a Class 1 amateur radio license valid?",
+            "correct_answer": "Б",
+            "А": "5 years",
+            "Б": "10 years",
+            "В": "15 years",
+            "Г": "Lifetime"
+        }
+    ]
+}

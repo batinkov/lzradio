@@ -1,0 +1,43 @@
+{
+    "class": "Amateur Radio Class 1",
+    "section": "Section 2 – Technical Knowledge and Equipment",
+    "update": "Mock data for development 2025",
+    "questions": [
+        {
+            "question_number": 1,
+            "question_body": "What type of modulation is used for FM voice communications?",
+            "correct_answer": "Б",
+            "А": "Amplitude Modulation",
+            "Б": "Frequency Modulation",
+            "В": "Phase Modulation",
+            "Г": "Pulse Modulation"
+        },
+        {
+            "question_number": 2,
+            "question_body": "What is the standard bandwidth for SSB voice transmission?",
+            "correct_answer": "Б",
+            "А": "2.4 kHz",
+            "Б": "3.0 kHz",
+            "В": "6.0 kHz",
+            "Г": "12.0 kHz"
+        },
+        {
+            "question_number": 3,
+            "question_body": "Which antenna type provides the best omnidirectional coverage?",
+            "correct_answer": "В",
+            "А": "Yagi antenna",
+            "Б": "Dipole antenna",
+            "В": "Vertical antenna",
+            "Г": "Parabolic antenna"
+        },
+        {
+            "question_number": 4,
+            "question_body": "What is the purpose of a standing wave ratio (SWR) meter?",
+            "correct_answer": "Б",
+            "А": "Measure transmitter power",
+            "Б": "Measure antenna impedance match",
+            "В": "Measure signal strength",
+            "Г": "Measure frequency accuracy"
+        }
+    ]
+}

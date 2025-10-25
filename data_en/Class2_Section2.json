@@ -1,0 +1,511 @@
+{
+    "class": "Amateur Radio Class 2",
+    "section": "Section 2 - Codes and amateur radio abbreviations. Rules and procedures for conducting amateur radio communications",
+    "update": "Updated syllabus 31.05.2022",
+    "questions": [
+        {
+            "question_number": 1,
+            "question_body": "What should you do before you start transmitting on a specific frequency?",
+            "correct_answer": "А",
+            "А": "Listen to the frequency to make sure no one is currently using it",
+            "Б": "Transmit a few short statements to make sure someone hears you",
+            "В": "Check if your antenna is resonant at that frequency",
+            "Г": "Check if the SWR of your antenna is good enough"
+        },
+        {
+            "question_number": 2,
+            "question_body": "If you have established a radio contact with another station and your signal is exceptionally strong and perfectly intelligible, what adjustment to your transmitter could you make?",
+            "correct_answer": "Г",
+            "А": "Reduce the gain of the microphone amplifier",
+            "Б": "Reduce the SWR",
+            "В": "Reduce the transmitter power to the minimum necessary",
+            "Г": "Continue the radio contact without any changes (what more could you want from it?)"
+        },
+        {
+            "question_number": 3,
+            "question_body": "How can you reduce the transmission time when tuning the final stage of the transmitter to avoid unnecessary interference?",
+            "correct_answer": "В",
+            "А": "By connecting an arbitrary wire as an antenna",
+            "Б": "By tuning the transmitter first outside the amateur radio band and then switching to it",
+            "В": "By using a dummy load instead of an antenna",
+            "Г": "By using a balanced line instead of coaxial cable for connection to the antenna"
+        },
+        {
+            "question_number": 4,
+            "question_body": "If you are conducting a radio contact with another station and you hear a distress message on the frequency, what should you do?",
+            "correct_answer": "Г",
+            "А": "Inform the station transmitting the message that the frequency is busy",
+            "Б": "Direct the station transmitting the message to the nearest emergency frequency",
+            "В": "Call the nearest police station and notify the duty officer of the transmitted message",
+            "Г": "Immediately terminate your QSO and receive the distress message"
+        },
+        {
+            "question_number": 5,
+            "question_body": "What is the meaning of the abbreviation \"CQ\"?",
+            "correct_answer": "Г",
+            "А": "Testing a new antenna (no radio station should respond)",
+            "Б": "End of transmission",
+            "В": "Only the called radio station should respond",
+            "Г": "Calling all stations"
+        },
+        {
+            "question_number": 6,
+            "question_body": "What is the meaning of the abbreviation \"DX\"?",
+            "correct_answer": "Б",
+            "А": "Best wishes",
+            "Б": "Distant radio station",
+            "В": "Calling all stations",
+            "Г": "Begin transmission"
+        },
+        {
+            "question_number": 7,
+            "question_body": "What is the meaning of the abbreviation \"73\"?",
+            "correct_answer": "Б",
+            "А": "Distant radio station",
+            "Б": "Best wishes",
+            "В": "Love and kisses",
+            "Г": "Begin transmission"
+        },
+        {
+            "question_number": 8,
+            "question_body": "What is the meaning of the abbreviation \"88\"?",
+            "correct_answer": "В",
+            "А": "Distant radio station",
+            "Б": "Best wishes",
+            "В": "Love and kisses",
+            "Г": "Begin transmission"
+        },
+        {
+            "question_number": 9,
+            "question_body": "What is the meaning of the code \"QTH\"?",
+            "correct_answer": "Г",
+            "А": "Time",
+            "Б": "My name",
+            "В": "Stop transmitting",
+            "Г": "Location"
+        },
+        {
+            "question_number": 10,
+            "question_body": "What is the meaning of the code \"QRM\"?",
+            "correct_answer": "Б",
+            "А": "I am busy",
+            "Б": "Another station is interfering with your signal",
+            "В": "Your signal has strong mains hum",
+            "Г": "Stop transmitting"
+        },
+        {
+            "question_number": 11,
+            "question_body": "The code \"QRL\" means?",
+            "correct_answer": "Б",
+            "А": "I will send my card",
+            "Б": "I am busy",
+            "В": "I am transmitting with low power",
+            "Г": "My location is"
+        },
+        {
+            "question_number": 12,
+            "question_body": "The code \"QRP\" means?",
+            "correct_answer": "В",
+            "А": "I receive your signal with interference",
+            "Б": "Best wishes",
+            "В": "I am transmitting with low power",
+            "Г": "I am transmitting with a portable antenna"
+        },
+        {
+            "question_number": 13,
+            "question_body": "The code \"QSO\" means?",
+            "correct_answer": "В",
+            "А": "Low power",
+            "Б": "Interference",
+            "В": "Radio contact",
+            "Г": "Location"
+        },
+        {
+            "question_number": 14,
+            "question_body": "Which Q code will you use to announce that you are ceasing transmission?",
+            "correct_answer": "В",
+            "А": "QTH",
+            "Б": "QRM",
+            "В": "QRT",
+            "Г": "QSL"
+        },
+        {
+            "question_number": 15,
+            "question_body": "Which of the listed codes and abbreviations is most often transmitted at the end of a radio contact?",
+            "correct_answer": "А",
+            "А": "73",
+            "Б": "QSO",
+            "В": "QTH",
+            "Г": "QRP"
+        },
+        {
+            "question_number": 16,
+            "question_body": "What is a QSL card?",
+            "correct_answer": "В",
+            "А": "A letter or postcard from a friend - radio amateur",
+            "Б": "A written notice of violation",
+            "В": "Written proof of radio contact between two radio amateurs",
+            "Г": "A postcard with notice of acquired amateur radio class"
+        },
+        {
+            "question_number": 17,
+            "question_body": "How should you respond to a \"CQ\" call?",
+            "correct_answer": "Г",
+            "А": "Say the call sign of the calling radio station at least ten times, followed by the words \"this is\" and then your call sign said three times",
+            "Б": "Say phonetically the call sign of the calling radio station at least five times, followed by the words \"this is\" and then your call sign said at least once",
+            "В": "Say the call sign of the calling radio station at least three times, followed by the words \"this is\" and then your call sign said phonetically at least five times",
+            "Г": "Say the call sign of the calling radio station once, followed by the words \"this is\" and then your call sign said phonetically"
+        },
+        {
+            "question_number": 18,
+            "question_body": "To make your call sign more understandable, what should you do?",
+            "correct_answer": "А",
+            "А": "Use the international phonetic alphabet for each letter of the call sign",
+            "Б": "Use appropriate words beginning with the same letter as each letter of the call sign",
+            "В": "Speak louder",
+            "Г": "Increase the gain of the microphone amplifier"
+        },
+        {
+            "question_number": 19,
+            "question_body": "What does simplex operation mean?",
+            "correct_answer": "А",
+            "А": "Transmitting and receiving on the same frequency",
+            "Б": "Transmitting to and receiving from another country",
+            "В": "Transmitting on one frequency and receiving on another",
+            "Г": "Transmitting a one-way message"
+        },
+        {
+            "question_number": 20,
+            "question_body": "When should you use simplex instead of a repeater?",
+            "correct_answer": "Б",
+            "А": "When the most reliable radio contact is needed",
+            "Б": "When radio contact is possible without using a repeater",
+            "В": "When urgent message transmission is necessary",
+            "Г": "When traveling and needing local information"
+        },
+        {
+            "question_number": 21,
+            "question_body": "What is the correct way to establish radio contact through a repeater?",
+            "correct_answer": "В",
+            "А": "Say the call sign of the radio station you want to contact three times",
+            "Б": "Say the name of the operator you want to contact three times, then your call sign three times",
+            "В": "Say the call sign of the radio station you want to contact, then your call sign",
+            "Г": "Say \"Break\", then your call sign"
+        },
+        {
+            "question_number": 22,
+            "question_body": "When using a repeater for radio contact, what must you know about it besides its input frequency?",
+            "correct_answer": "А",
+            "А": "Its output frequency",
+            "Б": "Its call sign",
+            "В": "Its power",
+            "Г": "The type of its antenna system"
+        },
+        {
+            "question_number": 23,
+            "question_body": "What is the main purpose of amateur repeaters?",
+            "correct_answer": "Г",
+            "А": "To provide local information 24 hours a day",
+            "Б": "To connect radio amateurs to a telephone system",
+            "В": "To retransmit weather information",
+            "Г": "To increase the operating range of amateur radio stations"
+        },
+        {
+            "question_number": 24,
+            "question_body": "What does it mean for a repeater to have input and output frequency?",
+            "correct_answer": "А",
+            "А": "The repeater receives on one frequency and transmits on another",
+            "Б": "The repeater must receive its tone code on one frequency to start retransmitting the received signal on the other",
+            "В": "One frequency is used for repeater control, and the other for retransmitting the received signal",
+            "Г": "None of the three"
+        },
+        {
+            "question_number": 25,
+            "question_body": "If you have established a radio contact with LZ1AW, how will you pronounce his call sign phonetically?",
+            "correct_answer": "В",
+            "А": "Lima, Zulu, one, Alfa, Whiskey",
+            "Б": "Lyudmil, Zakhari, edinitsa, Anton, Vasil",
+            "В": "Either of the above two ways",
+            "Г": "El, zet, edinitsa, A, Double vee"
+        },
+        {
+            "question_number": 26,
+            "question_body": "If you have established a radio contact with Z36BAL, how will you pronounce his call sign phonetically?",
+            "correct_answer": "Б",
+            "А": "Zakhari, tri, shest, Boris, Anton, Lyudmil",
+            "Б": "Zulu, three, six, Bravo, Alfa, Lima",
+            "В": "Zanzibar, tri, shest, Baltimore, America, London",
+            "Г": "Zet, triyset i shest, Be, A, El"
+        },
+        {
+            "question_number": 27,
+            "question_body": "If you are calling YU1DS for a radio contact and your call sign is LZ1HCP, how will you pronounce it phonetically?",
+            "correct_answer": "В",
+            "А": "Lyudmil, Zakhari, edinitsa, Nikolay, Stefan, Rumen",
+            "Б": "Lyudmil, Zakhari, edinitsa, Hristo, Tsvetan, Petar",
+            "В": "Lima, Zulu, one, Hotel, Charlie, Papa",
+            "Г": "Lima, Zulu, edinitsa, November, Sierra, Romeo"
+        },
+        {
+            "question_number": 28,
+            "question_body": "Which organization is NOT a radio amateur organization?",
+            "correct_answer": "А",
+            "А": "International Telecommunication Union",
+            "Б": "International Amateur Radio Union, Region 2",
+            "В": "Bulgarian Federation of Radio Amateurs",
+            "Г": "Working Group on High Speed Telegraphy of IARU, Region 1"
+        },
+        {
+            "question_number": 29,
+            "question_body": "What is a \"QTH\" locator?",
+            "correct_answer": "Б",
+            "А": "A device for determining location",
+            "Б": "A system of coded information about the location of an amateur radio station",
+            "В": "A device for determining exact coordinates via satellite navigation",
+            "Г": "An abbreviation for LOw Quality TrAnsisTOR"
+        },
+        {
+            "question_number": 30,
+            "question_body": "Your QSL card to a foreign radio amateur should be sent via?",
+            "correct_answer": "Г",
+            "А": "Bulgarian Federation of Radio Amateurs",
+            "Б": "Bulgarian Post",
+            "В": "The QSL Bureau of the foreign radio amateur",
+            "Г": "By your choice"
+        },
+        {
+            "question_number": 31,
+            "question_body": "What does the RS rating mean?",
+            "correct_answer": "А",
+            "А": "Readability and signal strength at the receiving location",
+            "Б": "Overall signal quality at the receiving location",
+            "В": "Rating for interference strength at the receiving location",
+            "Г": "Rating for signal quality after being retransmitted by an amateur repeater"
+        },
+        {
+            "question_number": 32,
+            "question_body": "What is the maximum RS rating?",
+            "correct_answer": "В",
+            "А": "5",
+            "Б": "9",
+            "В": "59",
+            "Г": "100%"
+        },
+        {
+            "question_number": 33,
+            "question_body": "Which of the following is NOT an RS rating?",
+            "correct_answer": "Г",
+            "А": "12",
+            "Б": "34",
+            "В": "56",
+            "Г": "78"
+        },
+        {
+            "question_number": 34,
+            "question_body": "Is it permissible for a radio amateur to transmit weather information during a radio contact?",
+            "correct_answer": "Б",
+            "А": "No, because the information can only be communicated by authorized services",
+            "Б": "Yes",
+            "В": "No, because it is outside purely amateur radio matters",
+            "Г": "Yes, but only using Morse code"
+        },
+        {
+            "question_number": 35,
+            "question_body": "Is it permissible for a radio amateur to transmit information about their radio equipment during a radio contact?",
+            "correct_answer": "А",
+            "А": "Yes",
+            "Б": "Yes, but only those specified in the Rules for the use of radio frequency spectrum for radio equipment from amateur radio service (the Rules)",
+            "В": "No, because it is not explicitly mentioned in the Rules",
+            "Г": "No, because it is prohibited by the Rules"
+        },
+        {
+            "question_number": 36,
+            "question_body": "To which country does the call sign S51SV belong?",
+            "correct_answer": "Г",
+            "А": "Greece",
+            "Б": "Romania",
+            "В": "Turkey",
+            "Г": "Slovenia"
+        },
+        {
+            "question_number": 37,
+            "question_body": "To which country does the call sign TA1YU belong?",
+            "correct_answer": "В",
+            "А": "Greece",
+            "Б": "Romania",
+            "В": "Turkey",
+            "Г": "Slovenia"
+        },
+        {
+            "question_number": 38,
+            "question_body": "To which neighboring country does the call sign SV3YO belong?",
+            "correct_answer": "Б",
+            "А": "Macedonia",
+            "Б": "Greece",
+            "В": "Turkey",
+            "Г": "Romania"
+        },
+        {
+            "question_number": 39,
+            "question_body": "To which neighboring country does the call sign Z31TA belong?",
+            "correct_answer": "А",
+            "А": "Macedonia",
+            "Б": "Greece",
+            "В": "Turkey",
+            "Г": "Romania"
+        },
+        {
+            "question_number": 40,
+            "question_body": "To which country does the call sign YO6YU belong?",
+            "correct_answer": "Г",
+            "А": "Slovenia",
+            "Б": "Greece",
+            "В": "Turkey",
+            "Г": "Romania"
+        },
+        {
+            "question_number": 41,
+            "question_body": "From which country is a radio amateur transmitting with the call sign YO/LZ1AW?",
+            "correct_answer": "А",
+            "А": "From Romania",
+            "Б": "From Bulgaria",
+            "В": "From the border between Romania and Bulgaria",
+            "Г": "From Bulgaria, but through a Romanian amateur repeater"
+        },
+        {
+            "question_number": 42,
+            "question_body": "Do radio amateurs from neighboring countries have the right to conduct radio communications through a Bulgarian amateur repeater?",
+            "correct_answer": "Б",
+            "А": "They do not have the right",
+            "Б": "They have the right",
+            "В": "They have the right, but only with Bulgarian radio amateurs",
+            "Г": "They have the right if they comply with the Rules"
+        },
+        {
+            "question_number": 43,
+            "question_body": "Do radio amateurs from Bulgaria have the right to conduct radio communications through amateur repeaters located in other countries?",
+            "correct_answer": "Б",
+            "А": "They do not have the right",
+            "Б": "They have the right",
+            "В": "They have the right, but only with Bulgarian radio amateurs",
+            "Г": "They have the right, but only with radio amateurs from the respective country"
+        },
+        {
+            "question_number": 44,
+            "question_body": "If you hear the call sign LZ1AW/1, this means?",
+            "correct_answer": "Г",
+            "А": "LZ1AW is using a portable station",
+            "Б": "LZ1AW is using a radio station with a power of 1 watt",
+            "В": "LZ1AW's wife is using his radio station",
+            "Г": "LZ1AW is operating from his cottage in Sozopol"
+        },
+        {
+            "question_number": 45,
+            "question_body": "If you hear the call sign LZ1AW/2, this means?",
+            "correct_answer": "Б",
+            "А": "LZ1AW is using his radio station while driving his car",
+            "Б": "LZ1AW is operating from a friend's apartment in Ruse",
+            "В": "LZ1AW is operating from his cottage in Sozopol",
+            "Г": "LZ1AW indicates that he is operating through repeater #2"
+        },
+        {
+            "question_number": 46,
+            "question_body": "If you hear the call sign LZ1AW/M, this means?",
+            "correct_answer": "А",
+            "А": "LZ1AW is using his radio station while driving his car",
+            "Б": "LZ1AW is operating from Montana",
+            "В": "LZ1AW is only working with stations participating in the ongoing contest",
+            "Г": "LZ1AW is operating from aboard a watercraft"
+        },
+        {
+            "question_number": 47,
+            "question_body": "If you hear LZ1AW transmitting CQ DX, does this apply to you?",
+            "correct_answer": "А",
+            "А": "No, this applies only to distant stations",
+            "Б": "Yes, it applies to all stations",
+            "В": "No, unless you haven't heard from each other for a long time",
+            "Г": "Yes, but after such a call you must switch to another amateur radio band"
+        },
+        {
+            "question_number": 48,
+            "question_body": "What is recorded in the station logbook?",
+            "correct_answer": "Г",
+            "А": "Date and time of radio contact",
+            "Б": "Call sign of correspondent",
+            "В": "RS signal rating",
+            "Г": "All of these"
+        },
+        {
+            "question_number": 49,
+            "question_body": "If you are transmitted the message Q5, this means?",
+            "correct_answer": "А",
+            "А": "That the radio contact is being conducted through an amateur repeater",
+            "Б": "Your QSL card is of maximum quality",
+            "В": "Please wait 5 minutes",
+            "Г": "The amateur radio prefix of the Republic of Macedonia"
+        },
+        {
+            "question_number": 50,
+            "question_body": "If you are filling out a QSL card for a radio amateur from a neighboring country, what time of radio contact will you record?",
+            "correct_answer": "В",
+            "А": "The hour and minute in Bulgarian time",
+            "Б": "The hour and minute in the time of the neighboring country",
+            "В": "The hour and minute in universal time",
+            "Г": "You do not need to indicate hour and minute"
+        },
+        {
+            "question_number": 51,
+            "question_body": "If you are communicating your name to the radio amateur with whom you are in radio contact, how will you do it?",
+            "correct_answer": "А",
+            "А": "My name is Alexander",
+            "Б": "My name is Georgiev",
+            "В": "My name is Alexander Georgiev",
+            "Г": "My name is Alexander Petrov Georgiev"
+        },
+        {
+            "question_number": 52,
+            "question_body": "When participating in a radio amateur contest, the main goal is?",
+            "correct_answer": "Г",
+            "А": "Maximum QRL time",
+            "Б": "Maximum amount of QRM",
+            "В": "Maximum fast QRT",
+            "Г": "Maximum number of QSOs"
+        },
+        {
+            "question_number": 53,
+            "question_body": "Why is it necessary to use short messages when transmitting through a repeater?",
+            "correct_answer": "В",
+            "А": "To preserve the radio station battery for a longer time",
+            "Б": "To give everyone who is not a radio amateur a chance to respond",
+            "В": "Longer messages can prevent someone with an urgent distress message from using the repeater",
+            "Г": "To check if the receiving radio station is still on the line"
+        },
+        {
+            "question_number": 54,
+            "question_body": "What is the correct way to join a conversation through a repeater?",
+            "correct_answer": "Г",
+            "А": "You call one of the correspondents by name and join the QSO",
+            "Б": "You announce your presence and desire to join by calling \"break, break!\" and wait for a response",
+            "В": "You turn on the amplifier and drown out whoever is speaking",
+            "Г": "You announce your call sign in the pause between transmitted emissions from other radio amateurs"
+        },
+        {
+            "question_number": 55,
+            "question_body": "When talking to another radio station through a repeater, how can you tell if you can use simplex?",
+            "correct_answer": "В",
+            "А": "If a third station hears you both",
+            "Б": "If you can receive a more distant repeater",
+            "В": "If you can receive the radio station with good quality on the repeater's receive frequency",
+            "Г": "In no way"
+        },
+        {
+            "question_number": 56,
+            "question_body": "When choosing a transmit frequency, what do you need to do?",
+            "correct_answer": "Г",
+            "А": "Check that the selected frequency and emission class are permitted according to my amateur radio class",
+            "Б": "Check that the maximum output power of the transmitter corresponds to the power permitted for my amateur radio class",
+            "В": "Listen to the frequency before transmitting",
+            "Г": "All three answers are correct"
+        }
+    ]
+}

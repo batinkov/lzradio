@@ -1,15 +1,23 @@
 <script>
   import { link, location } from 'svelte-spa-router'
   import { examConfig } from '../lib/examConfig.js'
+  import { getClassInfo } from '../lib/questions.js'
 
   // Extract class number from URL path (/exam/class1/simulated or /exam/class2/simulated)
   $: classNum = $location.includes('class2') ? '2' : '1'
+  $: classInfo = getClassInfo(parseInt(classNum))
 </script>
 
 <div class="page">
   <div class="header">
-    <h1>Simulated Exam - Class {classNum}</h1>
-    <a href="/exam/class{classNum}" use:link class="btn-secondary">← Back to Class {classNum} - Exam Preparation</a>
+    <h1>Simulated Exam</h1>
+    <a href="/exam/class{classNum}" use:link class="btn-secondary">← Back to Class {classNum}</a>
+  </div>
+
+  <!-- Class info -->
+  <div class="class-info">
+    <span class="class-name">{classInfo.class}</span>
+    <span class="update-info">{classInfo.update}</span>
   </div>
 
   <div class="info-card">
@@ -27,7 +35,7 @@
 
 <style>
   .page {
-    padding: var(--space-4) 0;
+    padding: var(--space-4);
     max-width: 900px;
     margin: 0 auto;
   }
@@ -36,7 +44,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-3);
     flex-wrap: wrap;
     gap: var(--space-4);
   }
@@ -60,6 +68,27 @@
   .btn-secondary:hover {
     background: var(--color-bg);
     border-color: var(--color-primary);
+  }
+
+  /* Class Info */
+  .class-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+  }
+
+  .class-name {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .update-info {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
   }
 
   .info-card {
@@ -87,6 +116,12 @@
     .header {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .class-info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
     }
   }
 </style>

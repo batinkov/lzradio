@@ -15,9 +15,3 @@ export const examConfig = {
   // Maximum wrong answers allowed to pass
   maxWrongAnswers: 10,
 }
-
-// Question counts per class (for reference only, not configurable)
-export const questionCounts = {
-  1: 180,
-  2: 195,
-}
