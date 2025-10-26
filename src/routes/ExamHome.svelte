@@ -7,7 +7,7 @@
   $: class2Count = getAllQuestions(2).length
 </script>
 
-<div class="page">
+<div class="page page-centered">
   <div class="header">
     <h1>Exam Preparation</h1>
   </div>
@@ -31,21 +31,9 @@
 </div>
 
 <style>
-  .page {
-    padding: var(--space-4) 0;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
+  /* Component-specific styles */
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: var(--space-8);
-  }
-
-  .header h1 {
-    margin: 0;
   }
 
   /* Class Selection */

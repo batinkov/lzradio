@@ -23,6 +23,7 @@
 </div>
 
 <style>
+  /* Component-specific styles */
   .home {
     padding: var(--space-8) 0;
   }
@@ -42,14 +43,6 @@
     font-size: 1.25rem;
     color: var(--color-text-muted);
     margin-bottom: var(--space-4);
-  }
-
-  code {
-    font-family: var(--font-mono);
-    background: var(--color-bg);
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
   }
 
   .features {

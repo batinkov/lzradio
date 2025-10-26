@@ -11,17 +11,7 @@
 </div>
 
 <style>
-  .page {
-    padding: var(--space-4) 0;
-  }
-
-  code {
-    font-family: var(--font-mono);
-    background: var(--color-bg);
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-  }
-
+  /* Component-specific styles */
   .btn {
     display: inline-block;
     margin-top: var(--space-4);

@@ -76,24 +76,7 @@
 </div>
 
 <style>
-  .page {
-    padding: var(--space-4) 0;
-  }
-
-  /* Header */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-6);
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
-  .header h1 {
-    margin: 0;
-  }
-
+  /* Component-specific styles */
   .count {
     font-size: 1rem;
     color: var(--color-text-muted);
@@ -104,43 +87,6 @@
     display: flex;
     gap: var(--space-2);
     flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--color-primary);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.15s ease;
-  }
-
-  .btn-primary:hover {
-    background: #2563EB;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .btn-secondary {
-    background: white;
-    color: var(--color-text);
-    padding: 12px 20px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .btn-secondary:hover {
-    background: var(--color-bg);
-    border-color: var(--color-primary);
   }
 
   /* Contact Table */
@@ -185,10 +131,6 @@
     background: var(--color-bg);
   }
 
-  .monospace {
-    font-family: var(--font-mono);
-  }
-
   .bold {
     font-weight: 600;
     color: var(--color-primary);
@@ -221,11 +163,6 @@
 
   /* Mobile Responsive */
   @media (max-width: 767px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
     .header-actions {
       width: 100%;
     }

@@ -27,7 +27,7 @@
   }
 </script>
 
-<div class="page">
+<div class="page page-centered">
   <div class="header">
     <h1>Class {classNum} - Exam Preparation</h1>
     <a href="/exam" use:link class="btn-secondary">← Back to Classes</a>
@@ -126,40 +126,9 @@
 </div>
 
 <style>
-  .page {
-    padding: var(--space-4) 0;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
+  /* Component-specific styles */
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: var(--space-8);
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
-  .header h1 {
-    margin: 0;
-  }
-
-  .btn-secondary {
-    background: white;
-    color: var(--color-text);
-    padding: 10px 20px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.15s ease;
-  }
-
-  .btn-secondary:hover {
-    background: var(--color-bg);
-    border-color: var(--color-primary);
   }
 
   /* Mode Selection */
@@ -225,37 +194,10 @@
     font-weight: bold;
   }
 
-  /* Buttons */
-  .btn-primary {
-    background: var(--color-primary);
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
+  /* Override for mode buttons */
+  .prep-mode-card .btn-primary,
+  .mode-card .btn-primary {
     display: block;
-    text-align: center;
-    transition: all 0.15s ease;
-  }
-
-  .btn-primary:hover {
-    background: #2563EB;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .btn-primary:disabled {
-    background: var(--color-text-muted);
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  .btn-primary:disabled:hover {
-    background: var(--color-text-muted);
-    box-shadow: none;
   }
 
   /* Configuration Sections */
@@ -309,12 +251,6 @@
 
   /* Mobile */
   @media (max-width: 767px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-4);
-    }
-
     .mode-cards {
       grid-template-columns: 1fr;
     }

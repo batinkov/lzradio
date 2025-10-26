@@ -2,14 +2,14 @@
   import { link } from 'svelte-spa-router'
 </script>
 
-<div class="page">
+<div class="page page-narrow">
   <div class="header">
     <h1>Add Contact</h1>
     <a href="/logbook" use:link class="btn-secondary">← Back to Log</a>
   </div>
 
   <!-- Contact Entry Form -->
-  <div class="form-card">
+  <div class="card">
     <form class="contact-form">
       <!-- Primary Field: Station Callsign -->
       <div class="form-row">
@@ -115,34 +115,6 @@
 </div>
 
 <style>
-  .page {
-    padding: var(--space-4) 0;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-6);
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
-  .header h1 {
-    margin: 0;
-  }
-
-  /* Form Card */
-  .form-card {
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6);
-    box-shadow: var(--shadow-sm);
-  }
-
   /* Form Layout */
   .contact-form {
     display: flex;
@@ -216,10 +188,6 @@
     font-family: var(--font-sans);
   }
 
-  .monospace {
-    font-family: var(--font-mono);
-  }
-
   /* Form Actions */
   .form-actions {
     display: flex;
@@ -228,60 +196,8 @@
     align-items: center;
   }
 
-  .btn-primary {
-    background: var(--color-primary);
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .btn-primary:hover {
-    background: #2563EB;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .btn-secondary {
-    background: white;
-    color: var(--color-text);
-    padding: 12px 24px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.15s ease;
-    display: inline-block;
-  }
-
-  .btn-secondary:hover {
-    background: var(--color-bg);
-    border-color: var(--color-primary);
-  }
-
-  .btn-text {
-    color: var(--color-text-muted);
-    text-decoration: none;
-    padding: 12px 16px;
-    transition: color 0.15s ease;
-  }
-
-  .btn-text:hover {
-    color: var(--color-text);
-  }
-
   /* Mobile Responsive */
   @media (max-width: 767px) {
-    .form-card {
-      padding: var(--space-4);
-    }
-
     .form-row {
       grid-template-columns: 1fr;
     }
@@ -295,11 +211,6 @@
     .btn-secondary {
       width: 100%;
       text-align: center;
-    }
-
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
     }
   }
 </style>

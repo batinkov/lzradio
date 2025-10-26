@@ -103,6 +103,7 @@
 {/if}
 
 <style>
+  /* Navigation-specific styles */
   .nav {
     background: white;
     border-bottom: 1px solid var(--color-border);
@@ -156,23 +157,6 @@
     align-items: center;
   }
 
-  .icon-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-full);
-    background: transparent;
-    color: var(--color-text-muted);
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s ease;
-  }
-
-  .icon-btn:hover {
-    background: var(--color-bg);
-  }
-
   .mobile-menu-btn {
     display: none;
   }
@@ -202,70 +186,7 @@
     background: rgba(59, 130, 246, 0.1);
   }
 
-  /* Modal Styles */
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: var(--space-4);
-  }
-
-  .modal {
-    background: white;
-    border-radius: var(--radius-lg);
-    max-width: 600px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-6);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .modal-header h2 {
-    margin: 0;
-  }
-
-  .modal-body {
-    padding: var(--space-6);
-  }
-
-  .modal-body h3 {
-    margin-top: var(--space-6);
-    margin-bottom: var(--space-3);
-    font-size: 1.125rem;
-  }
-
-  .modal-body p {
-    margin-bottom: var(--space-4);
-  }
-
-  .modal-body ul {
-    margin-left: var(--space-6);
-    margin-bottom: var(--space-4);
-  }
-
-  .modal-body code {
-    font-family: var(--font-mono);
-    background: var(--color-bg);
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-  }
-
+  /* Modal-specific styles */
   .footer-text {
     text-align: center;
     color: var(--color-text-muted);

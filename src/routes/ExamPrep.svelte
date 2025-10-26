@@ -185,10 +185,9 @@
 {/if}
 
 <style>
+  /* Component-specific styles */
   .page {
     padding: var(--space-4);
-    max-width: 900px;
-    margin: 0 auto;
     min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
@@ -196,9 +195,6 @@
 
   /* Header */
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: var(--space-3);
     gap: var(--space-3);
   }
@@ -231,42 +227,7 @@
   }
 
   .btn-secondary {
-    background: white;
-    color: var(--color-text);
-    padding: 10px 20px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.15s ease;
     white-space: nowrap;
-  }
-
-  .btn-secondary:hover {
-    background: var(--color-bg);
-    border-color: var(--color-primary);
-  }
-
-  /* Class Info */
-  .class-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-4);
-    padding: var(--space-3) var(--space-4);
-    background: var(--color-bg);
-    border-radius: var(--radius-md);
-  }
-
-  .class-name {
-    font-weight: 600;
-    color: var(--color-text);
-  }
-
-  .update-info {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
   }
 
   /* Progress Bar */
@@ -424,59 +385,9 @@
     background: #2563EB;
   }
 
-  /* Modal */
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: var(--space-4);
-  }
-
-  .modal {
-    background: white;
-    border-radius: var(--radius-lg);
+  /* Navigator Modal specific */
+  .navigator-modal {
     max-width: 800px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-6);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .modal-header h3 {
-    margin: 0;
-  }
-
-  .icon-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--color-text-muted);
-    padding: var(--space-2);
-    transition: color 0.15s ease;
-  }
-
-  .icon-btn:hover {
-    color: var(--color-text);
-  }
-
-  .modal-body {
-    padding: var(--space-6);
   }
 
   /* Question Grid */
@@ -576,12 +487,6 @@
 
     .progress-text {
       font-size: 1rem;
-    }
-
-    .class-info {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-2);
     }
 
     .question-container {
