@@ -2,6 +2,8 @@
   import { link, location } from 'svelte-spa-router'
   import { examConfig } from '../lib/examConfig.js'
   import { getClassInfo } from '../lib/questions.js'
+  import { renderMath } from '../lib/katex.js'
+  import 'katex/dist/katex.min.css'
 
   // Extract class number from URL path (/exam/class1/simulated or /exam/class2/simulated)
   $: classNum = $location.includes('class2') ? '2' : '1'

@@ -1,43 +1,520 @@
 {
     "class": "Amateur Radio Class 1",
-    "section": "Section 3 – Radio Wave Propagation",
-    "update": "Mock data for development 2025",
+    "section": "Section 3 – Regulatory Framework",
+    "update": "Updated syllabus 31.05.2022",
     "questions": [
         {
             "question_number": 1,
-            "question_body": "What is the primary cause of ionospheric propagation?",
+            "question_body": "Who has the right to take the exam for amateur radio Class 1 in the Republic of Bulgaria?",
             "correct_answer": "Б",
-            "А": "Moon reflection",
-            "Б": "Solar radiation",
-            "В": "Atmospheric pressure",
-            "Г": "Earth's magnetic field"
+            "А": "Anyone, except foreign citizens",
+            "Б": "Any holder of Class 2 over 14 years of age",
+            "В": "Any holder of Class 2, but not earlier than 6 months after obtaining it",
+            "Г": "Anyone who has successfully completed courses for amateur radio Class 1"
         },
         {
             "question_number": 2,
-            "question_body": "During which time of day is HF propagation typically best?",
-            "correct_answer": "В",
-            "А": "Early morning",
-            "Б": "Midday",
-            "В": "Evening",
-            "Г": "Midnight"
+            "question_body": "For what period of time is amateur radio Class 1 valid?",
+            "correct_answer": "Г",
+            "А": "2 years",
+            "Б": "5 years",
+            "В": "10 years",
+            "Г": "Indefinite"
         },
         {
             "question_number": 3,
-            "question_body": "What is the skip zone in radio propagation?",
-            "correct_answer": "А",
-            "А": "Area where signals cannot be received",
-            "Б": "Area of maximum signal strength",
-            "В": "Area near the transmitter",
-            "Г": "Area with ground wave coverage"
+            "question_body": "Who has the right to appoint and conduct exams for amateur radio class?",
+            "correct_answer": "В",
+            "А": "Any legally registered radio club",
+            "Б": "The Bulgarian Federation of Radio Amateurs",
+            "В": "Communications Regulation Commission",
+            "Г": "All of the above"
         },
         {
             "question_number": 4,
-            "question_body": "Which band is most affected by solar activity?",
+            "question_body": "What percentage of answers on the written test for amateur radio Class 1 must be correct for the exam to be considered successfully passed?",
             "correct_answer": "В",
-            "А": "VHF band",
-            "Б": "UHF band",
-            "В": "HF band",
-            "Г": "Microwave band"
+            "А": "Minimum 90%",
+            "Б": "Minimum 85%",
+            "В": "Minimum 80%",
+            "Г": "Minimum 75%"
+        },
+        {
+            "question_number": 5,
+            "question_body": "If you hold amateur radio Class 1, how many radio transmitters are you allowed to operate?",
+            "correct_answer": "В",
+            "А": "Only one",
+            "Б": "Only one with the exception of radio communications in an emergency situation",
+            "В": "Any number",
+            "Г": "Any number, provided they transmit on different bands"
+        },
+        {
+            "question_number": 6,
+            "question_body": "If you allow a visiting radio amateur who has a call sign and whose amateur radio class is lower than yours to operate from your radio station, what privileges does he have?",
+            "correct_answer": "А",
+            "А": "Only the privileges permitted by his amateur radio class",
+            "Б": "All privileges arising from your amateur radio class",
+            "В": "Emission class and maximum power permitted for his amateur radio class, but in frequency bands permitted for your amateur radio class",
+            "Г": "Frequency bands permitted for his amateur radio class, but in emission class and maximum power permitted for your amateur radio class"
+        },
+        {
+            "question_number": 7,
+            "question_body": "Can an amateur radio Class 1 operator become a trustee of a club amateur radio station?",
+            "correct_answer": "В",
+            "А": "Yes, without restrictions",
+            "Б": "Yes, if he has ten years of experience as an amateur radio Class 1 operator",
+            "В": "Yes, if he has reached 18 years of age",
+            "Г": "No"
+        },
+        {
+            "question_number": 8,
+            "question_body": "What messages are Bulgarian radio amateurs allowed to transmit from an amateur radio station in another country?",
+            "correct_answer": "Г",
+            "А": "Signal strength report and station location",
+            "Б": "Personal messages",
+            "В": "Technical messages",
+            "Г": "All three"
+        },
+        {
+            "question_number": 9,
+            "question_body": "What type of messages may be transmitted during international amateur radio communications?",
+            "correct_answer": "А",
+            "А": "Distress messages",
+            "Б": "Advertising messages",
+            "В": "Business messages",
+            "Г": "There are no restrictions"
+        },
+        {
+            "question_number": 10,
+            "question_body": "Under what conditions may a radio amateur accept payment for his radio station being used to transmit messages?",
+            "correct_answer": "А",
+            "А": "Under no conditions",
+            "Б": "When handling traffic in a disaster situation",
+            "В": "When a business message from a legally registered company has been transmitted, resulting in profit",
+            "Г": "When an amateur radio bulletin has been transmitted"
+        },
+        {
+            "question_number": 11,
+            "question_body": "Under what conditions may the owner (trustee) of an amateur radio repeater accept service to other services through the repeater?",
+            "correct_answer": "Г",
+            "А": "When the repeater is used with reduced power",
+            "Б": "When serving the Red Cross",
+            "В": "When serving the Ministry of Internal Affairs",
+            "Г": "Under no conditions"
+        },
+        {
+            "question_number": 12,
+            "question_body": "What is CEPT?",
+            "correct_answer": "Б",
+            "А": "An amateur radio class that is internationally recognized worldwide",
+            "Б": "European Conference of Postal and Telecommunications Administrations",
+            "В": "A type of transistor operating on the field effect principle",
+            "Г": "The emission class for packet radio communications"
+        },
+        {
+            "question_number": 13,
+            "question_body": "When may an amateur station in a two-way communication transmit a message in a secret manner (encoded) to keep the message text secret?",
+            "correct_answer": "В",
+            "А": "When transmitting on a frequency above 450 MHz",
+            "Б": "During a contest",
+            "В": "Never",
+            "Г": "During declared emergency communications"
+        },
+        {
+            "question_number": 14,
+            "question_body": "What are the restrictions on the use of abbreviations or codes in amateur radio service?",
+            "correct_answer": "Б",
+            "А": "There are no restrictions",
+            "Б": "They may only be used if they do not obscure the meaning of the message",
+            "В": "They are not permitted",
+            "Г": "Abbreviations are permitted, but not codes"
+        },
+        {
+            "question_number": 15,
+            "question_body": "When are codes that do not have a commonly known meaning, such as five-digit groups, permitted in two-way amateur radio communication conducted with a Bulgarian correspondent?",
+            "correct_answer": "А",
+            "А": "Never",
+            "Б": "During contests",
+            "В": "During declared national emergencies",
+            "Г": "On frequencies above 2.3 GHz"
+        },
+        {
+            "question_number": 16,
+            "question_body": "When are codes that do not have a commonly known meaning, such as five-digit groups, permitted in international two-way amateur radio communications?",
+            "correct_answer": "А",
+            "А": "Never",
+            "Б": "During contests",
+            "В": "During declared international emergencies",
+            "Г": "On frequencies above 2.3 GHz"
+        },
+        {
+            "question_number": 17,
+            "question_body": "On which amateur radio bands, if any, are packet communications permitted?",
+            "correct_answer": "Б",
+            "А": "Only on shortwave",
+            "Б": "On shortwave and ultra-shortwave",
+            "В": "Only on ultra-shortwave",
+            "Г": "Packet communications are permitted only via the Internet"
+        },
+        {
+            "question_number": 18,
+            "question_body": "Which frequencies in the 28 MHz band can be used for FM repeaters?",
+            "correct_answer": "В",
+            "А": "28.560 - 28.590 and 28.660 - 28.690 MHz",
+            "Б": "29.520 - 29.550 and 29.610 - 29.650 MHz",
+            "В": "29.520 - 29.590 and 29.620 - 29.690 MHz",
+            "Г": "The use of FM repeaters is not permitted on this band"
+        },
+        {
+            "question_number": 19,
+            "question_body": "Which frequencies in the 144 MHz band can be used for FM repeaters?",
+            "correct_answer": "А",
+            "А": "144.975 - 145.194 and 145.575 - 145.7935 MHz",
+            "Б": "144.500 - 144.800 and 145.600 - 145.900 MHz",
+            "В": "144.000 - 144.200 and 144.600 - 144.800 MHz",
+            "Г": "145.600 - 145.700 and 145.900 - 146.000 MHz"
+        },
+        {
+            "question_number": 20,
+            "question_body": "Which frequencies in the 432 MHz band can be used for FM repeaters?",
+            "correct_answer": "Б",
+            "А": "432.000 - 432.375 and 433.600 - 433.975 MHz",
+            "Б": "433.000 - 433.375 and 434.600 - 434.975 MHz",
+            "В": "434.000 - 434.375 and 435.600 - 435.975 MHz",
+            "Г": "The use of FM repeaters is not permitted on this band"
+        },
+        {
+            "question_number": 21,
+            "question_body": "What are the boundaries of the amateur radio 10 MHz band?",
+            "correct_answer": "Г",
+            "А": "10.000 - 10.150 MHz",
+            "Б": "10.000 - 10.250 MHz",
+            "В": "10.000 - 10.500 MHz",
+            "Г": "10.100 - 10.150 MHz"
+        },
+        {
+            "question_number": 22,
+            "question_body": "What are the boundaries of the amateur radio 14 MHz band?",
+            "correct_answer": "Б",
+            "А": "14.000 - 14.250 MHz",
+            "Б": "14.000 - 14.350 MHz",
+            "В": "14.000 - 14.500 MHz",
+            "Г": "14.000 - 14.700 MHz"
+        },
+        {
+            "question_number": 23,
+            "question_body": "What are the boundaries of the amateur radio 18 MHz band?",
+            "correct_answer": "Г",
+            "А": "18.000 - 18.200 MHz",
+            "Б": "18.000 - 18.168 MHz",
+            "В": "18.068 - 18.150 MHz",
+            "Г": "18.068 - 18.168 MHz"
+        },
+        {
+            "question_number": 24,
+            "question_body": "What are the boundaries of the amateur radio 21 MHz band?",
+            "correct_answer": "В",
+            "А": "21.000 - 21.250 MHz",
+            "Б": "21.000 - 21.350 MHz",
+            "В": "21.000 - 21.450 MHz",
+            "Г": "21.100 - 21.168 MHz"
+        },
+        {
+            "question_number": 25,
+            "question_body": "What are the boundaries of the amateur radio 24 MHz band?",
+            "correct_answer": "Б",
+            "А": "24.000 - 24.150 MHz",
+            "Б": "24.890 - 24.990 MHz",
+            "В": "24.000 - 24.990 MHz",
+            "Г": "24.790 - 24.990 MHz"
+        },
+        {
+            "question_number": 26,
+            "question_body": "If you hold Class 1, on which of these frequencies are you not allowed to transmit?",
+            "correct_answer": "В",
+            "А": "10.110 MHz",
+            "Б": "24.930 MHz",
+            "В": "51.200 MHz",
+            "Г": "You are allowed on all three frequencies"
+        },
+        {
+            "question_number": 27,
+            "question_body": "If you hold Class 1, on which of these frequencies are you not allowed to transmit?",
+            "correct_answer": "Б",
+            "А": "28.350 MHz",
+            "Б": "147.000 MHz",
+            "В": "436.325 MHz",
+            "Г": "3525 kHz"
+        },
+        {
+            "question_number": 28,
+            "question_body": "What is the maximum transmitter power permitted for an amateur radio Class 1 operator on the 10 MHz band?",
+            "correct_answer": "В",
+            "А": "50 W",
+            "Б": "100 W",
+            "В": "350 W",
+            "Г": "1000 W"
+        },
+        {
+            "question_number": 29,
+            "question_body": "What is the maximum transmitter power permitted for an amateur radio Class 1 operator on the 5 MHz band?",
+            "correct_answer": "Б",
+            "А": "50 W",
+            "Б": "100 W",
+            "В": "350 W",
+            "Г": "1000 W"
+        },
+        {
+            "question_number": 30,
+            "question_body": "What is the maximum transmitter power permitted for an amateur radio Class 1 operator on the 1296 MHz band?",
+            "correct_answer": "А",
+            "А": "50 W",
+            "Б": "100 W",
+            "В": "350 W",
+            "Г": "1000 W"
+        },
+        {
+            "question_number": 31,
+            "question_body": "What is the maximum transmitter power permitted for an amateur radio Class 1 operator on the 10000 MHz band?",
+            "correct_answer": "А",
+            "А": "1 W",
+            "Б": "50 W",
+            "В": "100 W",
+            "Г": "350 W"
+        },
+        {
+            "question_number": 32,
+            "question_body": "What type of emission is an amateur radio Class 1 operator allowed to use on frequency 1857 kHz?",
+            "correct_answer": "А",
+            "А": "CW and SSB",
+            "Б": "Packet only",
+            "В": "Amateur television (ATV)",
+            "Г": "Not allowed to transmit on this frequency"
+        },
+        {
+            "question_number": 33,
+            "question_body": "What type of emission is an amateur radio Class 1 operator allowed to use on frequency 18.037 MHz?",
+            "correct_answer": "Г",
+            "А": "CW only",
+            "Б": "Packet only",
+            "В": "All types of emission (emission classes)",
+            "Г": "Not allowed to transmit on this frequency"
+        },
+        {
+            "question_number": 34,
+            "question_body": "What type of emission is an amateur radio Class 1 operator allowed to use on frequency 21.137 MHz?",
+            "correct_answer": "В",
+            "А": "CW only",
+            "Б": "Packet only",
+            "В": "All types of emission (emission classes)",
+            "Г": "Not allowed to transmit on this frequency"
+        },
+        {
+            "question_number": 35,
+            "question_body": "What is the maximum power that an amateur station may use on frequency 10100 kHz?",
+            "correct_answer": "Б",
+            "А": "100 W",
+            "Б": "350 W",
+            "В": "1000 W",
+            "Г": "The frequency is outside the amateur radio band"
+        },
+        {
+            "question_number": 36,
+            "question_body": "What is the maximum power that an amateur radio Class 1 operator may use on frequency 50110 kHz?",
+            "correct_answer": "А",
+            "А": "100 W",
+            "Б": "350 W",
+            "В": "1000 W",
+            "Г": "The frequency is outside the amateur radio band"
+        },
+        {
+            "question_number": 37,
+            "question_body": "What is the maximum power that an amateur radio Class 1 operator may use on 10110 kHz?",
+            "correct_answer": "Б",
+            "А": "10 dBW",
+            "Б": "25.4 dBW",
+            "В": "30 dBW",
+            "Г": "The frequency is outside the amateur radio band"
+        },
+        {
+            "question_number": 38,
+            "question_body": "What is the maximum power that an amateur radio Class 1 operator may use on 5270 kHz?",
+            "correct_answer": "Б",
+            "А": "10 dBW",
+            "Б": "20 dBW",
+            "В": "30 dBW",
+            "Г": "The frequency is outside the amateur radio band"
+        },
+        {
+            "question_number": 39,
+            "question_body": "What is the maximum power that an amateur radio Class 1 operator may use on 50180 kHz?",
+            "correct_answer": "Б",
+            "А": "7 dBW",
+            "Б": "20 dBW",
+            "В": "30 dBW",
+            "Г": "The frequency is outside the amateur radio band"
+        },
+        {
+            "question_number": 40,
+            "question_body": "Can a radio amateur use a radio transmitter with output power higher than 350 W on 14000 kHz?",
+            "correct_answer": "В",
+            "А": "Only for experimental purposes or when participating in amateur radio contests",
+            "Б": "If he holds amateur Class 1, has at least 5 years of experience, and has previously provided the Communications Regulation Commission with data on the amateur radio station used",
+            "В": "When the conditions specified in the above two points are met",
+            "Г": "Cannot"
+        },
+        {
+            "question_number": 41,
+            "question_body": "What emission class is an amateur radio Class 1 operator allowed to use on frequency 10.153 MHz?",
+            "correct_answer": "Г",
+            "А": "CW only",
+            "Б": "Packet only",
+            "В": "All emission classes",
+            "Г": "Not allowed to transmit on this frequency"
+        },
+        {
+            "question_number": 42,
+            "question_body": "If you hold Class 1, on which of these frequencies are you not allowed to transmit?",
+            "correct_answer": "В",
+            "А": "14.280 MHz",
+            "Б": "24.930 MHz",
+            "В": "70.619 MHz",
+            "Г": "You are allowed on all three frequencies"
+        },
+        {
+            "question_number": 43,
+            "question_body": "What emission class is an amateur radio Class 1 operator allowed to use on frequency 5700.000 MHz?",
+            "correct_answer": "В",
+            "А": "CW only",
+            "Б": "Packet only",
+            "В": "All emission classes",
+            "Г": "Not allowed to transmit on this frequency"
+        },
+        {
+            "question_number": 44,
+            "question_body": "What is emission class A3F?",
+            "correct_answer": "Г",
+            "А": "Facsimile",
+            "Б": "Telegraphy",
+            "В": "Telephony with frequency modulation",
+            "Г": "Television"
+        },
+        {
+            "question_number": 45,
+            "question_body": "What is the emission class when an AM transmitter is modulated with a television signal?",
+            "correct_answer": "А",
+            "А": "A3F",
+            "Б": "A3C",
+            "В": "F3F",
+            "Г": "F3C"
+        },
+        {
+            "question_number": 46,
+            "question_body": "What is emission class F3F?",
+            "correct_answer": "Г",
+            "А": "Facsimile",
+            "Б": "Modulated telegraphy",
+            "В": "Telephony with frequency modulation",
+            "Г": "Slow-scan television"
+        },
+        {
+            "question_number": 47,
+            "question_body": "What is the emission class when an FM transmitter is modulated with a television signal?",
+            "correct_answer": "В",
+            "А": "A3F",
+            "Б": "A3C",
+            "В": "F3F",
+            "Г": "F3C"
+        },
+        {
+            "question_number": 48,
+            "question_body": "Which of the ultra-shortwave bands has a designated band for satellite repeating?",
+            "correct_answer": "А",
+            "А": "All of them",
+            "Б": "All except 10000 MHz",
+            "В": "Only 144 and 432 MHz",
+            "Г": "None of them"
+        },
+        {
+            "question_number": 49,
+            "question_body": "What type of amateur station transmits one-way information?",
+            "correct_answer": "Б",
+            "А": "Repeater station",
+            "Б": "Amateur radio beacon",
+            "В": "Shortwave station",
+            "Г": "Very high frequency station"
+        },
+        {
+            "question_number": 50,
+            "question_body": "Under what circumstances, if any, does an amateur radio station have the right to automatically retransmit radio signals from other amateur radio stations?",
+            "correct_answer": "Б",
+            "А": "Only if its owner is present",
+            "Б": "Only if it is an amateur repeater",
+            "В": "Only with the permission of the Bulgarian Federation of Radio Amateurs",
+            "Г": "It has no right under any circumstances"
+        },
+        {
+            "question_number": 51,
+            "question_body": "What is meant by automatic retransmission?",
+            "correct_answer": "А",
+            "А": "The retransmitting radio station is activated by the received radio signal",
+            "Б": "The retransmitting radio station is activated by a signal over a telephone line",
+            "В": "The retransmitting radio station is activated by the control operator",
+            "Г": "The retransmitting radio station is activated by the call sign transmitted in Morse code"
+        },
+        {
+            "question_number": 52,
+            "question_body": "What does \"operating through a repeater\" mean?",
+            "correct_answer": "Г",
+            "А": "An amateur radio station retransmits the message from its correspondent to a third radio station",
+            "Б": "Equipment for remote control of a remote radio transmitter",
+            "В": "The other popular name for \"operating through a repeater\" is simplex radio communication",
+            "Г": "Radio communication in which the radio station signals are automatically retransmitted"
+        },
+        {
+            "question_number": 53,
+            "question_body": "Who has the right to use an amateur repeater owned by a private individual?",
+            "correct_answer": "В",
+            "А": "Only the owner",
+            "Б": "All radio amateurs who possess a call sign, written permission from the owner, and comply with the conditions of the Rules for the Use of Radio Frequency Spectrum for Radio Equipment from the Amateur Radio Service (the Rules)",
+            "В": "All radio amateurs who possess a call sign and comply with the conditions of the Rules",
+            "Г": "Private individuals are not permitted to build amateur repeaters"
+        },
+        {
+            "question_number": 54,
+            "question_body": "Who represents Bulgarian radio amateurs before the International Amateur Radio Union (IARU)?",
+            "correct_answer": "Б",
+            "А": "The Communications Regulation Commission",
+            "Б": "The Bulgarian Federation of Radio Amateurs",
+            "В": "Radio amateurs join the International Amateur Radio Union (IARU) individually",
+            "Г": "No one, as Bulgaria is not yet a member of the International Amateur Radio Union (IARU)"
+        },
+        {
+            "question_number": 55,
+            "question_body": "What rights does a CEPT license give to its holder?",
+            "correct_answer": "В",
+            "А": "To practice amateur radio activity in the Republic of Bulgaria",
+            "Б": "To practice amateur radio activity in any European country",
+            "В": "To practice temporary amateur radio activity in European countries that have adopted CEPT recommendations and in countries that have acceded to CEPT decisions",
+            "Г": "To practice amateur radio activity in all countries that are members of the International Amateur Radio Union (IARU)"
+        },
+        {
+            "question_number": 56,
+            "question_body": "What radio station is the holder of a CEPT license allowed to use outside the territory of the Republic of Bulgaria?",
+            "correct_answer": "Г",
+            "А": "Only portable and mobile",
+            "Б": "Only stationary",
+            "В": "Only portable",
+            "Г": "There are no restrictions"
+        },
+        {
+            "question_number": 57,
+            "question_body": "What rights does holding a HAREC certificate give?",
+            "correct_answer": "В",
+            "А": "To practice amateur radio activity in all countries that are members of the International Amateur Radio Union (IARU)",
+            "Б": "To practice amateur radio activity in any European country",
+            "В": "To obtain a national license from the administration of a CEPT member country when residing there for a period longer than 3 months",
+            "Г": "To obtain a national license from the administration of any European country when residing there for a period longer than 3 months"
         }
     ]
 }

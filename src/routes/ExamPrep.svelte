@@ -1,6 +1,8 @@
 <script>
   import { link, location, querystring } from 'svelte-spa-router'
   import { getQuestions, getClassInfo } from '../lib/questions.js'
+  import { renderMath } from '../lib/katex.js'
+  import 'katex/dist/katex.min.css'
 
   // Parse URL parameters
   $: classNum = $location.includes('class2') ? '2' : '1'
@@ -96,7 +98,7 @@
       </div>
 
       <div class="question-text">
-        {currentQuestion.question_body}
+        {@html renderMath(currentQuestion.question_body)}
       </div>
 
       <div class="answers">
@@ -117,7 +119,7 @@
               />
             </div>
             <div class="answer-label">{key}.</div>
-            <div class="answer-text">{currentQuestion[key]}</div>
+            <div class="answer-text">{@html renderMath(currentQuestion[key])}</div>
           </button>
         {/each}
       </div>
