@@ -6,830 +6,830 @@
         {
             "question_number": 1,
             "question_body": "Which amateur radio abbreviation is used to transmit \"end of message\"?",
-            "correct_answer": "Г",
-            "А": "K",
-            "Б": "BK",
-            "В": "GA",
-            "Г": "AR"
+            "correct_answer": "D",
+            "A": "K",
+            "B": "BK",
+            "C": "GA",
+            "D": "AR"
         },
         {
             "question_number": 2,
             "question_body": "Which amateur radio abbreviation is used to transmit \"near\" or \"close to\"?",
-            "correct_answer": "В",
-            "А": "ABT",
-            "Б": "VIA",
-            "В": "NR",
-            "Г": "NO"
+            "correct_answer": "C",
+            "A": "ABT",
+            "B": "VIA",
+            "C": "NR",
+            "D": "NO"
         },
         {
             "question_number": 3,
             "question_body": "How will you inform the correspondent in an amateur radio contest to \"send the contact serial number again\"?",
-            "correct_answer": "А",
-            "А": "NR?",
-            "Б": "NO?",
-            "В": "RPRT?",
-            "Г": "RST?"
+            "correct_answer": "A",
+            "A": "NR?",
+            "B": "NO?",
+            "C": "RPRT?",
+            "D": "RST?"
         },
         {
             "question_number": 4,
             "question_body": "What is the meaning of the abbreviation \"ABT\"?",
-            "correct_answer": "А",
-            "А": "About, approximately",
-            "Б": "All",
-            "В": "Answer",
-            "Г": "Range"
+            "correct_answer": "A",
+            "A": "About, approximately",
+            "B": "All",
+            "C": "Answer",
+            "D": "Range"
         },
         {
             "question_number": 5,
             "question_body": "What is the meaning of the code \"QRQ\"?",
-            "correct_answer": "Г",
-            "А": "Atmospheric interference",
-            "Б": "Interference from other stations",
-            "В": "I am busy",
-            "Г": "Send faster"
+            "correct_answer": "D",
+            "A": "Atmospheric interference",
+            "B": "Interference from other stations",
+            "C": "I am busy",
+            "D": "Send faster"
         },
         {
             "question_number": 6,
             "question_body": "What is the meaning of the code \"QRP\"?",
-            "correct_answer": "Б",
-            "А": "Your signal strength is varying",
-            "Б": "Transmitter with extremely low power (up to 5 W)",
-            "В": "Send at a lower speed",
-            "Г": "Your frequency is varying"
+            "correct_answer": "B",
+            "A": "Your signal strength is varying",
+            "B": "Transmitter with extremely low power (up to 5 W)",
+            "C": "Send at a lower speed",
+            "D": "Your frequency is varying"
         },
         {
             "question_number": 7,
             "question_body": "What will you do if during a radio contact on telegraphy (CW), you hear the code \"QRS\" from the correspondent?",
-            "correct_answer": "А",
-            "А": "You will start transmitting slower",
-            "Б": "You will start transmitting faster",
-            "В": "You will remain listening until the correspondent calls again",
-            "Г": "You will reduce power"
+            "correct_answer": "A",
+            "A": "You will start transmitting slower",
+            "B": "You will start transmitting faster",
+            "C": "You will remain listening until the correspondent calls again",
+            "D": "You will reduce power"
         },
         {
             "question_number": 8,
             "question_body": "What is the meaning of the abbreviation \"RPT AA\"?",
-            "correct_answer": "Б",
-            "А": "Repeat everything again",
-            "Б": "Repeat everything after..",
-            "В": "Repeat everything before..",
-            "Г": "Repeat everything between.."
+            "correct_answer": "B",
+            "A": "Repeat everything again",
+            "B": "Repeat everything after..",
+            "C": "Repeat everything before..",
+            "D": "Repeat everything between.."
         },
         {
             "question_number": 9,
             "question_body": "Which abbreviation means \"wait a moment\"?",
-            "correct_answer": "В",
-            "А": "ALSO",
-            "Б": "ALL",
-            "В": "AS",
-            "Г": "AR"
+            "correct_answer": "C",
+            "A": "ALSO",
+            "B": "ALL",
+            "C": "AS",
+            "D": "AR"
         },
         {
             "question_number": 10,
             "question_body": "What is the meaning of the code \"QRU\"?",
-            "correct_answer": "Г",
-            "А": "Stop transmitting",
-            "Б": "Repeat your call sign",
-            "В": "I have a message for you",
-            "Г": "I have nothing for you"
+            "correct_answer": "D",
+            "A": "Stop transmitting",
+            "B": "Repeat your call sign",
+            "C": "I have a message for you",
+            "D": "I have nothing for you"
         },
         {
             "question_number": 11,
             "question_body": "What is the meaning of the code \"QRX\"?",
-            "correct_answer": "А",
-            "А": "Wait",
-            "Б": "Your keying is difficult to understand",
-            "В": "Leave this frequency",
-            "Г": "Who is calling me"
+            "correct_answer": "A",
+            "A": "Wait",
+            "B": "Your keying is difficult to understand",
+            "C": "Leave this frequency",
+            "D": "Who is calling me"
         },
         {
             "question_number": 12,
             "question_body": "If you hear the distant station transmit the code \"QRZ?\", what will you do?",
-            "correct_answer": "Б",
-            "А": "You will wait some time, the distant operator is busy",
-            "Б": "You will transmit your call sign",
-            "В": "You will move to another frequency",
-            "Г": "You will reduce power"
+            "correct_answer": "B",
+            "A": "You will wait some time, the distant operator is busy",
+            "B": "You will transmit your call sign",
+            "C": "You will move to another frequency",
+            "D": "You will reduce power"
         },
         {
             "question_number": 13,
             "question_body": "What is the meaning of the code \"QRT\"?",
-            "correct_answer": "Г",
-            "А": "Wait a little",
-            "Б": "I have nothing more for you",
-            "В": "Send slower",
-            "Г": "Turn off (I am turning off) the radio station"
+            "correct_answer": "D",
+            "A": "Wait a little",
+            "B": "I have nothing more for you",
+            "C": "Send slower",
+            "D": "Turn off (I am turning off) the radio station"
         },
         {
             "question_number": 14,
             "question_body": "What is the meaning of the abbreviation \"BK\"?",
-            "correct_answer": "Б",
-            "А": "Start transmitting",
-            "Б": "Break transmission",
-            "В": "I have a message for you",
-            "Г": "Wait one moment"
+            "correct_answer": "B",
+            "A": "Start transmitting",
+            "B": "Break transmission",
+            "C": "I have a message for you",
+            "D": "Wait one moment"
         },
         {
             "question_number": 15,
             "question_body": "What is the meaning of the abbreviation \"CALL\"?",
-            "correct_answer": "Б",
-            "А": "Radio station address",
-            "Б": "Call sign, calling",
-            "В": "Answer",
-            "Г": "Amateur radio directory"
+            "correct_answer": "B",
+            "A": "Radio station address",
+            "B": "Call sign, calling",
+            "C": "Answer",
+            "D": "Amateur radio directory"
         },
         {
             "question_number": 16,
             "question_body": "What is the meaning of the code \"QSB\"?",
-            "correct_answer": "А",
-            "А": "Your signal strength is varying",
-            "Б": "Remain listening",
-            "В": "I am busy",
-            "Г": "Move to another frequency"
+            "correct_answer": "A",
+            "A": "Your signal strength is varying",
+            "B": "Remain listening",
+            "C": "I am busy",
+            "D": "Move to another frequency"
         },
         {
             "question_number": 17,
             "question_body": "What is the meaning of the code \"QSY\"?",
-            "correct_answer": "В",
-            "А": "Wait a little",
-            "Б": "Increase transmission speed",
-            "В": "Move to another frequency",
-            "Г": "Location"
+            "correct_answer": "C",
+            "A": "Wait a little",
+            "B": "Increase transmission speed",
+            "C": "Move to another frequency",
+            "D": "Location"
         },
         {
             "question_number": 18,
             "question_body": "What is the meaning of the abbreviation \"SKED\"?",
-            "correct_answer": "Г",
-            "А": "Personal meeting",
-            "Б": "Friendly conversation",
-            "В": "Distant country",
-            "Г": "Scheduled contact"
+            "correct_answer": "D",
+            "A": "Personal meeting",
+            "B": "Friendly conversation",
+            "C": "Distant country",
+            "D": "Scheduled contact"
         },
         {
             "question_number": 19,
             "question_body": "What is the meaning of the abbreviation \"PA\"?",
-            "correct_answer": "Б",
-            "А": "Equipment",
-            "Б": "Power amplifier",
-            "В": "Phase modulation",
-            "Г": "RF amplifier"
+            "correct_answer": "B",
+            "A": "Equipment",
+            "B": "Power amplifier",
+            "C": "Phase modulation",
+            "D": "RF amplifier"
         },
         {
             "question_number": 20,
             "question_body": "What is the meaning of the abbreviation \"FM\"?",
-            "correct_answer": "А",
-            "А": "Frequency modulation",
-            "Б": "Final amplifier",
-            "В": "Telephony",
-            "Г": "Frequency response"
+            "correct_answer": "A",
+            "A": "Frequency modulation",
+            "B": "Final amplifier",
+            "C": "Telephony",
+            "D": "Frequency response"
         },
         {
             "question_number": 21,
             "question_body": "Can you use any of the listed abbreviations to communicate \"start transmitting\"?",
-            "correct_answer": "В",
-            "А": "With the abbreviation \"CQ\"",
-            "Б": "With the abbreviation \"BK\"",
-            "В": "With the abbreviation \"GA\"",
-            "Г": "No"
+            "correct_answer": "C",
+            "A": "With the abbreviation \"CQ\"",
+            "B": "With the abbreviation \"BK\"",
+            "C": "With the abbreviation \"GA\"",
+            "D": "No"
         },
         {
             "question_number": 22,
             "question_body": "What does the abbreviation \"MNY\" mean?",
-            "correct_answer": "Б",
-            "А": "Few",
-            "Б": "Many",
-            "В": "Wonderful",
-            "Г": "My, mine"
+            "correct_answer": "B",
+            "A": "Few",
+            "B": "Many",
+            "C": "Wonderful",
+            "D": "My, mine"
         },
         {
             "question_number": 23,
             "question_body": "What does the abbreviation \"OM\" mean?",
-            "correct_answer": "Г",
-            "А": "About",
-            "Б": "Final end",
-            "В": "Operator",
-            "Г": "Old friend"
+            "correct_answer": "D",
+            "A": "About",
+            "B": "Final end",
+            "C": "Operator",
+            "D": "Old friend"
         },
         {
             "question_number": 24,
             "question_body": "What does the abbreviation \"TX\" mean?",
-            "correct_answer": "А",
-            "А": "Transmitter",
-            "Б": "Receiver",
-            "В": "Transceiver",
-            "Г": "Thank you"
+            "correct_answer": "A",
+            "A": "Transmitter",
+            "B": "Receiver",
+            "C": "Transceiver",
+            "D": "Thank you"
         },
         {
             "question_number": 25,
             "question_body": "What does the abbreviation \"RPT\" mean?",
-            "correct_answer": "А",
-            "А": "Repeat",
-            "Б": "Message, report",
-            "В": "Repeater",
-            "Г": "Beacon"
+            "correct_answer": "A",
+            "A": "Repeat",
+            "B": "Message, report",
+            "C": "Repeater",
+            "D": "Beacon"
         },
         {
             "question_number": 26,
             "question_body": "Which of the listed abbreviations means \"short waves\"?",
-            "correct_answer": "Г",
-            "А": "SK",
-            "Б": "MOD",
-            "В": "KW",
-            "Г": "SW"
+            "correct_answer": "D",
+            "A": "SK",
+            "B": "MOD",
+            "C": "KW",
+            "D": "SW"
         },
         {
             "question_number": 27,
             "question_body": "What is the meaning of the abbreviation \"RX\"?",
-            "correct_answer": "А",
-            "А": "Receiver",
-            "Б": "Transmitter",
-            "В": "Transceiver",
-            "Г": "High frequency"
+            "correct_answer": "A",
+            "A": "Receiver",
+            "B": "Transmitter",
+            "C": "Transceiver",
+            "D": "High frequency"
         },
         {
             "question_number": 28,
             "question_body": "What does the abbreviation \"LID\" mean?",
-            "correct_answer": "Б",
-            "А": "Liquid crystal display",
-            "Б": "Bad operator",
-            "В": "I have nothing more for you",
-            "Г": "Control station"
+            "correct_answer": "B",
+            "A": "Liquid crystal display",
+            "B": "Bad operator",
+            "C": "I have nothing more for you",
+            "D": "Control station"
         },
         {
             "question_number": 29,
             "question_body": "Which amateur radio code is equivalent to the abbreviation \"CL\"?",
-            "correct_answer": "В",
-            "А": "QSY",
-            "Б": "QRX",
-            "В": "QRT",
-            "Г": "QSZ"
+            "correct_answer": "C",
+            "A": "QSY",
+            "B": "QRX",
+            "C": "QRT",
+            "D": "QSZ"
         },
         {
             "question_number": 30,
             "question_body": "What is the meaning of the abbreviation \"CQ TEST\"?",
-            "correct_answer": "А",
-            "А": "General call to radio stations participating in an amateur radio contest",
-            "Б": "Popular amateur radio contest",
-            "В": "Technical equipment check",
-            "Г": "General call for performing a technical test"
+            "correct_answer": "A",
+            "A": "General call to radio stations participating in an amateur radio contest",
+            "B": "Popular amateur radio contest",
+            "C": "Technical equipment check",
+            "D": "General call for performing a technical test"
         },
         {
             "question_number": 31,
             "question_body": "How will you ask your correspondent to send you a QSL card in a shortwave amateur radio contest?",
-            "correct_answer": "Г",
-            "А": "With the abbreviations \"PSE YOUR QSL CARD TO MY ADDRESS OR VIA LZ QSL BUREAU\"",
-            "Б": "With the abbreviations \"PSE YOUR QSL VIA BURO = MY QSL IS SURE = TNX\"",
-            "В": "You will not request a QSL card from the correspondent, because it is not accepted that radio contacts during contests are confirmed with QSL cards",
-            "Г": "You will not specifically request a QSL card from the correspondent, so as not to interfere with their participation in the contest"
+            "correct_answer": "D",
+            "A": "With the abbreviations \"PSE YOUR QSL CARD TO MY ADDRESS OR VIA LZ QSL BUREAU\"",
+            "B": "With the abbreviations \"PSE YOUR QSL VIA BURO = MY QSL IS SURE = TNX\"",
+            "C": "You will not request a QSL card from the correspondent, because it is not accepted that radio contacts during contests are confirmed with QSL cards",
+            "D": "You will not specifically request a QSL card from the correspondent, so as not to interfere with their participation in the contest"
         },
         {
             "question_number": 32,
             "question_body": "Which of the listed abbreviations is usually used at the beginning of a radio contact, immediately after the call signs?",
-            "correct_answer": "В",
-            "А": "SK",
-            "Б": "CUAGN",
-            "В": "GA",
-            "Г": "73"
+            "correct_answer": "C",
+            "A": "SK",
+            "B": "CUAGN",
+            "C": "GA",
+            "D": "73"
         },
         {
             "question_number": 33,
             "question_body": "Which of the messages is incorrectly composed?",
-            "correct_answer": "А",
-            "А": "PSE RPT UR QUAD",
-            "Б": "MNY TKS FOR CALL",
-            "В": "73 ES BEST DX",
-            "Г": "HPE CUAGN"
+            "correct_answer": "A",
+            "A": "PSE RPT UR QUAD",
+            "B": "MNY TKS FOR CALL",
+            "C": "73 ES BEST DX",
+            "D": "HPE CUAGN"
         },
         {
             "question_number": 34,
             "question_body": "Which two amateur radio call signs are from countries in North America?",
-            "correct_answer": "Б",
-            "А": "ZS6UP and W7OYT",
-            "Б": "NE8SD and CO2FM",
-            "В": "VE3LJX and LU4AX",
-            "Г": "HL7AZW and K9HGQ"
+            "correct_answer": "B",
+            "A": "ZS6UP and W7OYT",
+            "B": "NE8SD and CO2FM",
+            "C": "VE3LJX and LU4AX",
+            "D": "HL7AZW and K9HGQ"
         },
         {
             "question_number": 35,
             "question_body": "Which three call signs are from countries in Europe?",
-            "correct_answer": "Г",
-            "А": "DK6TE, EA8UM and BT3GS",
-            "Б": "HB9EZ, HK5RQ and GI4FXQ",
-            "В": "Z21RW, UA1MJU and OM8AH",
-            "Г": "YL2WQ, E73AT and 9A2VO"
+            "correct_answer": "D",
+            "A": "DK6TE, EA8UM and BT3GS",
+            "B": "HB9EZ, HK5RQ and GI4FXQ",
+            "C": "Z21RW, UA1MJU and OM8AH",
+            "D": "YL2WQ, E73AT and 9A2VO"
         },
         {
             "question_number": 36,
             "question_body": "Which two call signs are NOT from countries in Europe?",
-            "correct_answer": "Г",
-            "А": "4X4YQ and OD5TM",
-            "Б": "EK2JL and PY7REW",
-            "В": "4L1VU and 9K2FR",
-            "Г": "All of them"
+            "correct_answer": "D",
+            "A": "4X4YQ and OD5TM",
+            "B": "EK2JL and PY7REW",
+            "C": "4L1VU and 9K2FR",
+            "D": "All of them"
         },
         {
             "question_number": 37,
             "question_body": "Which two call signs are NOT from countries in Europe?",
-            "correct_answer": "Б",
-            "А": "3A1PL and CN8DW",
-            "Б": "EA8BM and DU2HX",
-            "В": "ER5TJ and LU6FS",
-            "Г": "All of them"
+            "correct_answer": "B",
+            "A": "3A1PL and CN8DW",
+            "B": "EA8BM and DU2HX",
+            "C": "ER5TJ and LU6FS",
+            "D": "All of them"
         },
         {
             "question_number": 38,
             "question_body": "Which two call signs are NOT from countries in Europe?",
-            "correct_answer": "В",
-            "А": "T71D and TF1WM",
-            "Б": "E74AG and CX5PU",
-            "В": "7X2YH and UA9LLR",
-            "Г": "All of them"
+            "correct_answer": "C",
+            "A": "T71D and TF1WM",
+            "B": "E74AG and CX5PU",
+            "C": "7X2YH and UA9LLR",
+            "D": "All of them"
         },
         {
             "question_number": 39,
             "question_body": "From which continent is the amateur radio operator with call sign OA5HK transmitting?",
-            "correct_answer": "Г",
-            "А": "Europe",
-            "Б": "Asia",
-            "В": "North America",
-            "Г": "South America"
+            "correct_answer": "D",
+            "A": "Europe",
+            "B": "Asia",
+            "C": "North America",
+            "D": "South America"
         },
         {
             "question_number": 40,
             "question_body": "From which continent is the amateur radio operator with call sign 9A2AC transmitting?",
-            "correct_answer": "Г",
-            "А": "South America",
-            "Б": "Asia",
-            "В": "Oceania",
-            "Г": "Europe"
+            "correct_answer": "D",
+            "A": "South America",
+            "B": "Asia",
+            "C": "Oceania",
+            "D": "Europe"
         },
         {
             "question_number": 41,
             "question_body": "Which amateur radio operator is transmitting from the territory of New Zealand?",
-            "correct_answer": "В",
-            "А": "W7/ZL2URB",
-            "Б": "ZL3GQV/MM",
-            "В": "ZL1KH/VE5AXO",
-            "Г": "None of them"
+            "correct_answer": "C",
+            "A": "W7/ZL2URB",
+            "B": "ZL3GQV/MM",
+            "C": "ZL1KH/VE5AXO",
+            "D": "None of them"
         },
         {
             "question_number": 42,
             "question_body": "Which of the following amateur radio operators is located closest to Bulgaria?",
-            "correct_answer": "Б",
-            "А": "5R8JF",
-            "Б": "OM8AT",
-            "В": "VK9EE",
-            "Г": "JY1A"
+            "correct_answer": "B",
+            "A": "5R8JF",
+            "B": "OM8AT",
+            "C": "VK9EE",
+            "D": "JY1A"
         },
         {
             "question_number": 43,
             "question_body": "Which of the following amateur radio operators is located farthest from Bulgaria?",
-            "correct_answer": "В",
-            "А": "LX2YH",
-            "Б": "YT1AA",
-            "В": "OX1IL",
-            "Г": "HV1DL"
+            "correct_answer": "C",
+            "A": "LX2YH",
+            "B": "YT1AA",
+            "C": "OX1IL",
+            "D": "HV1DL"
         },
         {
             "question_number": 44,
             "question_body": "Which of the following American amateur radio operators is located closest to Bulgaria?",
-            "correct_answer": "Б",
-            "А": "WB9GMH",
-            "Б": "AA2ER",
-            "В": "KH6ZAP",
-            "Г": "ND7JW"
+            "correct_answer": "B",
+            "A": "WB9GMH",
+            "B": "AA2ER",
+            "C": "KH6ZAP",
+            "D": "ND7JW"
         },
         {
             "question_number": 45,
             "question_body": "Which of the following American amateur radio operators is located farthest from Bulgaria?",
-            "correct_answer": "В",
-            "А": "WB9GMH",
-            "Б": "AA2ER",
-            "В": "KH6ZAP",
-            "Г": "ND7JW"
+            "correct_answer": "C",
+            "A": "WB9GMH",
+            "B": "AA2ER",
+            "C": "KH6ZAP",
+            "D": "ND7JW"
         },
         {
             "question_number": 46,
             "question_body": "What is the amateur radio organization of Russia?",
-            "correct_answer": "Б",
-            "А": "ROARS",
-            "Б": "SRR",
-            "В": "BFRR",
-            "Г": "FRR"
+            "correct_answer": "B",
+            "A": "ROARS",
+            "B": "SRR",
+            "C": "BFRR",
+            "D": "FRR"
         },
         {
             "question_number": 47,
             "question_body": "What is the amateur radio organization of Romania?",
-            "correct_answer": "Г",
-            "А": "ROARS",
-            "Б": "SRR",
-            "В": "BFRR",
-            "Г": "FRR"
+            "correct_answer": "D",
+            "A": "ROARS",
+            "B": "SRR",
+            "C": "BFRR",
+            "D": "FRR"
         },
         {
             "question_number": 48,
             "question_body": "What is the amateur radio organization of the Netherlands?",
-            "correct_answer": "Г",
-            "А": "ARRL",
-            "Б": "SRR",
-            "В": "SARL",
-            "Г": "VERON"
+            "correct_answer": "D",
+            "A": "ARRL",
+            "B": "SRR",
+            "C": "SARL",
+            "D": "VERON"
         },
         {
             "question_number": 49,
             "question_body": "ARI is the amateur radio organization of?",
-            "correct_answer": "Б",
-            "А": "Spain",
-            "Б": "Italy",
-            "В": "Ireland",
-            "Г": "India"
+            "correct_answer": "B",
+            "A": "Spain",
+            "B": "Italy",
+            "C": "Ireland",
+            "D": "India"
         },
         {
             "question_number": 50,
             "question_body": "Which regions of the world are included in Region 1 of ITU (and correspondingly IARU)?",
-            "correct_answer": "Б",
-            "А": "Europe and the Middle East",
-            "Б": "Europe, Africa, the Middle East and Northern Asia",
-            "В": "Europe and Africa",
-            "Г": "Only Europe"
+            "correct_answer": "B",
+            "A": "Europe and the Middle East",
+            "B": "Europe, Africa, the Middle East and Northern Asia",
+            "C": "Europe and Africa",
+            "D": "Only Europe"
         },
         {
             "question_number": 51,
             "question_body": "Into how many amateur radio zones is the world divided according to the ITU distribution?",
-            "correct_answer": "Г",
-            "А": "20",
-            "Б": "24",
-            "В": "50",
-            "Г": "75"
+            "correct_answer": "D",
+            "A": "20",
+            "B": "24",
+            "C": "50",
+            "D": "75"
         },
         {
             "question_number": 52,
             "question_body": "In which amateur radio zone according to the ITU distribution does the territory of Bulgaria fall?",
-            "correct_answer": "Г",
-            "А": "14th",
-            "Б": "15th",
-            "В": "20th",
-            "Г": "28th"
+            "correct_answer": "D",
+            "A": "14th",
+            "B": "15th",
+            "C": "20th",
+            "D": "28th"
         },
         {
             "question_number": 53,
             "question_body": "Into how many amateur radio zones is the world divided according to the CQ/DXCC distribution?",
-            "correct_answer": "Б",
-            "А": "20",
-            "Б": "40",
-            "В": "50",
-            "Г": "75"
+            "correct_answer": "B",
+            "A": "20",
+            "B": "40",
+            "C": "50",
+            "D": "75"
         },
         {
             "question_number": 54,
             "question_body": "In which amateur radio zone according to the CQ/DXCC distribution does the territory of Bulgaria fall?",
-            "correct_answer": "Г",
-            "А": "14th",
-            "Б": "15th",
-            "В": "16th",
-            "Г": "20th"
+            "correct_answer": "D",
+            "A": "14th",
+            "B": "15th",
+            "C": "16th",
+            "D": "20th"
         },
         {
             "question_number": 55,
             "question_body": "Approximately how many countries and territories according to DXCC exist in the world?",
-            "correct_answer": "В",
-            "А": "155",
-            "Б": "245",
-            "В": "335",
-            "Г": "425"
+            "correct_answer": "C",
+            "A": "155",
+            "B": "245",
+            "C": "335",
+            "D": "425"
         },
         {
             "question_number": 56,
             "question_body": "Which bands count for the amateur radio diploma 6B DXCC?",
-            "correct_answer": "Б",
-            "А": "All HF bands",
-            "Б": "1.8 MHz, 3.5 MHz, 7 MHz, 14 MHz, 21 MHz, 28 MHz",
-            "В": "3.5 MHz, 7 MHz, 14 MHz, 21 MHz, 28 MHz, 50 MHz",
-            "Г": "7 MHz, 10 MHz, 14 MHz, 18 MHz, 21 MHz, 24 MHz"
+            "correct_answer": "B",
+            "A": "All HF bands",
+            "B": "1.8 MHz, 3.5 MHz, 7 MHz, 14 MHz, 21 MHz, 28 MHz",
+            "C": "3.5 MHz, 7 MHz, 14 MHz, 21 MHz, 28 MHz, 50 MHz",
+            "D": "7 MHz, 10 MHz, 14 MHz, 18 MHz, 21 MHz, 24 MHz"
         },
         {
             "question_number": 57,
             "question_body": "Which of the following amateur radio operators is it correct to answer if this operator has made a CQ DX call on the 14 MHz band?",
-            "correct_answer": "Б",
-            "А": "ES2PV",
-            "Б": "CE4UD",
-            "В": "OY1FN",
-            "Г": "None of them"
+            "correct_answer": "B",
+            "A": "ES2PV",
+            "B": "CE4UD",
+            "C": "OY1FN",
+            "D": "None of them"
         },
         {
             "question_number": 58,
             "question_body": "Which of the following amateur radio operators is it correct to answer if this operator has made a CQ DX call on the 10 MHz band?",
-            "correct_answer": "Г",
-            "А": "S52UG",
-            "Б": "4J1WL",
-            "В": "5B4RE",
-            "Г": "None of them"
+            "correct_answer": "D",
+            "A": "S52UG",
+            "B": "4J1WL",
+            "C": "5B4RE",
+            "D": "None of them"
         },
         {
             "question_number": 59,
             "question_body": "If you are participating in the ARRL contest, approximately at what azimuth should you point your antenna?",
-            "correct_answer": "Г",
-            "А": "60°",
-            "Б": "120°",
-            "В": "180°",
-            "Г": "300°"
+            "correct_answer": "D",
+            "A": "60°",
+            "B": "120°",
+            "C": "180°",
+            "D": "300°"
         },
         {
             "question_number": 60,
             "question_body": "If you are participating in the JARL contest, approximately at what azimuth should you point your antenna?",
-            "correct_answer": "А",
-            "А": "60°",
-            "Б": "120°",
-            "В": "180°",
-            "Г": "300°"
+            "correct_answer": "A",
+            "A": "60°",
+            "B": "120°",
+            "C": "180°",
+            "D": "300°"
         },
         {
             "question_number": 61,
             "question_body": "Which of the listed messages is mandatory to exchange between amateur radio operators in international amateur radio contests?",
-            "correct_answer": "В",
-            "А": "Locator",
-            "Б": "Contact serial number",
-            "В": "RST (RS)",
-            "Г": "Zone number"
+            "correct_answer": "C",
+            "A": "Locator",
+            "B": "Contact serial number",
+            "C": "RST (RS)",
+            "D": "Zone number"
         },
         {
             "question_number": 62,
             "question_body": "Should QSL cards be sent to confirm a radio contact made during an amateur radio contest?",
-            "correct_answer": "А",
-            "А": "Yes",
-            "Б": "No, if a contest report has been sent",
-            "В": "No, because radio contacts during contests are not recognized for any amateur radio awards",
-            "Г": "Yes, but only if the correspondent has requested it"
+            "correct_answer": "A",
+            "A": "Yes",
+            "B": "No, if a contest report has been sent",
+            "C": "No, because radio contacts during contests are not recognized for any amateur radio awards",
+            "D": "Yes, but only if the correspondent has requested it"
         },
         {
             "question_number": 63,
             "question_body": "Which three elements represent part of the information mandatory for entry on every QSL card?",
-            "correct_answer": "Б",
-            "А": "Correspondent's name, date of radio contact, emission class",
-            "Б": "Time of radio contact, correspondent's call sign, band",
-            "В": "Date of radio contact, emission class, correspondent's address",
-            "Г": "Band, RST (RS), antenna used"
+            "correct_answer": "B",
+            "A": "Correspondent's name, date of radio contact, emission class",
+            "B": "Time of radio contact, correspondent's call sign, band",
+            "C": "Date of radio contact, emission class, correspondent's address",
+            "D": "Band, RST (RS), antenna used"
         },
         {
             "question_number": 64,
             "question_body": "What is the DXCC amateur radio award issued for?",
-            "correct_answer": "В",
-            "А": "For confirmed radio contacts with amateur radio operators from all continents",
-            "Б": "For confirmed radio contacts with amateur radio operators from all amateur radio zones",
-            "В": "For confirmed radio contacts with amateur radio operators from 100 countries",
-            "Г": "For a prize place (from first to third) in the contest with the same name"
+            "correct_answer": "C",
+            "A": "For confirmed radio contacts with amateur radio operators from all continents",
+            "B": "For confirmed radio contacts with amateur radio operators from all amateur radio zones",
+            "C": "For confirmed radio contacts with amateur radio operators from 100 countries",
+            "D": "For a prize place (from first to third) in the contest with the same name"
         },
         {
             "question_number": 65,
             "question_body": "On which shortwave amateur radio band, if any, is telephony operation not permitted?",
-            "correct_answer": "Б",
-            "А": "On the 1.8 MHz band",
-            "Б": "On the 10 MHz band",
-            "В": "On the 24 MHz band",
-            "Г": "Telephony is permitted on all three bands"
+            "correct_answer": "B",
+            "A": "On the 1.8 MHz band",
+            "B": "On the 10 MHz band",
+            "C": "On the 24 MHz band",
+            "D": "Telephony is permitted on all three bands"
         },
         {
             "question_number": 66,
             "question_body": "If a Bulgarian amateur radio operator is operating with emission class A1A, on which shortwave amateur radio band will they not be able to establish a simplex radio contact with an amateur radio operator from the second or third ITU region (and correspondingly IARU) due to differences in band allocations in the three regions?",
-            "correct_answer": "Г",
-            "А": "10 MHz",
-            "Б": "21 MHz",
-            "В": "24 MHz",
-            "Г": "Such a problem does not exist, the bands for emission class A1A coincide in the three regions"
+            "correct_answer": "D",
+            "A": "10 MHz",
+            "B": "21 MHz",
+            "C": "24 MHz",
+            "D": "Such a problem does not exist, the bands for emission class A1A coincide in the three regions"
         },
         {
             "question_number": 67,
             "question_body": "If a Bulgarian amateur radio operator is operating on SSB, on which shortwave amateur radio band will they not be able to establish a simplex radio contact with an amateur radio operator from the USA and Canada due to differences in band allocations in ITU region 2 (and correspondingly IARU)?",
-            "correct_answer": "Г",
-            "А": "3.5 MHz",
-            "Б": "7 MHz",
-            "В": "14 MHz",
-            "Г": "Such a problem does not exist on the mentioned bands, the SSB bands coincide"
+            "correct_answer": "D",
+            "A": "3.5 MHz",
+            "B": "7 MHz",
+            "C": "14 MHz",
+            "D": "Such a problem does not exist on the mentioned bands, the SSB bands coincide"
         },
         {
             "question_number": 68,
             "question_body": "If a Bulgarian amateur radio operator is operating with emission class J3E, on which shortwave amateur radio band will they not be able to establish a simplex radio contact with an amateur radio operator from Japan due to differences in band allocations in ITU region 3 (and correspondingly IARU)?",
-            "correct_answer": "Г",
-            "А": "1.8 MHz",
-            "Б": "21 MHz",
-            "В": "24 MHz",
-            "Г": "Such a problem does not exist on the mentioned bands, the bands for emission class J3E coincide"
+            "correct_answer": "D",
+            "A": "1.8 MHz",
+            "B": "21 MHz",
+            "C": "24 MHz",
+            "D": "Such a problem does not exist on the mentioned bands, the bands for emission class J3E coincide"
         },
         {
             "question_number": 69,
             "question_body": "On what frequency does a Bulgarian amateur radio operator have the right and should transmit to establish a radio contact on SSB with W9 on the 7 MHz band?",
-            "correct_answer": "Б",
-            "А": "7.025 MHz",
-            "Б": "7.085 MHz",
-            "В": "7.205 MHz",
-            "Г": "7.325 MHz"
+            "correct_answer": "B",
+            "A": "7.025 MHz",
+            "B": "7.085 MHz",
+            "C": "7.205 MHz",
+            "D": "7.325 MHz"
         },
         {
             "question_number": 70,
             "question_body": "On what frequency should a Bulgarian amateur radio operator receive to establish a radio contact on SSB with W9 on the 7 MHz band?",
-            "correct_answer": "Б",
-            "А": "7.025 MHz",
-            "Б": "7.085 MHz",
-            "В": "7.265 MHz",
-            "Г": "7.325 MHz"
+            "correct_answer": "B",
+            "A": "7.025 MHz",
+            "B": "7.085 MHz",
+            "C": "7.265 MHz",
+            "D": "7.325 MHz"
         },
         {
             "question_number": 71,
             "question_body": "What is packet radio?",
-            "correct_answer": "В",
-            "А": "Compression of telegraph signal to increase speed during radio contact via meteor scatter",
-            "Б": "Connecting several radio stations operating on RTTY in a common network",
-            "В": "Radio contact established between amateur radio operators using computers",
-            "Г": "Computer program for checking and reporting amateur radio contests"
+            "correct_answer": "C",
+            "A": "Compression of telegraph signal to increase speed during radio contact via meteor scatter",
+            "B": "Connecting several radio stations operating on RTTY in a common network",
+            "C": "Radio contact established between amateur radio operators using computers",
+            "D": "Computer program for checking and reporting amateur radio contests"
         },
         {
             "question_number": 72,
             "question_body": "What advantages does packet radio contact have over CW radio contact?",
-            "correct_answer": "Г",
-            "А": "Packet radio contact uses a narrower frequency band and is therefore less vulnerable to interference",
-            "Б": "Packet radio contact is automatic and does not require operator presence",
-            "В": "DX radio contacts are easier to establish on packet than on CW",
-            "Г": "Information exchanged during the radio contact is stored more completely and more easily"
+            "correct_answer": "D",
+            "A": "Packet radio contact uses a narrower frequency band and is therefore less vulnerable to interference",
+            "B": "Packet radio contact is automatic and does not require operator presence",
+            "C": "DX radio contacts are easier to establish on packet than on CW",
+            "D": "Information exchanged during the radio contact is stored more completely and more easily"
         },
         {
             "question_number": 73,
             "question_body": "At what modulation level should an amateur radio repeater transmit its identification call sign?",
-            "correct_answer": "В",
-            "А": "Level sufficient to block the repeated signal",
-            "Б": "Level low enough not to cause interference in the repeated signal",
-            "В": "Level sufficient for identification during signal retransmission",
-            "Г": "The level specified in the Technical Requirements for Electronic Communications through Amateur Radio Service Equipment"
+            "correct_answer": "C",
+            "A": "Level sufficient to block the repeated signal",
+            "B": "Level low enough not to cause interference in the repeated signal",
+            "C": "Level sufficient for identification during signal retransmission",
+            "D": "The level specified in the Technical Requirements for Electronic Communications through Amateur Radio Service Equipment"
         },
         {
             "question_number": 74,
             "question_body": "How will you recognize that the amateur repeater through which you have established a radio contact is located outside Bulgaria?",
-            "correct_answer": "Б",
-            "А": "By the language that is most often spoken",
-            "Б": "By its call sign",
-            "В": "By the coordinates transmitted by the repeater",
-            "Г": "By the directionality of your antenna"
+            "correct_answer": "B",
+            "A": "By the language that is most often spoken",
+            "B": "By its call sign",
+            "C": "By the coordinates transmitted by the repeater",
+            "D": "By the directionality of your antenna"
         },
         {
             "question_number": 75,
             "question_body": "What is an amateur transponder?",
-            "correct_answer": "В",
-            "А": "The suppressed carrier frequency of an SSB signal",
-            "Б": "An amateur repeater mounted on an Earth satellite that retransmits from one continent to another",
-            "В": "An amateur repeater mounted on an Earth satellite that retransmits a given frequency band from one amateur radio band to another",
-            "Г": "The effect by which the satellite signal frequency shifts depending on whether the satellite is approaching or moving away from the amateur radio operator's location"
+            "correct_answer": "C",
+            "A": "The suppressed carrier frequency of an SSB signal",
+            "B": "An amateur repeater mounted on an Earth satellite that retransmits from one continent to another",
+            "C": "An amateur repeater mounted on an Earth satellite that retransmits a given frequency band from one amateur radio band to another",
+            "D": "The effect by which the satellite signal frequency shifts depending on whether the satellite is approaching or moving away from the amateur radio operator's location"
         },
         {
             "question_number": 76,
             "question_body": "What is BBS?",
-            "correct_answer": "В",
-            "А": "Broad Band System for improving intelligibility in SSB radio contacts",
-            "Б": "The amateur radio organization of Belgium",
-            "В": "Electronic mailbox used in packet communications",
-            "Г": "The national radio station of Great Britain"
+            "correct_answer": "C",
+            "A": "Broad Band System for improving intelligibility in SSB radio contacts",
+            "B": "The amateur radio organization of Belgium",
+            "C": "Electronic mailbox used in packet communications",
+            "D": "The national radio station of Great Britain"
         },
         {
             "question_number": 77,
             "question_body": "When is it permissible to interrupt a QSO being conducted between amateur radio operators with the word \"Break\"?",
-            "correct_answer": "Г",
-            "А": "Whenever you wish to conduct a QSO",
-            "Б": "Only if you start your report with \"Break, break\"",
-            "В": "Only if you start your report with \"Break, break, break\"",
-            "Г": "Only when your or someone else's life is in imminent danger or in distress or emergency situations, when the information you have is vital and needs to be transmitted to third parties participating in the emergency traffic"
+            "correct_answer": "D",
+            "A": "Whenever you wish to conduct a QSO",
+            "B": "Only if you start your report with \"Break, break\"",
+            "C": "Only if you start your report with \"Break, break, break\"",
+            "D": "Only when your or someone else's life is in imminent danger or in distress or emergency situations, when the information you have is vital and needs to be transmitted to third parties participating in the emergency traffic"
         },
         {
             "question_number": 78,
             "question_body": "On which amateur radio bands are amateur radio contests most often conducted?",
-            "correct_answer": "А",
-            "А": "1.8 MHz, 3.5 MHz, 7 MHz, 14 MHz, 21 MHz, 28 MHz",
-            "Б": "3.5 MHz, 7 MHz, 10 MHz, 14 MHz, 18 MHz, 21 MHz",
-            "В": "1.8 MHz, 3.5 MHz, 10 MHz, 18 MHz, 24 MHz, 28 MHz",
-            "Г": "10 MHz, 18 MHz, 21 MHz, 24 MHz, 28 MHz, 50 MHz"
+            "correct_answer": "A",
+            "A": "1.8 MHz, 3.5 MHz, 7 MHz, 14 MHz, 21 MHz, 28 MHz",
+            "B": "3.5 MHz, 7 MHz, 10 MHz, 14 MHz, 18 MHz, 21 MHz",
+            "C": "1.8 MHz, 3.5 MHz, 10 MHz, 18 MHz, 24 MHz, 28 MHz",
+            "D": "10 MHz, 18 MHz, 21 MHz, 24 MHz, 28 MHz, 50 MHz"
         },
         {
             "question_number": 79,
             "question_body": "Is it permissible during an amateur radio contest to ask your correspondent to send you a QSL card?",
-            "correct_answer": "Г",
-            "А": "Yes",
-            "Б": "Yes, but if you also send them one",
-            "В": "If this is a new entity for you, it is permissible",
-            "Г": "Yes, but only if you are the station calling CQ CONTEST"
+            "correct_answer": "D",
+            "A": "Yes",
+            "B": "Yes, but if you also send them one",
+            "C": "If this is a new entity for you, it is permissible",
+            "D": "Yes, but only if you are the station calling CQ CONTEST"
         },
         {
             "question_number": 80,
             "question_body": "Which of the following is NOT acceptable to do on the frequency of a DX station while it is conducting radio contacts?",
-            "correct_answer": "Г",
-            "А": "Start calling them before they have finished their QSO with the correspondent",
-            "Б": "When the DX station announces that it is waiting for the next correspondent, start repeating your call sign multiple times expecting them to answer you",
-            "В": "Tune your transmitter on the operating frequency of the DX station",
-            "Г": "All three answers are correct"
+            "correct_answer": "D",
+            "A": "Start calling them before they have finished their QSO with the correspondent",
+            "B": "When the DX station announces that it is waiting for the next correspondent, start repeating your call sign multiple times expecting them to answer you",
+            "C": "Tune your transmitter on the operating frequency of the DX station",
+            "D": "All three answers are correct"
         },
         {
             "question_number": 81,
             "question_body": "What behavior should you have during a contest when a station on an adjacent frequency starts interfering with your clear reception of your correspondents' signals?",
-            "correct_answer": "Г",
-            "А": "You should increase the power you are operating with to drive away the intruder",
-            "Б": "Widen the bandwidth you are transmitting with to interfere with them too",
-            "В": "Move to their frequency and start operating on their signal",
-            "Г": "Narrow the filter of your receiver as much as possible and if this does not help, ask the adjacent station to move a few kilohertz"
+            "correct_answer": "D",
+            "A": "You should increase the power you are operating with to drive away the intruder",
+            "B": "Widen the bandwidth you are transmitting with to interfere with them too",
+            "C": "Move to their frequency and start operating on their signal",
+            "D": "Narrow the filter of your receiver as much as possible and if this does not help, ask the adjacent station to move a few kilohertz"
         },
         {
             "question_number": 82,
             "question_body": "Is it necessary and if so, why, to listen to the frequency for several minutes before you start transmitting on it?",
-            "correct_answer": "В",
-            "А": "It is not necessary",
-            "Б": "If you don't hear anything, it means the frequency is free",
-            "В": "It is necessary to listen for a few minutes because you may interrupt a QSO",
-            "Г": "It is sufficient to ask once if the frequency is free and if no one answers you, start transmitting on it"
+            "correct_answer": "C",
+            "A": "It is not necessary",
+            "B": "If you don't hear anything, it means the frequency is free",
+            "C": "It is necessary to listen for a few minutes because you may interrupt a QSO",
+            "D": "It is sufficient to ask once if the frequency is free and if no one answers you, start transmitting on it"
         },
         {
             "question_number": 83,
             "question_body": "Which of the following is unacceptable when conducting radio contacts on short waves?",
-            "correct_answer": "Г",
-            "А": "Transmitting only a few letters/digits of your call sign to make it more attractive to the calling station",
-            "Б": "Transmitting your call sign or part of it on top of a weaker or QRP station's signal",
-            "В": "Tuning your transmitter on top of the calling station's signal",
-            "Г": "All three answers are correct"
+            "correct_answer": "D",
+            "A": "Transmitting only a few letters/digits of your call sign to make it more attractive to the calling station",
+            "B": "Transmitting your call sign or part of it on top of a weaker or QRP station's signal",
+            "C": "Tuning your transmitter on top of the calling station's signal",
+            "D": "All three answers are correct"
         },
         {
             "question_number": 84,
             "question_body": "Which of the following is acceptable when conducting radio contacts on short waves?",
-            "correct_answer": "Б",
-            "А": "When you have established contact with a very \"rare\" station, to repeat the contact with your friend's call sign if he has given you permission to do so",
-            "Б": "When you have established contact with a very \"rare\" station, to ask them to accept a contact with your friend who is also calling them",
-            "В": "During a contest to ask the station you are in contact with to mark you in the DX cluster (Spot)",
-            "Г": "To ask the DX station to conduct contacts only with your country"
+            "correct_answer": "B",
+            "A": "When you have established contact with a very \"rare\" station, to repeat the contact with your friend's call sign if he has given you permission to do so",
+            "B": "When you have established contact with a very \"rare\" station, to ask them to accept a contact with your friend who is also calling them",
+            "C": "During a contest to ask the station you are in contact with to mark you in the DX cluster (Spot)",
+            "D": "To ask the DX station to conduct contacts only with your country"
         },
         {
             "question_number": 85,
             "question_body": "Is self-spotting in DX clusters permitted during contests?",
-            "correct_answer": "Г",
-            "А": "Yes, because this way we show other stations where to find us",
-            "Б": "At the operator's discretion",
-            "В": "It is permitted only in domestic contests",
-            "Г": "It is not permitted"
+            "correct_answer": "D",
+            "A": "Yes, because this way we show other stations where to find us",
+            "B": "At the operator's discretion",
+            "C": "It is permitted only in domestic contests",
+            "D": "It is not permitted"
         },
         {
             "question_number": 86,
             "question_body": "Is it permitted to announce the call sign of a \"rare\" station in the DX cluster and indicate the frequency on which you are transmitting in order to gather more contacts?",
-            "correct_answer": "Г",
-            "А": "It is not permitted",
-            "Б": "It is permitted",
-            "В": "It is permitted, but only during international contests",
-            "Г": "It is neither permitted nor prohibited, but it is unethical toward other amateur radio operators"
+            "correct_answer": "D",
+            "A": "It is not permitted",
+            "B": "It is permitted",
+            "C": "It is permitted, but only during international contests",
+            "D": "It is neither permitted nor prohibited, but it is unethical toward other amateur radio operators"
         },
         {
             "question_number": 87,
             "question_body": "Which of the listed shortwave contests is declared to be the most prestigious and most difficult in amateur radio?",
-            "correct_answer": "А",
-            "А": "World Radiosport Team Championship",
-            "Б": "Russian DX Contest",
-            "В": "CQ WW Contest",
-            "Г": "CQ WPX Contest"
+            "correct_answer": "A",
+            "A": "World Radiosport Team Championship",
+            "B": "Russian DX Contest",
+            "C": "CQ WW Contest",
+            "D": "CQ WPX Contest"
         },
         {
             "question_number": 88,
             "question_body": "Is it normal under ordinary conditions to use CQ DX on frequency 14.300 MHz?",
-            "correct_answer": "А",
-            "А": "No, this is an emergency frequency designated for IARU Region 1 and should remain clear",
-            "Б": "As long as there is no declared emergency situation, it is permitted",
-            "В": "Yes, IARU Region 1 has other emergency frequencies",
-            "Г": "Yes, the frequency is within the limits of the 20 meter band"
+            "correct_answer": "A",
+            "A": "No, this is an emergency frequency designated for IARU Region 1 and should remain clear",
+            "B": "As long as there is no declared emergency situation, it is permitted",
+            "C": "Yes, IARU Region 1 has other emergency frequencies",
+            "D": "Yes, the frequency is within the limits of the 20 meter band"
         },
         {
             "question_number": 89,
             "question_body": "In a declared disaster situation, you have information that must be transmitted on the air. What is the most correct action?",
-            "correct_answer": "Г",
-            "А": "You find where on the air there is the greatest concentration of operators and transmit the information there",
-            "Б": "You start sequential transmission on all frequencies known to you",
-            "В": "You start continuous radio transmission on the band where you transmit best",
-            "Г": "Taking into account at what distance you need to transmit the information, you select the appropriate band, find the emergency communication frequency designated by IARU Region 1, announce yourself to the Net Control operating there, and wait to be called to communicate your information"
+            "correct_answer": "D",
+            "A": "You find where on the air there is the greatest concentration of operators and transmit the information there",
+            "B": "You start sequential transmission on all frequencies known to you",
+            "C": "You start continuous radio transmission on the band where you transmit best",
+            "D": "Taking into account at what distance you need to transmit the information, you select the appropriate band, find the emergency communication frequency designated by IARU Region 1, announce yourself to the Net Control operating there, and wait to be called to communicate your information"
         },
         {
             "question_number": 90,
             "question_body": "What are the frequencies designated for emergency communications by IARU Region 1?",
-            "correct_answer": "Г",
-            "А": "3.760 MHz and 7.110 MHz",
-            "Б": "14.300 MHz and 18.160 MHz",
-            "В": "21.360 MHz",
-            "Г": "All three answers are correct"
+            "correct_answer": "D",
+            "A": "3.760 MHz and 7.110 MHz",
+            "B": "14.300 MHz and 18.160 MHz",
+            "C": "21.360 MHz",
+            "D": "All three answers are correct"
         },
         {
             "question_number": 91,
             "question_body": "What is a distress signal?",
-            "correct_answer": "Г",
-            "А": "A distress signal is the code SOS transmitted on telegraph",
-            "Б": "A distress signal is the word MAYDAY transmitted on telephony",
-            "В": "Answers A and B are correct",
-            "Г": "A distress signal is an internationally accepted way of requesting help when human lives are in immediate and inevitable danger, with signaling performed via radio communication, visual or acoustic means"
+            "correct_answer": "D",
+            "A": "A distress signal is the code SOS transmitted on telegraph",
+            "B": "A distress signal is the word MAYDAY transmitted on telephony",
+            "C": "Answers A and B are correct",
+            "D": "A distress signal is an internationally accepted way of requesting help when human lives are in immediate and inevitable danger, with signaling performed via radio communication, visual or acoustic means"
         },
         {
             "question_number": 92,
             "question_body": "Which answer contains entirely elements from the \"Amateur Radio Code\"?",
-            "correct_answer": "А",
-            "А": "The amateur radio operator is: courteous, loyal, progressive, friendly, balanced, patriotic",
-            "Б": "The amateur radio operator is: smart, good, technician, engineer, electrical engineer",
-            "В": "The amateur radio operator is: resourceful, intelligent, self-confident, good technician",
-            "Г": "The amateur radio operator is: loud-voiced, with very good hearing, excellent knowledge of electrical engineering"
+            "correct_answer": "A",
+            "A": "The amateur radio operator is: courteous, loyal, progressive, friendly, balanced, patriotic",
+            "B": "The amateur radio operator is: smart, good, technician, engineer, electrical engineer",
+            "C": "The amateur radio operator is: resourceful, intelligent, self-confident, good technician",
+            "D": "The amateur radio operator is: loud-voiced, with very good hearing, excellent knowledge of electrical engineering"
         }
     ]
 }

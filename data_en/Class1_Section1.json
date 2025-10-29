@@ -6,2036 +6,2036 @@
         {
             "question_number": 1,
             "question_body": "What is the name of the energy stored in an electromagnetic or electrostatic field?",
-            "correct_answer": "Б",
-            "А": "Kinetic energy",
-            "Б": "Potential energy",
-            "В": "Resonant energy",
-            "Г": "Direct current energy"
+            "correct_answer": "B",
+            "A": "Kinetic energy",
+            "B": "Potential energy",
+            "C": "Resonant energy",
+            "D": "Direct current energy"
         },
         {
             "question_number": 2,
             "question_body": "What determines the intensity of the magnetic field around a conductor?",
-            "correct_answer": "Г",
-            "А": "The specific resistance of the conductor",
-            "Б": "The length of the conductor",
-            "В": "The diameter of the conductor",
-            "Г": "The current through the conductor"
+            "correct_answer": "D",
+            "A": "The specific resistance of the conductor",
+            "B": "The length of the conductor",
+            "C": "The diameter of the conductor",
+            "D": "The current through the conductor"
         },
         {
             "question_number": 3,
             "question_body": "Where and under what circumstances does a magnetic field arise?",
-            "correct_answer": "Б",
-            "А": "Everywhere an electric field arises",
-            "Б": "Around a conductor when electric current flows through it",
-            "В": "Between capacitor plates when electric charge is accumulated in it",
-            "Г": "Between battery poles when it is charged"
+            "correct_answer": "B",
+            "A": "Everywhere an electric field arises",
+            "B": "Around a conductor when electric current flows through it",
+            "C": "Between capacitor plates when electric charge is accumulated in it",
+            "D": "Between battery poles when it is charged"
         },
         {
             "question_number": 4,
             "question_body": "What device (component) is used to store electrical energy in an electrostatic field?",
-            "correct_answer": "В",
-            "А": "Battery",
-            "Б": "Transformer",
-            "В": "Capacitor",
-            "Г": "Inductor"
+            "correct_answer": "C",
+            "A": "Battery",
+            "B": "Transformer",
+            "C": "Capacitor",
+            "D": "Inductor"
         },
         {
             "question_number": 5,
             "question_body": "What unit of measurement is used for the amount of energy accumulated in an electrostatic field?",
-            "correct_answer": "Б",
-            "А": "Farad",
-            "Б": "Joule",
-            "В": "Watt",
-            "Г": "Volt"
+            "correct_answer": "B",
+            "A": "Farad",
+            "B": "Joule",
+            "C": "Watt",
+            "D": "Volt"
         },
         {
             "question_number": 6,
             "question_body": "What is the skin effect?",
-            "correct_answer": "А",
-            "А": "The phenomenon where, as frequency increases, high-frequency current flows only on the surface of the conductor",
-            "Б": "The phenomenon where, as frequency decreases, high-frequency current flows only on the surface of the conductor",
-            "В": "The phenomenon where thermal processes on the conductor surface increase its impedance",
-            "Г": "The phenomenon where thermal processes on the conductor surface decrease its impedance"
+            "correct_answer": "A",
+            "A": "The phenomenon where, as frequency increases, high-frequency current flows only on the surface of the conductor",
+            "B": "The phenomenon where, as frequency decreases, high-frequency current flows only on the surface of the conductor",
+            "C": "The phenomenon where thermal processes on the conductor surface increase its impedance",
+            "D": "The phenomenon where thermal processes on the conductor surface decrease its impedance"
         },
         {
             "question_number": 7,
             "question_body": "Where practically does high-frequency current flow through a conductor?",
-            "correct_answer": "А",
-            "А": "On the surface of the conductor",
-            "Б": "Along the central axis of the conductor",
-            "В": "Through the entire cross-section of the conductor",
-            "Г": "Through the magnetic field around the conductor"
+            "correct_answer": "A",
+            "A": "On the surface of the conductor",
+            "B": "Along the central axis of the conductor",
+            "C": "Through the entire cross-section of the conductor",
+            "D": "Through the magnetic field around the conductor"
         },
         {
             "question_number": 8,
             "question_body": "Why does all high-frequency current flow through a conductor practically only in a very thin layer on its surface?",
-            "correct_answer": "Б",
-            "А": "Due to heating of the conductor in its interior",
-            "Б": "Due to the skin effect",
-            "В": "Due to the self-inductance of the conductor",
-            "Г": "Because the high-frequency resistance of the conductor is much less than its DC resistance"
+            "correct_answer": "B",
+            "A": "Due to heating of the conductor in its interior",
+            "B": "Due to the skin effect",
+            "C": "Due to the self-inductance of the conductor",
+            "D": "Because the high-frequency resistance of the conductor is much less than its DC resistance"
         },
         {
             "question_number": 9,
             "question_body": "What is a sinusoidal wave?",
-            "correct_answer": "В",
-            "А": "A wave that decays over time according to a sinusoidal law",
-            "Б": "A wave whose polarization changes over time according to a sinusoidal law",
-            "В": "A wave whose amplitude changes over time according to a sinusoidal law",
-            "Г": "A wave whose frequency changes over time according to a sinusoidal law"
+            "correct_answer": "C",
+            "A": "A wave that decays over time according to a sinusoidal law",
+            "B": "A wave whose polarization changes over time according to a sinusoidal law",
+            "C": "A wave whose amplitude changes over time according to a sinusoidal law",
+            "D": "A wave whose frequency changes over time according to a sinusoidal law"
         },
         {
             "question_number": 10,
             "question_body": "What is the period of one oscillation (wave)?",
-            "correct_answer": "А",
-            "А": "The time required for one cycle",
-            "Б": "The number of degrees in one cycle",
-            "В": "The number of zero-line crossings in one cycle",
-            "Г": "The number of oscillations per 1 second"
+            "correct_answer": "A",
+            "A": "The time required for one cycle",
+            "B": "The number of degrees in one cycle",
+            "C": "The number of zero-line crossings in one cycle",
+            "D": "The number of oscillations per 1 second"
         },
         {
             "question_number": 11,
             "question_body": "How many degrees does one complete period of a sinusoidal oscillation (wave) contain?",
-            "correct_answer": "Г",
-            "А": "90°",
-            "Б": "100°",
-            "В": "180°",
-            "Г": "360°"
+            "correct_answer": "D",
+            "A": "90°",
+            "B": "100°",
+            "C": "180°",
+            "D": "360°"
         },
         {
             "question_number": 12,
             "question_body": "Why is alternating voltage and current with sinusoidal form most commonly used (including mains voltage)?",
-            "correct_answer": "Г",
-            "А": "Because they cause the smallest losses in electrical circuit elements (resistors, inductors, capacitors)",
-            "Б": "Because with sinusoidal alternating current there are no reactive losses in electrical circuit elements (resistors, inductors, capacitors)",
-            "В": "Because with sinusoidal alternating current there are no active losses in electrical circuit elements (resistors, inductors, capacitors)",
-            "Г": "Because only sinusoidal alternating current does not change its form in electrical circuit elements (resistors, inductors, capacitors)"
+            "correct_answer": "D",
+            "A": "Because they cause the smallest losses in electrical circuit elements (resistors, inductors, capacitors)",
+            "B": "Because with sinusoidal alternating current there are no reactive losses in electrical circuit elements (resistors, inductors, capacitors)",
+            "C": "Because with sinusoidal alternating current there are no active losses in electrical circuit elements (resistors, inductors, capacitors)",
+            "D": "Because only sinusoidal alternating current does not change its form in electrical circuit elements (resistors, inductors, capacitors)"
         },
         {
             "question_number": 13,
             "question_body": "What is the most accurate method for measuring the effective value of the voltage of a complex waveform?",
-            "correct_answer": "Г",
-            "А": "Using a dip meter",
-            "Б": "Using an absorption wavemeter",
-            "В": "Representing the wave with a suitable mathematical function",
-            "Г": "Measuring the thermal effect on a known-value resistor and comparing it with the thermal effect on the same resistor from direct current"
+            "correct_answer": "D",
+            "A": "Using a dip meter",
+            "B": "Using an absorption wavemeter",
+            "C": "Representing the wave with a suitable mathematical function",
+            "D": "Measuring the thermal effect on a known-value resistor and comparing it with the thermal effect on the same resistor from direct current"
         },
         {
             "question_number": 14,
             "question_body": "What is a square wave oscillation (signal)?",
-            "correct_answer": "Б",
-            "А": "An oscillation whose cycle contains exactly 100°",
-            "Б": "An oscillation whose amplitude changes abruptly from one level to another and back",
-            "В": "An oscillation that crosses the zero line four times during each cycle",
-            "Г": "An oscillation that contains a DC component"
+            "correct_answer": "B",
+            "A": "An oscillation whose cycle contains exactly 100°",
+            "B": "An oscillation whose amplitude changes abruptly from one level to another and back",
+            "C": "An oscillation that crosses the zero line four times during each cycle",
+            "D": "An oscillation that contains a DC component"
         },
         {
             "question_number": 15,
             "question_body": "Which factors determine the capacitance of a capacitor?",
-            "correct_answer": "Б",
-            "А": "The area of the plates, the distance between them, and the voltage between the plates",
-            "Б": "The area of the plates, the distance between them, and the dielectric constant of the material between the plates",
-            "В": "The area of the plates, the voltage between them, and the dielectric constant of the material between the plates",
-            "Г": "The area of the plates, the amount of charge in them, and the dielectric constant of the material between the plates"
+            "correct_answer": "B",
+            "A": "The area of the plates, the distance between them, and the voltage between the plates",
+            "B": "The area of the plates, the distance between them, and the dielectric constant of the material between the plates",
+            "C": "The area of the plates, the voltage between them, and the dielectric constant of the material between the plates",
+            "D": "The area of the plates, the amount of charge in them, and the dielectric constant of the material between the plates"
         },
         {
             "question_number": 16,
             "question_body": "What is the dielectric constant of air?",
-            "correct_answer": "В",
-            "А": "Approximately 10",
-            "Б": "Approximately 2",
-            "В": "Approximately 1",
-            "Г": "Approximately 0"
+            "correct_answer": "C",
+            "A": "Approximately 10",
+            "B": "Approximately 2",
+            "C": "Approximately 1",
+            "D": "Approximately 0"
         },
         {
             "question_number": 17,
             "question_body": "What does the time constant of an RC group mean?",
-            "correct_answer": "А",
-            "А": "The time for the capacitor to discharge to 37% of the voltage to which it was charged",
-            "Б": "The time for the capacitor to discharge to 50% of the voltage to which it was charged",
-            "В": "The time for the capacitor to discharge to 63% of the voltage to which it was charged",
-            "Г": "The time for complete discharge of the capacitor"
+            "correct_answer": "A",
+            "A": "The time for the capacitor to discharge to 37% of the voltage to which it was charged",
+            "B": "The time for the capacitor to discharge to 50% of the voltage to which it was charged",
+            "C": "The time for the capacitor to discharge to 63% of the voltage to which it was charged",
+            "D": "The time for complete discharge of the capacitor"
         },
         {
             "question_number": 18,
             "question_body": "What does the time constant of an RL group mean?",
-            "correct_answer": "Б",
-            "А": "The time for the current through the inductor to reach its maximum value",
-            "Б": "The time for the current through the inductor to reach 63% of its maximum value",
-            "В": "The time for the current through the inductor to reach 50% of its maximum value",
-            "Г": "The time for the current through the inductor to reach 37% of its maximum value"
+            "correct_answer": "B",
+            "A": "The time for the current through the inductor to reach its maximum value",
+            "B": "The time for the current through the inductor to reach 63% of its maximum value",
+            "C": "The time for the current through the inductor to reach 50% of its maximum value",
+            "D": "The time for the current through the inductor to reach 37% of its maximum value"
         },
         {
             "question_number": 19,
             "question_body": "In what unit is the time constant $\\tau$ of an RC group measured?",
-            "correct_answer": "А",
-            "А": "Second",
-            "Б": "1/second",
-            "В": "Ohm",
-            "Г": "Farad"
+            "correct_answer": "A",
+            "A": "Second",
+            "B": "1/second",
+            "C": "Ohm",
+            "D": "Farad"
         },
         {
             "question_number": 20,
             "question_body": "In what unit is the time constant $\\tau$ of an RL group measured?",
-            "correct_answer": "А",
-            "А": "Second",
-            "Б": "1/second",
-            "В": "Ohm",
-            "Г": "Henry"
+            "correct_answer": "A",
+            "A": "Second",
+            "B": "1/second",
+            "C": "Ohm",
+            "D": "Henry"
         },
         {
             "question_number": 21,
             "question_body": "Which formula is used to calculate the time constant $\\tau$ of an RC group?",
-            "correct_answer": "В",
-            "А": "$\\tau = R/C$",
-            "Б": "$\\tau = C/R$",
-            "В": "$\\tau = RC$",
-            "Г": "$\\tau = RC^2$"
+            "correct_answer": "C",
+            "A": "$\\tau = R/C$",
+            "B": "$\\tau = C/R$",
+            "C": "$\\tau = RC$",
+            "D": "$\\tau = RC^2$"
         },
         {
             "question_number": 22,
             "question_body": "To what level of the input voltage will the capacitor of an RC group charge in time $2\\tau$?",
-            "correct_answer": "В",
-            "А": "37%",
-            "Б": "63%",
-            "В": "87%",
-            "Г": "100%"
+            "correct_answer": "C",
+            "A": "37%",
+            "B": "63%",
+            "C": "87%",
+            "D": "100%"
         },
         {
             "question_number": 23,
             "question_body": "To what level of the voltage to which it was charged will the capacitor of an RC group discharge in time $2\\tau$?",
-            "correct_answer": "Б",
-            "А": "0%",
-            "Б": "13%",
-            "В": "37%",
-            "Г": "63%"
+            "correct_answer": "B",
+            "A": "0%",
+            "B": "13%",
+            "C": "37%",
+            "D": "63%"
         },
         {
             "question_number": 24,
             "question_body": "What is the time constant of an RC group consisting of a series-connected capacitor of 100 µF and a resistor of 470 kΩ?",
-            "correct_answer": "В",
-            "А": "4700 seconds",
-            "Б": "470 seconds",
-            "В": "47 seconds",
-            "Г": "4.7 seconds"
+            "correct_answer": "C",
+            "A": "4700 seconds",
+            "B": "470 seconds",
+            "C": "47 seconds",
+            "D": "4.7 seconds"
         },
         {
             "question_number": 25,
             "question_body": "What is the time constant of an RC group consisting of a series-connected capacitor of 220 µF and a resistor of 1 MΩ?",
-            "correct_answer": "А",
-            "А": "220 seconds",
-            "Б": "22 seconds",
-            "В": "2.2 seconds",
-            "Г": "0.22 seconds"
+            "correct_answer": "A",
+            "A": "220 seconds",
+            "B": "22 seconds",
+            "C": "2.2 seconds",
+            "D": "0.22 seconds"
         },
         {
             "question_number": 26,
             "question_body": "What is the time constant of an RC group consisting of two series-connected capacitors, each 1000 µF, and two series-connected resistors, each 4.7 kΩ?",
-            "correct_answer": "Г",
-            "А": "4700 seconds",
-            "Б": "470 seconds",
-            "В": "47 seconds",
-            "Г": "4.7 seconds"
+            "correct_answer": "D",
+            "A": "4700 seconds",
+            "B": "470 seconds",
+            "C": "47 seconds",
+            "D": "4.7 seconds"
         },
         {
             "question_number": 27,
             "question_body": "What is the time constant of an RC group consisting of five parallel-connected capacitors, each 1000 µF, and five parallel-connected resistors, each 470 Ω?",
-            "correct_answer": "Г",
-            "А": "470 seconds",
-            "Б": "47 seconds",
-            "В": "4.7 seconds",
-            "Г": "0.47 seconds"
+            "correct_answer": "D",
+            "A": "470 seconds",
+            "B": "47 seconds",
+            "C": "4.7 seconds",
+            "D": "0.47 seconds"
         },
         {
             "question_number": 28,
             "question_body": "How much time will be needed for a 0.01 µF capacitor to discharge to 7.4 V through a 2 MΩ resistor connected in parallel, if the capacitor was charged to 20 V?",
-            "correct_answer": "Б",
-            "А": "0.001 seconds",
-            "Б": "0.02 seconds",
-            "В": "1 second",
-            "Г": "8 seconds"
+            "correct_answer": "B",
+            "A": "0.001 seconds",
+            "B": "0.02 seconds",
+            "C": "1 second",
+            "D": "8 seconds"
         },
         {
             "question_number": 29,
             "question_body": "How much time will be needed for a 0.01 µF capacitor to charge to 174 V through a 2 MΩ resistor when connected to a 200 V voltage source?",
-            "correct_answer": "Б",
-            "А": "0.02 seconds",
-            "Б": "0.04 seconds",
-            "В": "0.2 seconds",
-            "Г": "0.4 seconds"
+            "correct_answer": "B",
+            "A": "0.02 seconds",
+            "B": "0.04 seconds",
+            "C": "0.2 seconds",
+            "D": "0.4 seconds"
         },
         {
             "question_number": 30,
             "question_body": "How long will the voltage of a capacitor charged to 1000 V remain at a level above 370 V, if the capacitor value is 1000 µF and it is discharging through a parallel-connected 2 MΩ resistor?",
-            "correct_answer": "Г",
-            "А": "80 seconds",
-            "Б": "300 seconds",
-            "В": "600 seconds",
-            "Г": "More than half an hour"
+            "correct_answer": "D",
+            "A": "80 seconds",
+            "B": "300 seconds",
+            "C": "600 seconds",
+            "D": "More than half an hour"
         },
         {
             "question_number": 31,
             "question_body": "How long will the voltage of a capacitor charged to 100 V remain at a level above 13 V, if the capacitor value is 1000 µF and it is discharging through three series-connected resistors, each 2 MΩ?",
-            "correct_answer": "В",
-            "А": "87 seconds",
-            "Б": "600 seconds",
-            "В": "More than three hours",
-            "Г": "More than one day"
+            "correct_answer": "C",
+            "A": "87 seconds",
+            "B": "600 seconds",
+            "C": "More than three hours",
+            "D": "More than one day"
         },
         {
             "question_number": 32,
             "question_body": "Which two chemical elements are widely used in the manufacture of semiconductor devices?",
-            "correct_answer": "Г",
-            "А": "Gold and bismuth",
-            "Б": "Silicon and silver",
-            "В": "Copper and germanium",
-            "Г": "Germanium and silicon"
+            "correct_answer": "D",
+            "A": "Gold and bismuth",
+            "B": "Silicon and silver",
+            "C": "Copper and germanium",
+            "D": "Germanium and silicon"
         },
         {
             "question_number": 33,
             "question_body": "What are the characteristics of a tunnel diode?",
-            "correct_answer": "В",
-            "А": "Very high resistance in the forward direction",
-            "Б": "Very high current in the forward direction",
-            "В": "A region of negative resistance in the voltage-current characteristic",
-            "Г": "A region of extremely linear voltage-current characteristic"
+            "correct_answer": "C",
+            "A": "Very high resistance in the forward direction",
+            "B": "Very high current in the forward direction",
+            "C": "A region of negative resistance in the voltage-current characteristic",
+            "D": "A region of extremely linear voltage-current characteristic"
         },
         {
             "question_number": 34,
             "question_body": "Which special type of diode is capable of amplifying and generating signals?",
-            "correct_answer": "Г",
-            "А": "Point-contact diode",
-            "Б": "Zener diode",
-            "В": "Junction diode",
-            "Г": "Tunnel diode"
+            "correct_answer": "D",
+            "A": "Point-contact diode",
+            "B": "Zener diode",
+            "C": "Junction diode",
+            "D": "Tunnel diode"
         },
         {
             "question_number": 35,
             "question_body": "What is the most common use of a PIN diode?",
-            "correct_answer": "В",
-            "А": "As a constant current source",
-            "Б": "As a constant voltage source",
-            "В": "As a high-frequency switch",
-            "Г": "As a high-voltage rectifier"
+            "correct_answer": "C",
+            "A": "As a constant current source",
+            "B": "As a constant voltage source",
+            "C": "As a high-frequency switch",
+            "D": "As a high-voltage rectifier"
         },
         {
             "question_number": 36,
             "question_body": "What is the abbreviation for a liquid crystal display?",
-            "correct_answer": "Б",
-            "А": "LED",
-            "Б": "LCD",
-            "В": "PC",
-            "Г": "CMOS"
+            "correct_answer": "B",
+            "A": "LED",
+            "B": "LCD",
+            "C": "PC",
+            "D": "CMOS"
         },
         {
             "question_number": 37,
             "question_body": "What is the internal photoelectric effect?",
-            "correct_answer": "Б",
-            "А": "Conversion of photon energy into electrical energy",
-            "Б": "Change in conductivity of an illuminated semiconductor junction",
-            "В": "Conversion of electrical energy into photon energy",
-            "Г": "Change in capacitance of an illuminated semiconductor junction"
+            "correct_answer": "B",
+            "A": "Conversion of photon energy into electrical energy",
+            "B": "Change in conductivity of an illuminated semiconductor junction",
+            "C": "Conversion of electrical energy into photon energy",
+            "D": "Change in capacitance of an illuminated semiconductor junction"
         },
         {
             "question_number": 38,
             "question_body": "What happens to the conductivity of a photoelectric device when it is illuminated?",
-            "correct_answer": "А",
-            "А": "It increases",
-            "Б": "It decreases",
-            "В": "It does not change",
-            "Г": "It becomes zero"
+            "correct_answer": "A",
+            "A": "It increases",
+            "B": "It decreases",
+            "C": "It does not change",
+            "D": "It becomes zero"
         },
         {
             "question_number": 39,
             "question_body": "What happens to the resistance of a photoelectric device when it is illuminated?",
-            "correct_answer": "Б",
-            "А": "It increases",
-            "Б": "It decreases",
-            "В": "It does not change",
-            "Г": "It becomes zero"
+            "correct_answer": "B",
+            "A": "It increases",
+            "B": "It decreases",
+            "C": "It does not change",
+            "D": "It becomes zero"
         },
         {
             "question_number": 40,
             "question_body": "What is an optocoupler?",
-            "correct_answer": "Г",
-            "А": "A resistor and capacitor",
-            "Б": "An amplitude-modulated helium-neon laser",
-            "В": "A frequency-modulated helium-neon laser",
-            "Г": "A light-emitting diode and phototransistor"
+            "correct_answer": "D",
+            "A": "A resistor and capacitor",
+            "B": "An amplitude-modulated helium-neon laser",
+            "C": "A frequency-modulated helium-neon laser",
+            "D": "A light-emitting diode and phototransistor"
         },
         {
             "question_number": 41,
             "question_body": "What basic property of a Zener diode determines its application?",
-            "correct_answer": "Б",
-            "А": "A region in the characteristic with constant current at changing voltage",
-            "Б": "A region in the characteristic with constant voltage at changing current",
-            "В": "A region in the characteristic with negative resistance",
-            "Г": "Internal capacitance that changes according to the applied voltage"
+            "correct_answer": "B",
+            "A": "A region in the characteristic with constant current at changing voltage",
+            "B": "A region in the characteristic with constant voltage at changing current",
+            "C": "A region in the characteristic with negative resistance",
+            "D": "Internal capacitance that changes according to the applied voltage"
         },
         {
             "question_number": 42,
             "question_body": "What type of semiconductor diode significantly changes its internal capacitance with changes in applied voltage?",
-            "correct_answer": "А",
-            "А": "Varicap",
-            "Б": "Tunnel diode",
-            "В": "Zener diode",
-            "Г": "Silicon diode"
+            "correct_answer": "A",
+            "A": "Varicap",
+            "B": "Tunnel diode",
+            "C": "Zener diode",
+            "D": "Silicon diode"
         },
         {
             "question_number": 43,
             "question_body": "What is the most common use of a varicap?",
-            "correct_answer": "Г",
-            "А": "As a constant current source",
-            "Б": "As a constant voltage source",
-            "В": "As a variable inductance",
-            "Г": "As a variable capacitance"
+            "correct_answer": "D",
+            "A": "As a constant current source",
+            "B": "As a constant voltage source",
+            "C": "As a variable inductance",
+            "D": "As a variable capacitance"
         },
         {
             "question_number": 44,
             "question_body": "What is the most common use of a point-contact diode?",
-            "correct_answer": "В",
-            "А": "As a constant current source",
-            "Б": "As a constant voltage source",
-            "В": "As a high-frequency detector",
-            "Г": "As a high-voltage rectifier"
+            "correct_answer": "C",
+            "A": "As a constant current source",
+            "B": "As a constant voltage source",
+            "C": "As a high-frequency detector",
+            "D": "As a high-voltage rectifier"
         },
         {
             "question_number": 45,
             "question_body": "What does the parameter $\\beta$ (beta) of a bipolar transistor mean?",
-            "correct_answer": "А",
-            "А": "The change in collector current relative to the change in base current",
-            "Б": "The change in base current relative to the change in emitter current",
-            "В": "The change in collector current relative to the change in emitter current",
-            "Г": "The change in collector voltage relative to the change in emitter voltage"
+            "correct_answer": "A",
+            "A": "The change in collector current relative to the change in base current",
+            "B": "The change in base current relative to the change in emitter current",
+            "C": "The change in collector current relative to the change in emitter current",
+            "D": "The change in collector voltage relative to the change in emitter voltage"
         },
         {
             "question_number": 46,
             "question_body": "Which parameter of a bipolar transistor represents the ratio between the change in collector current and the change in its base current?",
-            "correct_answer": "Б",
-            "А": "Alpha ($\\alpha$)",
-            "Б": "Beta ($\\beta$)",
-            "В": "Gamma ($\\gamma$)",
-            "Г": "Delta ($\\delta$)"
+            "correct_answer": "B",
+            "A": "Alpha ($\\alpha$)",
+            "B": "Beta ($\\beta$)",
+            "C": "Gamma ($\\gamma$)",
+            "D": "Delta ($\\delta$)"
         },
         {
             "question_number": 47,
             "question_body": "What is the main advantage of a field-effect transistor over a bipolar transistor?",
-            "correct_answer": "А",
-            "А": "The field-effect transistor has much higher input impedance",
-            "Б": "The field-effect transistor has much lower input impedance",
-            "В": "The field-effect transistor has much higher frequency response",
-            "Г": "The field-effect transistor is much cheaper"
+            "correct_answer": "A",
+            "A": "The field-effect transistor has much higher input impedance",
+            "B": "The field-effect transistor has much lower input impedance",
+            "C": "The field-effect transistor has much higher frequency response",
+            "D": "The field-effect transistor is much cheaper"
         },
         {
             "question_number": 48,
             "question_body": "What is the main advantage of CMOS devices over others?",
-            "correct_answer": "Б",
-            "А": "Much smaller size",
-            "Б": "Much lower power consumption",
-            "В": "Much lower price",
-            "Г": "Much higher maximum reverse voltage"
+            "correct_answer": "B",
+            "A": "Much smaller size",
+            "B": "Much lower power consumption",
+            "C": "Much lower price",
+            "D": "Much higher maximum reverse voltage"
         },
         {
             "question_number": 49,
             "question_body": "What is an AND logic gate?",
-            "correct_answer": "А",
-            "А": "One that has a logical one at the output if all inputs have a logical one",
-            "Б": "One that has a logical one at the output if any input has a logical one",
-            "В": "One that has a logical one at the output if all inputs have a logical zero",
-            "Г": "One that has a logical one at the output if any input has a logical zero"
+            "correct_answer": "A",
+            "A": "One that has a logical one at the output if all inputs have a logical one",
+            "B": "One that has a logical one at the output if any input has a logical one",
+            "C": "One that has a logical one at the output if all inputs have a logical zero",
+            "D": "One that has a logical one at the output if any input has a logical zero"
         },
         {
             "question_number": 50,
             "question_body": "What is an OR logic gate?",
-            "correct_answer": "Б",
-            "А": "One that has a logical one at the output if all inputs have a logical one",
-            "Б": "One that has a logical one at the output if any input has a logical one",
-            "В": "One that has a logical one at the output if all inputs have a logical zero",
-            "Г": "One that has a logical one at the output if any input has a logical zero"
+            "correct_answer": "B",
+            "A": "One that has a logical one at the output if all inputs have a logical one",
+            "B": "One that has a logical one at the output if any input has a logical one",
+            "C": "One that has a logical one at the output if all inputs have a logical zero",
+            "D": "One that has a logical one at the output if any input has a logical zero"
         },
         {
             "question_number": 51,
             "question_body": "What is a NOT logic gate?",
-            "correct_answer": "В",
-            "А": "One that has a logical zero at the output if all inputs have a logical one",
-            "Б": "One that has a logical zero at the output if any input has a logical one",
-            "В": "One that has a logical zero at the output if the input has a logical one (or vice versa)",
-            "Г": "One that has a logical one at the output if the input has a logical one (or vice versa)"
+            "correct_answer": "C",
+            "A": "One that has a logical zero at the output if all inputs have a logical one",
+            "B": "One that has a logical zero at the output if any input has a logical one",
+            "C": "One that has a logical zero at the output if the input has a logical one (or vice versa)",
+            "D": "One that has a logical one at the output if the input has a logical one (or vice versa)"
         },
         {
             "question_number": 52,
             "question_body": "What is a NOR logic gate?",
-            "correct_answer": "Г",
-            "А": "One that has a logical one at the output if all inputs have a logical one",
-            "Б": "One that has a logical one at the output if any input has a logical one",
-            "В": "One that has a logical zero at the output if all inputs have a logical one",
-            "Г": "One that has a logical zero at the output if any or all inputs have a logical one"
+            "correct_answer": "D",
+            "A": "One that has a logical one at the output if all inputs have a logical one",
+            "B": "One that has a logical one at the output if any input has a logical one",
+            "C": "One that has a logical zero at the output if all inputs have a logical one",
+            "D": "One that has a logical zero at the output if any or all inputs have a logical one"
         },
         {
             "question_number": 53,
             "question_body": "What is a NAND logic gate?",
-            "correct_answer": "В",
-            "А": "One that has a logical one at the output if all inputs have a logical one",
-            "Б": "One that has a logical one at the output if any input has a logical one",
-            "В": "One that has a logical zero at the output if all inputs have a logical one",
-            "Г": "One that has a logical zero at the output if any input has a logical one"
+            "correct_answer": "C",
+            "A": "One that has a logical one at the output if all inputs have a logical one",
+            "B": "One that has a logical one at the output if any input has a logical one",
+            "C": "One that has a logical zero at the output if all inputs have a logical one",
+            "D": "One that has a logical zero at the output if any input has a logical one"
         },
         {
             "question_number": 54,
             "question_body": "What is the phenomenon where the voltage across an inductor connected in series with a capacitor is greater than the total voltage of the circuit?",
-            "correct_answer": "В",
-            "А": "Large time constant",
-            "Б": "Dissonance",
-            "В": "Resonance",
-            "Г": "Negative resistance"
+            "correct_answer": "C",
+            "A": "Large time constant",
+            "B": "Dissonance",
+            "C": "Resonance",
+            "D": "Negative resistance"
         },
         {
             "question_number": 55,
             "question_body": "What is the resonant frequency of an oscillating circuit?",
-            "correct_answer": "В",
-            "А": "The maximum frequency that the circuit passes",
-            "Б": "The minimum frequency that the circuit passes",
-            "В": "The frequency at which the capacitive reactance equals the inductive reactance",
-            "Г": "The frequency at which the current through the circuit changes direction"
+            "correct_answer": "C",
+            "A": "The maximum frequency that the circuit passes",
+            "B": "The minimum frequency that the circuit passes",
+            "C": "The frequency at which the capacitive reactance equals the inductive reactance",
+            "D": "The frequency at which the current through the circuit changes direction"
         },
         {
             "question_number": 56,
             "question_body": "What happens to the current through a series R-L-C circuit at resonance?",
-            "correct_answer": "Б",
-            "А": "It becomes minimum",
-            "Б": "It becomes maximum",
-            "В": "It becomes constant",
-            "Г": "It becomes zero"
+            "correct_answer": "B",
+            "A": "It becomes minimum",
+            "B": "It becomes maximum",
+            "C": "It becomes constant",
+            "D": "It becomes zero"
         },
         {
             "question_number": 57,
             "question_body": "What happens to the total current through a parallel R-L-C circuit at resonance?",
-            "correct_answer": "А",
-            "А": "It becomes minimum",
-            "Б": "It becomes maximum",
-            "В": "It becomes constant",
-            "Г": "It becomes zero"
+            "correct_answer": "A",
+            "A": "It becomes minimum",
+            "B": "It becomes maximum",
+            "C": "It becomes constant",
+            "D": "It becomes zero"
         },
         {
             "question_number": 58,
             "question_body": "Which formula is used to calculate the resonant frequency of a parallel L-C oscillating circuit?",
-            "correct_answer": "Г",
-            "А": "$f = 1 / LC$",
-            "Б": "$f = LC$",
-            "В": "$f = 2\\pi \\sqrt{LC}$",
-            "Г": "$f = \\frac{1}{2\\pi\\sqrt{LC}}$"
+            "correct_answer": "D",
+            "A": "$f = 1 / LC$",
+            "B": "$f = LC$",
+            "C": "$f = 2\\pi \\sqrt{LC}$",
+            "D": "$f = \\frac{1}{2\\pi\\sqrt{LC}}$"
         },
         {
             "question_number": 59,
             "question_body": "What is the resonant frequency of a parallel oscillating circuit with a capacitance of 40 pF and an inductance of 50 µH?",
-            "correct_answer": "Б",
-            "А": "Approximately 1.8 MHz",
-            "Б": "Approximately 3.5 MHz",
-            "В": "Approximately 7 MHz",
-            "Г": "Approximately 14 MHz"
+            "correct_answer": "B",
+            "A": "Approximately 1.8 MHz",
+            "B": "Approximately 3.5 MHz",
+            "C": "Approximately 7 MHz",
+            "D": "Approximately 14 MHz"
         },
         {
             "question_number": 60,
             "question_body": "What is the resonant frequency of a parallel oscillating circuit with a capacitance of 200 pF and an inductance of 40 µH?",
-            "correct_answer": "Б",
-            "А": "Approximately 3.5 MHz",
-            "Б": "Approximately 1.8 MHz",
-            "В": "Approximately 3.5 kHz",
-            "Г": "Approximately 1.8 kHz"
+            "correct_answer": "B",
+            "A": "Approximately 3.5 MHz",
+            "B": "Approximately 1.8 MHz",
+            "C": "Approximately 3.5 kHz",
+            "D": "Approximately 1.8 kHz"
         },
         {
             "question_number": 61,
             "question_body": "What is the resonant frequency of a series oscillating circuit with a capacitance of 10 pF and an inductance of 50 µH?",
-            "correct_answer": "Б",
-            "А": "Approximately 3.5 MHz",
-            "Б": "Approximately 7 MHz",
-            "В": "Approximately 3.5 kHz",
-            "Г": "Approximately 7 kHz"
+            "correct_answer": "B",
+            "A": "Approximately 3.5 MHz",
+            "B": "Approximately 7 MHz",
+            "C": "Approximately 3.5 kHz",
+            "D": "Approximately 7 kHz"
         },
         {
             "question_number": 62,
             "question_body": "What is the resonant frequency of a series oscillating circuit with a capacitance of 500 pF and an inductance of 24 mH?",
-            "correct_answer": "Б",
-            "А": "Approximately 4 MHz",
-            "Б": "Approximately 40 kHz",
-            "В": "Approximately 4 kHz",
-            "Г": "Approximately 400 Hz"
+            "correct_answer": "B",
+            "A": "Approximately 4 MHz",
+            "B": "Approximately 40 kHz",
+            "C": "Approximately 4 kHz",
+            "D": "Approximately 400 Hz"
         },
         {
             "question_number": 63,
             "question_body": "Which formula is used to calculate the quality factor Q of a parallel R-C-L oscillating circuit given the resistive R and reactive X impedance?",
-            "correct_answer": "Б",
-            "А": "$Q = R X$",
-            "Б": "$Q = R/X$",
-            "В": "$Q = 2\\pi RX$",
-            "Г": "$Q = R/2\\pi X$"
+            "correct_answer": "B",
+            "A": "$Q = R X$",
+            "B": "$Q = R/X$",
+            "C": "$Q = 2\\pi RX$",
+            "D": "$Q = R/2\\pi X$"
         },
         {
             "question_number": 64,
             "question_body": "What is the quality factor Q of a parallel R-C-L oscillating circuit if its resonant frequency f is 14.000 MHz, inductance L is 3 µH, and resistor R is 20 kΩ?",
-            "correct_answer": "А",
-            "А": "Approximately 76",
-            "Б": "Approximately 7.6",
-            "В": "Approximately 13",
-            "Г": "Approximately 130"
+            "correct_answer": "A",
+            "A": "Approximately 76",
+            "B": "Approximately 7.6",
+            "C": "Approximately 13",
+            "D": "Approximately 130"
         },
         {
             "question_number": 65,
             "question_body": "What is the quality factor Q of a parallel R-C-L oscillating circuit if its resonant frequency f is 7.000 MHz, capacitor C is 63 pF, and resistor R is 1 kΩ?",
-            "correct_answer": "В",
-            "А": "Approximately 3.6",
-            "Б": "Approximately 36",
-            "В": "Approximately 2.8",
-            "Г": "Approximately 28"
+            "correct_answer": "C",
+            "A": "Approximately 3.6",
+            "B": "Approximately 36",
+            "C": "Approximately 2.8",
+            "D": "Approximately 28"
         },
         {
             "question_number": 66,
             "question_body": "In what unit is the quality factor of a circuit measured?",
-            "correct_answer": "Г",
-            "А": "Ohm",
-            "Б": "Hertz",
-            "В": "Second",
-            "Г": "It is a dimensionless quantity"
+            "correct_answer": "D",
+            "A": "Ohm",
+            "B": "Hertz",
+            "C": "Second",
+            "D": "It is a dimensionless quantity"
         },
         {
             "question_number": 67,
             "question_body": "Which formula is used to calculate the bandwidth $\\Delta f$ of an oscillating circuit at resonance given the resonant frequency $f_p$ and quality factor Q?",
-            "correct_answer": "А",
-            "А": "$\\Delta f = f_p/Q$",
-            "Б": "$\\Delta f = Q/f_p$",
-            "В": "$\\Delta f = 0.5 f_p Q$",
-            "Г": "$\\Delta f = f_p Q^2$"
+            "correct_answer": "A",
+            "A": "$\\Delta f = f_p/Q$",
+            "B": "$\\Delta f = Q/f_p$",
+            "C": "$\\Delta f = 0.5 f_p Q$",
+            "D": "$\\Delta f = f_p Q^2$"
         },
         {
             "question_number": 68,
             "question_body": "What is the bandwidth of a parallel resonant circuit with resonant frequency f = 1.8 MHz and circuit quality factor Q = 100?",
-            "correct_answer": "А",
-            "А": "18 kHz",
-            "Б": "1.8 kHz",
-            "В": "180 Hz",
-            "Г": "18 Hz"
+            "correct_answer": "A",
+            "A": "18 kHz",
+            "B": "1.8 kHz",
+            "C": "180 Hz",
+            "D": "18 Hz"
         },
         {
             "question_number": 69,
             "question_body": "What is the bandwidth of a parallel resonant circuit with resonant frequency f = 3.6 MHz and circuit quality factor Q = 200?",
-            "correct_answer": "Г",
-            "А": "72 kHz",
-            "Б": "720 Hz",
-            "В": "180 Hz",
-            "Г": "18 kHz"
+            "correct_answer": "D",
+            "A": "72 kHz",
+            "B": "720 Hz",
+            "C": "180 Hz",
+            "D": "18 kHz"
         },
         {
             "question_number": 70,
             "question_body": "What is the bandwidth of a parallel resonant circuit with resonant frequency f = 14.100 MHz and circuit quality factor Q = 141?",
-            "correct_answer": "Б",
-            "А": "10 kHz",
-            "Б": "100 kHz",
-            "В": "20 kHz",
-            "Г": "200 kHz"
+            "correct_answer": "B",
+            "A": "10 kHz",
+            "B": "100 kHz",
+            "C": "20 kHz",
+            "D": "200 kHz"
         },
         {
             "question_number": 71,
             "question_body": "What are the main groups of filters according to their passband?",
-            "correct_answer": "А",
-            "А": "Low-pass, high-pass, band-pass",
-            "Б": "Inductive, capacitive, resistive",
-            "В": "Audio, radio, video",
-            "Г": "Tube, transistor, integrated circuit"
+            "correct_answer": "A",
+            "A": "Low-pass, high-pass, band-pass",
+            "B": "Inductive, capacitive, resistive",
+            "C": "Audio, radio, video",
+            "D": "Tube, transistor, integrated circuit"
         },
         {
             "question_number": 72,
             "question_body": "What is an L-filter (L-section)?",
-            "correct_answer": "Б",
-            "А": "A group of two inductors and two capacitors",
-            "Б": "A group of an inductor and a capacitor",
-            "В": "A group of an inductor and two capacitors",
-            "Г": "A group of two inductors and a capacitor"
+            "correct_answer": "B",
+            "A": "A group of two inductors and two capacitors",
+            "B": "A group of an inductor and a capacitor",
+            "C": "A group of an inductor and two capacitors",
+            "D": "A group of two inductors and a capacitor"
         },
         {
             "question_number": 73,
             "question_body": "What is a Pi-filter (Pi-section)?",
-            "correct_answer": "Г",
-            "А": "A group of three inductors or three capacitors",
-            "Б": "An antenna matching group isolated from the chassis",
-            "В": "An equivalent load for tuning the final stage",
-            "Г": "A group of capacitor-inductor-capacitor or inductor-capacitor-inductor"
+            "correct_answer": "D",
+            "A": "A group of three inductors or three capacitors",
+            "B": "An antenna matching group isolated from the chassis",
+            "C": "An equivalent load for tuning the final stage",
+            "D": "A group of capacitor-inductor-capacitor or inductor-capacitor-inductor"
         },
         {
             "question_number": 74,
             "question_body": "What is a T-filter (T-section)?",
-            "correct_answer": "В",
-            "А": "A group of three inductors or three capacitors",
-            "Б": "An equivalent load for tuning the final stage",
-            "В": "A group of capacitor-inductor-capacitor or inductor-capacitor-inductor",
-            "Г": "Another popular name for an SWR meter"
+            "correct_answer": "C",
+            "A": "A group of three inductors or three capacitors",
+            "B": "An equivalent load for tuning the final stage",
+            "C": "A group of capacitor-inductor-capacitor or inductor-capacitor-inductor",
+            "D": "Another popular name for an SWR meter"
         },
         {
             "question_number": 75,
             "question_body": "How do L-C circuits transform one impedance to another?",
-            "correct_answer": "Г",
-            "А": "The resistances participating in the circuits are subtracted from the load resistance",
-            "Б": "The L-C sections introduce negative resistance into the load",
-            "В": "The L-C sections introduce reactive resistance into the load",
-            "Г": "The L-C sections cancel the reactive component and change the active component of the impedance"
+            "correct_answer": "D",
+            "A": "The resistances participating in the circuits are subtracted from the load resistance",
+            "B": "The L-C sections introduce negative resistance into the load",
+            "C": "The L-C sections introduce reactive resistance into the load",
+            "D": "The L-C sections cancel the reactive component and change the active component of the impedance"
         },
         {
             "question_number": 76,
             "question_body": "What is the procedure for tuning a final stage with a Pi-filter to the antenna?",
-            "correct_answer": "В",
-            "А": "The capacitor to the antenna is adjusted to maximum capacitance, then the capacitor to the final stage achieves minimum current through the stage",
-            "Б": "The capacitor to the final stage is adjusted to maximum capacitance, then the capacitor to the antenna achieves minimum current through the stage",
-            "В": "The current through the stage is successively increased through the capacitor to the antenna and minimum current is achieved through the capacitor to the final stage",
-            "Г": "The current through the stage is successively increased through the capacitor to the final stage and minimum current is achieved through the capacitor to the antenna"
+            "correct_answer": "C",
+            "A": "The capacitor to the antenna is adjusted to maximum capacitance, then the capacitor to the final stage achieves minimum current through the stage",
+            "B": "The capacitor to the final stage is adjusted to maximum capacitance, then the capacitor to the antenna achieves minimum current through the stage",
+            "C": "The current through the stage is successively increased through the capacitor to the antenna and minimum current is achieved through the capacitor to the final stage",
+            "D": "The current through the stage is successively increased through the capacitor to the final stage and minimum current is achieved through the capacitor to the antenna"
         },
         {
             "question_number": 77,
             "question_body": "What is an operational amplifier?",
-            "correct_answer": "А",
-            "А": "A differential amplifier with high gain whose characteristics are determined by externally connected components",
-            "Б": "An audio amplifier with high gain whose characteristics are determined by externally connected components",
-            "В": "An amplifier used in computers for mathematical operations",
-            "Г": "A computer program that calculates the gain of RF amplifiers"
+            "correct_answer": "A",
+            "A": "A differential amplifier with high gain whose characteristics are determined by externally connected components",
+            "B": "An audio amplifier with high gain whose characteristics are determined by externally connected components",
+            "C": "An amplifier used in computers for mathematical operations",
+            "D": "A computer program that calculates the gain of RF amplifiers"
         },
         {
             "question_number": 78,
             "question_body": "What characteristics does an ideal operational amplifier possess?",
-            "correct_answer": "Б",
-            "А": "Zero input impedance, infinitely large output impedance, infinitely large gain, linear frequency response",
-            "Б": "Infinitely large input impedance, zero output impedance, infinitely large gain, linear frequency response",
-            "В": "Zero input impedance, zero output impedance, infinitely large gain, linear frequency response",
-            "Г": "Infinitely large input impedance, infinitely large output impedance, infinitely large gain, linear frequency response"
+            "correct_answer": "B",
+            "A": "Zero input impedance, infinitely large output impedance, infinitely large gain, linear frequency response",
+            "B": "Infinitely large input impedance, zero output impedance, infinitely large gain, linear frequency response",
+            "C": "Zero input impedance, zero output impedance, infinitely large gain, linear frequency response",
+            "D": "Infinitely large input impedance, infinitely large output impedance, infinitely large gain, linear frequency response"
         },
         {
             "question_number": 79,
             "question_body": "What primarily determines the gain of an operational amplifier?",
-            "correct_answer": "А",
-            "А": "External feedback",
-            "Б": "The collector-base capacitances in the p-n junctions",
-            "В": "The applied supply voltage",
-            "Г": "The output load"
+            "correct_answer": "A",
+            "A": "External feedback",
+            "B": "The collector-base capacitances in the p-n junctions",
+            "C": "The applied supply voltage",
+            "D": "The output load"
         },
         {
             "question_number": 80,
             "question_body": "What is the input impedance of a theoretically ideal operational amplifier?",
-            "correct_answer": "Г",
-            "А": "100 Ω",
-            "Б": "100 kΩ",
-            "В": "0 Ω",
-            "Г": "Infinitely large"
+            "correct_answer": "D",
+            "A": "100 Ω",
+            "B": "100 kΩ",
+            "C": "0 Ω",
+            "D": "Infinitely large"
         },
         {
             "question_number": 81,
             "question_body": "What is the output impedance of a theoretically ideal operational amplifier?",
-            "correct_answer": "В",
-            "А": "100 Ω",
-            "Б": "100 kΩ",
-            "В": "0 Ω",
-            "Г": "Infinitely large"
+            "correct_answer": "C",
+            "A": "100 Ω",
+            "B": "100 kΩ",
+            "C": "0 Ω",
+            "D": "Infinitely large"
         },
         {
             "question_number": 82,
             "question_body": "What is the advantage of using an active audio filter implemented with an operational amplifier instead of a passive one with LC elements?",
-            "correct_answer": "Г",
-            "А": "The operational amplifier withstands greater overload",
-            "Б": "We can easily purchase an operational amplifier tuned to the desired frequency",
-            "В": "The operational amplifier is temperature independent",
-            "Г": "The operational amplifier amplifies instead of introducing losses"
+            "correct_answer": "D",
+            "A": "The operational amplifier withstands greater overload",
+            "B": "We can easily purchase an operational amplifier tuned to the desired frequency",
+            "C": "The operational amplifier is temperature independent",
+            "D": "The operational amplifier amplifies instead of introducing losses"
         },
         {
             "question_number": 83,
             "question_body": "What is an inverting operational amplifier?",
-            "correct_answer": "В",
-            "А": "One where the input impedance is very small and the output impedance is very large",
-            "Б": "One where the input and output signals have a phase difference of 90°",
-            "В": "One where the input and output signals have a phase difference of 180°",
-            "Г": "One where the input and output signals are in phase"
+            "correct_answer": "C",
+            "A": "One where the input impedance is very small and the output impedance is very large",
+            "B": "One where the input and output signals have a phase difference of 90°",
+            "C": "One where the input and output signals have a phase difference of 180°",
+            "D": "One where the input and output signals are in phase"
         },
         {
             "question_number": 84,
             "question_body": "What is a non-inverting operational amplifier?",
-            "correct_answer": "Г",
-            "А": "One where both the input and output impedances are very large",
-            "Б": "One where the input and output signals have a phase difference of 90°",
-            "В": "One where the input and output signals have a phase difference of 180°",
-            "Г": "One where the input and output signals are in phase"
+            "correct_answer": "D",
+            "A": "One where both the input and output impedances are very large",
+            "B": "One where the input and output signals have a phase difference of 90°",
+            "C": "One where the input and output signals have a phase difference of 180°",
+            "D": "One where the input and output signals are in phase"
         },
         {
             "question_number": 85,
             "question_body": "What is a differential amplifier?",
-            "correct_answer": "В",
-            "А": "One that maintains constant output voltage if one constant and one variable voltage are applied to the two inputs",
-            "Б": "One where the output signal is divided equally between the two outputs",
-            "В": "One where the output signal is proportional to the difference between the signals at the two inputs",
-            "Г": "One where the output has a logical one only when the two inputs have one logical one and one logical zero"
+            "correct_answer": "C",
+            "A": "One that maintains constant output voltage if one constant and one variable voltage are applied to the two inputs",
+            "B": "One where the output signal is divided equally between the two outputs",
+            "C": "One where the output signal is proportional to the difference between the signals at the two inputs",
+            "D": "One where the output has a logical one only when the two inputs have one logical one and one logical zero"
         },
         {
             "question_number": 86,
             "question_body": "What determines the gain and frequency characteristics of an active RC filter implemented with an operational amplifier?",
-            "correct_answer": "Б",
-            "А": "The values of capacitances and resistances built into the operational amplifier",
-            "Б": "The values of capacitors and resistors connected externally to the operational amplifier",
-            "В": "The voltage and frequency of the input signal",
-            "Г": "The supply voltage of the operational amplifier"
+            "correct_answer": "B",
+            "A": "The values of capacitances and resistances built into the operational amplifier",
+            "B": "The values of capacitors and resistors connected externally to the operational amplifier",
+            "C": "The voltage and frequency of the input signal",
+            "D": "The supply voltage of the operational amplifier"
         },
         {
             "question_number": 87,
             "question_body": "What should the gain of the high-frequency amplifier in a receiver be?",
-            "correct_answer": "Б",
-            "А": "Limited to prevent self-oscillation",
-            "Б": "High enough so that weak signals exceed the noise generated in the first mixer",
-            "В": "High enough so that weak signals remain below the noise level generated in the first mixer",
-            "Г": "Inversely proportional to the gain in the intermediate frequency path"
+            "correct_answer": "B",
+            "A": "Limited to prevent self-oscillation",
+            "B": "High enough so that weak signals exceed the noise generated in the first mixer",
+            "C": "High enough so that weak signals remain below the noise level generated in the first mixer",
+            "D": "Inversely proportional to the gain in the intermediate frequency path"
         },
         {
             "question_number": 88,
             "question_body": "Which noise mainly affects the signal-to-noise ratio at the output of a receiver in the 1.8 MHz band?",
-            "correct_answer": "Г",
-            "А": "From the receiver's detector",
-            "Б": "From the receiver's high-frequency amplifier",
-            "В": "From human activity (industrial noise)",
-            "Г": "From the atmosphere"
+            "correct_answer": "D",
+            "A": "From the receiver's detector",
+            "B": "From the receiver's high-frequency amplifier",
+            "C": "From human activity (industrial noise)",
+            "D": "From the atmosphere"
         },
         {
             "question_number": 89,
             "question_body": "Which noise mainly affects the signal-to-noise ratio at the output of a receiver in the 144 MHz band?",
-            "correct_answer": "Б",
-            "А": "From human activity (industrial noise)",
-            "Б": "From the receiver's high-frequency amplifier",
-            "В": "From the ionosphere",
-            "Г": "From the atmosphere"
+            "correct_answer": "B",
+            "A": "From human activity (industrial noise)",
+            "B": "From the receiver's high-frequency amplifier",
+            "C": "From the ionosphere",
+            "D": "From the atmosphere"
         },
         {
             "question_number": 90,
             "question_body": "Which noise mainly affects the signal-to-noise ratio at the output of a receiver for the 432 MHz band?",
-            "correct_answer": "Б",
-            "А": "From the receiver's detector",
-            "Б": "From the receiver's high-frequency amplifier",
-            "В": "From the ionosphere",
-            "Г": "From the atmosphere"
+            "correct_answer": "B",
+            "A": "From the receiver's detector",
+            "B": "From the receiver's high-frequency amplifier",
+            "C": "From the ionosphere",
+            "D": "From the atmosphere"
         },
         {
             "question_number": 91,
             "question_body": "What is meant by the noise figure of a receiver?",
-            "correct_answer": "В",
-            "А": "The level of noise entering the receiver from the antenna",
-            "Б": "The receiver's ability to suppress unwanted signals on nearby frequencies",
-            "В": "The level of noise generated in the receiver",
-            "Г": "The signal level that exceeds the noise level three times"
+            "correct_answer": "C",
+            "A": "The level of noise entering the receiver from the antenna",
+            "B": "The receiver's ability to suppress unwanted signals on nearby frequencies",
+            "C": "The level of noise generated in the receiver",
+            "D": "The signal level that exceeds the noise level three times"
         },
         {
             "question_number": 92,
             "question_body": "Which two factors determine the sensitivity of a receiver?",
-            "correct_answer": "Г",
-            "А": "Selectivity to harmonic components and linearity of the audio amplifier",
-            "Б": "Its price and availability in the retail network",
-            "В": "Its intermodulation characteristics and dynamic range",
-            "Г": "The width of the received band and the noise figure"
+            "correct_answer": "D",
+            "A": "Selectivity to harmonic components and linearity of the audio amplifier",
+            "B": "Its price and availability in the retail network",
+            "C": "Its intermodulation characteristics and dynamic range",
+            "D": "The width of the received band and the noise figure"
         },
         {
             "question_number": 93,
             "question_body": "Which stage of the receiver practically determines its noise figure?",
-            "correct_answer": "А",
-            "А": "The RF amplifier",
-            "Б": "The IF amplifier",
-            "В": "The audio amplifier",
-            "Г": "The oscillator"
+            "correct_answer": "A",
+            "A": "The RF amplifier",
+            "B": "The IF amplifier",
+            "C": "The audio amplifier",
+            "D": "The oscillator"
         },
         {
             "question_number": 94,
             "question_body": "What is mixing?",
-            "correct_answer": "Г",
-            "А": "Noise suppression in a wideband receiver by the phase comparison method",
-            "Б": "Noise suppression in a wideband receiver by the phase difference method",
-            "В": "Distortion caused by non-linear amplification",
-            "Г": "Processing of two signals to obtain the sum and difference of their frequencies"
+            "correct_answer": "D",
+            "A": "Noise suppression in a wideband receiver by the phase comparison method",
+            "B": "Noise suppression in a wideband receiver by the phase difference method",
+            "C": "Distortion caused by non-linear amplification",
+            "D": "Processing of two signals to obtain the sum and difference of their frequencies"
         },
         {
             "question_number": 95,
             "question_body": "What are the frequencies of the signals at the mixer output?",
-            "correct_answer": "В",
-            "А": "Frequencies that are multiples (harmonics) of the input signal frequencies",
-            "Б": "Frequencies equal to the sum and difference of the input signal frequencies",
-            "В": "The frequencies of the input signals and their sum and difference",
-            "Г": "The frequencies of the input signals and their difference"
+            "correct_answer": "C",
+            "A": "Frequencies that are multiples (harmonics) of the input signal frequencies",
+            "B": "Frequencies equal to the sum and difference of the input signal frequencies",
+            "C": "The frequencies of the input signals and their sum and difference",
+            "D": "The frequencies of the input signals and their difference"
         },
         {
             "question_number": 96,
             "question_body": "What is an intermediate frequency stage?",
-            "correct_answer": "А",
-            "А": "A band amplifier with fixed tuning",
-            "Б": "The demodulator in a receiver",
-            "В": "A filter at the received frequency",
-            "Г": "A second oscillator"
+            "correct_answer": "A",
+            "A": "A band amplifier with fixed tuning",
+            "B": "The demodulator in a receiver",
+            "C": "A filter at the received frequency",
+            "D": "A second oscillator"
         },
         {
             "question_number": 97,
             "question_body": "What undesirable effect occurs when a wideband filter is used in the intermediate frequency path of a receiver?",
-            "correct_answer": "Б",
-            "А": "The audio amplifier is overloaded",
-            "Б": "Unwanted signals reach the audio amplifier",
-            "В": "Intermodulation interference occurs",
-            "Г": "It becomes impossible to receive telegraph signals"
+            "correct_answer": "B",
+            "A": "The audio amplifier is overloaded",
+            "B": "Unwanted signals reach the audio amplifier",
+            "C": "Intermodulation interference occurs",
+            "D": "It becomes impossible to receive telegraph signals"
         },
         {
             "question_number": 98,
             "question_body": "What is detection?",
-            "correct_answer": "Б",
-            "А": "A process of suppressing the carrier frequency",
-            "Б": "A process of recovering the information carrier from a modulated RF signal",
-            "В": "Mixing the received signal with noise",
-            "Г": "Mixing a DC and AC signal"
+            "correct_answer": "B",
+            "A": "A process of suppressing the carrier frequency",
+            "B": "A process of recovering the information carrier from a modulated RF signal",
+            "C": "Mixing the received signal with noise",
+            "D": "Mixing a DC and AC signal"
         },
         {
             "question_number": 99,
             "question_body": "What is the operating principle of a diode detector?",
-            "correct_answer": "В",
-            "А": "It has different reactive impedance for different frequencies",
-            "Б": "It mixes the signal with a sub-carrier frequency",
-            "В": "It rectifies and filters the signal",
-            "Г": "It converts the digital signal to analog"
+            "correct_answer": "C",
+            "A": "It has different reactive impedance for different frequencies",
+            "B": "It mixes the signal with a sub-carrier frequency",
+            "C": "It rectifies and filters the signal",
+            "D": "It converts the digital signal to analog"
         },
         {
             "question_number": 100,
             "question_body": "What is a product detector?",
-            "correct_answer": "В",
-            "А": "A detector that requires an oscillator connected to the mixer",
-            "Б": "A detector that amplifies the signal and narrows its bandwidth",
-            "В": "A detector that provides mixing of the signal with a locally generated carrier",
-            "Г": "A detector designed to detect the products of cross-modulation"
+            "correct_answer": "C",
+            "A": "A detector that requires an oscillator connected to the mixer",
+            "B": "A detector that amplifies the signal and narrows its bandwidth",
+            "C": "A detector that provides mixing of the signal with a locally generated carrier",
+            "D": "A detector designed to detect the products of cross-modulation"
         },
         {
             "question_number": 101,
             "question_body": "How is a signal with emission class F3E detected?",
-            "correct_answer": "Б",
-            "А": "By a balanced modulator",
-            "Б": "By a frequency discriminator",
-            "В": "By a product detector",
-            "Г": "By a high-voltage rectifier"
+            "correct_answer": "B",
+            "A": "By a balanced modulator",
+            "B": "By a frequency discriminator",
+            "C": "By a product detector",
+            "D": "By a high-voltage rectifier"
         },
         {
             "question_number": 102,
             "question_body": "What is a frequency discriminator?",
-            "correct_answer": "А",
-            "А": "A stage for detection of FM signals",
-            "Б": "A stage for filtering two signals close in frequency",
-            "В": "An FM generator",
-            "Г": "An automatic selector of the passed frequency band"
+            "correct_answer": "A",
+            "A": "A stage for detection of FM signals",
+            "B": "A stage for filtering two signals close in frequency",
+            "C": "An FM generator",
+            "D": "An automatic selector of the passed frequency band"
         },
         {
             "question_number": 103,
             "question_body": "What is the capture effect?",
-            "correct_answer": "В",
-            "А": "An FM receiver demodulates all signals at the frequency to which it is tuned",
-            "Б": "An AM receiver demodulates all signals at the frequency to which it is tuned",
-            "В": "Of all signals at the frequency to which it is tuned, only the signal with the highest level is demodulated",
-            "Г": "Of all signals at the frequency to which it is tuned, only the signal with the highest level is not demodulated"
+            "correct_answer": "C",
+            "A": "An FM receiver demodulates all signals at the frequency to which it is tuned",
+            "B": "An AM receiver demodulates all signals at the frequency to which it is tuned",
+            "C": "Of all signals at the frequency to which it is tuned, only the signal with the highest level is demodulated",
+            "D": "Of all signals at the frequency to which it is tuned, only the signal with the highest level is not demodulated"
         },
         {
             "question_number": 104,
             "question_body": "Which term is used to describe the phenomenon where one F3E signal blocks reception of another F3E signal on the same frequency?",
-            "correct_answer": "Б",
-            "А": "Receiver blocking",
-            "Б": "Capture effect",
-            "В": "Cross-modulation",
-            "Г": "Intermodulation interference"
+            "correct_answer": "B",
+            "A": "Receiver blocking",
+            "B": "Capture effect",
+            "C": "Cross-modulation",
+            "D": "Intermodulation interference"
         },
         {
             "question_number": 105,
             "question_body": "For which emission class is the capture effect most noticeable?",
-            "correct_answer": "А",
-            "А": "F3E",
-            "Б": "J3E",
-            "В": "A1A",
-            "Г": "A3E"
+            "correct_answer": "A",
+            "A": "F3E",
+            "B": "J3E",
+            "C": "A1A",
+            "D": "A3E"
         },
         {
             "question_number": 106,
             "question_body": "What is the characteristic feature of an amplifier operating in Class A mode?",
-            "correct_answer": "Б",
-            "А": "It is conducting for less than 180° of the signal period",
-            "Б": "It is conducting for the entire signal period (360°)",
-            "В": "It is conducting for more than 180° but less than 360° of the signal period",
-            "Г": "It is conducting for exactly 180° of the signal period"
+            "correct_answer": "B",
+            "A": "It is conducting for less than 180° of the signal period",
+            "B": "It is conducting for the entire signal period (360°)",
+            "C": "It is conducting for more than 180° but less than 360° of the signal period",
+            "D": "It is conducting for exactly 180° of the signal period"
         },
         {
             "question_number": 107,
             "question_body": "What is the characteristic feature of an amplifier operating in Class B mode?",
-            "correct_answer": "Г",
-            "А": "It is conducting for less than 180° of the signal period",
-            "Б": "It is conducting for the entire signal period (360°)",
-            "В": "It is conducting for more than 180° but less than 360° of the signal period",
-            "Г": "It is conducting for exactly 180° of the signal period"
+            "correct_answer": "D",
+            "A": "It is conducting for less than 180° of the signal period",
+            "B": "It is conducting for the entire signal period (360°)",
+            "C": "It is conducting for more than 180° but less than 360° of the signal period",
+            "D": "It is conducting for exactly 180° of the signal period"
         },
         {
             "question_number": 108,
             "question_body": "What is the characteristic feature of an amplifier operating in Class AB mode?",
-            "correct_answer": "В",
-            "А": "It is conducting for less than 180° of the signal period",
-            "Б": "It is conducting for the entire signal period (360°)",
-            "В": "It is conducting for more than 180° but less than 360° of the signal period",
-            "Г": "It is conducting for exactly 180° of the signal period"
+            "correct_answer": "C",
+            "A": "It is conducting for less than 180° of the signal period",
+            "B": "It is conducting for the entire signal period (360°)",
+            "C": "It is conducting for more than 180° but less than 360° of the signal period",
+            "D": "It is conducting for exactly 180° of the signal period"
         },
         {
             "question_number": 109,
             "question_body": "What is the characteristic feature of an amplifier operating in Class C mode?",
-            "correct_answer": "А",
-            "А": "It is conducting for less than 180° of the signal period",
-            "Б": "It is conducting for the entire signal period (360°)",
-            "В": "It is conducting for more than 180° but less than 360° of the signal period",
-            "Г": "It is conducting for exactly 180° of the signal period"
+            "correct_answer": "A",
+            "A": "It is conducting for less than 180° of the signal period",
+            "B": "It is conducting for the entire signal period (360°)",
+            "C": "It is conducting for more than 180° but less than 360° of the signal period",
+            "D": "It is conducting for exactly 180° of the signal period"
         },
         {
             "question_number": 110,
             "question_body": "In what mode is an amplifier operating if it is conducting for the entire signal period?",
-            "correct_answer": "А",
-            "А": "Class A",
-            "Б": "Class B",
-            "В": "Class C",
-            "Г": "Class AB"
+            "correct_answer": "A",
+            "A": "Class A",
+            "B": "Class B",
+            "C": "Class C",
+            "D": "Class AB"
         },
         {
             "question_number": 111,
             "question_body": "In what mode is an amplifier operating if it is conducting for 180° of the signal period?",
-            "correct_answer": "Б",
-            "А": "Class A",
-            "Б": "Class B",
-            "В": "Class C",
-            "Г": "Class AB"
+            "correct_answer": "B",
+            "A": "Class A",
+            "B": "Class B",
+            "C": "Class C",
+            "D": "Class AB"
         },
         {
             "question_number": 112,
             "question_body": "In what mode is an amplifier operating if it is conducting for less than 180° of the signal period?",
-            "correct_answer": "В",
-            "А": "Class A",
-            "Б": "Class B",
-            "В": "Class C",
-            "Г": "Class AB"
+            "correct_answer": "C",
+            "A": "Class A",
+            "B": "Class B",
+            "C": "Class C",
+            "D": "Class AB"
         },
         {
             "question_number": 113,
             "question_body": "In what mode is an amplifier operating if it is conducting for more than 180° but less than 360° of the signal period?",
-            "correct_answer": "Г",
-            "А": "Class A",
-            "Б": "Class B",
-            "В": "Class C",
-            "Г": "Class AB"
+            "correct_answer": "D",
+            "A": "Class A",
+            "B": "Class B",
+            "C": "Class C",
+            "D": "Class AB"
         },
         {
             "question_number": 114,
             "question_body": "In which mode does the amplifier have the best linearity and least distortion?",
-            "correct_answer": "А",
-            "А": "Class A",
-            "Б": "Class B",
-            "В": "Class C",
-            "Г": "Class D"
+            "correct_answer": "A",
+            "A": "Class A",
+            "B": "Class B",
+            "C": "Class C",
+            "D": "Class D"
         },
         {
             "question_number": 115,
             "question_body": "In which mode does the amplifier provide the greatest efficiency?",
-            "correct_answer": "В",
-            "А": "Class A",
-            "Б": "Class B",
-            "В": "Class C",
-            "Г": "Class AB"
+            "correct_answer": "C",
+            "A": "Class A",
+            "B": "Class B",
+            "C": "Class C",
+            "D": "Class AB"
         },
         {
             "question_number": 116,
             "question_body": "What does the term modulation mean?",
-            "correct_answer": "Г",
-            "А": "The product of linear amplification",
-            "Б": "Suppression of the carrier frequency",
-            "В": "The process of separating the low-frequency component from a complex signal",
-            "Г": "The process of processing the carrier frequency with the information carrier"
+            "correct_answer": "D",
+            "A": "The product of linear amplification",
+            "B": "Suppression of the carrier frequency",
+            "C": "The process of separating the low-frequency component from a complex signal",
+            "D": "The process of processing the carrier frequency with the information carrier"
         },
         {
             "question_number": 117,
             "question_body": "What is a balanced modulator?",
-            "correct_answer": "Б",
-            "А": "An FM modulator whose output signal has balanced deviation",
-            "Б": "A modulator whose output signal contains two sidebands and a suppressed carrier",
-            "В": "A modulator whose output signal contains one sideband and a suppressed carrier",
-            "Г": "A modulator whose output signal has an unsuppressed carrier"
+            "correct_answer": "B",
+            "A": "An FM modulator whose output signal has balanced deviation",
+            "B": "A modulator whose output signal contains two sidebands and a suppressed carrier",
+            "C": "A modulator whose output signal contains one sideband and a suppressed carrier",
+            "D": "A modulator whose output signal has an unsuppressed carrier"
         },
         {
             "question_number": 118,
             "question_body": "How is a signal with emission class F3E produced?",
-            "correct_answer": "В",
-            "А": "By modulating the supply voltage of a Class B amplifier",
-            "Б": "By modulating the supply voltage of a Class C amplifier",
-            "В": "By using a reactive modulator",
-            "Г": "By using a balanced modulator"
+            "correct_answer": "C",
+            "A": "By modulating the supply voltage of a Class B amplifier",
+            "B": "By modulating the supply voltage of a Class C amplifier",
+            "C": "By using a reactive modulator",
+            "D": "By using a balanced modulator"
         },
         {
             "question_number": 119,
             "question_body": "How is a signal with emission class A3E produced?",
-            "correct_answer": "Г",
-            "А": "By using a reactive modulator",
-            "Б": "By controlling the voltage on a varicap included in the oscillator circuit",
-            "В": "By a phase detector and filter in the feedback circuit",
-            "Г": "By modulating the supply voltage of a Class C amplifier"
+            "correct_answer": "D",
+            "A": "By using a reactive modulator",
+            "B": "By controlling the voltage on a varicap included in the oscillator circuit",
+            "C": "By a phase detector and filter in the feedback circuit",
+            "D": "By modulating the supply voltage of a Class C amplifier"
         },
         {
             "question_number": 120,
             "question_body": "How is a signal with emission class J3E produced?",
-            "correct_answer": "А",
-            "А": "By forming a signal with two sidebands through a balanced modulator and then eliminating the unwanted band with a filter",
-            "Б": "By forming a signal with two sidebands through a balanced modulator and then eliminating the unwanted band with a heterodyne",
-            "В": "By forming a signal with two sidebands through a balanced modulator and then eliminating the unwanted band with mixing",
-            "Г": "By forming a signal with two sidebands through a balanced modulator and then eliminating the unwanted band with neutralization"
+            "correct_answer": "A",
+            "A": "By forming a signal with two sidebands through a balanced modulator and then eliminating the unwanted band with a filter",
+            "B": "By forming a signal with two sidebands through a balanced modulator and then eliminating the unwanted band with a heterodyne",
+            "C": "By forming a signal with two sidebands through a balanced modulator and then eliminating the unwanted band with mixing",
+            "D": "By forming a signal with two sidebands through a balanced modulator and then eliminating the unwanted band with neutralization"
         },
         {
             "question_number": 121,
             "question_body": "What does modulation index mean?",
-            "correct_answer": "Б",
-            "А": "The signal-to-noise ratio of an FM receiver",
-            "Б": "The ratio of the deviation of a frequency-modulated signal to the modulating frequency",
-            "В": "The ratio of maximum deviation to the highest modulating audio frequency",
-            "Г": "The ratio of the highest modulating audio frequency to the modulated frequency"
+            "correct_answer": "B",
+            "A": "The signal-to-noise ratio of an FM receiver",
+            "B": "The ratio of the deviation of a frequency-modulated signal to the modulating frequency",
+            "C": "The ratio of maximum deviation to the highest modulating audio frequency",
+            "D": "The ratio of the highest modulating audio frequency to the modulated frequency"
         },
         {
             "question_number": 122,
             "question_body": "For emission class F3E with maximum deviation of 3000 Hz on both sides of the carrier frequency, what is the modulation index if the modulating frequency is 1000 Hz?",
-            "correct_answer": "А",
-            "А": "3",
-            "Б": "1/3",
-            "В": "4000",
-            "Г": "2000"
+            "correct_answer": "A",
+            "A": "3",
+            "B": "1/3",
+            "C": "4000",
+            "D": "2000"
         },
         {
             "question_number": 123,
             "question_body": "What is a reference frequency generator?",
-            "correct_answer": "Б",
-            "А": "A device for checking electromagnetic compatibility",
-            "Б": "A device that can generate a specific frequency with exceptional precision and is used to tune other generators",
-            "В": "A device that can generate the entire frequency spectrum",
-            "Г": "A device that can measure frequencies with 1 Hz accuracy"
+            "correct_answer": "B",
+            "A": "A device for checking electromagnetic compatibility",
+            "B": "A device that can generate a specific frequency with exceptional precision and is used to tune other generators",
+            "C": "A device that can generate the entire frequency spectrum",
+            "D": "A device that can measure frequencies with 1 Hz accuracy"
         },
         {
             "question_number": 124,
             "question_body": "With what maximum deviation will the actual frequency differ from the frequency meter display reading of 145 000 000 Hz if the instrument accuracy is ±1.0 ppm?",
-            "correct_answer": "В",
-            "А": "0.145 MHz",
-            "Б": "1.450 kHz",
-            "В": "145 Hz",
-            "Г": "14.5 Hz"
+            "correct_answer": "C",
+            "A": "0.145 MHz",
+            "B": "1.450 kHz",
+            "C": "145 Hz",
+            "D": "14.5 Hz"
         },
         {
             "question_number": 125,
             "question_body": "With what maximum deviation will the actual frequency differ from the frequency meter display reading of 433 600 000 Hz if the instrument accuracy is ±0.1 ppm?",
-            "correct_answer": "А",
-            "А": "43.36 Hz",
-            "Б": "433.6 Hz",
-            "В": "4.336 kHz",
-            "Г": "43.36 kHz"
+            "correct_answer": "A",
+            "A": "43.36 Hz",
+            "B": "433.6 Hz",
+            "C": "4.336 kHz",
+            "D": "43.36 kHz"
         },
         {
             "question_number": 126,
             "question_body": "With what maximum deviation will the actual frequency differ from the frequency meter display reading of 14.128 MHz if the instrument accuracy is ±10 ppm?",
-            "correct_answer": "В",
-            "А": "1.4128 Hz",
-            "Б": "14.128 Hz",
-            "В": "141.28 Hz",
-            "Г": "1.4128 kHz"
+            "correct_answer": "C",
+            "A": "1.4128 Hz",
+            "B": "14.128 Hz",
+            "C": "141.28 Hz",
+            "D": "1.4128 kHz"
         },
         {
             "question_number": 127,
             "question_body": "What do radio amateurs use a frequency meter for?",
-            "correct_answer": "А",
-            "А": "It can measure frequencies",
-            "Б": "It can generate standard frequencies",
-            "В": "As a frequency synthesizer in the amateur transmitter",
-            "Г": "For all three"
+            "correct_answer": "A",
+            "A": "It can measure frequencies",
+            "B": "It can generate standard frequencies",
+            "C": "As a frequency synthesizer in the amateur transmitter",
+            "D": "For all three"
         },
         {
             "question_number": 128,
             "question_body": "What do radio amateurs use a dip meter for?",
-            "correct_answer": "Г",
-            "А": "It can precisely measure signal strength",
-            "Б": "It can precisely measure frequency",
-            "В": "It can precisely measure output power",
-            "Г": "It can measure the resonant frequency of an oscillating circuit"
+            "correct_answer": "D",
+            "A": "It can precisely measure signal strength",
+            "B": "It can precisely measure frequency",
+            "C": "It can precisely measure output power",
+            "D": "It can measure the resonant frequency of an oscillating circuit"
         },
         {
             "question_number": 129,
             "question_body": "What type of coupling is achieved between the dip meter and the tuned oscillating circuit being checked?",
-            "correct_answer": "Б",
-            "А": "Galvanic",
-            "Б": "Inductive and capacitive",
-            "В": "Capacitive",
-            "Г": "Inductive"
+            "correct_answer": "B",
+            "A": "Galvanic",
+            "B": "Inductive and capacitive",
+            "C": "Capacitive",
+            "D": "Inductive"
         },
         {
             "question_number": 130,
             "question_body": "What is an oscilloscope used for?",
-            "correct_answer": "Г",
-            "А": "For observing the waveform of a signal",
-            "Б": "For measuring the amplitude of a signal",
-            "В": "For measuring the frequency of a signal",
-            "Г": "For all three"
+            "correct_answer": "D",
+            "A": "For observing the waveform of a signal",
+            "B": "For measuring the amplitude of a signal",
+            "C": "For measuring the frequency of a signal",
+            "D": "For all three"
         },
         {
             "question_number": 131,
             "question_body": "What is a spectrum analyzer?",
-            "correct_answer": "А",
-            "А": "A device used to observe the amplitude of electrical signals as a function of frequency",
-            "Б": "A device containing two detectors - one connected to the amplifier input and the other to the output",
-            "В": "A device used to observe the amplitude of electrical signals as a function of time",
-            "Г": "A device used to determine the maximum usable frequency"
+            "correct_answer": "A",
+            "A": "A device used to observe the amplitude of electrical signals as a function of frequency",
+            "B": "A device containing two detectors - one connected to the amplifier input and the other to the output",
+            "C": "A device used to observe the amplitude of electrical signals as a function of time",
+            "D": "A device used to determine the maximum usable frequency"
         },
         {
             "question_number": 132,
             "question_body": "How does a spectrum analyzer differ from a regular oscilloscope?",
-            "correct_answer": "В",
-            "А": "An oscilloscope is used to observe the amplitude of electrical signals, while a spectrum analyzer is used to measure ionospheric reflection",
-            "Б": "An oscilloscope is used to observe the amplitude of electrical signals as a function of frequency, while a spectrum analyzer is used to observe the amplitude of electrical signals as a function of time",
-            "В": "An oscilloscope is used to observe the amplitude of electrical signals as a function of time, while a spectrum analyzer is used to observe the amplitude of electrical signals as a function of frequency",
-            "Г": "An oscilloscope is used to observe audio frequencies, while a spectrum analyzer is used to observe radio frequencies"
+            "correct_answer": "C",
+            "A": "An oscilloscope is used to observe the amplitude of electrical signals, while a spectrum analyzer is used to measure ionospheric reflection",
+            "B": "An oscilloscope is used to observe the amplitude of electrical signals as a function of frequency, while a spectrum analyzer is used to observe the amplitude of electrical signals as a function of time",
+            "C": "An oscilloscope is used to observe the amplitude of electrical signals as a function of time, while a spectrum analyzer is used to observe the amplitude of electrical signals as a function of frequency",
+            "D": "An oscilloscope is used to observe audio frequencies, while a spectrum analyzer is used to observe radio frequencies"
         },
         {
             "question_number": 133,
             "question_body": "Which parameter is represented on the horizontal axis of a spectrum analyzer?",
-            "correct_answer": "Г",
-            "А": "Amplitude",
-            "Б": "Voltage",
-            "В": "Resonance",
-            "Г": "Frequency"
+            "correct_answer": "D",
+            "A": "Amplitude",
+            "B": "Voltage",
+            "C": "Resonance",
+            "D": "Frequency"
         },
         {
             "question_number": 134,
             "question_body": "Which parameter is represented on the vertical axis of a spectrum analyzer?",
-            "correct_answer": "А",
-            "А": "Amplitude",
-            "Б": "Duration",
-            "В": "Frequency",
-            "Г": "Time"
+            "correct_answer": "A",
+            "A": "Amplitude",
+            "B": "Duration",
+            "C": "Frequency",
+            "D": "Time"
         },
         {
             "question_number": 135,
             "question_body": "What is a function generator?",
-            "correct_answer": "А",
-            "А": "A device that generates signals with different waveforms",
-            "Б": "A device that defines in mathematical form the development of complex electrical signals",
-            "В": "A device that changes the generated frequency at every moment (also known as a wobble generator)",
-            "Г": "A generator used as a standard when measuring frequencies"
+            "correct_answer": "A",
+            "A": "A device that generates signals with different waveforms",
+            "B": "A device that defines in mathematical form the development of complex electrical signals",
+            "C": "A device that changes the generated frequency at every moment (also known as a wobble generator)",
+            "D": "A generator used as a standard when measuring frequencies"
         },
         {
             "question_number": 136,
             "question_body": "By how much optimally should the reflector of a directional antenna differ in length from the driven element?",
-            "correct_answer": "Б",
-            "А": "The reflector is 5% shorter",
-            "Б": "The reflector is 5% longer",
-            "В": "The reflector is 1/2 longer",
-            "Г": "The reflector is twice as long"
+            "correct_answer": "B",
+            "A": "The reflector is 5% shorter",
+            "B": "The reflector is 5% longer",
+            "C": "The reflector is 1/2 longer",
+            "D": "The reflector is twice as long"
         },
         {
             "question_number": 137,
             "question_body": "By how much optimally should the director of a directional antenna differ in length from the driven element?",
-            "correct_answer": "Б",
-            "А": "The director is 5% longer",
-            "Б": "The director is 5% shorter",
-            "В": "The director is 1/2 shorter",
-            "Г": "The director is half as short"
+            "correct_answer": "B",
+            "A": "The director is 5% longer",
+            "B": "The director is 5% shorter",
+            "C": "The director is 1/2 shorter",
+            "D": "The director is half as short"
         },
         {
             "question_number": 138,
             "question_body": "What is the most common electrical length of the driven element of a shortwave directional Yagi antenna?",
-            "correct_answer": "Б",
-            "А": "1/4 of the wavelength",
-            "Б": "1/2 of the wavelength",
-            "В": "3/4 of the wavelength",
-            "Г": "Equal to the wavelength"
+            "correct_answer": "B",
+            "A": "1/4 of the wavelength",
+            "B": "1/2 of the wavelength",
+            "C": "3/4 of the wavelength",
+            "D": "Equal to the wavelength"
         },
         {
             "question_number": 139,
             "question_body": "Approximately how long is each side of the reflector of a double quad antenna for frequency 29.6 MHz?",
-            "correct_answer": "Б",
-            "А": "180 cm",
-            "Б": "270 cm",
-            "В": "360 cm",
-            "Г": "1100 cm"
+            "correct_answer": "B",
+            "A": "180 cm",
+            "B": "270 cm",
+            "C": "360 cm",
+            "D": "1100 cm"
         },
         {
             "question_number": 140,
             "question_body": "Approximately how long is each arm of the driven element of an equilateral delta loop antenna for 28.7 MHz?",
-            "correct_answer": "В",
-            "А": "1050 cm",
-            "Б": "700 cm",
-            "В": "350 cm",
-            "Г": "220 cm"
+            "correct_answer": "C",
+            "A": "1050 cm",
+            "B": "700 cm",
+            "C": "350 cm",
+            "D": "220 cm"
         },
         {
             "question_number": 141,
             "question_body": "What is a folded dipole antenna?",
-            "correct_answer": "В",
-            "А": "A dipole with 1/4λ length",
-            "Б": "A ground plane antenna (vertical quarter-wave)",
-            "В": "A half-wave dipole whose ends are connected with a conductor of 1/2λ length",
-            "Г": "A dipole folded in the middle at a 90° angle to avoid minimums in the pattern"
+            "correct_answer": "C",
+            "A": "A dipole with 1/4λ length",
+            "B": "A ground plane antenna (vertical quarter-wave)",
+            "C": "A half-wave dipole whose ends are connected with a conductor of 1/2λ length",
+            "D": "A dipole folded in the middle at a 90° angle to avoid minimums in the pattern"
         },
         {
             "question_number": 142,
             "question_body": "How can the efficiency of a vertical shortwave antenna be increased?",
-            "correct_answer": "А",
-            "А": "By installing a good radial system",
-            "Б": "By isolating the feed line from ground",
-            "В": "By slightly shortening the antenna relative to the calculated length",
-            "Г": "By slightly lengthening the antenna relative to the calculated length"
+            "correct_answer": "A",
+            "A": "By installing a good radial system",
+            "B": "By isolating the feed line from ground",
+            "C": "By slightly shortening the antenna relative to the calculated length",
+            "D": "By slightly lengthening the antenna relative to the calculated length"
         },
         {
             "question_number": 143,
             "question_body": "Which characteristic feature of the antenna pattern is necessary for radio direction finding of interfering transmitters?",
-            "correct_answer": "Б",
-            "А": "Circular pattern",
-            "Б": "Good front-to-back ratio of the pattern in the horizontal plane",
-            "В": "Good front-to-back ratio of the pattern in the vertical plane",
-            "Г": "A figure-8 pattern"
+            "correct_answer": "B",
+            "A": "Circular pattern",
+            "B": "Good front-to-back ratio of the pattern in the horizontal plane",
+            "C": "Good front-to-back ratio of the pattern in the vertical plane",
+            "D": "A figure-8 pattern"
         },
         {
             "question_number": 144,
             "question_body": "What antennas are used for radio direction finding of an interfering shortwave transmitter with a portable receiver?",
-            "correct_answer": "Б",
-            "А": "A combination of loop and ferrite antenna",
-            "Б": "A combination of loop (or ferrite) and whip antenna",
-            "В": "Three or more element directional antennas",
-            "Г": "A telescopic antenna"
+            "correct_answer": "B",
+            "A": "A combination of loop and ferrite antenna",
+            "B": "A combination of loop (or ferrite) and whip antenna",
+            "C": "Three or more element directional antennas",
+            "D": "A telescopic antenna"
         },
         {
             "question_number": 145,
             "question_body": "Which electromagnetic wave is horizontally polarized?",
-            "correct_answer": "В",
-            "А": "One whose electric and magnetic fields are in a plane parallel to the earth's surface",
-            "Б": "One whose electric and magnetic fields are in a plane perpendicular to the earth's surface",
-            "В": "One whose electric field is in a plane parallel to the earth's surface",
-            "Г": "One whose magnetic field is in a plane parallel to the earth's surface"
+            "correct_answer": "C",
+            "A": "One whose electric and magnetic fields are in a plane parallel to the earth's surface",
+            "B": "One whose electric and magnetic fields are in a plane perpendicular to the earth's surface",
+            "C": "One whose electric field is in a plane parallel to the earth's surface",
+            "D": "One whose magnetic field is in a plane parallel to the earth's surface"
         },
         {
             "question_number": 146,
             "question_body": "Which electromagnetic wave has circular polarization?",
-            "correct_answer": "Б",
-            "А": "One whose electric field plane has changed its position relative to the earth's surface due to reflection from the ionosphere",
-            "Б": "One whose electric field plane changes its position relative to the earth's surface according to a sinusoidal law",
-            "В": "An electromagnetic wave that has circled the entire earth",
-            "Г": "An electromagnetic wave radiated by an antenna with a circular pattern"
+            "correct_answer": "B",
+            "A": "One whose electric field plane has changed its position relative to the earth's surface due to reflection from the ionosphere",
+            "B": "One whose electric field plane changes its position relative to the earth's surface according to a sinusoidal law",
+            "C": "An electromagnetic wave that has circled the entire earth",
+            "D": "An electromagnetic wave radiated by an antenna with a circular pattern"
         },
         {
             "question_number": 147,
             "question_body": "When the electric field of an electromagnetic wave is in a plane perpendicular to the earth's surface, what is the polarization of the wave?",
-            "correct_answer": "В",
-            "А": "Circular",
-            "Б": "Horizontal",
-            "В": "Vertical",
-            "Г": "Elliptical"
+            "correct_answer": "C",
+            "A": "Circular",
+            "B": "Horizontal",
+            "C": "Vertical",
+            "D": "Elliptical"
         },
         {
             "question_number": 148,
             "question_body": "When the magnetic field of an electromagnetic wave is in a plane parallel to the earth's surface, what is the polarization of the wave?",
-            "correct_answer": "В",
-            "А": "Circular",
-            "Б": "Horizontal",
-            "В": "Vertical",
-            "Г": "Elliptical"
+            "correct_answer": "C",
+            "A": "Circular",
+            "B": "Horizontal",
+            "C": "Vertical",
+            "D": "Elliptical"
         },
         {
             "question_number": 149,
             "question_body": "When the magnetic field of an electromagnetic wave is in a plane perpendicular to the earth's surface, what is the polarization of the wave?",
-            "correct_answer": "Б",
-            "А": "Circular",
-            "Б": "Horizontal",
-            "В": "Vertical",
-            "Г": "Elliptical"
+            "correct_answer": "B",
+            "A": "Circular",
+            "B": "Horizontal",
+            "C": "Vertical",
+            "D": "Elliptical"
         },
         {
             "question_number": 150,
             "question_body": "When the electric field of an electromagnetic wave is in a plane parallel to the earth's surface, what is the polarization of the wave?",
-            "correct_answer": "Б",
-            "А": "Circular",
-            "Б": "Horizontal",
-            "В": "Vertical",
-            "Г": "Elliptical"
+            "correct_answer": "B",
+            "A": "Circular",
+            "B": "Horizontal",
+            "C": "Vertical",
+            "D": "Elliptical"
         },
         {
             "question_number": 151,
             "question_body": "How is circular polarization achieved with ordinary linearly polarized antennas?",
-            "correct_answer": "Б",
-            "А": "Two antennas perpendicular to each other are fed in phase",
-            "Б": "Two antennas perpendicular to each other are fed with a 90° phase difference",
-            "В": "Two antennas parallel to each other are fed in phase",
-            "Г": "Two antennas parallel to each other are fed with a 90° phase difference"
+            "correct_answer": "B",
+            "A": "Two antennas perpendicular to each other are fed in phase",
+            "B": "Two antennas perpendicular to each other are fed with a 90° phase difference",
+            "C": "Two antennas parallel to each other are fed in phase",
+            "D": "Two antennas parallel to each other are fed with a 90° phase difference"
         },
         {
             "question_number": 152,
             "question_body": "What is an isotropic radiator?",
-            "correct_answer": "А",
-            "А": "A hypothetical antenna in free space radiating uniformly in all directions",
-            "Б": "In the northern hemisphere, it is a stationary antenna radiating south",
-            "В": "An antenna positioned high enough not to be affected in its pattern by proximity to the ground",
-            "Г": "An antenna whose parameters do not change when elements are moved"
+            "correct_answer": "A",
+            "A": "A hypothetical antenna in free space radiating uniformly in all directions",
+            "B": "In the northern hemisphere, it is a stationary antenna radiating south",
+            "C": "An antenna positioned high enough not to be affected in its pattern by proximity to the ground",
+            "D": "An antenna whose parameters do not change when elements are moved"
         },
         {
             "question_number": 153,
             "question_body": "What functions does an isotropic radiator serve?",
-            "correct_answer": "Б",
-            "А": "It is used to compare signals from individual transmitters",
-            "Б": "It is used as a basis for comparison when measuring antenna gain",
-            "В": "It is used as an equivalent load when tuning transmitters",
-            "Г": "It is used to measure SWR of feed lines"
+            "correct_answer": "B",
+            "A": "It is used to compare signals from individual transmitters",
+            "B": "It is used as a basis for comparison when measuring antenna gain",
+            "C": "It is used as an equivalent load when tuning transmitters",
+            "D": "It is used to measure SWR of feed lines"
         },
         {
             "question_number": 154,
             "question_body": "What is meant by antenna gain?",
-            "correct_answer": "А",
-            "А": "The numerical ratio between the radiated power of one antenna to the radiated power of another, usually a standard antenna",
-            "Б": "The numerical ratio between the power radiated in the main direction of the antenna versus the power radiated in the opposite direction",
-            "В": "The numerical ratio between the power radiated by the antenna and the power at the transmitter output",
-            "Г": "The transmitter output power minus the feed line losses"
+            "correct_answer": "A",
+            "A": "The numerical ratio between the radiated power of one antenna to the radiated power of another, usually a standard antenna",
+            "B": "The numerical ratio between the power radiated in the main direction of the antenna versus the power radiated in the opposite direction",
+            "C": "The numerical ratio between the power radiated by the antenna and the power at the transmitter output",
+            "D": "The transmitter output power minus the feed line losses"
         },
         {
             "question_number": 155,
             "question_body": "How does the gain of a parabolic antenna change when the operating frequency is doubled?",
-            "correct_answer": "В",
-            "А": "It does not change",
-            "Б": "It increases by 0.7",
-            "В": "It increases by 6 dB",
-            "Г": "It decreases by 3 dB"
+            "correct_answer": "C",
+            "A": "It does not change",
+            "B": "It increases by 0.7",
+            "C": "It increases by 6 dB",
+            "D": "It decreases by 3 dB"
         },
         {
             "question_number": 156,
             "question_body": "What is the frequency bandwidth of an antenna?",
-            "correct_answer": "Б",
-            "А": "The antenna length divided by the number of its elements",
-            "Б": "The frequency range in which the ratio between maximum and minimum radiated power is 3 dB",
-            "В": "The angle between the two points of the antenna pattern at which the radiated power in that direction drops by half",
-            "Г": "The angle between two imaginary lines drawn through the ends of the antenna elements"
+            "correct_answer": "B",
+            "A": "The antenna length divided by the number of its elements",
+            "B": "The frequency range in which the ratio between maximum and minimum radiated power is 3 dB",
+            "C": "The angle between the two points of the antenna pattern at which the radiated power in that direction drops by half",
+            "D": "The angle between two imaginary lines drawn through the ends of the antenna elements"
         },
         {
             "question_number": 157,
             "question_body": "How is the approximate frequency bandwidth of a directional antenna determined?",
-            "correct_answer": "А",
-            "А": "Mark the two boundary frequencies at which the power radiated by the antenna drops by 3 dB from its maximum value and calculate their difference",
-            "Б": "Measure the ratio of the power radiated in the main direction and the power in the opposite direction",
-            "В": "Draw imaginary lines through the ends of the elements and measure the angle between them",
-            "Г": "Measure the ratio of the power radiated in the main direction and the power in the perpendicular direction"
+            "correct_answer": "A",
+            "A": "Mark the two boundary frequencies at which the power radiated by the antenna drops by 3 dB from its maximum value and calculate their difference",
+            "B": "Measure the ratio of the power radiated in the main direction and the power in the opposite direction",
+            "C": "Draw imaginary lines through the ends of the elements and measure the angle between them",
+            "D": "Measure the ratio of the power radiated in the main direction and the power in the perpendicular direction"
         },
         {
             "question_number": 158,
             "question_body": "How does the frequency bandwidth of an antenna change when we add elements to increase its gain?",
-            "correct_answer": "Г",
-            "А": "The bandwidth increases proportionally to the gain",
-            "Б": "The bandwidth increases geometrically proportionally to the gain",
-            "В": "The bandwidth does not change",
-            "Г": "The bandwidth decreases"
+            "correct_answer": "D",
+            "A": "The bandwidth increases proportionally to the gain",
+            "B": "The bandwidth increases geometrically proportionally to the gain",
+            "C": "The bandwidth does not change",
+            "D": "The bandwidth decreases"
         },
         {
             "question_number": 159,
             "question_body": "What is the frequency bandwidth of a folded dipole antenna compared to a regular dipole antenna?",
-            "correct_answer": "Г",
-            "А": "About 0.7",
-            "Б": "Approximately the same",
-            "В": "About twice as small",
-            "Г": "Larger"
+            "correct_answer": "D",
+            "A": "About 0.7",
+            "B": "Approximately the same",
+            "C": "About twice as small",
+            "D": "Larger"
         },
         {
             "question_number": 160,
             "question_body": "What is the input impedance of a folded dipole?",
-            "correct_answer": "Б",
-            "А": "500 Ω",
-            "Б": "300 Ω",
-            "В": "75 Ω",
-            "Г": "50 Ω"
+            "correct_answer": "B",
+            "A": "500 Ω",
+            "B": "300 Ω",
+            "C": "75 Ω",
+            "D": "50 Ω"
         },
         {
             "question_number": 161,
             "question_body": "What are the voltage and current at the ends of a half-wave antenna compared to those at other points on the antenna?",
-            "correct_answer": "В",
-            "А": "Equal",
-            "Б": "Minimum voltage and maximum current",
-            "В": "Maximum voltage and minimum current",
-            "Г": "Maximum voltage and maximum current"
+            "correct_answer": "C",
+            "A": "Equal",
+            "B": "Minimum voltage and maximum current",
+            "C": "Maximum voltage and minimum current",
+            "D": "Maximum voltage and maximum current"
         },
         {
             "question_number": 162,
             "question_body": "What are the voltage and current at the center of a half-wave antenna compared to those at other points on the antenna?",
-            "correct_answer": "Б",
-            "А": "Equal",
-            "Б": "Minimum voltage and maximum current",
-            "В": "Maximum voltage and minimum current",
-            "Г": "Minimum voltage and minimum current"
+            "correct_answer": "B",
+            "A": "Equal",
+            "B": "Minimum voltage and maximum current",
+            "C": "Maximum voltage and minimum current",
+            "D": "Minimum voltage and minimum current"
         },
         {
             "question_number": 163,
             "question_body": "Why is an automobile HF antenna usually connected to the transceiver through a coil?",
-            "correct_answer": "Г",
-            "А": "To improve reception",
-            "Б": "To increase the Q factor",
-            "В": "To avoid interference from the car engine",
-            "Г": "To cancel the capacitive reactive impedance of the antenna"
+            "correct_answer": "D",
+            "A": "To improve reception",
+            "B": "To increase the Q factor",
+            "C": "To avoid interference from the car engine",
+            "D": "To cancel the capacitive reactive impedance of the antenna"
         },
         {
             "question_number": 164,
             "question_body": "What is delta matching?",
-            "correct_answer": "А",
-            "А": "A method of matching a higher-impedance feed line to a lower-impedance antenna by connecting the line to two points on the antenna element equally spaced from its center",
-            "Б": "A matching method in which the antenna current is forced through a conductor shaped like an equilateral triangle mounted at the end of the feed line",
-            "В": "A matching method using a three-wire feed line",
-            "Г": "A matching method also known as a Y-match"
+            "correct_answer": "A",
+            "A": "A method of matching a higher-impedance feed line to a lower-impedance antenna by connecting the line to two points on the antenna element equally spaced from its center",
+            "B": "A matching method in which the antenna current is forced through a conductor shaped like an equilateral triangle mounted at the end of the feed line",
+            "C": "A matching method using a three-wire feed line",
+            "D": "A matching method also known as a Y-match"
         },
         {
             "question_number": 165,
             "question_body": "What is gamma matching?",
-            "correct_answer": "Г",
-            "А": "A balanced feed line is connected to two points on the antenna element equally spaced from its center",
-            "Б": "A matching method also known as a Y-match",
-            "В": "A balanced feed line is connected to the two most distant points on the antenna element",
-            "Г": "An unbalanced feed line is connected to the center point of the element and another point on it"
+            "correct_answer": "D",
+            "A": "A balanced feed line is connected to two points on the antenna element equally spaced from its center",
+            "B": "A matching method also known as a Y-match",
+            "C": "A balanced feed line is connected to the two most distant points on the antenna element",
+            "D": "An unbalanced feed line is connected to the center point of the element and another point on it"
         },
         {
             "question_number": 166,
             "question_body": "What will the standing wave ratio be if a feed line with 50-ohm impedance is connected to a resonant antenna with 50-ohm impedance at the feed points?",
-            "correct_answer": "В",
-            "А": "100",
-            "Б": "50",
-            "В": "1",
-            "Г": "0"
+            "correct_answer": "C",
+            "A": "100",
+            "B": "50",
+            "C": "1",
+            "D": "0"
         },
         {
             "question_number": 167,
             "question_body": "What will the standing wave ratio be if a feed line with 50-ohm impedance is connected to a resonant antenna with 10-ohm impedance at the feed points?",
-            "correct_answer": "В",
-            "А": "60",
-            "Б": "40",
-            "В": "5",
-            "Г": "0.2"
+            "correct_answer": "C",
+            "A": "60",
+            "B": "40",
+            "C": "5",
+            "D": "0.2"
         },
         {
             "question_number": 168,
             "question_body": "What determines the maximum effective radiated power of an amateur repeater?",
-            "correct_answer": "Г",
-            "А": "Regulatory documents",
-            "Б": "The modulation level and type of emission used",
-            "В": "The polarization and direction of the main lobes in the antenna pattern",
-            "Г": "The transmit frequency and average height of the antenna above the served terrain"
+            "correct_answer": "D",
+            "A": "Regulatory documents",
+            "B": "The modulation level and type of emission used",
+            "C": "The polarization and direction of the main lobes in the antenna pattern",
+            "D": "The transmit frequency and average height of the antenna above the served terrain"
         },
         {
             "question_number": 169,
             "question_body": "How is effective radiated power determined?",
-            "correct_answer": "В",
-            "А": "By measuring the output power of the transmitter final stage",
-            "Б": "By measuring the output power of the final stage and subtracting feed line losses from it",
-            "В": "By measuring the power entering the antenna input and the antenna gain",
-            "Г": "By measuring the power entering the antenna input"
+            "correct_answer": "C",
+            "A": "By measuring the output power of the transmitter final stage",
+            "B": "By measuring the output power of the final stage and subtracting feed line losses from it",
+            "C": "By measuring the power entering the antenna input and the antenna gain",
+            "D": "By measuring the power entering the antenna input"
         },
         {
             "question_number": 170,
             "question_body": "What determines the effective height of an antenna above surrounding terrain?",
-            "correct_answer": "Б",
-            "А": "The altitude of the antenna above sea level",
-            "Б": "The height of the antenna phase center relative to the average height of surrounding terrain",
-            "В": "The antenna height relative to the highest point of surrounding terrain",
-            "Г": "The antenna height relative to the lowest point of surrounding terrain"
+            "correct_answer": "B",
+            "A": "The altitude of the antenna above sea level",
+            "B": "The height of the antenna phase center relative to the average height of surrounding terrain",
+            "C": "The antenna height relative to the highest point of surrounding terrain",
+            "D": "The antenna height relative to the lowest point of surrounding terrain"
         },
         {
             "question_number": 171,
             "question_body": "What is the effective radiated power from an amateur repeater with 50 W output power, 4 dB losses in the feed line and 3 dB in the duplexer, and antenna gain (relative to half-wave dipole) of 6 dB?",
-            "correct_answer": "В",
-            "А": "Approximately 150 W",
-            "Б": "Approximately 70 W",
-            "В": "Approximately 40 W",
-            "Г": "Approximately 25 W"
+            "correct_answer": "C",
+            "A": "Approximately 150 W",
+            "B": "Approximately 70 W",
+            "C": "Approximately 40 W",
+            "D": "Approximately 25 W"
         },
         {
             "question_number": 172,
             "question_body": "What is the effective radiated power from an amateur repeater with 50 W output power, 5 dB losses in the feed line and 3 dB in the duplexer, and antenna gain (relative to half-wave dipole) of 6 dB?",
-            "correct_answer": "В",
-            "А": "Approximately 320 W",
-            "Б": "Approximately 100 W",
-            "В": "Approximately 32 W",
-            "Г": "Approximately 16 W"
+            "correct_answer": "C",
+            "A": "Approximately 320 W",
+            "B": "Approximately 100 W",
+            "C": "Approximately 32 W",
+            "D": "Approximately 16 W"
         },
         {
             "question_number": 173,
             "question_body": "What is the effective radiated power from an amateur repeater with 10 W output power, 4 dB losses in the feed line and 3 dB in the duplexer, and antenna gain (relative to half-wave dipole) of 10 dB?",
-            "correct_answer": "Г",
-            "А": "Approximately 100 W",
-            "Б": "Approximately 50 W",
-            "В": "Approximately 30 W",
-            "Г": "Approximately 20 W"
+            "correct_answer": "D",
+            "A": "Approximately 100 W",
+            "B": "Approximately 50 W",
+            "C": "Approximately 30 W",
+            "D": "Approximately 20 W"
         },
         {
             "question_number": 174,
             "question_body": "What is the phenomenon called that appears in the receiving radio station when phase differences occur in the spectrum of the received signal?",
-            "correct_answer": "Г",
-            "А": "Faraday rotation",
-            "Б": "Circular polarization",
-            "В": "Receiver blocking",
-            "Г": "Selective fading"
+            "correct_answer": "D",
+            "A": "Faraday rotation",
+            "B": "Circular polarization",
+            "C": "Receiver blocking",
+            "D": "Selective fading"
         },
         {
             "question_number": 175,
             "question_body": "Which type of emission (modulation type) is most vulnerable to selective fading?",
-            "correct_answer": "А",
-            "А": "FM",
-            "Б": "CW",
-            "В": "SSB",
-            "Г": "RTTY"
+            "correct_answer": "A",
+            "A": "FM",
+            "B": "CW",
+            "C": "SSB",
+            "D": "RTTY"
         },
         {
             "question_number": 176,
             "question_body": "At what frequency bandwidth of the transmitted signal is selective fading more pronounced?",
-            "correct_answer": "А",
-            "А": "At wider bandwidth",
-            "Б": "At narrower bandwidth",
-            "В": "Selective fading does not depend on signal bandwidth",
-            "Г": "Whether there will be selective fading depends on the receiver's selected passband"
+            "correct_answer": "A",
+            "A": "At wider bandwidth",
+            "B": "At narrower bandwidth",
+            "C": "Selective fading does not depend on signal bandwidth",
+            "D": "Whether there will be selective fading depends on the receiver's selected passband"
         },
         {
             "question_number": 177,
             "question_body": "What is selective fading?",
-            "correct_answer": "Б",
-            "А": "Fading caused by vibrations of the receiving antenna",
-            "Б": "Fading caused by phase differences in the spectrum of the received signal",
-            "В": "Fading caused by changes in the height of the reflecting ionospheric layer",
-            "Г": "Fading caused by the time difference between the transmitting and receiving radio stations"
+            "correct_answer": "B",
+            "A": "Fading caused by vibrations of the receiving antenna",
+            "B": "Fading caused by phase differences in the spectrum of the received signal",
+            "C": "Fading caused by changes in the height of the reflecting ionospheric layer",
+            "D": "Fading caused by the time difference between the transmitting and receiving radio stations"
         },
         {
             "question_number": 178,
             "question_body": "What is the effect called in the receiving radio station when phase differences occur in the spectrum of the received signal?",
-            "correct_answer": "Г",
-            "А": "Faraday rotation",
-            "Б": "Circular polarization",
-            "В": "Receiver blocking",
-            "Г": "Selective fading"
+            "correct_answer": "D",
+            "A": "Faraday rotation",
+            "B": "Circular polarization",
+            "C": "Receiver blocking",
+            "D": "Selective fading"
         },
         {
             "question_number": 179,
             "question_body": "Which emission class is most vulnerable to selective fading?",
-            "correct_answer": "А",
-            "А": "F3E",
-            "Б": "A1A",
-            "В": "J3E",
-            "Г": "A3F"
+            "correct_answer": "A",
+            "A": "F3E",
+            "B": "A1A",
+            "C": "J3E",
+            "D": "A3F"
         },
         {
             "question_number": 180,
             "question_body": "Why does the distance to the radio horizon exceed the distance to the geometric horizon?",
-            "correct_answer": "Г",
-            "А": "Due to reflection from the E layer",
-            "Б": "Due to reflection from the sporadic E layer",
-            "В": "Due to reflection from aurora",
-            "Г": "Due to tropospheric refraction"
+            "correct_answer": "D",
+            "A": "Due to reflection from the E layer",
+            "B": "Due to reflection from the sporadic E layer",
+            "C": "Due to reflection from aurora",
+            "D": "Due to tropospheric refraction"
         },
         {
             "question_number": 181,
             "question_body": "By how much does the distance to the radio horizon exceed the distance to the geometric horizon?",
-            "correct_answer": "А",
-            "А": "Approximately by one third",
-            "Б": "Approximately by one half",
-            "В": "Approximately by two thirds",
-            "Г": "Approximately twice"
+            "correct_answer": "A",
+            "A": "Approximately by one third",
+            "B": "Approximately by one half",
+            "C": "Approximately by two thirds",
+            "D": "Approximately twice"
         },
         {
             "question_number": 182,
             "question_body": "To what distance is normal VHF propagation limited?",
-            "correct_answer": "Г",
-            "А": "Approximately 3000 km",
-            "Б": "Approximately 2000 km",
-            "В": "Approximately 1200 km",
-            "Г": "Approximately 800 km"
+            "correct_answer": "D",
+            "A": "Approximately 3000 km",
+            "B": "Approximately 2000 km",
+            "C": "Approximately 1200 km",
+            "D": "Approximately 800 km"
         },
         {
             "question_number": 183,
             "question_body": "What conditions most commonly make it possible to receive a VHF signal at a distance exceeding 800 km?",
-            "correct_answer": "Б",
-            "А": "Absorption by the D layer",
-            "Б": "Tropospheric scatter",
-            "В": "Faraday rotation",
-            "Г": "Moon reflection"
+            "correct_answer": "B",
+            "A": "Absorption by the D layer",
+            "B": "Tropospheric scatter",
+            "C": "Faraday rotation",
+            "D": "Moon reflection"
         },
         {
             "question_number": 184,
             "question_body": "In which regions of the world is the sporadic E layer most frequent?",
-            "correct_answer": "В",
-            "А": "In polar regions",
-            "Б": "In temperate latitudes",
-            "В": "Around the equator",
-            "Г": "There is no difference with respect to geographical latitude"
+            "correct_answer": "C",
+            "A": "In polar regions",
+            "B": "In temperate latitudes",
+            "C": "Around the equator",
+            "D": "There is no difference with respect to geographical latitude"
         },
         {
             "question_number": 185,
             "question_body": "What primarily causes the appearance of the sporadic E layer?",
-            "correct_answer": "А",
-            "А": "Winds and vortices",
-            "Б": "Solar activity",
-            "В": "Temperature inversions",
-            "Г": "Meteors"
+            "correct_answer": "A",
+            "A": "Winds and vortices",
+            "B": "Solar activity",
+            "C": "Temperature inversions",
+            "D": "Meteors"
         },
         {
             "question_number": 186,
             "question_body": "What are the conditions for the appearance of the sporadic E layer?",
-            "correct_answer": "В",
-            "А": "Changes in the E layer caused by variations in solar activity",
-            "Б": "Sharp increase in VHF signal strength from meteor trails in the E layer",
-            "В": "Formation of ionized patches at the height of the E layer due to winds and vortices",
-            "Г": "Tropospheric inhomogeneities at the height of the E layer"
+            "correct_answer": "C",
+            "A": "Changes in the E layer caused by variations in solar activity",
+            "B": "Sharp increase in VHF signal strength from meteor trails in the E layer",
+            "C": "Formation of ionized patches at the height of the E layer due to winds and vortices",
+            "D": "Tropospheric inhomogeneities at the height of the E layer"
         },
         {
             "question_number": 187,
             "question_body": "In which amateur radio band are the most distant radio contacts made primarily thanks to the sporadic E layer?",
-            "correct_answer": "Б",
-            "А": "144 MHz",
-            "Б": "50 MHz",
-            "В": "14 MHz",
-            "Г": "1.8 MHz"
+            "correct_answer": "B",
+            "A": "144 MHz",
+            "B": "50 MHz",
+            "C": "14 MHz",
+            "D": "1.8 MHz"
         },
         {
             "question_number": 188,
             "question_body": "What is the cause of aurora and the propagation characteristics associated with it?",
-            "correct_answer": "В",
-            "А": "High sunspot number",
-            "Б": "Low sunspot number",
-            "В": "Emission of charged particles from the sun",
-            "Г": "Meteor showers in polar regions"
+            "correct_answer": "C",
+            "A": "High sunspot number",
+            "B": "Low sunspot number",
+            "C": "Emission of charged particles from the sun",
+            "D": "Meteor showers in polar regions"
         },
         {
             "question_number": 189,
             "question_body": "At what altitude does aurora form?",
-            "correct_answer": "В",
-            "А": "At the altitude of the troposphere",
-            "Б": "At the altitude of the D layer",
-            "В": "At the altitude of the E layer",
-            "Г": "At the altitude of the F layer"
+            "correct_answer": "C",
+            "A": "At the altitude of the troposphere",
+            "B": "At the altitude of the D layer",
+            "C": "At the altitude of the E layer",
+            "D": "At the altitude of the F layer"
         },
         {
             "question_number": 190,
             "question_body": "For radio stations in Bulgaria, in which direction should antennas be pointed to extract maximum benefit from propagation via aurora reflection?",
-            "correct_answer": "А",
-            "А": "North",
-            "Б": "South",
-            "В": "East",
-            "Г": "West"
+            "correct_answer": "A",
+            "A": "North",
+            "B": "South",
+            "C": "East",
+            "D": "West"
         },
         {
             "question_number": 191,
             "question_body": "To what extent can radio amateurs from Bulgaria benefit from propagation via aurora reflection?",
-            "correct_answer": "В",
-            "А": "They cannot benefit, only stations located beyond the polar circle can do this",
-            "Б": "All radio amateurs (including Bulgarian) can benefit regardless of location",
-            "В": "Only those located at geographical latitudes higher than 35° can benefit (including Bulgarian)",
-            "Г": "They can benefit only for radio contacts with the southern hemisphere"
+            "correct_answer": "C",
+            "A": "They cannot benefit, only stations located beyond the polar circle can do this",
+            "B": "All radio amateurs (including Bulgarian) can benefit regardless of location",
+            "C": "Only those located at geographical latitudes higher than 35° can benefit (including Bulgarian)",
+            "D": "They can benefit only for radio contacts with the southern hemisphere"
         },
         {
             "question_number": 192,
             "question_body": "At what hours of the day can propagation via aurora reflection be expected?",
-            "correct_answer": "Г",
-            "А": "In early evening hours",
-            "Б": "Throughout the entire night",
-            "В": "In early morning hours",
-            "Г": "Throughout the entire day"
+            "correct_answer": "D",
+            "A": "In early evening hours",
+            "B": "Throughout the entire night",
+            "C": "In early morning hours",
+            "D": "Throughout the entire day"
         },
         {
             "question_number": 193,
             "question_body": "Which emission classes are most suitable for propagation via aurora reflection?",
-            "correct_answer": "Б",
-            "А": "F3E and J3E",
-            "Б": "J3E and A1A",
-            "В": "A1A and A3E",
-            "Г": "A3E and A3F"
+            "correct_answer": "B",
+            "A": "F3E and J3E",
+            "B": "J3E and A1A",
+            "C": "A1A and A3E",
+            "D": "A3E and A3F"
         },
         {
             "question_number": 194,
             "question_body": "What happens to a radio wave radiated into space when it encounters charged particles?",
-            "correct_answer": "В",
-            "А": "Nothing happens because radio waves have no physical structure",
-            "Б": "Aurora is generated",
-            "В": "The radio wave loses some of its energy",
-            "Г": "The radio wave increases its energy"
+            "correct_answer": "C",
+            "A": "Nothing happens because radio waves have no physical structure",
+            "B": "Aurora is generated",
+            "C": "The radio wave loses some of its energy",
+            "D": "The radio wave increases its energy"
         },
         {
             "question_number": 195,
             "question_body": "How far apart must two radio stations be that want to establish contact via passive moon reflection?",
-            "correct_answer": "Г",
-            "А": "Not more than 1000 km",
-            "Б": "Not more than 2000 km",
-            "В": "Not more than 5000 km",
-            "Г": "At any distance, as long as both stations can see the moon"
+            "correct_answer": "D",
+            "A": "Not more than 1000 km",
+            "B": "Not more than 2000 km",
+            "C": "Not more than 5000 km",
+            "D": "At any distance, as long as both stations can see the moon"
         },
         {
             "question_number": 196,
             "question_body": "What is characteristic of a received signal passively reflected from the moon?",
-            "correct_answer": "Б",
-            "А": "Change in the tone of the CW signal",
-            "Б": "Fast, irregular fading",
-            "В": "Significant losses at sunrise and sunset",
-            "Г": "The echo is a few Hz lower in frequency than the transmitted signal"
+            "correct_answer": "B",
+            "A": "Change in the tone of the CW signal",
+            "B": "Fast, irregular fading",
+            "C": "Significant losses at sunrise and sunset",
+            "D": "The echo is a few Hz lower in frequency than the transmitted signal"
         },
         {
             "question_number": 197,
             "question_body": "Which are the best days for scheduling a radio contact with passive moon reflection (EME)?",
-            "correct_answer": "А",
-            "А": "When the moon is at perigee",
-            "Б": "When the moon is at apogee",
-            "В": "At full moon",
-            "Г": "When the weather is clear at both station locations"
+            "correct_answer": "A",
+            "A": "When the moon is at perigee",
+            "B": "When the moon is at apogee",
+            "C": "At full moon",
+            "D": "When the weather is clear at both station locations"
         },
         {
             "question_number": 198,
             "question_body": "What is the main requirement for a receiver for radio contact with passive moon reflection (EME)?",
-            "correct_answer": "Г",
-            "А": "It must have the 14 MHz band",
-            "Б": "It must have very large dynamic range",
-            "В": "It must have very low gain",
-            "Г": "It must have very low noise figure"
+            "correct_answer": "D",
+            "A": "It must have the 14 MHz band",
+            "B": "It must have very large dynamic range",
+            "C": "It must have very low gain",
+            "D": "It must have very low noise figure"
         },
         {
             "question_number": 199,
             "question_body": "Approximately how much is the signal attenuation on the Earth-Moon-Earth path for the 144 MHz band?",
-            "correct_answer": "В",
-            "А": "70-75 dB",
-            "Б": "150-155 dB",
-            "В": "250-255 dB",
-            "Г": "350-355 dB"
+            "correct_answer": "C",
+            "A": "70-75 dB",
+            "B": "150-155 dB",
+            "C": "250-255 dB",
+            "D": "350-355 dB"
         },
         {
             "question_number": 200,
             "question_body": "For which VHF band is the attenuation on the Earth-Moon-Earth path smallest?",
-            "correct_answer": "А",
-            "А": "50 MHz",
-            "Б": "144 MHz",
-            "В": "432 MHz",
-            "Г": "1296 MHz"
+            "correct_answer": "A",
+            "A": "50 MHz",
+            "B": "144 MHz",
+            "C": "432 MHz",
+            "D": "1296 MHz"
         },
         {
             "question_number": 201,
             "question_body": "Why is the 50 MHz band practically not used for radio contacts with passive moon reflection (EME)?",
-            "correct_answer": "Б",
-            "А": "Due to much greater attenuation on the Earth-Moon-Earth path compared to other VHF bands",
-            "Б": "Due to the large size of antennas and high noise level",
-            "В": "Because the F2 ionospheric layer reflects the signal back to Earth",
-            "Г": "Due to signal absorption by the lower ionospheric layers D and E"
+            "correct_answer": "B",
+            "A": "Due to much greater attenuation on the Earth-Moon-Earth path compared to other VHF bands",
+            "B": "Due to the large size of antennas and high noise level",
+            "C": "Because the F2 ionospheric layer reflects the signal back to Earth",
+            "D": "Due to signal absorption by the lower ionospheric layers D and E"
         },
         {
             "question_number": 202,
             "question_body": "On which shortwave band is an EME radio contact possible?",
-            "correct_answer": "Г",
-            "А": "1.8 MHz",
-            "Б": "3.5 MHz",
-            "В": "7 MHz",
-            "Г": "None of them"
+            "correct_answer": "D",
+            "A": "1.8 MHz",
+            "B": "3.5 MHz",
+            "C": "7 MHz",
+            "D": "None of them"
         },
         {
             "question_number": 203,
             "question_body": "In which amateur radio band is reflection from meteor trails most important for achieving distant contact?",
-            "correct_answer": "В",
-            "А": "1.8 MHz",
-            "Б": "14 MHz",
-            "В": "144 MHz",
-            "Г": "432 MHz"
+            "correct_answer": "C",
+            "A": "1.8 MHz",
+            "B": "14 MHz",
+            "C": "144 MHz",
+            "D": "432 MHz"
         },
         {
             "question_number": 204,
             "question_body": "What is transequatorial propagation?",
-            "correct_answer": "А",
-            "А": "Propagation between two points located at approximately equal distances north and south of the magnetic equator",
-            "Б": "Propagation between two points located on the magnetic equator",
-            "В": "Propagation between two continents located on the same side of the equator",
-            "Г": "Propagation between two points located at the same geographical latitude"
+            "correct_answer": "A",
+            "A": "Propagation between two points located at approximately equal distances north and south of the magnetic equator",
+            "B": "Propagation between two points located on the magnetic equator",
+            "C": "Propagation between two continents located on the same side of the equator",
+            "D": "Propagation between two points located at the same geographical latitude"
         },
         {
             "question_number": 205,
             "question_body": "What is the maximum distance over which radio contact can be achieved through transequatorial propagation?",
-            "correct_answer": "В",
-            "А": "Approximately 2000 km",
-            "Б": "Approximately 4000 km",
-            "В": "Approximately 8000 km",
-            "Г": "Approximately 12000 km"
+            "correct_answer": "C",
+            "A": "Approximately 2000 km",
+            "B": "Approximately 4000 km",
+            "C": "Approximately 8000 km",
+            "D": "Approximately 12000 km"
         },
         {
             "question_number": 206,
             "question_body": "What is the most suitable time for radio contact via transequatorial propagation?",
-            "correct_answer": "В",
-            "А": "Before noon",
-            "Б": "Around noon",
-            "В": "After noon and in early evening",
-            "Г": "Transequatorial propagation is only possible during the night"
+            "correct_answer": "C",
+            "A": "Before noon",
+            "B": "Around noon",
+            "C": "After noon and in early evening",
+            "D": "Transequatorial propagation is only possible during the night"
         },
         {
             "question_number": 207,
             "question_body": "To what extent can radio amateurs from Bulgaria benefit from transequatorial propagation?",
-            "correct_answer": "Г",
-            "А": "They cannot benefit, only stations located near the magnetic equator can do this",
-            "Б": "All radio amateurs (including Bulgarian) can benefit regardless of location",
-            "В": "They can benefit for shortwave but not for VHF radio contacts",
-            "Г": "Bulgaria is located at the border of possible radio contacts via transequatorial propagation and, although difficult, radio contacts are possible with suitable correspondents"
+            "correct_answer": "D",
+            "A": "They cannot benefit, only stations located near the magnetic equator can do this",
+            "B": "All radio amateurs (including Bulgarian) can benefit regardless of location",
+            "C": "They can benefit for shortwave but not for VHF radio contacts",
+            "D": "Bulgaria is located at the border of possible radio contacts via transequatorial propagation and, although difficult, radio contacts are possible with suitable correspondents"
         },
         {
             "question_number": 208,
             "question_body": "What is gray-line propagation?",
-            "correct_answer": "Б",
-            "А": "Propagation on the days of spring and autumn equinox",
-            "Б": "Propagation between two points when both are located on the gray line",
-            "В": "Earth-Moon-Earth (EME) propagation where the signal reflects from the boundary line between the illuminated and dark part of the moon",
-            "Г": "Specific propagation for the 144 and 432 MHz bands at very low solar activity"
+            "correct_answer": "B",
+            "A": "Propagation on the days of spring and autumn equinox",
+            "B": "Propagation between two points when both are located on the gray line",
+            "C": "Earth-Moon-Earth (EME) propagation where the signal reflects from the boundary line between the illuminated and dark part of the moon",
+            "D": "Specific propagation for the 144 and 432 MHz bands at very low solar activity"
         },
         {
             "question_number": 209,
             "question_body": "If the maximum usable frequency for the Varna-North Carolina path is 31 MHz, which band will offer the best opportunities for achieving a successful amateur radio contact?",
-            "correct_answer": "А",
-            "А": "10 m",
-            "Б": "15 m",
-            "В": "20 m",
-            "Г": "40 m"
+            "correct_answer": "A",
+            "A": "10 m",
+            "B": "15 m",
+            "C": "20 m",
+            "D": "40 m"
         },
         {
             "question_number": 210,
             "question_body": "If the maximum usable frequency for the Burgas-Vancouver path is 16 MHz, which band will offer the best opportunities for achieving a successful amateur radio contact?",
-            "correct_answer": "В",
-            "А": "10 m",
-            "Б": "15 m",
-            "В": "20 m",
-            "Г": "40 m"
+            "correct_answer": "C",
+            "A": "10 m",
+            "B": "15 m",
+            "C": "20 m",
+            "D": "40 m"
         },
         {
             "question_number": 211,
             "question_body": "If the maximum usable frequency for the Plovdiv-Tokyo path is 16 MHz, which band will offer the best opportunities for achieving a successful contact?",
-            "correct_answer": "В",
-            "А": "10 m",
-            "Б": "15 m",
-            "В": "20 m",
-            "Г": "40 m"
+            "correct_answer": "C",
+            "A": "10 m",
+            "B": "15 m",
+            "C": "20 m",
+            "D": "40 m"
         },
         {
             "question_number": 212,
             "question_body": "If a Bulgarian amateur radio operator wants to establish radio contact with a French amateur radio operator at 5 hours UTC in winter, which amateur radio band will provide the best opportunity?",
-            "correct_answer": "В",
-            "А": "28 MHz",
-            "Б": "18 MHz",
-            "В": "3.5 MHz",
-            "Г": "144 MHz"
+            "correct_answer": "C",
+            "A": "28 MHz",
+            "B": "18 MHz",
+            "C": "3.5 MHz",
+            "D": "144 MHz"
         },
         {
             "question_number": 213,
             "question_body": "If a Bulgarian amateur radio operator wants to establish radio contact with an American amateur radio operator at 22 hours UTC in summer, which band will provide the best opportunity?",
-            "correct_answer": "А",
-            "А": "14 MHz",
-            "Б": "10 MHz",
-            "В": "7 MHz",
-            "Г": "3.5 MHz"
+            "correct_answer": "A",
+            "A": "14 MHz",
+            "B": "10 MHz",
+            "C": "7 MHz",
+            "D": "3.5 MHz"
         },
         {
             "question_number": 214,
             "question_body": "What is the most significant problem for effective use of an amateur shortwave radio station in a car while driving?",
-            "correct_answer": "А",
-            "А": "Ignition interference",
-            "Б": "Doppler effect from car movement",
-            "В": "Interference from radars",
-            "Г": "Mechanical vibrations"
+            "correct_answer": "A",
+            "A": "Ignition interference",
+            "B": "Doppler effect from car movement",
+            "C": "Interference from radars",
+            "D": "Mechanical vibrations"
         },
         {
             "question_number": 215,
             "question_body": "What is the correct way to suppress electrical noise in a mobile radio station?",
-            "correct_answer": "Б",
-            "А": "All metal surfaces should be isolated from each other",
-            "Б": "Shielding should be done and filters installed where necessary",
-            "В": "All non-metal surfaces should be sprayed with antistatic spray",
-            "Г": "Series capacitors should be installed in all DC circuits"
+            "correct_answer": "B",
+            "A": "All metal surfaces should be isolated from each other",
+            "B": "Shielding should be done and filters installed where necessary",
+            "C": "All non-metal surfaces should be sprayed with antistatic spray",
+            "D": "Series capacitors should be installed in all DC circuits"
         },
         {
             "question_number": 216,
             "question_body": "How can interference from car engine ignition be minimized when using a mobile radio station?",
-            "correct_answer": "В",
-            "А": "By installing series capacitors in all DC circuits",
-            "Б": "By installing a high-pass filter in the antenna circuit",
-            "В": "By connecting the power leads to the battery by the shortest path",
-            "Г": "By connecting the power leads to the battery by the longest path"
+            "correct_answer": "C",
+            "A": "By installing series capacitors in all DC circuits",
+            "B": "By installing a high-pass filter in the antenna circuit",
+            "C": "By connecting the power leads to the battery by the shortest path",
+            "D": "By connecting the power leads to the battery by the longest path"
         },
         {
             "question_number": 217,
             "question_body": "What is the phenomenon called where signals from two closely located transmitters mix in one or both final stages, resulting in unwanted frequencies different from the frequencies of the two transmitters?",
-            "correct_answer": "Г",
-            "А": "Final stage blocking",
-            "Б": "Neutralization",
-            "В": "Adjacent channel interference",
-            "Г": "Intermodulation interference"
+            "correct_answer": "D",
+            "A": "Final stage blocking",
+            "B": "Neutralization",
+            "C": "Adjacent channel interference",
+            "D": "Intermodulation interference"
         },
         {
             "question_number": 218,
             "question_body": "What can result if a non-linear amplifier is used in a transmitter with emission class J3E?",
-            "correct_answer": "Б",
-            "А": "Low efficiency",
-            "Б": "Non-linear distortion",
-            "В": "Intermodulation interference",
-            "Г": "Restoration of the carrier frequency"
+            "correct_answer": "B",
+            "A": "Low efficiency",
+            "B": "Non-linear distortion",
+            "C": "Intermodulation interference",
+            "D": "Restoration of the carrier frequency"
         },
         {
             "question_number": 219,
             "question_body": "What is receiver blocking?",
-            "correct_answer": "В",
-            "А": "Sharp increase in noise above signal level",
-            "Б": "Sharp decrease in receiver sensitivity when the high-frequency amplifier fails",
-            "В": "Sharp decrease in receiver sensitivity due to receiving a very strong signal on a nearby frequency",
-            "Г": "Sharp decrease in audibility of distant stations due to propagation change"
+            "correct_answer": "C",
+            "A": "Sharp increase in noise above signal level",
+            "B": "Sharp decrease in receiver sensitivity when the high-frequency amplifier fails",
+            "C": "Sharp decrease in receiver sensitivity due to receiving a very strong signal on a nearby frequency",
+            "D": "Sharp decrease in audibility of distant stations due to propagation change"
         },
         {
             "question_number": 220,
             "question_body": "What is cross-modulation interference?",
-            "correct_answer": "Г",
-            "А": "Interference between two transmitters with different types of modulation",
-            "Б": "Interference from non-linearity of the receiver's audio amplifier",
-            "В": "Interference from non-linearity of the transmitter's modulator",
-            "Г": "Interference from a strong transmitter radiating on a different frequency"
+            "correct_answer": "D",
+            "A": "Interference between two transmitters with different types of modulation",
+            "B": "Interference from non-linearity of the receiver's audio amplifier",
+            "C": "Interference from non-linearity of the transmitter's modulator",
+            "D": "Interference from a strong transmitter radiating on a different frequency"
         },
         {
             "question_number": 221,
             "question_body": "Which term is used to describe the phenomenon when a high-level signal is superimposed on another signal we are receiving?",
-            "correct_answer": "Б",
-            "А": "Intermodulation interference",
-            "Б": "Cross-modulation",
-            "В": "Image channel interference",
-            "Г": "Second oscillator interference"
+            "correct_answer": "B",
+            "A": "Intermodulation interference",
+            "B": "Cross-modulation",
+            "C": "Image channel interference",
+            "D": "Second oscillator interference"
         },
         {
             "question_number": 222,
             "question_body": "How can the negative effect of cross-modulation be reduced?",
-            "correct_answer": "А",
-            "А": "By installing a suitable filter in the receiver",
-            "Б": "By using better grounding",
-            "В": "By increasing the RF gain of the receiver and decreasing the audio gain",
-            "Г": "By more precise tuning"
+            "correct_answer": "A",
+            "A": "By installing a suitable filter in the receiver",
+            "B": "By using better grounding",
+            "C": "By increasing the RF gain of the receiver and decreasing the audio gain",
+            "D": "By more precise tuning"
         },
         {
             "question_number": 223,
             "question_body": "Which band is most suitable for establishing radio contact from Bulgaria to South America at 00:00 UTC?",
-            "correct_answer": "В",
-            "А": "14 MHz",
-            "Б": "21 MHz",
-            "В": "7 MHz",
-            "Г": "28 MHz"
+            "correct_answer": "C",
+            "A": "14 MHz",
+            "B": "21 MHz",
+            "C": "7 MHz",
+            "D": "28 MHz"
         },
         {
             "question_number": 224,
             "question_body": "During the autumn-winter season, which amateur radio band is most suitable for radio contacts with North America during most of the day?",
-            "correct_answer": "Б",
-            "А": "160 m",
-            "Б": "20 m",
-            "В": "40 m",
-            "Г": "80 m"
+            "correct_answer": "B",
+            "A": "160 m",
+            "B": "20 m",
+            "C": "40 m",
+            "D": "80 m"
         },
         {
             "question_number": 225,
             "question_body": "During the summer season, which amateur radio band during the day is most unsuitable for establishing radio contacts with Africa?",
-            "correct_answer": "Г",
-            "А": "20 m",
-            "Б": "15 m",
-            "В": "10 m",
-            "Г": "160 m"
+            "correct_answer": "D",
+            "A": "20 m",
+            "B": "15 m",
+            "C": "10 m",
+            "D": "160 m"
         },
         {
             "question_number": 226,
             "question_body": "On which amateur radio band is a radio contact via the \"long path\" with Japan possible in the morning during the winter season?",
-            "correct_answer": "Г",
-            "А": "160 m",
-            "Б": "2 m",
-            "В": "70 cm",
-            "Г": "20 m"
+            "correct_answer": "D",
+            "A": "160 m",
+            "B": "2 m",
+            "C": "70 cm",
+            "D": "20 m"
         }
     ]
 }

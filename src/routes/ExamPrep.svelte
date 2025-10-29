@@ -14,12 +14,9 @@
   $: questions = getQuestions(parseInt(classNum), sections, questionOrder === 'random')
   $: classInfo = getClassInfo(parseInt(classNum))
 
-  // Answer keys mapping
-  const answerKeys = ['А', 'Б', 'В', 'Г']
-
   // State
   let currentQuestionIndex = 0
-  let userAnswers = {} // { questionNumber: selectedAnswerKey (А/Б/В/Г) }
+  let userAnswers = {} // { questionNumber: selectedAnswerKey (А/Б/В/Г or A/B/C/D) }
   let showNavigator = false
 
   // Reactive current question
@@ -29,6 +26,14 @@
   $: isCorrect = isAnswered && selectedAnswer === currentQuestion?.correct_answer
   $: totalQuestions = questions.length
   $: answeredCount = Object.keys(userAnswers).length
+
+  // Extract answer keys directly from the current question
+  // Filter out metadata fields, leaving only answer options (A/B/C/D, А/Б/В/Г, 1/2/3/4, etc.)
+  $: answerKeys = currentQuestion
+    ? Object.keys(currentQuestion)
+        .filter(key => !['question_number', 'question_body', 'correct_answer'].includes(key))
+        .sort()
+    : []
 
   function selectAnswer(answerKey) {
     userAnswers[currentQuestion.question_number] = answerKey
