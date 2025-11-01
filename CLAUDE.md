@@ -9,14 +9,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 LZ Radio is a fully client-side web application for amateur radio operators. It provides:
-- **LogBook**: Log and track radio contacts
-- **Exam Prep**: Practice for amateur radio license exams (Technician, General, Extra)
+- **LogBook**: Log and track radio contacts (UI complete, data persistence planned)
+- **Exam Prep**: Practice for Bulgarian amateur radio license exams (Class 1 and Class 2)
 
 **Technology Stack:**
 - Svelte 5 (UI framework)
 - Vite (build tool)
 - svelte-spa-router (client-side routing with hash mode)
-- Dexie.js (IndexedDB wrapper for data storage)
+- svelte-i18n (internationalization - English and Bulgarian)
+- KaTeX (math formula rendering in exam questions)
 
 ## Common Commands
 
@@ -44,29 +45,61 @@ No linter configured yet.
 ## Architecture
 
 ### High-Level Structure
-Fully client-side single-page application (SPA). No backend server. All data stored locally in user's browser using IndexedDB.
+Fully client-side single-page application (SPA). No backend server. All data stored locally in user's browser (currently LocalStorage for preferences only; IndexedDB planned for user data).
 
 ### Key Components
 - **Routes** (`src/routes/`): Page-level components (Home, LogBook, Exam pages)
 - **Shared Components** (`src/components/shared/`): Navigation, modals
-- **Feature Components** (`src/components/logbook/`, `src/components/exam/`): Feature-specific UI
-- **Library** (`src/lib/`): Storage utilities, export/import logic, question bank loader
+- **Feature Components** (`src/components/logbook/`, `src/components/exam/`): Directories exist but not yet utilized
+- **Library** (`src/lib/`):
+  - `i18n.js` - Internationalization setup and language switching
+  - `questions.js` - Dynamic question loading based on locale
+  - `katex.js` - Math formula rendering
+  - `examConfig.js` - Exam configuration constants
+- **Styles** (`src/styles/`): Shared component styles extracted for reuse
+- **Locales** (`src/locales/`): Translation files (en.json, bg.json)
 
 ### Routing
 **Hash-based routing** using `svelte-spa-router`:
-- URLs use `#` for routes: `/#/logbook`, `/#/exam/technician`
+- URLs use `#` for routes: `/#/logbook`, `/#/exam/class1`, `/#/exam/class2`
 - Works on ANY static hosting with zero configuration
 - **Important limitation**: Cannot use traditional in-page anchors (`#section-id`)
 - If in-page anchors become necessary, can migrate to history mode (requires server config)
 
+**Main Routes:**
+- `/` - Home page
+- `/logbook` - View contacts
+- `/logbook/add` - Add new contact
+- `/exam` - Exam home page
+- `/exam/class1` - Class 1 exam selection
+- `/exam/class2` - Class 2 exam selection
+- `/exam/class1/prep` - Class 1 practice mode
+- `/exam/class2/prep` - Class 2 practice mode
+- `/exam/class1/simulated` - Class 1 timed exam (not yet implemented)
+- `/exam/class2/simulated` - Class 2 timed exam (not yet implemented)
+
 ### Data Storage
-- **LogBook contacts**: IndexedDB (via Dexie.js) - persistent local storage
-- **Exam progress**: LocalStorage - simple key-value pairs
-- **Question banks**: Static JSON files bundled with app
+
+**Currently Implemented:**
+- **Language preference**: LocalStorage - persists user's language choice
+- **Question banks**: Static JSON files bundled with app (separate files for Bulgarian and English)
+- **Exam answers**: In-memory state only (not persisted between sessions)
+
+**Planned for Future:**
+- **LogBook contacts**: IndexedDB (will use Dexie.js - not yet installed) - persistent local storage
+- **Exam progress/history**: LocalStorage or IndexedDB - save practice session results
 - **Export/Import**: JSON files for data backup/restore
 
 ### External Dependencies
 None. Fully offline-capable. No external APIs or services.
+
+### Internationalization
+- **Supported Languages**: English (en) and Bulgarian (bg)
+- **Default Language**: English
+- **Language Detection**: Falls back to browser language, then English
+- **Persistence**: Language preference saved to LocalStorage
+- **Question Banks**: Separate JSON files for each language (`data_en/`, `data_bg/`)
+- **UI Translations**: All UI text uses translation keys from locale files
 
 ## Project-Specific Conventions
 
@@ -90,3 +123,27 @@ None. Fully offline-capable. No external APIs or services.
 
 ### Design System
 CSS variables in `src/app.css` define colors, spacing, typography, shadows. All components use these variables for consistency.
+
+## Implementation Status
+
+### ✅ Completed Features
+- Basic routing structure
+- Internationalization (English/Bulgarian)
+- Exam practice mode with question navigation
+- Question bank loading based on locale
+- Math formula rendering in questions
+- Responsive design
+- Language preference persistence
+
+### 🚧 In Progress
+- LogBook UI (static placeholder data only)
+- Exam simulated mode UI (placeholder)
+
+### 📋 Planned Features
+- LogBook data persistence (will require installing Dexie.js for IndexedDB)
+- LogBook CRUD operations
+- Exam progress tracking and history
+- Timed exam mode implementation
+- Data export/import functionality
+- Testing framework
+- Linting configuration
