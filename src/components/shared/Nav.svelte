@@ -1,5 +1,7 @@
 <script>
   import { link, location } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
+  import { locale, changeLanguage, SUPPORTED_LOCALES } from '../../lib/i18n.js'
 
   let showMobileMenu = false
   let showHelpModal = false
@@ -14,6 +16,10 @@
 
   function closeHelpModal() {
     showHelpModal = false
+  }
+
+  function switchLanguage(lang) {
+    changeLanguage(lang)
   }
 
   // Close mobile menu when route changes
@@ -31,20 +37,34 @@
     <!-- Desktop Navigation -->
     <div class="nav-links desktop">
       <a href="/logbook" use:link class:active={$location === '/logbook'}>
-        LogBook
+        {$_('nav.logbook')}
       </a>
       <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
-        Exam Prep
+        {$_('nav.examPrep')}
       </a>
     </div>
 
     <div class="nav-actions">
-      <button class="icon-btn" on:click={toggleHelpModal} aria-label="Help">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        {#each SUPPORTED_LOCALES as lang}
+          <button
+            class="lang-btn"
+            class:active={$locale === lang}
+            on:click={() => switchLanguage(lang)}
+            aria-label="Switch to {lang}"
+          >
+            {lang.toUpperCase()}
+          </button>
+        {/each}
+      </div>
+
+      <button class="icon-btn" on:click={toggleHelpModal} aria-label={$_('nav.help')}>
         ?
       </button>
 
       <!-- Mobile Menu Toggle -->
-      <button class="icon-btn mobile-menu-btn" on:click={toggleMobileMenu} aria-label="Menu">
+      <button class="icon-btn mobile-menu-btn" on:click={toggleMobileMenu} aria-label={$_('nav.menu')}>
         {showMobileMenu ? '×' : '≡'}
       </button>
     </div>
@@ -54,10 +74,10 @@
   {#if showMobileMenu}
     <div class="mobile-menu">
       <a href="/logbook" use:link class:active={$location === '/logbook'}>
-        LogBook
+        {$_('nav.logbook')}
       </a>
       <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
-        Exam Prep
+        {$_('nav.examPrep')}
       </a>
     </div>
   {/if}
@@ -68,35 +88,35 @@
   <div class="modal-backdrop" on:click={closeHelpModal}>
     <div class="modal" on:click|stopPropagation>
       <div class="modal-header">
-        <h2>About LZ Radio</h2>
-        <button class="icon-btn" on:click={closeHelpModal} aria-label="Close">
+        <h2>{$_('help.title')}</h2>
+        <button class="icon-btn" on:click={closeHelpModal} aria-label={$_('common.close')}>
           ×
         </button>
       </div>
       <div class="modal-body">
-        <p><strong>LZ Radio - Amateur Radio Tools</strong></p>
-        <p>Version 1.0.0</p>
+        <p><strong>{$_('help.description')}</strong></p>
+        <p>{$_('help.version')}</p>
 
-        <h3>Features</h3>
+        <h3>{$_('help.features')}</h3>
 
-        <p><strong>📻 LogBook</strong><br>
-        Log contacts during operation. All data stored locally in your browser - no server needed.</p>
+        <p><strong>{$_('help.logbook.title')}</strong><br>
+        {$_('help.logbook.description')}</p>
 
-        <p><strong>📝 Exam Prep</strong><br>
-        Practice for Technician, General, and Extra class exams with question pools.</p>
+        <p><strong>{$_('help.examPrep.title')}</strong><br>
+        {$_('help.examPrep.description')}</p>
 
-        <p><strong>💾 Export/Import</strong><br>
-        Your logbook data stays in your browser. Use Export to back up, Import to restore data.</p>
+        <p><strong>{$_('help.exportImport.title')}</strong><br>
+        {$_('help.exportImport.description')}</p>
 
-        <h3>Keyboard Shortcuts</h3>
+        <h3>{$_('help.keyboardShortcuts')}</h3>
         <ul>
-          <li><code>Alt+L</code> → LogBook</li>
-          <li><code>Alt+E</code> → Exam Prep</li>
-          <li><code>Esc</code> → Close modals</li>
+          <li><code>Alt+L</code> → {$_('help.shortcuts.logbook')}</li>
+          <li><code>Alt+E</code> → {$_('help.shortcuts.examPrep')}</li>
+          <li><code>Esc</code> → {$_('help.shortcuts.closeModals')}</li>
         </ul>
 
-        <p class="footer-text">Made for ham radio operators<br>
-        Open source • MIT License</p>
+        <p class="footer-text">{$_('help.footer')}<br>
+        {$_('help.openSource')}</p>
       </div>
     </div>
   </div>
@@ -155,6 +175,36 @@
     display: flex;
     gap: var(--space-2);
     align-items: center;
+  }
+
+  .language-switcher {
+    display: flex;
+    gap: 2px;
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    padding: 2px;
+  }
+
+  .lang-btn {
+    padding: 6px 12px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .lang-btn:hover {
+    color: var(--color-text);
+    background: white;
+  }
+
+  .lang-btn.active {
+    color: white;
+    background: var(--color-primary);
   }
 
   .mobile-menu-btn {

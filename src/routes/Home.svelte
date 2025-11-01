@@ -1,23 +1,23 @@
 <script>
   import { link } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
 </script>
 
 <div class="home">
   <div class="hero">
-    <h1>LZ Radio</h1>
-    <p class="subtitle">Amateur Radio Tools</p>
-    <p>Route: <code>/</code> (home page)</p>
+    <h1>{$_('home.title')}</h1>
+    <p class="subtitle">{$_('home.subtitle')}</p>
   </div>
 
   <div class="features">
     <a href="/logbook" use:link class="feature-card">
-      <h2>📻 LogBook</h2>
-      <p>Log and track your radio contacts</p>
+      <h2>{$_('home.logbook.title')}</h2>
+      <p>{$_('home.logbook.description')}</p>
     </a>
 
     <a href="/exam" use:link class="feature-card">
-      <h2>📝 Exam Prep</h2>
-      <p>Practice for your amateur radio license exam</p>
+      <h2>{$_('home.examPrep.title')}</h2>
+      <p>{$_('home.examPrep.description')}</p>
     </a>
   </div>
 </div>

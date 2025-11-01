@@ -1,11 +1,12 @@
 <script>
   import { link } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
 </script>
 
 <div class="page page-narrow">
   <div class="header">
-    <h1>Add Contact</h1>
-    <a href="/logbook" use:link class="btn-secondary">← Back to Log</a>
+    <h1>{$_('logbook.addContactTitle')}</h1>
+    <a href="/logbook" use:link class="btn-secondary">← {$_('logbook.backToLog')}</a>
   </div>
 
   <!-- Contact Entry Form -->
@@ -14,7 +15,7 @@
       <!-- Primary Field: Station Callsign -->
       <div class="form-row">
         <div class="form-field full-width">
-          <label for="station">Station Callsign *</label>
+          <label for="station">{$_('logbook.stationCallsign')} *</label>
           <input
             type="text"
             id="station"
@@ -28,11 +29,11 @@
       <!-- Date and Time -->
       <div class="form-row">
         <div class="form-field">
-          <label for="date">Date *</label>
+          <label for="date">{$_('logbook.dateLabel')} *</label>
           <input type="date" id="date" />
         </div>
         <div class="form-field">
-          <label for="time">Time (UTC) *</label>
+          <label for="time">{$_('logbook.timeLabel')} *</label>
           <input type="time" id="time" step="1" />
         </div>
       </div>
@@ -40,7 +41,7 @@
       <!-- Technical Parameters -->
       <div class="form-row">
         <div class="form-field">
-          <label for="frequency">Frequency (MHz) *</label>
+          <label for="frequency">{$_('logbook.frequencyLabel')} *</label>
           <input
             type="number"
             id="frequency"
@@ -49,9 +50,9 @@
           />
         </div>
         <div class="form-field">
-          <label for="mode">Mode *</label>
+          <label for="mode">{$_('logbook.modeLabel')} *</label>
           <select id="mode">
-            <option value="">Select mode</option>
+            <option value="">{$_('logbook.selectMode')}</option>
             <option value="SSB">SSB</option>
             <option value="CW">CW</option>
             <option value="FM">FM</option>
@@ -63,7 +64,7 @@
           </select>
         </div>
         <div class="form-field">
-          <label for="power">Power (dBW)</label>
+          <label for="power">{$_('logbook.powerLabel')}</label>
           <input
             type="number"
             id="power"
@@ -76,7 +77,7 @@
       <!-- Report -->
       <div class="form-row">
         <div class="form-field">
-          <label for="report">Signal Report (RST)</label>
+          <label for="report">{$_('logbook.signalReport')}</label>
           <input
             type="text"
             id="report"
@@ -87,7 +88,7 @@
         <div class="form-field checkbox-field">
           <label>
             <input type="checkbox" id="qsl" />
-            <span>QSL Card</span>
+            <span>{$_('logbook.qslCard')}</span>
           </label>
         </div>
       </div>
@@ -95,20 +96,20 @@
       <!-- Remarks -->
       <div class="form-row">
         <div class="form-field full-width">
-          <label for="remarks">Remarks</label>
+          <label for="remarks">{$_('logbook.remarksLabel')}</label>
           <textarea
             id="remarks"
             rows="3"
-            placeholder="Additional notes..."
+            placeholder={$_('logbook.additionalNotes')}
           ></textarea>
         </div>
       </div>
 
       <!-- Submit Button -->
       <div class="form-actions">
-        <button type="submit" class="btn-primary">Save Contact</button>
-        <button type="button" class="btn-secondary">Clear Form</button>
-        <a href="/logbook" use:link class="btn-text">Cancel</a>
+        <button type="submit" class="btn-primary">{$_('logbook.saveContact')}</button>
+        <button type="button" class="btn-secondary">{$_('logbook.clearForm')}</button>
+        <a href="/logbook" use:link class="btn-text">{$_('common.cancel')}</a>
       </div>
     </form>
   </div>

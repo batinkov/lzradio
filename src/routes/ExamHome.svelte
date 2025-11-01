@@ -1,5 +1,6 @@
 <script>
   import { link } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
   import { getAllQuestions } from '../lib/questions.js'
 
   // Calculate question counts dynamically from loaded data
@@ -9,22 +10,22 @@
 
 <div class="page page-centered">
   <div class="header">
-    <h1>Exam Preparation</h1>
+    <h1>{$_('exam.title')}</h1>
   </div>
 
   <!-- Class Selection -->
   <section class="class-selection">
-    <h2>Select Class</h2>
+    <h2>{$_('exam.selectClass')}</h2>
     <div class="class-cards">
       <a href="/exam/class1" use:link class="class-card">
-        <h3>Class 1</h3>
-        <p class="question-count">{class1Count} questions</p>
-        <span class="btn-link">Select →</span>
+        <h3>{$_('exam.class1')}</h3>
+        <p class="question-count">{class1Count} {$_('exam.questions')}</p>
+        <span class="btn-link">{$_('exam.selectButton')} →</span>
       </a>
       <a href="/exam/class2" use:link class="class-card">
-        <h3>Class 2</h3>
-        <p class="question-count">{class2Count} questions</p>
-        <span class="btn-link">Select →</span>
+        <h3>{$_('exam.class2')}</h3>
+        <p class="question-count">{class2Count} {$_('exam.questions')}</p>
+        <span class="btn-link">{$_('exam.selectButton')} →</span>
       </a>
     </div>
   </section>

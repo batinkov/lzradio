@@ -1,5 +1,6 @@
 <script>
   import { link, location, querystring } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
   import { getQuestions, getClassInfo } from '../lib/questions.js'
   import { renderMath } from '../lib/katex.js'
   import 'katex/dist/katex.min.css'
@@ -73,14 +74,14 @@
   <div class="header">
     <div class="header-left">
       <button class="btn-navigator" on:click={toggleNavigator}>
-        ☰ Questions
+        ☰ {$_('exam.questionsMenu')}
       </button>
       <div class="progress-text">
-        Question {currentQuestionIndex + 1} of {totalQuestions}
+        {$_('exam.questionOf', { values: { current: currentQuestionIndex + 1, total: totalQuestions } })}
       </div>
     </div>
     <a href="/exam/class{classNum}" use:link class="btn-secondary">
-      ← Back
+      ← {$_('exam.back')}
     </a>
   </div>
 
@@ -99,7 +100,7 @@
   {#if currentQuestion}
     <div class="question-container">
       <div class="question-header">
-        <span class="question-number">Question {currentQuestion.question_number}</span>
+        <span class="question-number">{$_('exam.question')} {currentQuestion.question_number}</span>
       </div>
 
       <div class="question-text">
@@ -138,14 +139,14 @@
       on:click={previousQuestion}
       disabled={currentQuestionIndex === 0}
     >
-      ← Previous
+      ← {$_('exam.previous')}
     </button>
     <button
       class="btn-nav btn-nav-primary"
       on:click={nextQuestion}
       disabled={currentQuestionIndex === questions.length - 1}
     >
-      Next →
+      {$_('exam.next')} →
     </button>
   </div>
 </div>
@@ -155,7 +156,7 @@
   <div class="modal-backdrop" on:click={toggleNavigator}>
     <div class="modal navigator-modal" on:click|stopPropagation>
       <div class="modal-header">
-        <h3>All Questions</h3>
+        <h3>{$_('exam.allQuestions')}</h3>
         <button class="icon-btn" on:click={toggleNavigator}>×</button>
       </div>
       <div class="modal-body">
@@ -174,16 +175,16 @@
         </div>
         <div class="legend">
           <div class="legend-item">
-            <span class="legend-dot legend-current"></span> Current
+            <span class="legend-dot legend-current"></span> {$_('exam.current')}
           </div>
           <div class="legend-item">
-            <span class="legend-dot legend-correct"></span> Correct
+            <span class="legend-dot legend-correct"></span> {$_('exam.correct')}
           </div>
           <div class="legend-item">
-            <span class="legend-dot legend-incorrect"></span> Incorrect
+            <span class="legend-dot legend-incorrect"></span> {$_('exam.incorrect')}
           </div>
           <div class="legend-item">
-            <span class="legend-dot legend-unanswered"></span> Unanswered
+            <span class="legend-dot legend-unanswered"></span> {$_('exam.unanswered')}
           </div>
         </div>
       </div>

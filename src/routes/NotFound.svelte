@@ -1,11 +1,12 @@
 <script>
   import { link } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
 </script>
 
 <div class="page not-found">
-  <h1>404 - Page Not Found</h1>
-  <p>The page you're looking for doesn't exist.</p>
-  <a href="/" use:link class="btn-primary">Go Home</a>
+  <h1>{$_('notFound.title')}</h1>
+  <p>{$_('notFound.message')}</p>
+  <a href="/" use:link class="btn-primary">{$_('notFound.goHome')}</a>
 </div>
 
 <style>

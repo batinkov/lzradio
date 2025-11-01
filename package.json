@@ -16,6 +16,7 @@
   "dependencies": {
     "dexie": "^4.0.11",
     "katex": "^0.16.25",
+    "svelte-i18n": "^4.0.1",
     "svelte-spa-router": "^4.0.1"
   }
 }

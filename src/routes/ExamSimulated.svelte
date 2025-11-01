@@ -1,5 +1,6 @@
 <script>
   import { link, location } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
   import { examConfig } from '../lib/examConfig.js'
   import { getClassInfo } from '../lib/questions.js'
   import { renderMath } from '../lib/katex.js'
@@ -12,8 +13,8 @@
 
 <div class="page page-centered">
   <div class="header">
-    <h1>Simulated Exam</h1>
-    <a href="/exam/class{classNum}" use:link class="btn-secondary">← Back to Class {classNum}</a>
+    <h1>{$_('exam.simulatedExam')}</h1>
+    <a href="/exam/class{classNum}" use:link class="btn-secondary">← {$_('exam.backToClass', { values: { classNum } })}</a>
   </div>
 
   <!-- Class info -->
@@ -23,15 +24,15 @@
   </div>
 
   <div class="card">
-    <h3>Exam Configuration</h3>
-    <p><strong>Questions:</strong> {examConfig.numberOfQuestions} random questions</p>
-    <p><strong>Duration:</strong> {examConfig.examDuration} minutes</p>
-    <p><strong>Passing Criteria:</strong> Max {examConfig.maxWrongAnswers} wrong answers</p>
+    <h3>{$_('exam.examConfiguration')}</h3>
+    <p><strong>{$_('exam.questionsLabel')}</strong> {examConfig.numberOfQuestions} {$_('exam.randomQuestions')}</p>
+    <p><strong>{$_('exam.durationLabel')}</strong> {examConfig.examDuration} {$_('exam.minutes')}</p>
+    <p><strong>{$_('exam.passingCriteria')}</strong> {$_('exam.maxWrongAnswers', { values: { count: examConfig.maxWrongAnswers } })}</p>
   </div>
 
   <div class="placeholder">
-    <p>ExamSimulated component - Coming soon!</p>
-    <p>This will show a timed exam with countdown timer</p>
+    <p>{$_('exam.comingSoon')}</p>
+    <p>{$_('exam.timedExamDescription')}</p>
   </div>
 </div>
 

@@ -1,15 +1,16 @@
 <script>
   import { link } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
 </script>
 
 <div class="page">
   <!-- Header with Add Button -->
   <div class="header">
-    <h1>LogBook <span class="count">(3 contacts)</span></h1>
+    <h1>{$_('logbook.title')} <span class="count">(3 {$_('logbook.contacts')})</span></h1>
     <div class="header-actions">
-      <a href="/logbook/add" use:link class="btn-primary">+ Add Contact</a>
-      <button class="btn-secondary">📤 Export</button>
-      <button class="btn-secondary">📥 Import</button>
+      <a href="/logbook/add" use:link class="btn-primary">+ {$_('logbook.addContact')}</a>
+      <button class="btn-secondary">📤 {$_('logbook.exportData')}</button>
+      <button class="btn-secondary">📥 {$_('logbook.importData')}</button>
     </div>
   </div>
 
@@ -18,15 +19,15 @@
     <table class="contact-table">
       <thead>
         <tr>
-          <th>Station</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Freq (MHz)</th>
-          <th>Mode</th>
-          <th>Power (dBW)</th>
-          <th>Report</th>
-          <th>QSL</th>
-          <th>Remarks</th>
+          <th>{$_('logbook.station')}</th>
+          <th>{$_('logbook.date')}</th>
+          <th>{$_('logbook.time')}</th>
+          <th>{$_('logbook.frequency')}</th>
+          <th>{$_('logbook.mode')}</th>
+          <th>{$_('logbook.power')}</th>
+          <th>{$_('logbook.report')}</th>
+          <th>{$_('logbook.qsl')}</th>
+          <th>{$_('logbook.remarks')}</th>
         </tr>
       </thead>
       <tbody>
@@ -70,8 +71,8 @@
 
   <!-- Empty State (hidden when there are contacts) -->
   <div class="empty-state" style="display: none;">
-    <p>📻 No contacts logged yet</p>
-    <p class="muted">Click "Add Contact" above to log your first contact!</p>
+    <p>📻 {$_('logbook.emptyState')}</p>
+    <p class="muted">{$_('logbook.emptyStateSubtext')}</p>
   </div>
 </div>
 

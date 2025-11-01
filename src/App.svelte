@@ -1,5 +1,7 @@
 <script>
   import Router from 'svelte-spa-router'
+  import { isLoading } from 'svelte-i18n'
+  import { setupI18n } from './lib/i18n.js'
   import Nav from './components/shared/Nav.svelte'
   import Home from './routes/Home.svelte'
   import LogBook from './routes/LogBook.svelte'
@@ -9,6 +11,9 @@
   import ExamPrep from './routes/ExamPrep.svelte'
   import ExamSimulated from './routes/ExamSimulated.svelte'
   import NotFound from './routes/NotFound.svelte'
+
+  // Initialize i18n
+  setupI18n()
 
   const routes = {
     '/': Home,
@@ -25,12 +30,25 @@
   }
 </script>
 
-<Nav />
-<main>
-  <Router {routes} />
-</main>
+{#if $isLoading}
+  <div class="loading">Loading...</div>
+{:else}
+  <Nav />
+  <main>
+    <Router {routes} />
+  </main>
+{/if}
 
 <style>
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+  }
+
   main {
     flex: 1;
     max-width: 1200px;

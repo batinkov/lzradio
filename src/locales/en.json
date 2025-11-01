@@ -1,0 +1,143 @@
+{
+  "nav": {
+    "brand": "LZ Radio",
+    "logbook": "LogBook",
+    "examPrep": "Exam Prep",
+    "help": "Help",
+    "menu": "Menu"
+  },
+  "home": {
+    "title": "LZ Radio",
+    "subtitle": "Amateur Radio Tools",
+    "logbook": {
+      "title": "📻 LogBook",
+      "description": "Log and track your radio contacts"
+    },
+    "examPrep": {
+      "title": "📝 Exam Prep",
+      "description": "Practice for your amateur radio license exam"
+    }
+  },
+  "help": {
+    "title": "About LZ Radio",
+    "description": "LZ Radio - Amateur Radio Tools",
+    "version": "Version 1.0.0",
+    "features": "Features",
+    "logbook": {
+      "title": "📻 LogBook",
+      "description": "Log contacts during operation. All data stored locally in your browser - no server needed."
+    },
+    "examPrep": {
+      "title": "📝 Exam Prep",
+      "description": "Practice for Technician, General, and Extra class exams with question pools."
+    },
+    "exportImport": {
+      "title": "💾 Export/Import",
+      "description": "Your logbook data stays in your browser. Use Export to back up, Import to restore data."
+    },
+    "keyboardShortcuts": "Keyboard Shortcuts",
+    "shortcuts": {
+      "logbook": "LogBook",
+      "examPrep": "Exam Prep",
+      "closeModals": "Close modals"
+    },
+    "footer": "Made for ham radio operators",
+    "openSource": "Open source • MIT License"
+  },
+  "logbook": {
+    "title": "LogBook",
+    "addContact": "Add Contact",
+    "viewAll": "View All Contacts",
+    "noContacts": "No contacts yet",
+    "startLogging": "Start logging your radio contacts",
+    "exportData": "Export Data",
+    "importData": "Import Data",
+    "contacts": "contacts",
+    "contact": "contact",
+    "station": "Station",
+    "date": "Date",
+    "time": "Time",
+    "frequency": "Freq (MHz)",
+    "mode": "Mode",
+    "power": "Power (dBW)",
+    "report": "Report",
+    "qsl": "QSL",
+    "remarks": "Remarks",
+    "emptyState": "No contacts logged yet",
+    "emptyStateSubtext": "Click \"Add Contact\" above to log your first QSO!",
+    "addContactTitle": "Add Contact",
+    "backToLog": "Back to Log",
+    "stationCallsign": "Station Callsign",
+    "dateLabel": "Date",
+    "timeLabel": "Time (UTC)",
+    "frequencyLabel": "Frequency (MHz)",
+    "modeLabel": "Mode",
+    "selectMode": "Select mode",
+    "powerLabel": "Power (dBW)",
+    "signalReport": "Signal Report (RST)",
+    "qslCard": "QSL Card",
+    "remarksLabel": "Remarks",
+    "additionalNotes": "Additional notes...",
+    "saveContact": "Save Contact",
+    "clearForm": "Clear Form",
+    "required": "Required field"
+  },
+  "exam": {
+    "title": "Exam Preparation",
+    "class1": "Class 1",
+    "class2": "Class 2",
+    "prepMode": "Preparation Mode",
+    "simulatedExam": "Simulated Exam",
+    "question": "Question",
+    "of": "of",
+    "previous": "Previous",
+    "next": "Next",
+    "questions": "questions",
+    "allQuestions": "All Questions",
+    "current": "Current",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "unanswered": "Unanswered",
+    "back": "Back",
+    "selectClass": "Select Class",
+    "selectButton": "Select",
+    "selectMode": "Select Mode",
+    "questionOrder": "Question Order",
+    "sequential": "Sequential",
+    "random": "Random",
+    "categories": "Categories",
+    "category": "Category",
+    "startPreparation": "Start Preparation",
+    "startExam": "Start Exam",
+    "randomQuestions": "random questions",
+    "minuteCountdown": "minute countdown",
+    "minutes": "minutes",
+    "maxWrongToPass": "Max {count} wrong to pass",
+    "maxWrongAnswers": "Max {count} wrong answers",
+    "realExamConditions": "Real exam conditions",
+    "backToClasses": "Back to Classes",
+    "backToClass": "Back to Class {classNum}",
+    "classExamPrep": "Class {classNum} - Exam Preparation",
+    "questionsMenu": "Questions",
+    "questionOf": "Question {current} of {total}",
+    "examConfiguration": "Exam Configuration",
+    "questionsLabel": "Questions:",
+    "durationLabel": "Duration:",
+    "passingCriteria": "Passing Criteria:",
+    "comingSoon": "Coming soon!",
+    "timedExamDescription": "This will show a timed exam with countdown timer"
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading..."
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "message": "The page you're looking for doesn't exist.",
+    "goHome": "Go Home"
+  }
+}

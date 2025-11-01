@@ -1,5 +1,6 @@
 <script>
   import { link, push, location } from 'svelte-spa-router'
+  import { _ } from 'svelte-i18n'
   import { examConfig } from '../lib/examConfig.js'
 
   // Extract class number from URL path (/exam/class1 or /exam/class2)
@@ -29,22 +30,22 @@
 
 <div class="page page-centered">
   <div class="header">
-    <h1>Class {classNum} - Exam Preparation</h1>
-    <a href="/exam" use:link class="btn-secondary">← Back to Classes</a>
+    <h1>{$_('exam.classExamPrep', { values: { classNum } })}</h1>
+    <a href="/exam" use:link class="btn-secondary">← {$_('exam.backToClasses')}</a>
   </div>
 
   <section class="mode-selection">
-    <h2>Select Mode</h2>
+    <h2>{$_('exam.selectMode')}</h2>
 
     <div class="mode-cards">
       <!-- Preparation Mode -->
       <div class="mode-card prep-mode-card">
         <div class="mode-icon">📚</div>
-        <h4>Preparation Mode</h4>
+        <h4>{$_('exam.prepMode')}</h4>
 
         <!-- Question Order -->
         <div class="config-section">
-          <label class="config-label">Question Order</label>
+          <label class="config-label">{$_('exam.questionOrder')}</label>
           <div class="radio-group">
             <label class="radio-option">
               <input
@@ -53,7 +54,7 @@
                 value="sequential"
                 bind:group={questionOrder}
               />
-              <span>Sequential</span>
+              <span>{$_('exam.sequential')}</span>
             </label>
             <label class="radio-option">
               <input
@@ -62,14 +63,14 @@
                 value="random"
                 bind:group={questionOrder}
               />
-              <span>Random</span>
+              <span>{$_('exam.random')}</span>
             </label>
           </div>
         </div>
 
         <!-- Category Selection -->
         <div class="config-section">
-          <label class="config-label">Categories</label>
+          <label class="config-label">{$_('exam.categories')}</label>
           <div class="checkbox-group">
             <label class="checkbox-option">
               <input
@@ -77,7 +78,7 @@
                 checked={selectedCategories.includes(1)}
                 on:change={() => toggleCategory(1)}
               />
-              <span>Category 1</span>
+              <span>{$_('exam.category')} 1</span>
             </label>
             <label class="checkbox-option">
               <input
@@ -85,7 +86,7 @@
                 checked={selectedCategories.includes(2)}
                 on:change={() => toggleCategory(2)}
               />
-              <span>Category 2</span>
+              <span>{$_('exam.category')} 2</span>
             </label>
             <label class="checkbox-option">
               <input
@@ -93,7 +94,7 @@
                 checked={selectedCategories.includes(3)}
                 on:change={() => toggleCategory(3)}
               />
-              <span>Category 3</span>
+              <span>{$_('exam.category')} 3</span>
             </label>
           </div>
         </div>
@@ -103,22 +104,22 @@
           on:click={startPreparation}
           disabled={selectedCategories.length === 0}
         >
-          Start Preparation
+          {$_('exam.startPreparation')}
         </button>
       </div>
 
       <!-- Simulated Exam Mode -->
       <div class="mode-card">
         <div class="mode-icon">📝</div>
-        <h4>Simulated Exam</h4>
+        <h4>{$_('exam.simulatedExam')}</h4>
         <ul class="mode-features">
-          <li>{examConfig.numberOfQuestions} random questions</li>
-          <li>{examConfig.examDuration} minute countdown</li>
-          <li>Max {examConfig.maxWrongAnswers} wrong to pass</li>
-          <li>Real exam conditions</li>
+          <li>{examConfig.numberOfQuestions} {$_('exam.randomQuestions')}</li>
+          <li>{examConfig.examDuration} {$_('exam.minuteCountdown')}</li>
+          <li>{$_('exam.maxWrongToPass', { values: { count: examConfig.maxWrongAnswers } })}</li>
+          <li>{$_('exam.realExamConditions')}</li>
         </ul>
         <a href="/exam/class{classNum}/simulated" use:link class="btn-primary">
-          Start Exam
+          {$_('exam.startExam')}
         </a>
       </div>
     </div>
