@@ -75,15 +75,16 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 - `/exam/class2` - Class 2 exam selection
 - `/exam/class1/prep` - Class 1 practice mode
 - `/exam/class2/prep` - Class 2 practice mode
-- `/exam/class1/simulated` - Class 1 timed exam (not yet implemented)
-- `/exam/class2/simulated` - Class 2 timed exam (not yet implemented)
+- `/exam/class1/simulated` - Class 1 timed exam
+- `/exam/class2/simulated` - Class 2 timed exam
 
 ### Data Storage
 
 **Currently Implemented:**
 - **Language preference**: LocalStorage - persists user's language choice
 - **Question banks**: Static JSON files bundled with app (separate files for Bulgarian and English)
-- **Exam answers**: In-memory state only (not persisted between sessions)
+- **Exam practice answers**: In-memory state only (not persisted between sessions)
+- **Exam simulated mode**: SessionStorage - persists during tab session, auto-clears on tab close (includes timer, answers, results)
 
 **Planned for Future:**
 - **LogBook contacts**: IndexedDB (will use Dexie.js - not yet installed) - persistent local storage
@@ -130,6 +131,14 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Basic routing structure
 - Internationalization (English/Bulgarian)
 - Exam practice mode with question navigation
+- Exam simulated mode with timer (40 minutes, 60 questions, 48 correct to pass)
+  - Countdown timer with visual warnings (yellow at 10min, red at 5min)
+  - SessionStorage persistence (survives refresh, clears on tab close)
+  - Browser navigation warning during exam
+  - Submit confirmation with unanswered question count
+  - Auto-submit on timer expiration
+  - Results screen with pass/fail determination
+  - Review mode to see all answers after completion
 - Question bank loading based on locale
 - Math formula rendering in questions
 - Responsive design
@@ -137,13 +146,11 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 
 ### 🚧 In Progress
 - LogBook UI (static placeholder data only)
-- Exam simulated mode UI (placeholder)
 
 ### 📋 Planned Features
 - LogBook data persistence (will require installing Dexie.js for IndexedDB)
 - LogBook CRUD operations
-- Exam progress tracking and history
-- Timed exam mode implementation
+- Exam progress tracking and history (save results to localStorage/IndexedDB)
 - Data export/import functionality
 - Testing framework
 - Linting configuration

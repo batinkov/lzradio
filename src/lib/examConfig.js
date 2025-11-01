@@ -10,8 +10,8 @@ export const examConfig = {
   numberOfQuestions: 60,
 
   // Exam duration in minutes
-  examDuration: 60,
+  examDuration: 40,
 
-  // Maximum wrong answers allowed to pass
-  maxWrongAnswers: 10,
+  // Minimum correct answers required to pass
+  minCorrectAnswers: 48,
 }

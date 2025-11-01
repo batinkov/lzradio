@@ -113,10 +113,9 @@
         <div class="mode-icon">📝</div>
         <h4>{$_('exam.simulatedExam')}</h4>
         <ul class="mode-features">
-          <li>{examConfig.numberOfQuestions} {$_('exam.randomQuestions')}</li>
+          <li>{$_('exam.randomQuestionsFromAllSections', { values: { count: examConfig.numberOfQuestions } })}</li>
           <li>{examConfig.examDuration} {$_('exam.minuteCountdown')}</li>
-          <li>{$_('exam.maxWrongToPass', { values: { count: examConfig.maxWrongAnswers } })}</li>
-          <li>{$_('exam.realExamConditions')}</li>
+          <li>{$_('exam.minCorrectToPass', { values: { count: examConfig.minCorrectAnswers } })}</li>
         </ul>
         <a href="/exam/class{classNum}/simulated" use:link class="btn-primary">
           {$_('exam.startExam')}
