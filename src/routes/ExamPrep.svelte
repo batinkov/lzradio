@@ -1,6 +1,6 @@
 <script>
   import { link, location, querystring } from 'svelte-spa-router'
-  import { _ } from 'svelte-i18n'
+  import { _, locale } from 'svelte-i18n'
   import { getQuestions, getClassInfo } from '../lib/questions.js'
   import { renderMath } from '../lib/katex.js'
   import 'katex/dist/katex.min.css'
@@ -11,9 +11,27 @@
   $: questionOrder = urlParams.get('order') || 'sequential'
   $: sections = urlParams.get('categories')?.split(',').map(Number) || [1, 2, 3]
 
-  // Load questions and class info
-  $: questions = getQuestions(parseInt(classNum), sections, questionOrder === 'random')
-  $: classInfo = getClassInfo(parseInt(classNum))
+  // State for loaded questions and class info
+  let questions = []
+  let classInfo = { class: '', update: '' }
+
+  // Load questions when locale, class, sections, or order changes
+  $: loadQuestions($locale, classNum, sections, questionOrder)
+
+  async function loadQuestions(currentLocale, cls, secs, order) {
+    try {
+      const [loadedQuestions, loadedClassInfo] = await Promise.all([
+        getQuestions(parseInt(cls), secs, order === 'random'),
+        getClassInfo(parseInt(cls))
+      ])
+      questions = loadedQuestions
+      classInfo = loadedClassInfo
+    } catch (error) {
+      console.error('Failed to load questions:', error)
+      questions = []
+      classInfo = { class: '', update: '' }
+    }
+  }
 
   // State
   let currentQuestionIndex = 0

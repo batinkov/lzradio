@@ -1,11 +1,27 @@
 <script>
   import { link } from 'svelte-spa-router'
-  import { _ } from 'svelte-i18n'
+  import { _, locale } from 'svelte-i18n'
   import { getAllQuestions } from '../lib/questions.js'
 
-  // Calculate question counts dynamically from loaded data
-  $: class1Count = getAllQuestions(1).length
-  $: class2Count = getAllQuestions(2).length
+  // State for question counts
+  let class1Count = 0
+  let class2Count = 0
+
+  // Load question counts when locale changes
+  $: loadQuestionCounts($locale)
+
+  async function loadQuestionCounts(currentLocale) {
+    try {
+      const [class1Questions, class2Questions] = await Promise.all([
+        getAllQuestions(1),
+        getAllQuestions(2)
+      ])
+      class1Count = class1Questions.length
+      class2Count = class2Questions.length
+    } catch (error) {
+      console.error('Failed to load questions:', error)
+    }
+  }
 </script>
 
 <div class="page page-centered">

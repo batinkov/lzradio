@@ -1,6 +1,6 @@
 <script>
   import { link, location } from 'svelte-spa-router'
-  import { _ } from 'svelte-i18n'
+  import { _, locale } from 'svelte-i18n'
   import { examConfig } from '../lib/examConfig.js'
   import { getClassInfo } from '../lib/questions.js'
   import { renderMath } from '../lib/katex.js'
@@ -8,7 +8,21 @@
 
   // Extract class number from URL path (/exam/class1/simulated or /exam/class2/simulated)
   $: classNum = $location.includes('class2') ? '2' : '1'
-  $: classInfo = getClassInfo(parseInt(classNum))
+
+  // State for class info
+  let classInfo = { class: '', update: '' }
+
+  // Load class info when locale or class changes
+  $: loadClassInfo($locale, classNum)
+
+  async function loadClassInfo(currentLocale, cls) {
+    try {
+      classInfo = await getClassInfo(parseInt(cls))
+    } catch (error) {
+      console.error('Failed to load class info:', error)
+      classInfo = { class: '', update: '' }
+    }
+  }
 </script>
 
 <div class="page page-centered">

@@ -1,35 +1,57 @@
 /**
  * Exam Questions Data Layer
  *
- * Loads and manages exam questions from data_en/ directory.
+ * Dynamically loads exam questions from data_en/ or data_bg/ based on current locale.
  * Provides utilities for filtering, randomizing, and accessing question data.
  * Questions are organized in JSON files: ClassX_SectionY.json
  */
 
-// Import JSON files for each class and section
-import class1Section1 from '../../data_en/Class1_Section1.json'
-import class1Section2 from '../../data_en/Class1_Section2.json'
-import class1Section3 from '../../data_en/Class1_Section3.json'
-import class2Section1 from '../../data_en/Class2_Section1.json'
-import class2Section2 from '../../data_en/Class2_Section2.json'
-import class2Section3 from '../../data_en/Class2_Section3.json'
+import { get } from 'svelte/store'
+import { locale } from 'svelte-i18n'
 
-// Store the raw section data (includes class, section, update, questions)
-const class1Sections = [class1Section1, class1Section2, class1Section3]
-const class2Sections = [class2Section1, class2Section2, class2Section3]
+// Cache for loaded questions
+let cachedLocale = null
+let cachedSections = null
 
-// Combined sections data for each class
-export const sections = {
-  1: class1Sections,
-  2: class2Sections,
+/**
+ * Load sections for current locale
+ * @returns {Promise<Object>} Sections object with class data
+ */
+async function loadSections() {
+  const currentLocale = get(locale)
+  const lang = currentLocale?.startsWith('bg') ? 'bg' : 'en'
+
+  // Return cached if same locale
+  if (cachedLocale === lang && cachedSections) {
+    return cachedSections
+  }
+
+  // Dynamically import based on locale
+  const modules = await Promise.all([
+    import(`../../data_${lang}/Class1_Section1.json`),
+    import(`../../data_${lang}/Class1_Section2.json`),
+    import(`../../data_${lang}/Class1_Section3.json`),
+    import(`../../data_${lang}/Class2_Section1.json`),
+    import(`../../data_${lang}/Class2_Section2.json`),
+    import(`../../data_${lang}/Class2_Section3.json`)
+  ])
+
+  cachedSections = {
+    1: [modules[0].default, modules[1].default, modules[2].default],
+    2: [modules[3].default, modules[4].default, modules[5].default]
+  }
+  cachedLocale = lang
+
+  return cachedSections
 }
 
 /**
  * Get all questions for a class
  * @param {number} classNum - Class number (1 or 2)
- * @returns {Array} All questions for the class
+ * @returns {Promise<Array>} All questions for the class
  */
-export function getAllQuestions(classNum) {
+export async function getAllQuestions(classNum) {
+  const sections = await loadSections()
   const classSections = sections[classNum]
   return classSections.flatMap((section) => section.questions)
 }
@@ -39,9 +61,10 @@ export function getAllQuestions(classNum) {
  * @param {number} classNum - Class number (1 or 2)
  * @param {number[]} sectionNumbers - Array of section numbers to include (1, 2, 3)
  * @param {boolean} randomize - Whether to randomize the order
- * @returns {Array} Filtered (and optionally randomized) questions
+ * @returns {Promise<Array>} Filtered (and optionally randomized) questions
  */
-export function getQuestions(classNum, sectionNumbers = [1, 2, 3], randomize = false) {
+export async function getQuestions(classNum, sectionNumbers = [1, 2, 3], randomize = false) {
+  const sections = await loadSections()
   const classSections = sections[classNum]
 
   // Filter sections and extract questions
@@ -65,10 +88,10 @@ export function getQuestions(classNum, sectionNumbers = [1, 2, 3], randomize = f
  * Get a subset of questions for simulated exam
  * @param {number} classNum - Class number (1 or 2)
  * @param {number} count - Number of questions to select
- * @returns {Array} Random subset of questions
+ * @returns {Promise<Array>} Random subset of questions
  */
-export function getSimulatedExamQuestions(classNum, count = 60) {
-  const allQuestions = getAllQuestions(classNum)
+export async function getSimulatedExamQuestions(classNum, count = 60) {
+  const allQuestions = await getAllQuestions(classNum)
 
   // Fisher-Yates shuffle
   const shuffled = [...allQuestions]
@@ -84,9 +107,10 @@ export function getSimulatedExamQuestions(classNum, count = 60) {
  * Get section information (class name, section name, update info)
  * @param {number} classNum - Class number (1 or 2)
  * @param {number} sectionNum - Section number (1, 2, or 3)
- * @returns {Object} Section metadata
+ * @returns {Promise<Object>} Section metadata
  */
-export function getSectionInfo(classNum, sectionNum) {
+export async function getSectionInfo(classNum, sectionNum) {
+  const sections = await loadSections()
   const classSections = sections[classNum]
   const section = classSections[sectionNum - 1]
   return {
@@ -99,9 +123,10 @@ export function getSectionInfo(classNum, sectionNum) {
 /**
  * Get metadata for all sections of a class
  * @param {number} classNum - Class number (1 or 2)
- * @returns {Object} Class and update info
+ * @returns {Promise<Object>} Class and update info
  */
-export function getClassInfo(classNum) {
+export async function getClassInfo(classNum) {
+  const sections = await loadSections()
   const classSections = sections[classNum]
   // All sections should have the same class and update info
   return {
