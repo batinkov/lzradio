@@ -35,12 +35,12 @@
 
   // State
   let currentQuestionIndex = 0
-  let userAnswers = {} // { questionNumber: selectedAnswerKey (А/Б/В/Г or A/B/C/D) }
+  let userAnswers = {} // { questionIndex: selectedAnswerKey (А/Б/В/Г or A/B/C/D) }
   let showNavigator = false
 
   // Reactive current question
   $: currentQuestion = questions[currentQuestionIndex]
-  $: selectedAnswer = userAnswers[currentQuestion?.question_number]
+  $: selectedAnswer = userAnswers[currentQuestionIndex]
   $: isAnswered = selectedAnswer !== undefined
   $: isCorrect = isAnswered && selectedAnswer === currentQuestion?.correct_answer
   $: totalQuestions = questions.length
@@ -55,7 +55,7 @@
     : []
 
   function selectAnswer(answerKey) {
-    userAnswers[currentQuestion.question_number] = answerKey
+    userAnswers[currentQuestionIndex] = answerKey
     userAnswers = userAnswers // Trigger reactivity
   }
 
@@ -81,7 +81,8 @@
   }
 
   function getQuestionStatus(question) {
-    const answer = userAnswers[question.question_number]
+    const index = questions.indexOf(question)
+    const answer = userAnswers[index]
     if (answer === undefined) return 'unanswered'
     return answer === question.correct_answer ? 'correct' : 'incorrect'
   }
