@@ -4,8 +4,11 @@
   import { onMount, onDestroy } from 'svelte'
   import { examConfig } from '../lib/examConfig.js'
   import { getSimulatedExamQuestions, getClassInfo } from '../lib/questions.js'
-  import { renderMath } from '../lib/katex.js'
   import 'katex/dist/katex.min.css'
+  import '../styles/exam-shared.css'
+  import QuestionDisplay from '../components/exam/QuestionDisplay.svelte'
+  import ExamNavigation from '../components/exam/ExamNavigation.svelte'
+  import QuestionNavigator from '../components/exam/QuestionNavigator.svelte'
 
   // Exam states
   const EXAM_STATE = {
@@ -346,109 +349,24 @@
     </div>
 
     <!-- Question Display -->
-    {#if currentQuestion}
-      <div class="question-container">
-        <div class="question-header">
-          <span class="question-number">{$_('exam.question')} {currentQuestion.question_number}</span>
-        </div>
-
-        <div class="question-text">
-          {@html renderMath(currentQuestion.question_body)}
-        </div>
-
-        {#if currentQuestion.image}
-          <div class="question-image">
-            <img
-              src="/images/questions/{$locale.startsWith('bg') ? 'bg' : 'en'}/{currentQuestion.image}"
-              alt="Question diagram"
-            />
-          </div>
-        {/if}
-
-        <div class="answers">
-          {#each currentQuestion?.choices || [] as choice}
-            <button
-              class="answer-card"
-              class:selected={selectedAnswer === choice.key}
-              on:click={() => selectAnswer(choice.key)}
-            >
-              <div class="answer-radio">
-                <input
-                  type="radio"
-                  name="answer"
-                  checked={selectedAnswer === choice.key}
-                  readonly
-                />
-              </div>
-              <div class="answer-label">{choice.key}.</div>
-              <div class="answer-text">{@html renderMath(choice.text)}</div>
-            </button>
-          {/each}
-        </div>
-      </div>
-    {/if}
+    <QuestionDisplay
+      question={currentQuestion}
+      selectedAnswer={selectedAnswer}
+      isReviewMode={false}
+      showResult={false}
+      onAnswerSelect={selectAnswer}
+    />
 
     <!-- Navigation -->
-    <div class="navigation">
-      <button
-        class="btn-nav"
-        on:click={previousQuestion}
-        disabled={currentQuestionIndex === 0}
-      >
-        ← {$_('exam.previous')}
-      </button>
-      <button
-        class="btn-submit"
-        on:click={openSubmitModal}
-      >
-        {$_('exam.submitExam')}
-      </button>
-      <button
-        class="btn-nav btn-nav-primary"
-        on:click={nextQuestion}
-        disabled={currentQuestionIndex === questions.length - 1}
-      >
-        {$_('exam.next')} →
-      </button>
-    </div>
+    <ExamNavigation
+      currentIndex={currentQuestionIndex}
+      totalQuestions={questions.length}
+      onPrevious={previousQuestion}
+      onNext={nextQuestion}
+      onSubmit={openSubmitModal}
+      submitLabel={$_('exam.submitExam')}
+    />
   </div>
-
-  <!-- Question Navigator Modal -->
-  {#if showNavigator}
-    <div class="modal-backdrop" on:click={toggleNavigator} on:keydown={(e) => e.key === 'Escape' && toggleNavigator()} role="button" tabindex="0">
-      <div class="modal navigator-modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
-        <div class="modal-header">
-          <h3>{$_('exam.allQuestions')}</h3>
-          <button class="icon-btn" on:click={toggleNavigator}>×</button>
-        </div>
-        <div class="modal-body">
-          <div class="question-grid">
-            {#each questions as question, index}
-              <button
-                class="question-number-btn"
-                class:active={index === currentQuestionIndex}
-                class:answered={userAnswers[index] !== undefined}
-                on:click={() => jumpToQuestion(index)}
-              >
-                {question.question_number}
-              </button>
-            {/each}
-          </div>
-          <div class="legend">
-            <div class="legend-item">
-              <span class="legend-dot legend-current"></span> {$_('exam.current')}
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot legend-answered"></span> {$_('exam.answered')}
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot legend-unanswered"></span> {$_('exam.unanswered')}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  {/if}
 
   <!-- Submit Confirmation Modal -->
   {#if showSubmitModal}
@@ -560,187 +478,40 @@
     </div>
 
     <!-- Question Display -->
-    {#if currentQuestion}
-      <div class="question-container review-mode">
-        <div class="question-header">
-          <span class="question-number">{$_('exam.question')} {currentQuestion.question_number}</span>
-          <span class="question-status status-{getQuestionStatusForReview(currentQuestionIndex)}">
-            {#if getQuestionStatusForReview(currentQuestionIndex) === 'correct'}
-              ✓ {$_('exam.correct')}
-            {:else if getQuestionStatusForReview(currentQuestionIndex) === 'incorrect'}
-              ✗ {$_('exam.incorrect')}
-            {:else}
-              — {$_('exam.unanswered')}
-            {/if}
-          </span>
-        </div>
-
-        <div class="question-text">
-          {@html renderMath(currentQuestion.question_body)}
-        </div>
-
-        {#if currentQuestion.image}
-          <div class="question-image">
-            <img
-              src="/images/questions/{$locale.startsWith('bg') ? 'bg' : 'en'}/{currentQuestion.image}"
-              alt="Question diagram"
-            />
-          </div>
-        {/if}
-
-        <div class="answers">
-          {#each currentQuestion?.choices || [] as choice}
-            <button
-              class="answer-card review"
-              class:user-answer={selectedAnswer === choice.key}
-              class:correct-answer={choice.key === currentQuestion.correct_answer}
-              class:incorrect-answer={selectedAnswer === choice.key && choice.key !== currentQuestion.correct_answer}
-              disabled
-            >
-              <div class="answer-radio">
-                <input
-                  type="radio"
-                  name="answer"
-                  checked={selectedAnswer === choice.key || choice.key === currentQuestion.correct_answer}
-                  readonly
-                />
-              </div>
-              <div class="answer-label">{choice.key}.</div>
-              <div class="answer-text">{@html renderMath(choice.text)}</div>
-              {#if choice.key === currentQuestion.correct_answer}
-                <div class="answer-badge correct-badge">✓ {$_('exam.correctAnswer')}</div>
-              {/if}
-              {#if selectedAnswer === choice.key && choice.key !== currentQuestion.correct_answer}
-                <div class="answer-badge wrong-badge">✗ {$_('exam.yourAnswer')}</div>
-              {/if}
-            </button>
-          {/each}
-        </div>
-      </div>
-    {/if}
+    <QuestionDisplay
+      question={currentQuestion}
+      selectedAnswer={selectedAnswer}
+      isReviewMode={true}
+      showResult={false}
+      onAnswerSelect={() => {}}
+    />
 
     <!-- Navigation -->
-    <div class="navigation">
-      <button
-        class="btn-nav"
-        on:click={previousQuestion}
-        disabled={currentQuestionIndex === 0}
-      >
-        ← {$_('exam.previous')}
-      </button>
-      <button
-        class="btn-nav btn-nav-primary"
-        on:click={nextQuestion}
-        disabled={currentQuestionIndex === questions.length - 1}
-      >
-        {$_('exam.next')} →
-      </button>
-    </div>
+    <ExamNavigation
+      currentIndex={currentQuestionIndex}
+      totalQuestions={questions.length}
+      onPrevious={previousQuestion}
+      onNext={nextQuestion}
+    />
   </div>
-
-  <!-- Question Navigator Modal -->
-  {#if showNavigator}
-    <div class="modal-backdrop" on:click={toggleNavigator} on:keydown={(e) => e.key === 'Escape' && toggleNavigator()} role="button" tabindex="0">
-      <div class="modal navigator-modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
-        <div class="modal-header">
-          <h3>{$_('exam.allQuestions')}</h3>
-          <button class="icon-btn" on:click={toggleNavigator}>×</button>
-        </div>
-        <div class="modal-body">
-          <div class="question-grid">
-            {#each questions as question, index}
-              <button
-                class="question-number-btn"
-                class:active={index === currentQuestionIndex}
-                class:answered-correct={getQuestionStatusForReview(index) === 'correct'}
-                class:answered-incorrect={getQuestionStatusForReview(index) === 'incorrect'}
-                on:click={() => jumpToQuestion(index)}
-              >
-                {question.question_number}
-              </button>
-            {/each}
-          </div>
-          <div class="legend">
-            <div class="legend-item">
-              <span class="legend-dot legend-current"></span> {$_('exam.current')}
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot legend-correct"></span> {$_('exam.correct')}
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot legend-incorrect"></span> {$_('exam.incorrect')}
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot legend-unanswered"></span> {$_('exam.unanswered')}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  {/if}
 {/if}
 
+<!-- Question Navigator Modal (shared for both IN_PROGRESS and REVIEW states) -->
+<QuestionNavigator
+  show={showNavigator && (examState === EXAM_STATE.IN_PROGRESS || examState === EXAM_STATE.REVIEW)}
+  questions={questions}
+  currentQuestionIndex={currentQuestionIndex}
+  userAnswers={userAnswers}
+  examState={examState}
+  onClose={toggleNavigator}
+  onJumpTo={jumpToQuestion}
+/>
+
 <style>
-  /* Reuse styles from ExamPrep and add new ones */
-  .page {
-    padding: var(--space-4);
-    min-height: calc(100vh - 100px);
-    display: flex;
-    flex-direction: column;
-  }
+  /* Shared exam styles are in exam-shared.css */
+  /* This file only contains ExamSimulated-specific styles */
 
-  .page-centered {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  /* Header */
-  .header {
-    margin-bottom: var(--space-3);
-    gap: var(--space-3);
-  }
-
-  .exam-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    flex: 1;
-  }
-
-  .btn-navigator {
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 10px 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .btn-navigator:hover {
-    background: var(--color-bg);
-    border-color: var(--color-primary);
-  }
-
-  .progress-text {
-    font-weight: 600;
-    color: var(--color-text);
-    font-size: 1.125rem;
-  }
-
-  .answered-count {
-    color: var(--color-text-muted);
-    font-size: 0.875rem;
-    font-weight: 400;
-  }
-
-  /* Timer */
+  /* Timer - unique to ExamSimulated */
   .timer-display {
     font-size: 1.5rem;
     font-weight: 700;
@@ -776,246 +547,7 @@
     50% { opacity: 0.8; }
   }
 
-  /* Progress Bar */
-  .progress-bar {
-    width: 100%;
-    height: 8px;
-    background: var(--color-border);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: var(--space-6);
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--color-primary);
-    transition: width 0.3s ease;
-  }
-
-  /* Question Container */
-  .question-container {
-    flex: 1;
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-8);
-    margin-bottom: var(--space-6);
-  }
-
-  .question-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-6);
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .question-number {
-    background: var(--color-bg);
-    padding: 4px 12px;
-    border-radius: var(--radius-md);
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--color-text-muted);
-  }
-
-  .question-status {
-    padding: 4px 12px;
-    border-radius: var(--radius-md);
-    font-size: 0.875rem;
-    font-weight: 600;
-  }
-
-  .status-correct {
-    background: rgba(34, 197, 94, 0.1);
-    color: var(--color-success);
-  }
-
-  .status-incorrect {
-    background: rgba(239, 68, 68, 0.1);
-    color: var(--color-error);
-  }
-
-  .status-unanswered {
-    background: var(--color-bg);
-    color: var(--color-text-muted);
-  }
-
-  .question-text {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: var(--color-text);
-    margin-bottom: var(--space-6);
-    font-weight: 500;
-  }
-
-  /* Question Image */
-  .question-image {
-    margin-bottom: var(--space-8);
-    text-align: center;
-  }
-
-  .question-image img {
-    max-width: 40%;
-    height: auto;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-  }
-
-  /* Answers */
-  .answers {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .answer-card {
-    background: white;
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-4);
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    cursor: pointer;
-    transition: all 0.15s ease;
-    text-align: left;
-    position: relative;
-  }
-
-  .answer-card:not(.review):hover {
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .answer-card.selected {
-    border-color: var(--color-primary);
-    background: rgba(59, 130, 246, 0.05);
-  }
-
-  /* Review mode answer styles */
-  .answer-card.review {
-    cursor: default;
-  }
-
-  .answer-card.correct-answer {
-    border-color: var(--color-success);
-    background: rgba(34, 197, 94, 0.1);
-  }
-
-  .answer-card.incorrect-answer {
-    border-color: var(--color-error);
-    background: rgba(239, 68, 68, 0.1);
-  }
-
-  .answer-badge {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    padding: 4px 8px;
-    border-radius: var(--radius-sm);
-    font-size: 0.75rem;
-    font-weight: 600;
-  }
-
-  .correct-badge {
-    background: var(--color-success);
-    color: white;
-  }
-
-  .wrong-badge {
-    background: var(--color-error);
-    color: white;
-  }
-
-  .answer-radio {
-    flex-shrink: 0;
-  }
-
-  .answer-radio input[type="radio"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
-
-  .answer-card.review .answer-radio input[type="radio"] {
-    cursor: default;
-  }
-
-  .answer-label {
-    flex-shrink: 0;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--color-text);
-    min-width: 24px;
-  }
-
-  .answer-text {
-    flex: 1;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  /* Navigation */
-  .navigation {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-3);
-  }
-
-  .btn-nav {
-    flex: 1;
-    padding: 14px 24px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: white;
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .btn-nav:hover:not(:disabled) {
-    background: var(--color-bg);
-    border-color: var(--color-primary);
-  }
-
-  .btn-nav:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .btn-nav-primary {
-    background: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
-  }
-
-  .btn-nav-primary:hover:not(:disabled) {
-    background: #2563EB;
-  }
-
-  .btn-submit {
-    flex: 1;
-    padding: 14px 24px;
-    border: 2px solid var(--color-primary);
-    border-radius: var(--radius-md);
-    background: white;
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .btn-submit:hover {
-    background: var(--color-primary);
-    color: white;
-  }
-
-  /* Cards */
+  /* Cards - unique styles for exam start */
   .card {
     background: white;
     border: 1px solid var(--color-border);
@@ -1038,7 +570,7 @@
     margin-bottom: 0;
   }
 
-  /* Rules */
+  /* Rules - unique to ExamSimulated */
   .rules-card {
     border-color: var(--color-primary);
   }
@@ -1063,7 +595,7 @@
     font-size: 1.125rem;
   }
 
-  /* Results */
+  /* Results - unique to ExamSimulated */
   .results-card {
     background: white;
     border: 3px solid;
@@ -1161,71 +693,9 @@
     gap: var(--space-4);
   }
 
-  /* Modals */
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: var(--space-4);
-  }
-
-  .modal {
-    background: white;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    max-width: 600px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .navigator-modal {
-    max-width: 800px;
-  }
-
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-6);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .modal-header h3 {
-    margin: 0;
-  }
-
-  .icon-btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    line-height: 1;
-    cursor: pointer;
-    color: var(--color-text-muted);
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .icon-btn:hover {
-    color: var(--color-text);
-  }
-
-  .modal-body {
-    padding: var(--space-6);
-  }
-
-  .modal-body p {
-    margin-bottom: var(--space-4);
+  /* Modal specific overrides */
+  .submit-modal {
+    /* Uses shared modal styles from exam-shared.css */
   }
 
   .warning-text {
@@ -1244,130 +714,10 @@
     flex: 1;
   }
 
-  /* Question Grid */
-  .question-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-    gap: var(--space-2);
-    margin-bottom: var(--space-6);
-  }
-
-  .question-number-btn {
-    aspect-ratio: 1;
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: white;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .question-number-btn:hover {
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .question-number-btn.active {
-    border-color: var(--color-primary);
-    background: var(--color-primary);
-    color: white;
-  }
-
-  .question-number-btn.answered {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: var(--color-primary);
-  }
-
-  .question-number-btn.answered-correct {
-    border-color: var(--color-success);
-    background: var(--color-success);
-    color: white;
-  }
-
-  .question-number-btn.answered-incorrect {
-    border-color: #ef4444;
-    background: #ef4444;
-    color: white;
-  }
-
-  /* Legend */
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    padding-top: var(--space-4);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: 0.875rem;
-  }
-
-  .legend-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: var(--radius-md);
-    border: 2px solid;
-  }
-
-  .legend-current {
-    border-color: var(--color-primary);
-    background: var(--color-primary);
-  }
-
-  .legend-answered {
-    border-color: var(--color-primary);
-    background: rgba(59, 130, 246, 0.1);
-  }
-
-  .legend-correct {
-    border-color: var(--color-success);
-    background: var(--color-success);
-  }
-
-  .legend-incorrect {
-    border-color: #ef4444;
-    background: #ef4444;
-  }
-
-  .legend-unanswered {
-    border-color: var(--color-border);
-    background: white;
-  }
-
-  /* Mobile */
+  /* Mobile overrides */
   @media (max-width: 767px) {
-    .exam-header {
-      flex-wrap: wrap;
-    }
-
-    .header-left {
-      flex-wrap: wrap;
-      width: 100%;
-      margin-bottom: var(--space-3);
-    }
-
     .timer-display {
       width: 100%;
-    }
-
-    .progress-text {
-      font-size: 1rem;
-    }
-
-    .question-container {
-      padding: var(--space-4);
-    }
-
-    .question-text {
-      font-size: 1.125rem;
-    }
-
-    .question-grid {
-      grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
     }
 
     .results-actions {
