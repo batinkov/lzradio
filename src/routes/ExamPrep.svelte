@@ -46,14 +46,6 @@
   $: totalQuestions = questions.length
   $: answeredCount = Object.keys(userAnswers).length
 
-  // Extract answer keys directly from the current question
-  // Filter out metadata fields, leaving only answer options (A/B/C/D, А/Б/В/Г, 1/2/3/4, etc.)
-  $: answerKeys = currentQuestion
-    ? Object.keys(currentQuestion)
-        .filter(key => !['question_number', 'question_body', 'correct_answer', 'image'].includes(key))
-        .sort()
-    : []
-
   function selectAnswer(answerKey) {
     userAnswers[currentQuestionIndex] = answerKey
     userAnswers = userAnswers // Trigger reactivity
@@ -136,24 +128,24 @@
       {/if}
 
       <div class="answers">
-        {#each answerKeys as key}
+        {#each currentQuestion?.choices || [] as choice}
           <button
             class="answer-card"
-            class:selected={selectedAnswer === key && !isAnswered}
-            class:correct={selectedAnswer === key && isCorrect}
-            class:incorrect={selectedAnswer === key && !isCorrect && isAnswered}
-            on:click={() => selectAnswer(key)}
+            class:selected={selectedAnswer === choice.key && !isAnswered}
+            class:correct={selectedAnswer === choice.key && isCorrect}
+            class:incorrect={selectedAnswer === choice.key && !isCorrect && isAnswered}
+            on:click={() => selectAnswer(choice.key)}
           >
             <div class="answer-radio">
               <input
                 type="radio"
                 name="answer"
-                checked={selectedAnswer === key}
+                checked={selectedAnswer === choice.key}
                 readonly
               />
             </div>
-            <div class="answer-label">{key}.</div>
-            <div class="answer-text">{@html renderMath(currentQuestion[key])}</div>
+            <div class="answer-label">{choice.key}.</div>
+            <div class="answer-text">{@html renderMath(choice.text)}</div>
           </button>
         {/each}
       </div>

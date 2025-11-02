@@ -42,13 +42,6 @@
   $: timerDisplay = `${String(timerMinutes).padStart(2, '0')}:${String(timerSeconds).padStart(2, '0')}`
   $: timerWarningLevel = remainingSeconds <= 300 ? 'critical' : remainingSeconds <= 600 ? 'warning' : 'normal'
 
-  // Extract answer keys from current question
-  $: answerKeys = currentQuestion
-    ? Object.keys(currentQuestion)
-        .filter(key => !['question_number', 'question_body', 'correct_answer', 'image'].includes(key))
-        .sort()
-    : []
-
   // Load class info
   $: loadClassInfo($locale, classNum)
 
@@ -373,22 +366,22 @@
         {/if}
 
         <div class="answers">
-          {#each answerKeys as key}
+          {#each currentQuestion?.choices || [] as choice}
             <button
               class="answer-card"
-              class:selected={selectedAnswer === key}
-              on:click={() => selectAnswer(key)}
+              class:selected={selectedAnswer === choice.key}
+              on:click={() => selectAnswer(choice.key)}
             >
               <div class="answer-radio">
                 <input
                   type="radio"
                   name="answer"
-                  checked={selectedAnswer === key}
+                  checked={selectedAnswer === choice.key}
                   readonly
                 />
               </div>
-              <div class="answer-label">{key}.</div>
-              <div class="answer-text">{@html renderMath(currentQuestion[key])}</div>
+              <div class="answer-label">{choice.key}.</div>
+              <div class="answer-text">{@html renderMath(choice.text)}</div>
             </button>
           {/each}
         </div>
@@ -596,28 +589,28 @@
         {/if}
 
         <div class="answers">
-          {#each answerKeys as key}
+          {#each currentQuestion?.choices || [] as choice}
             <button
               class="answer-card review"
-              class:user-answer={selectedAnswer === key}
-              class:correct-answer={key === currentQuestion.correct_answer}
-              class:incorrect-answer={selectedAnswer === key && key !== currentQuestion.correct_answer}
+              class:user-answer={selectedAnswer === choice.key}
+              class:correct-answer={choice.key === currentQuestion.correct_answer}
+              class:incorrect-answer={selectedAnswer === choice.key && choice.key !== currentQuestion.correct_answer}
               disabled
             >
               <div class="answer-radio">
                 <input
                   type="radio"
                   name="answer"
-                  checked={selectedAnswer === key || key === currentQuestion.correct_answer}
+                  checked={selectedAnswer === choice.key || choice.key === currentQuestion.correct_answer}
                   readonly
                 />
               </div>
-              <div class="answer-label">{key}.</div>
-              <div class="answer-text">{@html renderMath(currentQuestion[key])}</div>
-              {#if key === currentQuestion.correct_answer}
+              <div class="answer-label">{choice.key}.</div>
+              <div class="answer-text">{@html renderMath(choice.text)}</div>
+              {#if choice.key === currentQuestion.correct_answer}
                 <div class="answer-badge correct-badge">✓ {$_('exam.correctAnswer')}</div>
               {/if}
-              {#if selectedAnswer === key && key !== currentQuestion.correct_answer}
+              {#if selectedAnswer === choice.key && choice.key !== currentQuestion.correct_answer}
                 <div class="answer-badge wrong-badge">✗ {$_('exam.yourAnswer')}</div>
               {/if}
             </button>
