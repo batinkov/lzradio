@@ -363,6 +363,15 @@
           {@html renderMath(currentQuestion.question_body)}
         </div>
 
+        {#if currentQuestion.image}
+          <div class="question-image">
+            <img
+              src="/images/questions/{$locale.startsWith('bg') ? 'bg' : 'en'}/{currentQuestion.image}"
+              alt="Question diagram"
+            />
+          </div>
+        {/if}
+
         <div class="answers">
           {#each answerKeys as key}
             <button
@@ -576,6 +585,15 @@
         <div class="question-text">
           {@html renderMath(currentQuestion.question_body)}
         </div>
+
+        {#if currentQuestion.image}
+          <div class="question-image">
+            <img
+              src="/images/questions/{$locale.startsWith('bg') ? 'bg' : 'en'}/{currentQuestion.image}"
+              alt="Question diagram"
+            />
+          </div>
+        {/if}
 
         <div class="answers">
           {#each answerKeys as key}
@@ -835,8 +853,22 @@
     font-size: 1.25rem;
     line-height: 1.6;
     color: var(--color-text);
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-6);
     font-weight: 500;
+  }
+
+  /* Question Image */
+  .question-image {
+    margin-bottom: var(--space-8);
+    text-align: center;
+  }
+
+  .question-image img {
+    max-width: 40%;
+    height: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
   }
 
   /* Answers */

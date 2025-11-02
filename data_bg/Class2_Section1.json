@@ -402,6 +402,7 @@
         {
             "question_number": 45,
             "question_body": "С кой от символите се представя резистор (съпротивление)?",
+            "image": "Class2_Section1_45.png",
             "correct_answer": "В",
             "А": "",
             "Б": "",
@@ -411,6 +412,7 @@
         {
             "question_number": 46,
             "question_body": "Кой от компонентите на схемата е променлив резистор (потенциометър)?",
+            "image": "Class2_Section1_46.png",
             "correct_answer": "Г",
             "А": "",
             "Б": "",
@@ -420,6 +422,7 @@
         {
             "question_number": 47,
             "question_body": "Кой от компонентите на схемата е ключ?",
+            "image": "Class2_Section1_47.png",
             "correct_answer": "Г",
             "А": "",
             "Б": "",
@@ -429,6 +432,7 @@
         {
             "question_number": 48,
             "question_body": "Кой от компонентите на схемата е предпазител (бушон)?",
+            "image": "Class2_Section1_48.png",
             "correct_answer": "Б",
             "А": "",
             "Б": "",
@@ -438,6 +442,7 @@
         {
             "question_number": 49,
             "question_body": "Кой от компонентите на схемата е батерия?",
+            "image": "Class2_Section1_49.png",
             "correct_answer": "А",
             "А": "",
             "Б": "",
@@ -447,6 +452,7 @@
         {
             "question_number": 50,
             "question_body": "С кой от символите се представя заземяване?",
+            "image": "Class2_Section1_50.png",
             "correct_answer": "А",
             "А": "",
             "Б": "",
@@ -456,6 +462,7 @@
         {
             "question_number": 51,
             "question_body": "С кой от символите се представя антена?",
+            "image": "Class2_Section1_51.png",
             "correct_answer": "Г",
             "А": "",
             "Б": "",
@@ -465,6 +472,7 @@
         {
             "question_number": 52,
             "question_body": "С кой от символите се представя кондензатор?",
+            "image": "Class2_Section1_52.png",
             "correct_answer": "Г",
             "А": "",
             "Б": "",
@@ -474,6 +482,7 @@
         {
             "question_number": 53,
             "question_body": "С кой от символите се представя n-p-n биполярен транзистор?",
+            "image": "Class2_Section1_53.png",
             "correct_answer": "А",
             "А": "",
             "Б": "",
@@ -483,6 +492,7 @@
         {
             "question_number": 54,
             "question_body": "С кой от символите се представя p-n-p биполярен транзистор?",
+            "image": "Class2_Section1_54.png",
             "correct_answer": "Б",
             "А": "",
             "Б": "",
@@ -492,6 +502,7 @@
         {
             "question_number": 55,
             "question_body": "С кой от символите се представя диод?",
+            "image": "Class2_Section1_55.png",
             "correct_answer": "Б",
             "А": "",
             "Б": "",
