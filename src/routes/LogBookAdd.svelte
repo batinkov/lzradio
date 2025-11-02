@@ -21,7 +21,6 @@
             id="station"
             placeholder="W1ABC"
             class="monospace"
-            autofocus
           />
         </div>
       </div>

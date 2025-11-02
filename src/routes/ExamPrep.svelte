@@ -173,8 +173,8 @@
 
 <!-- Question Navigator Modal -->
 {#if showNavigator}
-  <div class="modal-backdrop" on:click={toggleNavigator}>
-    <div class="modal navigator-modal" on:click|stopPropagation>
+  <div class="modal-backdrop" on:click={toggleNavigator} on:keydown={(e) => e.key === 'Escape' && toggleNavigator()} role="button" tabindex="0">
+    <div class="modal navigator-modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
       <div class="modal-header">
         <h3>{$_('exam.allQuestions')}</h3>
         <button class="icon-btn" on:click={toggleNavigator}>×</button>

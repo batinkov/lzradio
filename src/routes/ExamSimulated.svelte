@@ -415,8 +415,8 @@
 
   <!-- Question Navigator Modal -->
   {#if showNavigator}
-    <div class="modal-backdrop" on:click={toggleNavigator}>
-      <div class="modal navigator-modal" on:click|stopPropagation>
+    <div class="modal-backdrop" on:click={toggleNavigator} on:keydown={(e) => e.key === 'Escape' && toggleNavigator()} role="button" tabindex="0">
+      <div class="modal navigator-modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
         <div class="modal-header">
           <h3>{$_('exam.allQuestions')}</h3>
           <button class="icon-btn" on:click={toggleNavigator}>×</button>
@@ -452,8 +452,8 @@
 
   <!-- Submit Confirmation Modal -->
   {#if showSubmitModal}
-    <div class="modal-backdrop" on:click={closeSubmitModal}>
-      <div class="modal submit-modal" on:click|stopPropagation>
+    <div class="modal-backdrop" on:click={closeSubmitModal} on:keydown={(e) => e.key === 'Escape' && closeSubmitModal()} role="button" tabindex="0">
+      <div class="modal submit-modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
         <div class="modal-header">
           <h3>{$_('exam.confirmSubmit')}</h3>
           <button class="icon-btn" on:click={closeSubmitModal}>×</button>
@@ -640,8 +640,8 @@
 
   <!-- Question Navigator Modal -->
   {#if showNavigator}
-    <div class="modal-backdrop" on:click={toggleNavigator}>
-      <div class="modal navigator-modal" on:click|stopPropagation>
+    <div class="modal-backdrop" on:click={toggleNavigator} on:keydown={(e) => e.key === 'Escape' && toggleNavigator()} role="button" tabindex="0">
+      <div class="modal navigator-modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
         <div class="modal-header">
           <h3>{$_('exam.allQuestions')}</h3>
           <button class="icon-btn" on:click={toggleNavigator}>×</button>

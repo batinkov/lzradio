@@ -45,7 +45,7 @@
 
         <!-- Question Order -->
         <div class="config-section">
-          <label class="config-label">{$_('exam.questionOrder')}</label>
+          <div class="config-label">{$_('exam.questionOrder')}</div>
           <div class="radio-group">
             <label class="radio-option">
               <input
@@ -70,7 +70,7 @@
 
         <!-- Category Selection -->
         <div class="config-section">
-          <label class="config-label">{$_('exam.categories')}</label>
+          <div class="config-label">{$_('exam.categories')}</div>
           <div class="checkbox-group">
             <label class="checkbox-option">
               <input

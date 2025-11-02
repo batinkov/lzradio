@@ -85,8 +85,8 @@
 
 <!-- Help Modal -->
 {#if showHelpModal}
-  <div class="modal-backdrop" on:click={closeHelpModal}>
-    <div class="modal" on:click|stopPropagation>
+  <div class="modal-backdrop" on:click={closeHelpModal} on:keydown={(e) => e.key === 'Escape' && closeHelpModal()} role="button" tabindex="0">
+    <div class="modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
       <div class="modal-header">
         <h2>{$_('help.title')}</h2>
         <button class="icon-btn" on:click={closeHelpModal} aria-label={$_('common.close')}>
