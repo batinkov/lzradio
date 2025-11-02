@@ -50,7 +50,7 @@
   // Filter out metadata fields, leaving only answer options (A/B/C/D, А/Б/В/Г, 1/2/3/4, etc.)
   $: answerKeys = currentQuestion
     ? Object.keys(currentQuestion)
-        .filter(key => !['question_number', 'question_body', 'correct_answer'].includes(key))
+        .filter(key => !['question_number', 'question_body', 'correct_answer', 'image'].includes(key))
         .sort()
     : []
 

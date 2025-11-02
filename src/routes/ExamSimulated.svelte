@@ -45,7 +45,7 @@
   // Extract answer keys from current question
   $: answerKeys = currentQuestion
     ? Object.keys(currentQuestion)
-        .filter(key => !['question_number', 'question_body', 'correct_answer'].includes(key))
+        .filter(key => !['question_number', 'question_body', 'correct_answer', 'image'].includes(key))
         .sort()
     : []
 
