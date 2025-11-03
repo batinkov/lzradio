@@ -41,6 +41,12 @@
   flex: 1;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
 .btn-navigator {
   background: white;
   border: 1px solid var(--color-border);
@@ -54,6 +60,23 @@
 .btn-navigator:hover {
   background: var(--color-bg);
   border-color: var(--color-primary);
+}
+
+.btn-leave-exam {
+  background: white;
+  border: 2px solid var(--color-error);
+  color: var(--color-error);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-leave-exam:hover {
+  background: var(--color-error);
+  color: white;
 }
 
 .progress-text {

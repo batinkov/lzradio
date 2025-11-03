@@ -1,7 +1,8 @@
 <script>
   import { link, location } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
-  import { locale, changeLanguage, SUPPORTED_LOCALES } from '../../lib/i18n.js'
+  import { locale, changeLanguage, SUPPORTED_LOCALES, languageSwitchingDisabled } from '../../lib/i18n.js'
+  import { navigationBlocked } from '../../lib/navigationGuard.js'
 
   let showMobileMenu = false
   let showHelpModal = false
@@ -19,7 +20,16 @@
   }
 
   function switchLanguage(lang) {
+    if ($languageSwitchingDisabled) return
     changeLanguage(lang)
+  }
+
+  // Prevent navigation when blocked (exam in progress)
+  function handleNavigationClick(event) {
+    if ($navigationBlocked) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
   }
 
   // Close mobile menu when route changes
@@ -31,15 +41,37 @@
 <nav class="nav">
   <div class="nav-content">
     <div class="nav-brand">
-      <a href="/" use:link>LZ Radio</a>
+      <a
+        href="/"
+        use:link
+        class:blocked={$navigationBlocked}
+        on:click={handleNavigationClick}
+        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
+      >
+        LZ Radio
+      </a>
     </div>
 
     <!-- Desktop Navigation -->
     <div class="nav-links desktop">
-      <a href="/logbook" use:link class:active={$location === '/logbook'}>
+      <a
+        href="/logbook"
+        use:link
+        class:active={$location === '/logbook'}
+        class:blocked={$navigationBlocked}
+        on:click={handleNavigationClick}
+        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
+      >
         {$_('nav.logbook')}
       </a>
-      <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
+      <a
+        href="/exam"
+        use:link
+        class:active={$location.startsWith('/exam')}
+        class:blocked={$navigationBlocked}
+        on:click={handleNavigationClick}
+        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
+      >
         {$_('nav.examPrep')}
       </a>
     </div>
@@ -51,8 +83,11 @@
           <button
             class="lang-btn"
             class:active={$locale === lang}
+            class:disabled={$languageSwitchingDisabled}
             on:click={() => switchLanguage(lang)}
+            disabled={$languageSwitchingDisabled}
             aria-label="Switch to {lang}"
+            title={$languageSwitchingDisabled ? 'Language switching is disabled during exam' : ''}
           >
             {lang.toUpperCase()}
           </button>
@@ -73,10 +108,24 @@
   <!-- Mobile Menu -->
   {#if showMobileMenu}
     <div class="mobile-menu">
-      <a href="/logbook" use:link class:active={$location === '/logbook'}>
+      <a
+        href="/logbook"
+        use:link
+        class:active={$location === '/logbook'}
+        class:blocked={$navigationBlocked}
+        on:click={handleNavigationClick}
+        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
+      >
         {$_('nav.logbook')}
       </a>
-      <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
+      <a
+        href="/exam"
+        use:link
+        class:active={$location.startsWith('/exam')}
+        class:blocked={$navigationBlocked}
+        on:click={handleNavigationClick}
+        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
+      >
         {$_('nav.examPrep')}
       </a>
     </div>
@@ -147,6 +196,12 @@
     text-decoration: none;
   }
 
+  .nav-brand a.blocked {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
   .nav-links {
     display: flex;
     gap: var(--space-6);
@@ -169,6 +224,12 @@
   .nav-links a.active {
     color: var(--color-primary);
     background: rgba(59, 130, 246, 0.1);
+  }
+
+  .nav-links a.blocked {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .nav-actions {
@@ -207,6 +268,22 @@
     background: var(--color-primary);
   }
 
+  .lang-btn.disabled,
+  .lang-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .lang-btn:disabled:hover {
+    color: var(--color-text-muted);
+    background: transparent;
+  }
+
+  .lang-btn.active:disabled:hover {
+    color: white;
+    background: var(--color-primary);
+  }
+
   .mobile-menu-btn {
     display: none;
   }
@@ -234,6 +311,12 @@
   .mobile-menu a.active {
     color: var(--color-primary);
     background: rgba(59, 130, 246, 0.1);
+  }
+
+  .mobile-menu a.blocked {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   /* Modal-specific styles */

@@ -155,7 +155,15 @@
     "tryAgain": "Try Again",
     "backToResults": "Back to Results",
     "correctAnswer": "Correct",
-    "yourAnswer": "Your Answer"
+    "yourAnswer": "Your Answer",
+    "leaveExamTitle": "Leave Exam?",
+    "leaveExamWarning": "You are currently taking a simulated exam.",
+    "leaveExamProgressLost": "If you leave now, all your progress will be lost and the exam will be reset.",
+    "stayInExam": "Stay in Exam",
+    "leaveExam": "Leave Exam",
+    "leaveExamButton": "Exit Exam",
+    "leaveExamTooltip": "Leave the exam and return to exam selection",
+    "leaveExamConfirm": "Are you sure you want to leave the exam? Your progress will be lost."
   },
   "common": {
     "close": "Close",

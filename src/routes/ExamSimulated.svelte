@@ -4,6 +4,8 @@
   import { onMount, onDestroy } from 'svelte'
   import { examConfig } from '../lib/examConfig.js'
   import { getSimulatedExamQuestions, getClassInfo } from '../lib/questions.js'
+  import { languageSwitchingDisabled } from '../lib/i18n.js'
+  import { navigationBlocked } from '../lib/navigationGuard.js'
   import 'katex/dist/katex.min.css'
   import '../styles/exam-shared.css'
   import QuestionDisplay from '../components/exam/QuestionDisplay.svelte'
@@ -20,7 +22,6 @@
 
   // Extract class number from URL
   $: classNum = $location.includes('class2') ? '2' : '1'
-  $: storageKey = `lzradio-exam-session-class${classNum}`
 
   // State
   let examState = EXAM_STATE.NOT_STARTED
@@ -57,43 +58,42 @@
     }
   }
 
-  // Check for existing session on mount
+  // No session restoration - simulated exams restart on page refresh/navigation
   onMount(() => {
-    const savedSession = sessionStorage.getItem(storageKey)
-    if (savedSession) {
-      try {
-        const session = JSON.parse(savedSession)
-        // Restore session
-        examState = session.examState
-        questions = session.questions
-        userAnswers = session.userAnswers
-        currentQuestionIndex = session.currentQuestionIndex || 0
-        remainingSeconds = session.remainingSeconds
-        examResults = session.examResults || null
-
-        if (examState === EXAM_STATE.IN_PROGRESS) {
-          startTimer()
-        }
-      } catch (error) {
-        console.error('Failed to restore session:', error)
-        clearSession()
-      }
-    }
+    // Component mounted - ready for user to start exam
   })
 
-  // Cleanup timer on unmount
+  // Cleanup timer on unmount and reset language switching
   onDestroy(() => {
     if (timerInterval) {
       clearInterval(timerInterval)
     }
+    languageSwitchingDisabled.set(false)
   })
 
-  // Browser navigation warning
+  // Browser navigation warning, language switching control, and navigation link blocking
   $: {
-    if (examState === EXAM_STATE.IN_PROGRESS) {
+    if (examState === EXAM_STATE.IN_PROGRESS || examState === EXAM_STATE.REVIEW) {
       window.onbeforeunload = () => 'Your exam progress will be lost if you leave this page. Are you sure?'
+      languageSwitchingDisabled.set(true)
+      navigationBlocked.set(true)
     } else {
       window.onbeforeunload = null
+      languageSwitchingDisabled.set(false)
+      navigationBlocked.set(false)
+    }
+  }
+
+  // Leave exam function
+  function leaveExam() {
+    const confirmed = window.confirm($_('exam.leaveExamConfirm'))
+    if (confirmed) {
+      // Disable blocking to allow navigation
+      navigationBlocked.set(false)
+      languageSwitchingDisabled.set(false)
+      window.onbeforeunload = null
+      // Navigate back to class home
+      window.location.hash = `/exam/class${classNum}`
     }
   }
 
@@ -107,7 +107,6 @@
       examState = EXAM_STATE.IN_PROGRESS
       examResults = null
 
-      saveSession()
       startTimer()
     } catch (error) {
       console.error('Failed to start exam:', error)
@@ -122,11 +121,6 @@
     timerInterval = setInterval(() => {
       remainingSeconds--
 
-      // Save timer to session every 30 seconds
-      if (remainingSeconds % 30 === 0) {
-        saveSession()
-      }
-
       // Auto-submit when time expires
       if (remainingSeconds <= 0) {
         clearInterval(timerInterval)
@@ -135,28 +129,10 @@
     }, 1000)
   }
 
-  // Session storage management
-  function saveSession() {
-    const session = {
-      examState,
-      questions,
-      userAnswers,
-      currentQuestionIndex,
-      remainingSeconds,
-      examResults
-    }
-    sessionStorage.setItem(storageKey, JSON.stringify(session))
-  }
-
-  function clearSession() {
-    sessionStorage.removeItem(storageKey)
-  }
-
   // Answer management
   function selectAnswer(answerKey) {
     userAnswers[currentQuestionIndex] = answerKey
     userAnswers = userAnswers // Trigger reactivity
-    saveSession()
   }
 
   // Navigation
@@ -227,19 +203,16 @@
     }
 
     examState = EXAM_STATE.COMPLETED
-    saveSession()
   }
 
   // Review mode
   function enterReviewMode() {
     examState = EXAM_STATE.REVIEW
     currentQuestionIndex = 0
-    saveSession()
   }
 
   function exitReviewMode() {
     examState = EXAM_STATE.COMPLETED
-    saveSession()
   }
 
   function getQuestionStatus(question) {
@@ -258,7 +231,6 @@
 
   // Reset exam
   function tryAgain() {
-    clearSession()
     examState = EXAM_STATE.NOT_STARTED
     questions = []
     userAnswers = {}
@@ -332,8 +304,13 @@
           <span class="answered-count">({answeredCount} {$_('exam.answered')})</span>
         </div>
       </div>
-      <div class="timer-display timer-{timerWarningLevel}">
-        ⏱️ {timerDisplay}
+      <div class="header-right">
+        <div class="timer-display timer-{timerWarningLevel}">
+          ⏱️ {timerDisplay}
+        </div>
+        <button class="btn-leave-exam" on:click={leaveExam} title={$_('exam.leaveExamTooltip')}>
+          {$_('exam.leaveExamButton')}
+        </button>
       </div>
     </div>
 
@@ -457,7 +434,7 @@
 {:else if examState === EXAM_STATE.REVIEW}
   <div class="page">
     <!-- Header -->
-    <div class="header">
+    <div class="header exam-header">
       <div class="header-left">
         <button class="btn-navigator" on:click={toggleNavigator}>
           ☰ {$_('exam.questionsMenu')}
@@ -466,9 +443,14 @@
           {$_('exam.questionOf', { values: { current: currentQuestionIndex + 1, total: totalQuestions } })}
         </div>
       </div>
-      <button class="btn-secondary" on:click={exitReviewMode}>
-        ← {$_('exam.backToResults')}
-      </button>
+      <div class="header-right">
+        <button class="btn-secondary" on:click={exitReviewMode}>
+          ← {$_('exam.backToResults')}
+        </button>
+        <button class="btn-leave-exam" on:click={leaveExam} title={$_('exam.leaveExamTooltip')}>
+          {$_('exam.leaveExamButton')}
+        </button>
+      </div>
     </div>
 
     <!-- Class info -->
@@ -712,6 +694,16 @@
 
   .modal-actions button {
     flex: 1;
+  }
+
+  .btn-danger {
+    background: var(--color-error);
+    border-color: var(--color-error);
+  }
+
+  .btn-danger:hover {
+    background: #dc2626;
+    border-color: #dc2626;
   }
 
   /* Mobile overrides */

@@ -8,10 +8,17 @@
  */
 
 import { register, init, getLocaleFromNavigator, locale } from 'svelte-i18n'
+import { writable } from 'svelte/store'
 
 const STORAGE_KEY = 'lzradio-language'
 const SUPPORTED_LOCALES = ['en', 'bg']
 const DEFAULT_LOCALE = 'en'
+
+/**
+ * Store to track if language switching should be disabled
+ * (e.g., during simulated exam)
+ */
+export const languageSwitchingDisabled = writable(false)
 
 // Register translation files
 register('en', () => import('../locales/en.json'))
