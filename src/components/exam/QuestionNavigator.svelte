@@ -1,5 +1,6 @@
 <script>
   import { _ } from 'svelte-i18n'
+  import { getAnswerStatus } from '../../lib/examScoring.js'
 
   // Props
   export let show = false
@@ -14,8 +15,7 @@
   function getQuestionStatus(index) {
     const question = questions[index]
     const answer = userAnswers[index]
-    if (answer === undefined) return 'unanswered'
-    return answer === question.correct_answer ? 'correct' : 'incorrect'
+    return getAnswerStatus(question, answer)
   }
 
   // Determine if we're in review mode

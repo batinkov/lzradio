@@ -1,6 +1,7 @@
 <script>
   import { _ } from 'svelte-i18n'
   import { renderMath } from '../../lib/katex.js'
+  import { getAnswerStatus } from '../../lib/examScoring.js'
 
   // Props
   export let question = null
@@ -12,8 +13,9 @@
   export let showResult = false
 
   // Computed values
-  $: isAnswered = selectedAnswer !== undefined
-  $: isCorrect = isAnswered && selectedAnswer === question?.correct_answer
+  $: answerStatus = getAnswerStatus(question, selectedAnswer)
+  $: isAnswered = answerStatus !== 'unanswered'
+  $: isCorrect = answerStatus === 'correct'
   $: locale = $_.locale || 'en'
 </script>
 

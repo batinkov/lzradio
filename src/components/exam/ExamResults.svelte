@@ -2,16 +2,11 @@
   import { _ } from 'svelte-i18n'
   import { createEventDispatcher } from 'svelte'
   import { examConfig } from '../../lib/examConfig.js'
+  import { formatTime } from '../../lib/examTimer.js'
 
   export let examResults
 
   const dispatch = createEventDispatcher()
-
-  function formatTime(seconds) {
-    const mins = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${mins}:${String(secs).padStart(2, '0')}`
-  }
 </script>
 
 <div class="page page-centered">

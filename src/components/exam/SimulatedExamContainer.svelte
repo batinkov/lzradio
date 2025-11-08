@@ -5,6 +5,8 @@
   import { getSimulatedExamQuestions, getClassInfo } from '../../lib/questions.js'
   import { languageSwitchingDisabled } from '../../lib/i18n.js'
   import { navigationBlocked } from '../../lib/navigationGuard.js'
+  import { calculateExamResults } from '../../lib/examScoring.js'
+  import { formatTime, getTimerWarningLevel } from '../../lib/examTimer.js'
   import 'katex/dist/katex.min.css'
   import '../../styles/exam-shared.css'
 
@@ -36,10 +38,8 @@
   let examResults = null
 
   // Reactive values
-  $: timerMinutes = Math.floor(remainingSeconds / 60)
-  $: timerSeconds = remainingSeconds % 60
-  $: timerDisplay = `${String(timerMinutes).padStart(2, '0')}:${String(timerSeconds).padStart(2, '0')}`
-  $: timerWarningLevel = remainingSeconds <= 300 ? 'critical' : remainingSeconds <= 600 ? 'warning' : 'normal'
+  $: timerDisplay = formatTime(remainingSeconds)
+  $: timerWarningLevel = getTimerWarningLevel(remainingSeconds)
 
   // Load class info
   $: loadClassInfo($locale, classNum)
@@ -169,30 +169,13 @@
       clearInterval(timerInterval)
     }
 
-    // Calculate results
-    let correctCount = 0
-    let wrongCount = 0
-    let unansweredCount = 0
-
-    questions.forEach((question, index) => {
-      const userAnswer = userAnswers[index]
-      if (userAnswer === undefined) {
-        unansweredCount++
-      } else if (userAnswer === question.correct_answer) {
-        correctCount++
-      } else {
-        wrongCount++
-      }
+    // Calculate results using examScoring module
+    const results = calculateExamResults(questions, userAnswers, {
+      minCorrectAnswers: examConfig.minCorrectAnswers
     })
 
-    const passed = correctCount >= examConfig.minCorrectAnswers
-
     examResults = {
-      correctCount,
-      wrongCount,
-      unansweredCount,
-      totalQuestions: questions.length,
-      passed,
+      ...results,
       completionTime: examConfig.examDuration * 60 - remainingSeconds
     }
 

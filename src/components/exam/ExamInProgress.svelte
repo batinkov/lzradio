@@ -1,6 +1,7 @@
 <script>
   import { _ } from 'svelte-i18n'
   import { createEventDispatcher } from 'svelte'
+  import { calculateProgress } from '../../lib/examProgress.js'
   import ExamHeader from './ExamHeader.svelte'
   import QuestionDisplay from './QuestionDisplay.svelte'
   import ExamNavigation from './ExamNavigation.svelte'
@@ -19,8 +20,9 @@
   $: currentQuestion = questions[currentQuestionIndex]
   $: selectedAnswer = userAnswers[currentQuestionIndex]
   $: totalQuestions = questions.length
-  $: answeredCount = Object.keys(userAnswers).length
-  $: unansweredCount = totalQuestions - answeredCount
+  $: progress = calculateProgress(userAnswers, totalQuestions)
+  $: answeredCount = progress.answeredCount
+  $: unansweredCount = progress.unansweredCount
 
   function openSubmitModal() {
     showSubmitModal = true
