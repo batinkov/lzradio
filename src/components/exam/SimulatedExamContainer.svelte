@@ -3,8 +3,12 @@
   import { _, locale } from 'svelte-i18n'
   import { examConfig } from '../../lib/examConfig.js'
   import { getSimulatedExamQuestions, getClassInfo } from '../../lib/questions.js'
-  import { languageSwitchingDisabled } from '../../lib/i18n.js'
-  import { navigationBlocked } from '../../lib/navigationGuard.js'
+  import {
+    enableNavigationGuards,
+    disableNavigationGuards,
+    cleanupNavigationGuards,
+    shouldEnableGuards
+  } from '../../lib/navigationGuard.js'
   import { calculateExamResults } from '../../lib/examScoring.js'
   import { formatTime, getTimerWarningLevel } from '../../lib/examTimer.js'
   import 'katex/dist/katex.min.css'
@@ -65,28 +69,11 @@
 
   // Browser navigation warning & guards
   $: {
-    if (examState === EXAM_STATE.IN_PROGRESS || examState === EXAM_STATE.REVIEW) {
+    if (shouldEnableGuards(examState)) {
       enableNavigationGuards()
     } else {
       disableNavigationGuards()
     }
-  }
-
-  // Navigation guards
-  function enableNavigationGuards() {
-    window.onbeforeunload = () => 'Your exam progress will be lost if you leave this page. Are you sure?'
-    languageSwitchingDisabled.set(true)
-    navigationBlocked.set(true)
-  }
-
-  function disableNavigationGuards() {
-    window.onbeforeunload = null
-    languageSwitchingDisabled.set(false)
-    navigationBlocked.set(false)
-  }
-
-  function cleanupNavigationGuards() {
-    disableNavigationGuards()
   }
 
   function leaveExam() {
