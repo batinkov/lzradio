@@ -1,0 +1,8 @@
+dist/
+build/
+.svelte-kit/
+node_modules/
+package-lock.json
+data_bg/
+data_en/
+data_en_debug/

@@ -44,8 +44,6 @@
   // Reactive current question
   $: currentQuestion = questions[currentQuestionIndex]
   $: selectedAnswer = userAnswers[currentQuestionIndex]
-  $: isAnswered = selectedAnswer !== undefined
-  $: isCorrect = isAnswered && selectedAnswer === currentQuestion?.correct_answer
   $: totalQuestions = questions.length
   $: answeredCount = Object.keys(userAnswers).length
 

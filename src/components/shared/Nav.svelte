@@ -79,7 +79,7 @@
     <div class="nav-actions">
       <!-- Language Switcher -->
       <div class="language-switcher">
-        {#each SUPPORTED_LOCALES as lang}
+        {#each SUPPORTED_LOCALES as lang (lang)}
           <button
             class="lang-btn"
             class:active={$locale === lang}

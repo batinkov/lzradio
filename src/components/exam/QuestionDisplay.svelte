@@ -35,6 +35,8 @@
     </div>
 
     <div class="question-text">
+      <!-- KaTeX math rendering from trusted static JSON -->
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       {@html renderMath(question.question_body)}
     </div>
 
@@ -48,7 +50,7 @@
     {/if}
 
     <div class="answers">
-      {#each question.choices || [] as choice}
+      {#each question.choices || [] as choice, idx (idx)}
         {#if isReviewMode}
           <!-- Review mode display -->
           <button
@@ -67,6 +69,8 @@
               />
             </div>
             <div class="answer-label">{choice.key}.</div>
+            <!-- KaTeX math rendering from trusted static JSON -->
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
             <div class="answer-text">{@html renderMath(choice.text)}</div>
             {#if choice.key === question.correct_answer}
               <div class="answer-badge correct-badge">✓ {$_('exam.correctAnswer')}</div>
@@ -106,6 +110,8 @@
               </div>
             {/if}
             <div class="answer-label">{choice.key}.</div>
+            <!-- KaTeX math rendering from trusted static JSON -->
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
             <div class="answer-text">{@html renderMath(choice.text)}</div>
           </button>
         {/if}

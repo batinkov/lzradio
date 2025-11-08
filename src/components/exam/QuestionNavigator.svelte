@@ -44,7 +44,7 @@
       </div>
       <div class="modal-body">
         <div class="question-grid">
-          {#each questions as question, index}
+          {#each questions as question, index (index)}
             <button
               class="question-number-btn"
               class:active={index === currentQuestionIndex}

@@ -10,7 +10,7 @@
   // Load question counts when locale changes
   $: loadQuestionCounts($locale)
 
-  async function loadQuestionCounts(currentLocale) {
+  async function loadQuestionCounts() {
     try {
       const [class1Questions, class2Questions] = await Promise.all([
         getAllQuestions(1),
