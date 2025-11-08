@@ -2,6 +2,7 @@
   import { link, location, querystring } from 'svelte-spa-router'
   import { _, locale } from 'svelte-i18n'
   import { getQuestions, getClassInfo } from '../lib/questions.js'
+  import { parseExamParams } from '../lib/urlParams.js'
   import 'katex/dist/katex.min.css'
   import '../styles/exam-shared.css'
   import QuestionDisplay from '../components/exam/QuestionDisplay.svelte'
@@ -9,10 +10,7 @@
   import QuestionNavigator from '../components/exam/QuestionNavigator.svelte'
 
   // Parse URL parameters
-  $: classNum = $location.includes('class2') ? '2' : '1'
-  $: urlParams = new URLSearchParams($querystring)
-  $: questionOrder = urlParams.get('order') || 'sequential'
-  $: sections = urlParams.get('categories')?.split(',').map(Number) || [1, 2, 3]
+  $: ({ classNum, questionOrder, sections } = parseExamParams($location, $querystring))
 
   // State for loaded questions and class info
   let questions = []
