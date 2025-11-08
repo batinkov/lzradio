@@ -99,6 +99,7 @@
     "incorrect": "Грешен",
     "unanswered": "Неотговорен",
     "back": "Назад",
+    "loadingQuestions": "Зареждане на въпроси...",
     "selectClass": "Избери клас",
     "selectButton": "Избери",
     "selectMode": "Избери режим",

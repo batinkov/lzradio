@@ -14,6 +14,7 @@
   import 'katex/dist/katex.min.css'
   import '../../styles/exam-shared.css'
 
+  import Loading from '../shared/Loading.svelte'
   import ExamStartScreen from './ExamStartScreen.svelte'
   import ExamInProgress from './ExamInProgress.svelte'
   import ExamResults from './ExamResults.svelte'
@@ -25,6 +26,7 @@
   // Exam states
   const EXAM_STATE = {
     NOT_STARTED: 'NOT_STARTED',
+    LOADING: 'LOADING',
     IN_PROGRESS: 'IN_PROGRESS',
     COMPLETED: 'COMPLETED',
     REVIEW: 'REVIEW'
@@ -86,17 +88,19 @@
 
   // Start exam
   async function startExam() {
+    examState = EXAM_STATE.LOADING
     try {
       questions = await getSimulatedExamQuestions(parseInt(classNum), examConfig.numberOfQuestions)
       userAnswers = {}
       currentQuestionIndex = 0
       remainingSeconds = examConfig.examDuration * 60
-      examState = EXAM_STATE.IN_PROGRESS
       examResults = null
+      examState = EXAM_STATE.IN_PROGRESS
       startTimer()
     } catch (error) {
       console.error('Failed to start exam:', error)
       alert('Failed to load exam questions. Please try again.')
+      examState = EXAM_STATE.NOT_STARTED
     }
   }
 
@@ -193,6 +197,11 @@
 
 {#if examState === EXAM_STATE.NOT_STARTED}
   <ExamStartScreen {classNum} {classInfo} on:start={startExam} />
+
+{:else if examState === EXAM_STATE.LOADING}
+  <div class="page page-centered">
+    <Loading message={$_('exam.loadingQuestions')} />
+  </div>
 
 {:else if examState === EXAM_STATE.IN_PROGRESS}
   <ExamInProgress

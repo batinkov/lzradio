@@ -99,6 +99,7 @@
     "incorrect": "Incorrect",
     "unanswered": "Unanswered",
     "back": "Back",
+    "loadingQuestions": "Loading questions...",
     "selectClass": "Select Class",
     "selectButton": "Select",
     "selectMode": "Select Mode",

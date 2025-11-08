@@ -5,6 +5,7 @@
   import { parseExamParams } from '../lib/urlParams.js'
   import 'katex/dist/katex.min.css'
   import '../styles/exam-shared.css'
+  import Loading from '../components/shared/Loading.svelte'
   import QuestionDisplay from '../components/exam/QuestionDisplay.svelte'
   import ExamNavigation from '../components/exam/ExamNavigation.svelte'
   import QuestionNavigator from '../components/exam/QuestionNavigator.svelte'
@@ -15,11 +16,13 @@
   // State for loaded questions and class info
   let questions = []
   let classInfo = { class: '', update: '' }
+  let isLoading = true
 
   // Load questions when locale, class, sections, or order changes
   $: loadQuestions($locale, classNum, sections, questionOrder)
 
   async function loadQuestions(currentLocale, cls, secs, order) {
+    isLoading = true
     try {
       const [loadedQuestions, loadedClassInfo] = await Promise.all([
         getQuestions(parseInt(cls), secs, order === 'random'),
@@ -31,6 +34,8 @@
       console.error('Failed to load questions:', error)
       questions = []
       classInfo = { class: '', update: '' }
+    } finally {
+      isLoading = false
     }
   }
 
@@ -100,21 +105,25 @@
   </div>
 
   <!-- Question Display -->
-  <QuestionDisplay
-    question={currentQuestion}
-    selectedAnswer={selectedAnswer}
-    isReviewMode={false}
-    showResult={true}
-    onAnswerSelect={selectAnswer}
-  />
+  {#if isLoading}
+    <Loading />
+  {:else}
+    <QuestionDisplay
+      question={currentQuestion}
+      selectedAnswer={selectedAnswer}
+      isReviewMode={false}
+      showResult={true}
+      onAnswerSelect={selectAnswer}
+    />
 
-  <!-- Navigation -->
-  <ExamNavigation
-    currentIndex={currentQuestionIndex}
-    totalQuestions={questions.length}
-    onPrevious={previousQuestion}
-    onNext={nextQuestion}
-  />
+    <!-- Navigation -->
+    <ExamNavigation
+      currentIndex={currentQuestionIndex}
+      totalQuestions={questions.length}
+      onPrevious={previousQuestion}
+      onNext={nextQuestion}
+    />
+  {/if}
 </div>
 
 <!-- Question Navigator Modal -->
