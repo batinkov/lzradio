@@ -37,25 +37,62 @@ npm run preview
 ```
 
 ### Testing
-Testing framework not yet implemented.
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test
+
+# Run tests once (CI mode)
+npm run test:run
+
+# Run tests with UI
+npm run test:ui
+```
+
+**Test Coverage:** 144 passing unit tests across all business logic modules.
 
 ### Linting
-No linter configured yet.
+```bash
+# Run ESLint
+npm run lint
+
+# Auto-fix linting issues
+npm run lint:fix
+
+# Check formatting
+npm run format:check
+
+# Auto-format code
+npm run format
+```
+
+**Tools:** ESLint + Prettier with Svelte support.
 
 ## Architecture
 
 ### High-Level Structure
-Fully client-side single-page application (SPA). No backend server. All data stored locally in user's browser (currently LocalStorage for preferences only; IndexedDB planned for user data).
+Fully client-side single-page application (SPA). No backend server. All data stored locally in user's browser using a unified storage adapter architecture. LocalStorage for preferences (via storage adapters), IndexedDB planned for LogBook data.
 
 ### Key Components
 - **Routes** (`src/routes/`): Page-level components (Home, LogBook, Exam pages)
 - **Shared Components** (`src/components/shared/`): Navigation, modals
 - **Feature Components** (`src/components/logbook/`, `src/components/exam/`): Directories exist but not yet utilized
 - **Library** (`src/lib/`):
-  - `i18n.js` - Internationalization setup and language switching
+  - `i18n.js` - Internationalization setup and language switching (uses localStorageAdapter)
   - `questions.js` - Dynamic question loading based on locale
   - `katex.js` - Math formula rendering
   - `examConfig.js` - Exam configuration constants
+  - `examScoring.js` - Exam scoring and answer validation logic (pure functions, tested)
+  - `examTimer.js` - Timer utilities and time formatting (pure functions, tested)
+  - `examProgress.js` - Progress tracking calculations (pure functions, tested)
+  - `navigationGuard.js` - Navigation protection during exams (tested)
+  - `urlParams.js` - Type-safe URL parameter parsing (tested)
+  - `storage/` - Storage adapter architecture:
+    - `storageAdapter.js` - Base adapter with unified API (tested)
+    - `localStorage.js` - LocalStorage adapter
+    - `sessionStorage.js` - SessionStorage adapter
 - **Styles** (`src/styles/`): Shared component styles extracted for reuse
 - **Locales** (`src/locales/`): Translation files (en.json, bg.json)
 
@@ -80,15 +117,22 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 
 ### Data Storage
 
+**Storage Architecture:**
+- **Storage Adapters**: Unified API for all storage operations (`src/lib/storage/`)
+  - Automatic JSON serialization/deserialization
+  - Error handling with graceful fallbacks
+  - Testable via dependency injection with mock storage
+  - Methods: `get()`, `set()`, `remove()`, `clear()`, `has()`, `keys()`, `size()`
+
 **Currently Implemented:**
-- **Language preference**: LocalStorage - persists user's language choice
+- **Language preference**: LocalStorage via `localStorageAdapter` - persists user's language choice
 - **Question banks**: Static JSON files bundled with app (separate files for Bulgarian and English)
-- **Exam practice answers**: In-memory state only (not persisted between sessions)
-- **Exam simulated mode**: SessionStorage - persists during tab session, auto-clears on tab close (includes timer, answers, results)
+- **Exam practice answers**: In-memory state only (intentionally NOT persisted - ephemeral by design)
+- **Exam simulated mode**: In-memory state only (intentionally NOT persisted - real exam behavior)
 
 **Planned for Future:**
 - **LogBook contacts**: IndexedDB (will use Dexie.js - not yet installed) - persistent local storage
-- **Exam progress/history**: LocalStorage or IndexedDB - save practice session results
+- **Exam history/statistics**: Use storage adapters to save past exam results
 - **Export/Import**: JSON files for data backup/restore
 
 ### External Dependencies
@@ -98,9 +142,10 @@ None. Fully offline-capable. No external APIs or services.
 - **Supported Languages**: English (en) and Bulgarian (bg)
 - **Default Language**: English
 - **Language Detection**: Falls back to browser language, then English
-- **Persistence**: Language preference saved to LocalStorage
+- **Persistence**: Language preference saved via `localStorageAdapter`
 - **Question Banks**: Separate JSON files for each language (`data_en/`, `data_bg/`)
 - **UI Translations**: All UI text uses translation keys from locale files
+- **Implementation**: `i18n.js` uses storage adapter for consistent persistence
 
 ## Project-Specific Conventions
 
@@ -119,7 +164,8 @@ None. Fully offline-capable. No external APIs or services.
 ### State Management
 - Local component state using Svelte's reactive declarations (`$:`)
 - Svelte stores for shared state (when needed)
-- IndexedDB for persistent data
+- Storage adapters for persistent data (LocalStorage, SessionStorage)
+- IndexedDB planned for LogBook (will use Dexie.js)
 - No global state management library (not needed for this scale)
 
 ### Design System
@@ -128,21 +174,37 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 ## Implementation Status
 
 ### ✅ Completed Features
-- Basic routing structure
-- Internationalization (English/Bulgarian)
+
+**Core Functionality:**
+- Basic routing structure (hash-based routing)
+- Internationalization (English/Bulgarian) with localStorageAdapter
 - Exam practice mode with question navigation
 - Exam simulated mode with timer (40 minutes, 60 questions, 48 correct to pass)
   - Countdown timer with visual warnings (yellow at 10min, red at 5min)
-  - SessionStorage persistence (survives refresh, clears on tab close)
   - Browser navigation warning during exam
   - Submit confirmation with unanswered question count
   - Auto-submit on timer expiration
   - Results screen with pass/fail determination
   - Review mode to see all answers after completion
 - Question bank loading based on locale
-- Math formula rendering in questions
+- Math formula rendering in questions (KaTeX)
 - Responsive design
 - Language preference persistence
+
+**Architecture & Code Quality:**
+- Business logic separation from UI components
+- Storage adapter architecture (LocalStorage, SessionStorage)
+- Type-safe URL parameter parsing
+- Navigation guard system
+- Loading states for async operations
+- Testing framework (Vitest) with 144 passing unit tests
+  - examScoring.js (16 tests)
+  - examTimer.js (19 tests)
+  - examProgress.js (22 tests)
+  - navigationGuard.js (23 tests)
+  - urlParams.js (33 tests)
+  - storageAdapter.js (31 tests)
+- Linting (ESLint + Prettier with Svelte support)
 
 ### 🚧 In Progress
 - LogBook UI (static placeholder data only)
@@ -150,7 +212,8 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 ### 📋 Planned Features
 - LogBook data persistence (will require installing Dexie.js for IndexedDB)
 - LogBook CRUD operations
-- Exam progress tracking and history (save results to localStorage/IndexedDB)
+- Exam history/statistics tracking (save results via storage adapters)
 - Data export/import functionality
-- Testing framework
-- Linting configuration
+- PWA support (manifest.json, service worker)
+- Keyboard shortcuts for exam navigation
+- "Mark for review" feature during exams

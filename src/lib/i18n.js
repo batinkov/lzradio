@@ -9,6 +9,7 @@
 
 import { register, init, getLocaleFromNavigator, locale } from 'svelte-i18n'
 import { writable } from 'svelte/store'
+import { localStorageAdapter } from './storage/localStorage.js'
 
 const STORAGE_KEY = 'lzradio-language'
 const SUPPORTED_LOCALES = ['en', 'bg']
@@ -29,7 +30,7 @@ register('bg', () => import('../locales/bg.json'))
  */
 function getInitialLocale() {
   // Try LocalStorage first
-  const stored = localStorage.getItem(STORAGE_KEY)
+  const stored = localStorageAdapter.get(STORAGE_KEY)
   if (stored && SUPPORTED_LOCALES.includes(stored)) {
     return stored
   }
@@ -68,7 +69,7 @@ export function changeLanguage(newLocale) {
   }
 
   locale.set(newLocale)
-  localStorage.setItem(STORAGE_KEY, newLocale)
+  localStorageAdapter.set(STORAGE_KEY, newLocale)
 }
 
 /**
