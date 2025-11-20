@@ -416,18 +416,16 @@ test.describe('Simulated Exam Mode', () => {
     await startSimulatedExam(page);
 
     // Set up dialog handler to catch beforeunload
-    let dialogShown = false;
     page.on('dialog', async dialog => {
-      dialogShown = true;
       await dialog.dismiss();
     });
 
     // Try to navigate away
     await page.goto('/#/');
 
-    // In a real browser, this would show a confirmation dialog
-    // The implementation uses beforeunload event
-    // We can't fully test this in Playwright without special setup
+    // Note: beforeunload dialogs are handled differently in Playwright
+    // The implementation uses beforeunload event, which works in real browsers
+    // but cannot be fully tested in automated tests without special configuration
   });
 
   test('should have exit exam button in results', async ({ page }) => {
