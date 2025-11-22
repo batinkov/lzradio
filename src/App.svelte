@@ -2,6 +2,7 @@
   import Router from 'svelte-spa-router'
   import { isLoading } from 'svelte-i18n'
   import { setupI18n } from './lib/i18n.js'
+  import { initializeTheme } from './lib/theme.js'
   import Nav from './components/shared/Nav.svelte'
   import Home from './routes/Home.svelte'
   import LogBook from './routes/LogBook.svelte'
@@ -14,6 +15,9 @@
 
   // Initialize i18n
   setupI18n()
+
+  // Initialize theme
+  initializeTheme()
 
   const routes = {
     '/': Home,

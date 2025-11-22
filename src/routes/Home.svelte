@@ -55,7 +55,7 @@
 
   .feature-card {
     padding: var(--space-8);
-    background: white;
+    background: var(--color-bg-card);
     border: 2px solid var(--color-border);
     border-radius: var(--radius-lg);
     text-align: center;

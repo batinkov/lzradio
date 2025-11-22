@@ -68,7 +68,7 @@
 
 <style>
   .results-card {
-    background: white;
+    background: var(--color-bg-card);
     border: 3px solid;
     border-radius: var(--radius-lg);
     padding: var(--space-8);
@@ -77,12 +77,12 @@
 
   .results-card.passed {
     border-color: var(--color-success);
-    background: rgba(34, 197, 94, 0.05);
+    background: var(--color-bg-card);
   }
 
   .results-card.failed {
     border-color: var(--color-error);
-    background: rgba(239, 68, 68, 0.05);
+    background: var(--color-bg-card);
   }
 
   .result-status {
@@ -127,14 +127,14 @@
     display: flex;
     justify-content: space-between;
     padding: var(--space-3);
-    background: white;
+    background: var(--color-bg-card);
     border-radius: var(--radius-md);
     border: 1px solid var(--color-border);
   }
 
   .result-row.passing-criteria {
     border: 2px solid var(--color-primary);
-    background: rgba(59, 130, 246, 0.05);
+    background: var(--color-bg);
   }
 
   .result-label {

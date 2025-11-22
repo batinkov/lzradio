@@ -178,9 +178,9 @@
   input:focus,
   select:focus,
   textarea:focus {
-    outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 
   textarea {

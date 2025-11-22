@@ -55,19 +55,19 @@
 
   .timer-normal {
     color: var(--color-text);
-    background: white;
+    background: var(--color-bg-card);
     border-color: var(--color-border);
   }
 
   .timer-warning {
     color: var(--color-warning);
-    background: #FEF3C7;
+    background: var(--color-bg);
     border-color: var(--color-warning);
   }
 
   .timer-critical {
     color: var(--color-error);
-    background: #FEE2E2;
+    background: var(--color-bg);
     border-color: var(--color-error);
     animation: pulse 1s ease-in-out infinite;
   }

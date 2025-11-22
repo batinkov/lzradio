@@ -25,7 +25,7 @@
   }
 
   .btn:hover {
-    background: white;
+    background: var(--color-bg-card);
     border-color: var(--color-primary);
   }
 </style>

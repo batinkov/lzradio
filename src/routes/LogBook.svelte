@@ -92,7 +92,7 @@
 
   /* Contact Table */
   .contact-table-wrapper {
-    background: white;
+    background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     overflow-x: auto;
@@ -148,7 +148,7 @@
     text-align: center;
     padding: var(--space-12) var(--space-4);
     color: var(--color-text-muted);
-    background: white;
+    background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
   }

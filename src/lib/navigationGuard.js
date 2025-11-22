@@ -7,6 +7,7 @@
 
 import { writable } from 'svelte/store'
 import { languageSwitchingDisabled } from './i18n.js'
+import { themeSwitchingDisabled } from './theme.js'
 
 /**
  * Store to track if navigation should be blocked
@@ -42,6 +43,7 @@ export function shouldEnableGuards(examState) {
  * Enables navigation guards to prevent accidental navigation
  * - Sets browser beforeunload warning
  * - Disables language switching
+ * - Disables theme switching
  * - Blocks in-app navigation
  *
  * @param {Object} options - Configuration options
@@ -62,6 +64,9 @@ export function enableNavigationGuards(options = {}) {
   // Disable language switching
   languageSwitchingDisabled.set(true)
 
+  // Disable theme switching
+  themeSwitchingDisabled.set(true)
+
   // Block in-app navigation
   navigationBlocked.set(true)
 }
@@ -70,6 +75,7 @@ export function enableNavigationGuards(options = {}) {
  * Disables all navigation guards
  * - Removes browser beforeunload warning
  * - Re-enables language switching
+ * - Re-enables theme switching
  * - Unblocks in-app navigation
  *
  * @param {Object} options - Configuration options
@@ -85,6 +91,9 @@ export function disableNavigationGuards(options = {}) {
 
   // Re-enable language switching
   languageSwitchingDisabled.set(false)
+
+  // Re-enable theme switching
+  themeSwitchingDisabled.set(false)
 
   // Unblock in-app navigation
   navigationBlocked.set(false)

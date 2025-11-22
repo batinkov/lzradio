@@ -3,6 +3,7 @@
   import { _ } from 'svelte-i18n'
   import { locale, changeLanguage, SUPPORTED_LOCALES, languageSwitchingDisabled } from '../../lib/i18n.js'
   import { navigationBlocked } from '../../lib/navigationGuard.js'
+  import { theme, toggleTheme, themeSwitchingDisabled } from '../../lib/theme.js'
 
   let showMobileMenu = false
   let showHelpModal = false
@@ -22,6 +23,11 @@
   function switchLanguage(lang) {
     if ($languageSwitchingDisabled) return
     changeLanguage(lang)
+  }
+
+  function switchTheme() {
+    if ($themeSwitchingDisabled) return
+    toggleTheme()
   }
 
   // Prevent navigation when blocked (exam in progress)
@@ -93,6 +99,18 @@
           </button>
         {/each}
       </div>
+
+      <!-- Theme Toggle -->
+      <button
+        class="icon-btn"
+        on:click={switchTheme}
+        disabled={$themeSwitchingDisabled}
+        class:disabled={$themeSwitchingDisabled}
+        aria-label={$_('nav.toggleTheme')}
+        title={$themeSwitchingDisabled ? $_('nav.themeSwitchingDisabled') : ($theme === 'light' ? $_('nav.switchToDark') : $_('nav.switchToLight'))}
+      >
+        {$theme === 'light' ? '🌙' : '☀️'}
+      </button>
 
       <button class="icon-btn" on:click={toggleHelpModal} aria-label={$_('nav.help')}>
         ?
@@ -174,7 +192,7 @@
 <style>
   /* Navigation-specific styles */
   .nav {
-    background: white;
+    background: var(--color-bg-card);
     border-bottom: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
   }
@@ -223,7 +241,7 @@
 
   .nav-links a.active {
     color: var(--color-primary);
-    background: rgba(59, 130, 246, 0.1);
+    background: var(--color-bg);
   }
 
   .nav-links a.blocked {
@@ -260,7 +278,7 @@
 
   .lang-btn:hover {
     color: var(--color-text);
-    background: white;
+    background: var(--color-bg-card);
   }
 
   .lang-btn.active {
@@ -293,7 +311,7 @@
     flex-direction: column;
     padding: var(--space-4);
     border-top: 1px solid var(--color-border);
-    background: white;
+    background: var(--color-bg-card);
   }
 
   .mobile-menu a {
@@ -310,7 +328,7 @@
 
   .mobile-menu a.active {
     color: var(--color-primary);
-    background: rgba(59, 130, 246, 0.1);
+    background: var(--color-bg);
   }
 
   .mobile-menu a.blocked {

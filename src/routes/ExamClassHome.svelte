@@ -144,7 +144,7 @@
   }
 
   .mode-card {
-    background: white;
+    background: var(--color-bg-card);
     border: 2px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-6);

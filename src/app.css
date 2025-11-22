@@ -41,6 +41,27 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+/* Dark Theme */
+:root[data-theme="dark"] {
+  /* Primary Colors - Adjusted for dark mode contrast */
+  --color-primary: #60A5FA;
+  --color-success: #34D399;
+  --color-error: #F87171;
+  --color-warning: #FBBF24;
+
+  /* Neutral Colors - Inverted for dark mode */
+  --color-text: #F9FAFB;
+  --color-text-muted: #D1D5DB;
+  --color-border: #374151;
+  --color-bg: #111827;
+  --color-bg-card: #1F2937;
+
+  /* Shadows - Lighter for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
 /* Reset & Base Styles */
 * {
   margin: 0;
@@ -96,15 +117,15 @@ input, select, textarea {
   padding: 12px 16px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: white;
+  background: var(--color-bg-card);
   color: var(--color-text);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 input:focus, select:focus, textarea:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  outline: none;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* Links */

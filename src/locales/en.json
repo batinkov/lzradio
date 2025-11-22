@@ -4,7 +4,11 @@
     "logbook": "LogBook",
     "examPrep": "Exam Prep",
     "help": "Help",
-    "menu": "Menu"
+    "menu": "Menu",
+    "toggleTheme": "Toggle theme",
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode",
+    "themeSwitchingDisabled": "Theme switching is disabled during exam"
   },
   "home": {
     "title": "LZ Radio",

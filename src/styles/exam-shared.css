@@ -48,11 +48,12 @@
 }
 
 .btn-navigator {
-  background: white;
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 10px 16px;
   font-weight: 500;
+  color: var(--color-text);
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -63,7 +64,7 @@
 }
 
 .btn-leave-exam {
-  background: white;
+  background: var(--color-bg-card);
   border: 2px solid var(--color-error);
   color: var(--color-error);
   border-radius: var(--radius-md);
@@ -120,7 +121,7 @@
 
 .question-container {
   flex: 1;
-  background: white;
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-8);
@@ -153,13 +154,15 @@
 }
 
 .status-correct {
-  background: rgba(34, 197, 94, 0.1);
+  background: var(--color-bg);
   color: var(--color-success);
+  border: 1px solid var(--color-success);
 }
 
 .status-incorrect {
-  background: rgba(239, 68, 68, 0.1);
+  background: var(--color-bg);
   color: var(--color-error);
+  border: 1px solid var(--color-error);
 }
 
 .status-unanswered {
@@ -200,7 +203,7 @@
 }
 
 .answer-card {
-  background: white;
+  background: var(--color-bg-card);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-4);
@@ -211,6 +214,7 @@
   transition: all 0.15s ease;
   text-align: left;
   position: relative;
+  color: var(--color-text);
 }
 
 .answer-card:not(.review):hover {
@@ -220,17 +224,17 @@
 
 .answer-card.selected {
   border-color: var(--color-primary);
-  background: rgba(59, 130, 246, 0.05);
+  background: var(--color-bg);
 }
 
 .answer-card.correct {
   border-color: var(--color-success);
-  background: rgba(34, 197, 94, 0.1);
+  background: var(--color-bg);
 }
 
 .answer-card.incorrect {
-  border-color: #ef4444;
-  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--color-error);
+  background: var(--color-bg);
 }
 
 /* Review mode answer styles */
@@ -240,12 +244,12 @@
 
 .answer-card.correct-answer {
   border-color: var(--color-success);
-  background: rgba(34, 197, 94, 0.1);
+  background: var(--color-bg);
 }
 
 .answer-card.incorrect-answer {
   border-color: var(--color-error);
-  background: rgba(239, 68, 68, 0.1);
+  background: var(--color-bg);
 }
 
 .answer-card.user-answer {
@@ -298,6 +302,7 @@
   flex: 1;
   font-size: 1rem;
   line-height: 1.5;
+  color: var(--color-text);
 }
 
 /* ============================================
@@ -315,7 +320,8 @@
   padding: 14px 24px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: white;
+  background: var(--color-bg-card);
+  color: var(--color-text);
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
@@ -339,7 +345,7 @@
 }
 
 .btn-nav-primary:hover:not(:disabled) {
-  background: #2563EB;
+  filter: brightness(0.9);
 }
 
 .btn-submit {
@@ -347,7 +353,7 @@
   padding: 14px 24px;
   border: 2px solid var(--color-primary);
   border-radius: var(--radius-md);
-  background: white;
+  background: var(--color-bg-card);
   color: var(--color-primary);
   font-weight: 600;
   font-size: 1rem;
@@ -380,7 +386,8 @@
   aspect-ratio: 1;
   border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: white;
+  background: var(--color-bg-card);
+  color: var(--color-text);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -398,8 +405,9 @@
 }
 
 .question-number-btn.answered {
-  background: rgba(59, 130, 246, 0.1);
+  background: var(--color-bg);
   border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .question-number-btn.answered-correct {
@@ -409,8 +417,8 @@
 }
 
 .question-number-btn.answered-incorrect {
-  border-color: #ef4444;
-  background: #ef4444;
+  border-color: var(--color-error);
+  background: var(--color-error);
   color: white;
 }
 
@@ -428,6 +436,7 @@
   align-items: center;
   gap: var(--space-2);
   font-size: 0.875rem;
+  color: var(--color-text);
 }
 
 .legend-dot {
@@ -444,7 +453,7 @@
 
 .legend-answered {
   border-color: var(--color-primary);
-  background: rgba(59, 130, 246, 0.1);
+  background: var(--color-bg);
 }
 
 .legend-correct {
@@ -453,13 +462,13 @@
 }
 
 .legend-incorrect {
-  border-color: #ef4444;
-  background: #ef4444;
+  border-color: var(--color-error);
+  background: var(--color-error);
 }
 
 .legend-unanswered {
   border-color: var(--color-border);
-  background: white;
+  background: var(--color-bg-card);
 }
 
 /* ============================================
