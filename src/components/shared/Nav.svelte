@@ -1,9 +1,9 @@
 <script>
   import { link, location } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
-  import { locale, changeLanguage, SUPPORTED_LOCALES, languageSwitchingDisabled } from '../../lib/i18n.js'
+  import { locale, changeLanguage, SUPPORTED_LOCALES } from '../../lib/i18n.js'
   import { navigationBlocked } from '../../lib/navigationGuard.js'
-  import { theme, toggleTheme, themeSwitchingDisabled } from '../../lib/theme.js'
+  import { theme, toggleTheme } from '../../lib/theme.js'
 
   let showMobileMenu = false
   let showHelpModal = false
@@ -21,21 +21,11 @@
   }
 
   function switchLanguage(lang) {
-    if ($languageSwitchingDisabled) return
     changeLanguage(lang)
   }
 
   function switchTheme() {
-    if ($themeSwitchingDisabled) return
     toggleTheme()
-  }
-
-  // Prevent navigation when blocked (exam in progress)
-  function handleNavigationClick(event) {
-    if ($navigationBlocked) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
   }
 
   // Close mobile menu when route changes
@@ -44,16 +34,10 @@
   }
 </script>
 
-<nav class="nav">
+<nav class="nav" class:nav-blocked={$navigationBlocked}>
   <div class="nav-content">
     <div class="nav-brand">
-      <a
-        href="/"
-        use:link
-        class:blocked={$navigationBlocked}
-        on:click={handleNavigationClick}
-        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
-      >
+      <a href="/" use:link>
         LZ Radio
       </a>
     </div>
@@ -64,9 +48,6 @@
         href="/logbook"
         use:link
         class:active={$location === '/logbook'}
-        class:blocked={$navigationBlocked}
-        on:click={handleNavigationClick}
-        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
       >
         {$_('nav.logbook')}
       </a>
@@ -74,9 +55,6 @@
         href="/exam"
         use:link
         class:active={$location.startsWith('/exam')}
-        class:blocked={$navigationBlocked}
-        on:click={handleNavigationClick}
-        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
       >
         {$_('nav.examPrep')}
       </a>
@@ -89,11 +67,8 @@
           <button
             class="lang-btn"
             class:active={$locale === lang}
-            class:disabled={$languageSwitchingDisabled}
             on:click={() => switchLanguage(lang)}
-            disabled={$languageSwitchingDisabled}
             aria-label="Switch to {lang}"
-            title={$languageSwitchingDisabled ? 'Language switching is disabled during exam' : ''}
           >
             {lang.toUpperCase()}
           </button>
@@ -104,15 +79,17 @@
       <button
         class="icon-btn"
         on:click={switchTheme}
-        disabled={$themeSwitchingDisabled}
-        class:disabled={$themeSwitchingDisabled}
         aria-label={$_('nav.toggleTheme')}
-        title={$themeSwitchingDisabled ? $_('nav.themeSwitchingDisabled') : ($theme === 'light' ? $_('nav.switchToDark') : $_('nav.switchToLight'))}
+        title={$theme === 'light' ? $_('nav.switchToDark') : $_('nav.switchToLight')}
       >
         {$theme === 'light' ? '🌙' : '☀️'}
       </button>
 
-      <button class="icon-btn" on:click={toggleHelpModal} aria-label={$_('nav.help')}>
+      <button
+        class="icon-btn"
+        on:click={toggleHelpModal}
+        aria-label={$_('nav.help')}
+      >
         ?
       </button>
 
@@ -130,9 +107,6 @@
         href="/logbook"
         use:link
         class:active={$location === '/logbook'}
-        class:blocked={$navigationBlocked}
-        on:click={handleNavigationClick}
-        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
       >
         {$_('nav.logbook')}
       </a>
@@ -140,9 +114,6 @@
         href="/exam"
         use:link
         class:active={$location.startsWith('/exam')}
-        class:blocked={$navigationBlocked}
-        on:click={handleNavigationClick}
-        title={$navigationBlocked ? 'Navigation disabled during exam' : ''}
       >
         {$_('nav.examPrep')}
       </a>
@@ -197,6 +168,13 @@
     box-shadow: var(--shadow-sm);
   }
 
+  /* Disabled navigation during exam */
+  .nav-blocked .nav-content {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
   .nav-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -212,12 +190,6 @@
     font-weight: 600;
     color: var(--color-text);
     text-decoration: none;
-  }
-
-  .nav-brand a.blocked {
-    opacity: 0.4;
-    cursor: not-allowed;
-    pointer-events: none;
   }
 
   .nav-links {
@@ -242,12 +214,6 @@
   .nav-links a.active {
     color: var(--color-primary);
     background: var(--color-bg);
-  }
-
-  .nav-links a.blocked {
-    opacity: 0.4;
-    cursor: not-allowed;
-    pointer-events: none;
   }
 
   .nav-actions {
@@ -329,12 +295,6 @@
   .mobile-menu a.active {
     color: var(--color-primary);
     background: var(--color-bg);
-  }
-
-  .mobile-menu a.blocked {
-    opacity: 0.4;
-    cursor: not-allowed;
-    pointer-events: none;
   }
 
   /* Modal-specific styles */

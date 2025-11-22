@@ -66,7 +66,7 @@
               <input
                 type="radio"
                 name="answer"
-                checked={selectedAnswer === choice.key || choice.key === question.correct_answer}
+                checked={selectedAnswer === choice.key}
                 readonly
               />
             </div>
