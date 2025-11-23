@@ -41,8 +41,8 @@
     },
     "keyboardShortcuts": "Keyboard Shortcuts",
     "shortcuts": {
-      "logbook": "LogBook",
-      "examPrep": "Exam Prep",
+      "arrowKeys": "Navigate between questions (during exams)",
+      "numberKeys": "Select answer (1-4)",
       "closeModals": "Close modals"
     },
     "footer": "Made for ham radio operators",

@@ -398,12 +398,15 @@ test.describe('Simulated Exam Mode', () => {
     // Go to review
     await page.click('button:has-text("Review")');
 
-    // Wait for review mode
+    // Wait for review mode to fully load
     const questionContainer = page.locator('.question-container');
     await expect(questionContainer).toBeVisible();
 
     // Should be on question 1
     await expect(page.locator('.progress-text')).toContainText('Question 1 of');
+
+    // Wait for review mode state to fully settle before attempting navigation
+    await page.waitForTimeout(200);
 
     // Click Next button
     await page.click('button:has-text("Next")');

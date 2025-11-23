@@ -1,4 +1,5 @@
 <script>
+  import { onMount, onDestroy } from 'svelte'
   import { _ } from 'svelte-i18n'
   import { getAnswerStatus } from '../../lib/examScoring.js'
 
@@ -21,20 +22,32 @@
   // Determine if we're in review mode
   $: isReviewMode = examState === 'REVIEW'
   $: isInProgress = examState === 'IN_PROGRESS'
+
+  // Handle ESC key to close navigator
+  function handleEscapeKey(event) {
+    if (event.key === 'Escape' && show) {
+      onClose()
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener('keydown', handleEscapeKey)
+  })
+
+  onDestroy(() => {
+    window.removeEventListener('keydown', handleEscapeKey)
+  })
 </script>
 
 {#if show}
   <div
     class="modal-backdrop"
     on:click={onClose}
-    on:keydown={(e) => e.key === 'Escape' && onClose()}
-    role="button"
-    tabindex="0"
+    role="presentation"
   >
     <div
       class="modal navigator-modal"
       on:click|stopPropagation
-      on:keydown|stopPropagation
       role="dialog"
       tabindex="-1"
     >

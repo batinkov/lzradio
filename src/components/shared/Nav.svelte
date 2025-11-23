@@ -1,4 +1,5 @@
 <script>
+  import { onMount, onDestroy } from 'svelte'
   import { link, location } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
   import { locale, changeLanguage, SUPPORTED_LOCALES } from '../../lib/i18n.js'
@@ -28,10 +29,28 @@
     toggleTheme()
   }
 
+  // Handle ESC key to close help modal
+  function handleEscapeKey(event) {
+    if (event.key === 'Escape' && showHelpModal) {
+      closeHelpModal()
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener('keydown', handleEscapeKey)
+  })
+
+  onDestroy(() => {
+    window.removeEventListener('keydown', handleEscapeKey)
+  })
+
   // Close mobile menu when route changes
   $: if ($location) {
     showMobileMenu = false
   }
+
+  // Disable language switching during prep mode (simulated mode already disables entire nav)
+  $: isInPrepMode = $location.includes('/prep')
 </script>
 
 <nav class="nav" class:nav-blocked={$navigationBlocked}>
@@ -68,6 +87,8 @@
             class="lang-btn"
             class:active={$locale === lang}
             on:click={() => switchLanguage(lang)}
+            disabled={isInPrepMode}
+            title={isInPrepMode ? $_('nav.languageDisabledDuringExam') : `Switch to ${lang}`}
             aria-label="Switch to {lang}"
           >
             {lang.toUpperCase()}
@@ -123,8 +144,8 @@
 
 <!-- Help Modal -->
 {#if showHelpModal}
-  <div class="modal-backdrop" on:click={closeHelpModal} on:keydown={(e) => e.key === 'Escape' && closeHelpModal()} role="button" tabindex="0">
-    <div class="modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
+  <div class="modal-backdrop" on:click={closeHelpModal} role="presentation">
+    <div class="modal" on:click|stopPropagation role="dialog" tabindex="-1">
       <div class="modal-header">
         <h2>{$_('help.title')}</h2>
         <button class="icon-btn" on:click={closeHelpModal} aria-label={$_('common.close')}>
@@ -148,8 +169,8 @@
 
         <h3>{$_('help.keyboardShortcuts')}</h3>
         <ul>
-          <li><code>Alt+L</code> → {$_('help.shortcuts.logbook')}</li>
-          <li><code>Alt+E</code> → {$_('help.shortcuts.examPrep')}</li>
+          <li><code>← →</code> → {$_('help.shortcuts.arrowKeys')}</li>
+          <li><code>1-4</code> → {$_('help.shortcuts.numberKeys')}</li>
           <li><code>Esc</code> → {$_('help.shortcuts.closeModals')}</li>
         </ul>
 
@@ -252,7 +273,6 @@
     background: var(--color-primary);
   }
 
-  .lang-btn.disabled,
   .lang-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;

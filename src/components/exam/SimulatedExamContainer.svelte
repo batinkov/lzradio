@@ -11,6 +11,7 @@
   } from '../../lib/navigationGuard.js'
   import { calculateExamResults } from '../../lib/examScoring.js'
   import { formatTime, getTimerWarningLevel } from '../../lib/examTimer.js'
+  import { createExamKeyboardHandler } from '../../lib/examKeyboardShortcuts.js'
   import 'katex/dist/katex.min.css'
   import '../../styles/exam-shared.css'
 
@@ -62,9 +63,11 @@
   // Lifecycle
   onMount(() => {
     // Component mounted - ready for user to start exam
+    window.addEventListener('keydown', handleKeydown)
   })
 
   onDestroy(() => {
+    window.removeEventListener('keydown', handleKeydown)
     cleanupTimer()
     cleanupNavigationGuards()
   })
@@ -192,6 +195,39 @@
     remainingSeconds = examConfig.examDuration * 60
     examResults = null
     showNavigator = false
+  }
+
+  // Keyboard shortcuts using shared handler
+  // Create two handlers: one for exam mode, one for review mode
+  const examKeyboardHandler = createExamKeyboardHandler({
+    onPrevious: previousQuestion,
+    onNext: nextQuestion,
+    onSelectAnswer: (answerKey) => selectAnswer({ detail: answerKey }),
+    getCurrentQuestion: () => questions[currentQuestionIndex],
+    isModalOpen: () => showNavigator
+  })
+
+  const reviewKeyboardHandler = createExamKeyboardHandler({
+    onPrevious: previousQuestion,
+    onNext: nextQuestion,
+    onSelectAnswer: () => {}, // No-op in review mode - number keys do nothing
+    getCurrentQuestion: () => questions[currentQuestionIndex],
+    isModalOpen: () => showNavigator
+  })
+
+  // Route to appropriate handler based on exam state
+  function handleKeydown(event) {
+    // Only handle shortcuts during IN_PROGRESS or REVIEW states
+    if (examState !== EXAM_STATE.IN_PROGRESS && examState !== EXAM_STATE.REVIEW) {
+      return
+    }
+
+    // Use appropriate handler based on state
+    if (examState === EXAM_STATE.REVIEW) {
+      reviewKeyboardHandler(event)
+    } else {
+      examKeyboardHandler(event)
+    }
   }
 </script>
 

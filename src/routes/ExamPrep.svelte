@@ -1,8 +1,10 @@
 <script>
+  import { onMount, onDestroy } from 'svelte'
   import { link, location, querystring } from 'svelte-spa-router'
   import { _, locale } from 'svelte-i18n'
   import { getQuestions, getClassInfo } from '../lib/questions.js'
   import { parseExamParams } from '../lib/urlParams.js'
+  import { createExamKeyboardHandler } from '../lib/examKeyboardShortcuts.js'
   import 'katex/dist/katex.min.css'
   import '../styles/exam-shared.css'
   import Loading from '../components/shared/Loading.svelte'
@@ -75,6 +77,23 @@
   function toggleNavigator() {
     showNavigator = !showNavigator
   }
+
+  // Keyboard shortcuts using shared handler
+  const handleKeydown = createExamKeyboardHandler({
+    onPrevious: previousQuestion,
+    onNext: nextQuestion,
+    onSelectAnswer: selectAnswer,
+    getCurrentQuestion: () => currentQuestion,
+    isModalOpen: () => showNavigator
+  })
+
+  onMount(() => {
+    window.addEventListener('keydown', handleKeydown)
+  })
+
+  onDestroy(() => {
+    window.removeEventListener('keydown', handleKeydown)
+  })
 </script>
 
 <div class="page">

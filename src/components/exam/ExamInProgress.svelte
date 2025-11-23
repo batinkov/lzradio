@@ -1,4 +1,5 @@
 <script>
+  import { onMount, onDestroy } from 'svelte'
   import { _ } from 'svelte-i18n'
   import { createEventDispatcher } from 'svelte'
   import { calculateProgress } from '../../lib/examProgress.js'
@@ -36,6 +37,21 @@
     closeSubmitModal()
     dispatch('submit')
   }
+
+  // Handle ESC key to close submit modal
+  function handleEscapeKey(event) {
+    if (event.key === 'Escape' && showSubmitModal) {
+      closeSubmitModal()
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener('keydown', handleEscapeKey)
+  })
+
+  onDestroy(() => {
+    window.removeEventListener('keydown', handleEscapeKey)
+  })
 </script>
 
 <div class="page">
@@ -82,8 +98,8 @@
 
 <!-- Submit Confirmation Modal -->
 {#if showSubmitModal}
-  <div class="modal-backdrop" on:click={closeSubmitModal} on:keydown={(e) => e.key === 'Escape' && closeSubmitModal()} role="button" tabindex="0">
-    <div class="modal submit-modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
+  <div class="modal-backdrop" on:click={closeSubmitModal} role="presentation">
+    <div class="modal submit-modal" on:click|stopPropagation role="dialog" tabindex="-1">
       <div class="modal-header">
         <h3>{$_('exam.confirmSubmit')}</h3>
         <button class="icon-btn" on:click={closeSubmitModal}>×</button>
