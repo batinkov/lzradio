@@ -12,14 +12,14 @@
   <!-- Contact Entry Form -->
   <div class="card">
     <form class="contact-form">
-      <!-- Primary Field: Station Callsign -->
+      <!-- Primary Field: Callsign -->
       <div class="form-row">
         <div class="form-field full-width">
-          <label for="station">{$_('logbook.stationCallsign')} *</label>
+          <label for="callsign">{$_('logbook.callsign')} *</label>
           <input
             type="text"
-            id="station"
-            placeholder="W1ABC"
+            id="callsign"
+            placeholder="W1ABC or HB/W1ABC/P"
             class="monospace"
           />
         </div>
@@ -73,21 +73,40 @@
         </div>
       </div>
 
-      <!-- Report -->
+      <!-- RST Reports -->
       <div class="form-row">
         <div class="form-field">
-          <label for="report">{$_('logbook.signalReport')}</label>
+          <label for="rstSent">{$_('logbook.rstSent')}</label>
           <input
             type="text"
-            id="report"
-            placeholder="59 or 599"
+            id="rstSent"
+            placeholder="59"
             maxlength="5"
           />
         </div>
+        <div class="form-field">
+          <label for="rstReceived">{$_('logbook.rstRcvd')}</label>
+          <input
+            type="text"
+            id="rstReceived"
+            placeholder="57"
+            maxlength="5"
+          />
+        </div>
+      </div>
+
+      <!-- QSL Status (optional - usually updated later) -->
+      <div class="form-row">
         <div class="form-field checkbox-field">
           <label>
-            <input type="checkbox" id="qsl" />
-            <span>{$_('logbook.qslCard')}</span>
+            <input type="checkbox" id="qslSent" />
+            <span>{$_('logbook.qslSent')}</span>
+          </label>
+        </div>
+        <div class="form-field checkbox-field">
+          <label>
+            <input type="checkbox" id="qslReceived" />
+            <span>{$_('logbook.qslRcvd')}</span>
           </label>
         </div>
       </div>

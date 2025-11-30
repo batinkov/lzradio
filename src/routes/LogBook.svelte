@@ -19,14 +19,16 @@
     <table class="contact-table">
       <thead>
         <tr>
-          <th>{$_('logbook.station')}</th>
+          <th>{$_('logbook.callsign')}</th>
           <th>{$_('logbook.date')}</th>
           <th>{$_('logbook.time')}</th>
           <th>{$_('logbook.frequency')}</th>
           <th>{$_('logbook.mode')}</th>
           <th>{$_('logbook.power')}</th>
-          <th>{$_('logbook.report')}</th>
-          <th>{$_('logbook.qsl')}</th>
+          <th>{$_('logbook.rstSent')}</th>
+          <th>{$_('logbook.rstRcvd')}</th>
+          <th>{$_('logbook.qslSent')}</th>
+          <th>{$_('logbook.qslRcvd')}</th>
           <th>{$_('logbook.remarks')}</th>
         </tr>
       </thead>
@@ -40,6 +42,8 @@
           <td>SSB</td>
           <td>37</td>
           <td>59</td>
+          <td>57</td>
+          <td><span class="qsl-badge">✓</span></td>
           <td><span class="qsl-badge">✓</span></td>
           <td>Great contact, clear signal</td>
         </tr>
@@ -51,6 +55,8 @@
           <td>CW</td>
           <td>40</td>
           <td>599</td>
+          <td>579</td>
+          <td><span class="qsl-badge">✓</span></td>
           <td>—</td>
           <td></td>
         </tr>
@@ -62,6 +68,8 @@
           <td>FT8</td>
           <td>33</td>
           <td>-12</td>
+          <td>-08</td>
+          <td>—</td>
           <td><span class="qsl-badge">✓</span></td>
           <td>First FT8 contact</td>
         </tr>
