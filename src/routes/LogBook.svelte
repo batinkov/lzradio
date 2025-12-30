@@ -1,12 +1,67 @@
 <script>
-  import { link } from 'svelte-spa-router'
+  import { onMount } from 'svelte'
+  import { link, push } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
+  import { getAllContacts, getContactCount, deleteContact } from '../lib/logbookDB.js'
+  import { buildCallsign } from '../lib/callsignParser.js'
+  import DropdownMenu from '../components/shared/DropdownMenu.svelte'
+  import DeleteConfirmationModal from '../components/shared/DeleteConfirmationModal.svelte'
+
+  let contacts = []
+  let contactCount = 0
+  let loading = true
+  let contactToDelete = null
+  let deleting = false
+
+  onMount(async () => {
+    await loadContacts()
+  })
+
+  async function loadContacts() {
+    loading = true
+    try {
+      contacts = await getAllContacts()
+      contactCount = await getContactCount()
+    } catch (error) {
+      console.error('Failed to load contacts:', error)
+    } finally {
+      loading = false
+    }
+  }
+
+  function handleEdit(contactId) {
+    push(`/logbook/edit/${contactId}`)
+  }
+
+  function confirmDelete(contact) {
+    contactToDelete = contact
+  }
+
+  function cancelDelete() {
+    contactToDelete = null
+  }
+
+  async function handleDelete() {
+    if (!contactToDelete) return
+
+    deleting = true
+    try {
+      await deleteContact(contactToDelete.id)
+      await loadContacts()
+      contactToDelete = null
+    } catch (error) {
+      console.error('Failed to delete contact:', error)
+      alert('Failed to delete contact. Please try again.')
+    } finally {
+      deleting = false
+    }
+  }
 </script>
 
 <div class="page">
   <!-- Header with Add Button -->
   <div class="header">
-    <h1>{$_('logbook.title')} <span class="count">(3 {$_('logbook.contacts')})</span></h1>
+    <h1>{$_('logbook.title')} <span class="count">({contactCount} {$_('logbook.contacts')})</span></h1>
     <div class="header-actions">
       <a href="/logbook/add" use:link class="btn-primary">+ {$_('logbook.addContact')}</a>
       <button class="btn-secondary">📤 {$_('logbook.exportData')}</button>
@@ -15,74 +70,76 @@
   </div>
 
   <!-- Contact Table -->
-  <div class="contact-table-wrapper">
-    <table class="contact-table">
-      <thead>
-        <tr>
-          <th>{$_('logbook.callsign')}</th>
-          <th>{$_('logbook.date')}</th>
-          <th>{$_('logbook.time')}</th>
-          <th>{$_('logbook.frequency')}</th>
-          <th>{$_('logbook.mode')}</th>
-          <th>{$_('logbook.power')}</th>
-          <th>{$_('logbook.rstSent')}</th>
-          <th>{$_('logbook.rstRcvd')}</th>
-          <th>{$_('logbook.qslSent')}</th>
-          <th>{$_('logbook.qslRcvd')}</th>
-          <th>{$_('logbook.remarks')}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Sample Data for Design -->
-        <tr>
-          <td class="monospace bold">W1ABC</td>
-          <td>2025-01-15</td>
-          <td>14:23:00</td>
-          <td>14.250</td>
-          <td>SSB</td>
-          <td>37</td>
-          <td>59</td>
-          <td>57</td>
-          <td><span class="qsl-badge">✓</span></td>
-          <td><span class="qsl-badge">✓</span></td>
-          <td>Great contact, clear signal</td>
-        </tr>
-        <tr>
-          <td class="monospace bold">K2XYZ</td>
-          <td>2025-01-15</td>
-          <td>13:45:30</td>
-          <td>7.125</td>
-          <td>CW</td>
-          <td>40</td>
-          <td>599</td>
-          <td>579</td>
-          <td><span class="qsl-badge">✓</span></td>
-          <td>—</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="monospace bold">DL1DEF</td>
-          <td>2025-01-14</td>
-          <td>20:15:12</td>
-          <td>21.300</td>
-          <td>FT8</td>
-          <td>33</td>
-          <td>-12</td>
-          <td>-08</td>
-          <td>—</td>
-          <td><span class="qsl-badge">✓</span></td>
-          <td>First FT8 contact</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Empty State (hidden when there are contacts) -->
-  <div class="empty-state" style="display: none;">
-    <p>📻 {$_('logbook.emptyState')}</p>
-    <p class="muted">{$_('logbook.emptyStateSubtext')}</p>
-  </div>
+  {#if loading}
+    <div class="loading-state">
+      <p>⏳ {$_('common.loading')}...</p>
+    </div>
+  {:else if contacts.length > 0}
+    <div class="contact-table-wrapper">
+      <table class="contact-table">
+        <thead>
+          <tr>
+            <th>{$_('logbook.callsign')}</th>
+            <th>{$_('logbook.date')}</th>
+            <th>{$_('logbook.time')}</th>
+            <th>{$_('logbook.frequency')}</th>
+            <th>{$_('logbook.mode')}</th>
+            <th>{$_('logbook.power')}</th>
+            <th>{$_('logbook.rstSent')}</th>
+            <th>{$_('logbook.rstRcvd')}</th>
+            <th>{$_('logbook.qslSent')}</th>
+            <th>{$_('logbook.qslRcvd')}</th>
+            <th>{$_('logbook.remarks')}</th>
+            <th class="actions-header">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each contacts as contact (contact.id)}
+            <tr>
+              <td class="monospace bold">
+                {buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix)}
+              </td>
+              <td>{contact.date}</td>
+              <td>{contact.time}</td>
+              <td>{contact.frequency}</td>
+              <td>{contact.mode}</td>
+              <td>{contact.power || '—'}</td>
+              <td>{contact.rstSent || '—'}</td>
+              <td>{contact.rstReceived || '—'}</td>
+              <td>{#if contact.qslSent}<span class="qsl-badge">✓</span>{:else}—{/if}</td>
+              <td>{#if contact.qslReceived}<span class="qsl-badge">✓</span>{:else}—{/if}</td>
+              <td>{contact.remarks || ''}</td>
+              <td class="actions-cell">
+                <DropdownMenu let:closeMenu>
+                  <button on:click={() => { handleEdit(contact.id); closeMenu(); }}>
+                    ✏️ Edit
+                  </button>
+                  <button class="danger" on:click={() => { confirmDelete(contact); closeMenu(); }}>
+                    🗑️ Delete
+                  </button>
+                </DropdownMenu>
+              </td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+  {:else}
+    <!-- Empty State -->
+    <div class="empty-state">
+      <p>📻 {$_('logbook.emptyState')}</p>
+      <p class="muted">{$_('logbook.emptyStateSubtext')}</p>
+    </div>
+  {/if}
 </div>
+
+<!-- Delete Confirmation Modal -->
+<DeleteConfirmationModal
+  contact={contactToDelete}
+  onConfirm={handleDelete}
+  onCancel={cancelDelete}
+  {deleting}
+/>
 
 <style>
   /* Component-specific styles */
@@ -151,8 +208,20 @@
     font-weight: bold;
   }
 
-  /* Empty State */
-  .empty-state {
+  /* Actions Column */
+  .actions-header {
+    width: 80px;
+    text-align: center;
+  }
+
+  .actions-cell {
+    text-align: center;
+    padding: 8px !important;
+  }
+
+  /* Empty State and Loading State */
+  .empty-state,
+  .loading-state {
     text-align: center;
     padding: var(--space-12) var(--space-4);
     color: var(--color-text-muted);

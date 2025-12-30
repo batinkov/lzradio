@@ -1,17 +1,192 @@
 <script>
-  import { link } from 'svelte-spa-router'
+  import { onMount } from 'svelte'
+  import { link, push } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
+  import { addContact, getContact, updateContact } from '../lib/logbookDB.js'
+  import { parseCallsign, buildCallsign } from '../lib/callsignParser.js'
+
+  export let params = {}
+
+  // Edit mode detection
+  $: contactId = params.id ? parseInt(params.id) : null
+  $: isEditMode = contactId !== null
+
+  // Form state
+  let formData = {
+    callsign: '',
+    date: '',
+    time: '',
+    frequency: '',
+    mode: '',
+    power: '',
+    rstSent: '',
+    rstReceived: '',
+    qslSent: false,
+    qslReceived: false,
+    remarks: ''
+  }
+
+  let errors = {}
+  let saving = false
+  let errorMessage = ''
+  let loading = false
+
+  onMount(async () => {
+    if (isEditMode) {
+      await loadContact()
+    }
+  })
+
+  async function loadContact() {
+    loading = true
+    try {
+      const contact = await getContact(contactId)
+      if (!contact) {
+        errorMessage = 'Contact not found'
+        return
+      }
+
+      // Populate form with contact data
+      formData = {
+        callsign: buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix),
+        date: contact.date,
+        time: contact.time,
+        frequency: contact.frequency.toString(),
+        mode: contact.mode,
+        power: contact.power ? contact.power.toString() : '',
+        rstSent: contact.rstSent || '',
+        rstReceived: contact.rstReceived || '',
+        qslSent: contact.qslSent,
+        qslReceived: contact.qslReceived,
+        remarks: contact.remarks || ''
+      }
+    } catch (error) {
+      console.error('Failed to load contact:', error)
+      errorMessage = 'Failed to load contact'
+    } finally {
+      loading = false
+    }
+  }
+
+  // Validation
+  function validateForm() {
+    errors = {}
+
+    if (!formData.callsign.trim()) {
+      errors.callsign = 'Callsign is required'
+    }
+
+    if (!formData.date) {
+      errors.date = 'Date is required'
+    }
+
+    if (!formData.time) {
+      errors.time = 'Time is required'
+    }
+
+    if (!formData.frequency) {
+      errors.frequency = 'Frequency is required'
+    } else if (isNaN(formData.frequency) || formData.frequency <= 0) {
+      errors.frequency = 'Frequency must be a positive number'
+    }
+
+    if (!formData.mode) {
+      errors.mode = 'Mode is required'
+    }
+
+    return Object.keys(errors).length === 0
+  }
+
+  // Submit handler
+  async function handleSubmit(event) {
+    event.preventDefault()
+    errorMessage = ''
+
+    if (!validateForm()) {
+      return
+    }
+
+    saving = true
+
+    try {
+      // Parse callsign into base, prefix, and suffix
+      const { base, prefix, suffix } = parseCallsign(formData.callsign)
+
+      // Prepare contact data
+      const contactData = {
+        baseCallsign: base,
+        prefix: prefix,
+        suffix: suffix,
+        date: formData.date,
+        time: formData.time,
+        frequency: parseFloat(formData.frequency),
+        mode: formData.mode,
+        power: formData.power ? parseInt(formData.power) : null,
+        rstSent: formData.rstSent || null,
+        rstReceived: formData.rstReceived || null,
+        qslSent: formData.qslSent,
+        qslReceived: formData.qslReceived,
+        remarks: formData.remarks
+      }
+
+      if (isEditMode) {
+        // Update existing contact
+        await updateContact(contactId, contactData)
+      } else {
+        // Add new contact
+        await addContact(contactData)
+      }
+
+      // Navigate back to logbook
+      push('/logbook')
+    } catch (error) {
+      console.error('Failed to save contact:', error)
+      errorMessage = `Failed to ${isEditMode ? 'update' : 'save'} contact. Please try again.`
+    } finally {
+      saving = false
+    }
+  }
+
+  // Clear form
+  function handleClear() {
+    formData = {
+      callsign: '',
+      date: '',
+      time: '',
+      frequency: '',
+      mode: '',
+      power: '',
+      rstSent: '',
+      rstReceived: '',
+      qslSent: false,
+      qslReceived: false,
+      remarks: ''
+    }
+    errors = {}
+    errorMessage = ''
+  }
 </script>
 
 <div class="page page-narrow">
   <div class="header">
-    <h1>{$_('logbook.addContactTitle')}</h1>
+    <h1>{isEditMode ? 'Edit Contact' : $_('logbook.addContactTitle')}</h1>
     <a href="/logbook" use:link class="btn-secondary">← {$_('logbook.backToLog')}</a>
   </div>
 
   <!-- Contact Entry Form -->
   <div class="card">
-    <form class="contact-form">
+    {#if loading}
+      <div class="loading-message">
+        ⏳ Loading contact...
+      </div>
+    {:else}
+      {#if errorMessage}
+        <div class="error-message">
+          ❌ {errorMessage}
+        </div>
+      {/if}
+
+      <form class="contact-form" on:submit={handleSubmit}>
       <!-- Primary Field: Callsign -->
       <div class="form-row">
         <div class="form-field full-width">
@@ -21,7 +196,13 @@
             id="callsign"
             placeholder="W1ABC or HB/W1ABC/P"
             class="monospace"
+            bind:value={formData.callsign}
+            class:error={errors.callsign}
+            disabled={saving}
           />
+          {#if errors.callsign}
+            <span class="error-text">{errors.callsign}</span>
+          {/if}
         </div>
       </div>
 
@@ -29,11 +210,30 @@
       <div class="form-row">
         <div class="form-field">
           <label for="date">{$_('logbook.dateLabel')} *</label>
-          <input type="date" id="date" />
+          <input
+            type="date"
+            id="date"
+            bind:value={formData.date}
+            class:error={errors.date}
+            disabled={saving}
+          />
+          {#if errors.date}
+            <span class="error-text">{errors.date}</span>
+          {/if}
         </div>
         <div class="form-field">
           <label for="time">{$_('logbook.timeLabel')} *</label>
-          <input type="time" id="time" step="1" />
+          <input
+            type="time"
+            id="time"
+            step="1"
+            bind:value={formData.time}
+            class:error={errors.time}
+            disabled={saving}
+          />
+          {#if errors.time}
+            <span class="error-text">{errors.time}</span>
+          {/if}
         </div>
       </div>
 
@@ -46,11 +246,22 @@
             id="frequency"
             placeholder="14.250"
             step="0.001"
+            bind:value={formData.frequency}
+            class:error={errors.frequency}
+            disabled={saving}
           />
+          {#if errors.frequency}
+            <span class="error-text">{errors.frequency}</span>
+          {/if}
         </div>
         <div class="form-field">
           <label for="mode">{$_('logbook.modeLabel')} *</label>
-          <select id="mode">
+          <select
+            id="mode"
+            bind:value={formData.mode}
+            class:error={errors.mode}
+            disabled={saving}
+          >
             <option value="">{$_('logbook.selectMode')}</option>
             <option value="SSB">SSB</option>
             <option value="CW">CW</option>
@@ -61,6 +272,9 @@
             <option value="RTTY">RTTY</option>
             <option value="PSK31">PSK31</option>
           </select>
+          {#if errors.mode}
+            <span class="error-text">{errors.mode}</span>
+          {/if}
         </div>
         <div class="form-field">
           <label for="power">{$_('logbook.powerLabel')}</label>
@@ -69,6 +283,8 @@
             id="power"
             placeholder="37"
             step="1"
+            bind:value={formData.power}
+            disabled={saving}
           />
         </div>
       </div>
@@ -82,6 +298,8 @@
             id="rstSent"
             placeholder="59"
             maxlength="5"
+            bind:value={formData.rstSent}
+            disabled={saving}
           />
         </div>
         <div class="form-field">
@@ -91,6 +309,8 @@
             id="rstReceived"
             placeholder="57"
             maxlength="5"
+            bind:value={formData.rstReceived}
+            disabled={saving}
           />
         </div>
       </div>
@@ -99,13 +319,23 @@
       <div class="form-row">
         <div class="form-field checkbox-field">
           <label>
-            <input type="checkbox" id="qslSent" />
+            <input
+              type="checkbox"
+              id="qslSent"
+              bind:checked={formData.qslSent}
+              disabled={saving}
+            />
             <span>{$_('logbook.qslSent')}</span>
           </label>
         </div>
         <div class="form-field checkbox-field">
           <label>
-            <input type="checkbox" id="qslReceived" />
+            <input
+              type="checkbox"
+              id="qslReceived"
+              bind:checked={formData.qslReceived}
+              disabled={saving}
+            />
             <span>{$_('logbook.qslRcvd')}</span>
           </label>
         </div>
@@ -119,17 +349,33 @@
             id="remarks"
             rows="3"
             placeholder={$_('logbook.additionalNotes')}
+            bind:value={formData.remarks}
+            disabled={saving}
           ></textarea>
         </div>
       </div>
 
       <!-- Submit Button -->
       <div class="form-actions">
-        <button type="submit" class="btn-primary">{$_('logbook.saveContact')}</button>
-        <button type="button" class="btn-secondary">{$_('logbook.clearForm')}</button>
+        <button type="submit" class="btn-primary" disabled={saving}>
+          {#if saving}
+            💾 {isEditMode ? 'Updating...' : 'Saving...'}
+          {:else}
+            {isEditMode ? '✏️ Update Contact' : $_('logbook.saveContact')}
+          {/if}
+        </button>
+        <button
+          type="button"
+          class="btn-secondary"
+          on:click={handleClear}
+          disabled={saving}
+        >
+          {$_('logbook.clearForm')}
+        </button>
         <a href="/logbook" use:link class="btn-text">{$_('common.cancel')}</a>
       </div>
     </form>
+    {/if}
   </div>
 </div>
 
@@ -213,6 +459,40 @@
     gap: var(--space-3);
     margin-top: var(--space-2);
     align-items: center;
+  }
+
+  /* Error and Loading States */
+  .error-message,
+  .loading-message {
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+    font-weight: 500;
+  }
+
+  .error-message {
+    background: #fee;
+    border: 1px solid #c00;
+    color: #c00;
+  }
+
+  .loading-message {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  input.error,
+  select.error,
+  textarea.error {
+    border-color: #c00;
+  }
+
+  .error-text {
+    color: #c00;
+    font-size: 0.875rem;
+    margin-top: var(--space-1);
   }
 
   /* Mobile Responsive */

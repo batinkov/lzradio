@@ -23,6 +23,7 @@
     '/': Home,
     '/logbook': LogBook,
     '/logbook/add': LogBookAdd,
+    '/logbook/edit/:id': LogBookAdd,
     '/exam': ExamHome,
     '/exam/class1': ExamClassHome,
     '/exam/class2': ExamClassHome,
