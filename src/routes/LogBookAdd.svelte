@@ -78,6 +78,22 @@
 
     if (!formData.date) {
       errors.date = 'Date is required'
+    } else {
+      // Validate date is actually valid
+      const dateObj = new Date(formData.date + 'T00:00:00')
+      if (isNaN(dateObj.getTime())) {
+        errors.date = 'Invalid date'
+      } else {
+        // Verify the date components match (prevents dates like 2025-02-30 becoming 2025-03-02)
+        const [year, month, day] = formData.date.split('-').map(Number)
+        if (
+          dateObj.getFullYear() !== year ||
+          dateObj.getMonth() + 1 !== month ||
+          dateObj.getDate() !== day
+        ) {
+          errors.date = 'Invalid date (day/month out of range)'
+        }
+      }
     }
 
     if (!formData.time) {

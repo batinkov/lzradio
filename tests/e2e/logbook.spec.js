@@ -625,4 +625,541 @@ test.describe('LogBook', () => {
     await expect(page.locator('.modal-backdrop')).not.toBeVisible()
     await expect(page.locator('.contact-table')).toContainText('W1ABC')
   })
+
+  test('should export contacts to JSON file', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact
+    await page.fill('#callsign', 'W1ABC/M')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:00:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.fill('#power', '100')
+    await page.fill('#rstSent', '59')
+    await page.fill('#rstReceived', '57')
+    await page.check('#qslSent')
+    await page.fill('#remarks', 'Test contact')
+    await page.click('button[type="submit"]')
+
+    // Wait for logbook page
+    await page.waitForSelector('.contact-table')
+
+    // Start waiting for download before clicking
+    const downloadPromise = page.waitForEvent('download')
+    await page.locator('button:has-text("Export")').click()
+    const download = await downloadPromise
+
+    // Verify filename pattern
+    expect(download.suggestedFilename()).toMatch(/^lzradio-logbook-\d{4}-\d{2}-\d{2}\.json$/)
+
+    // Read and parse the downloaded file
+    const path = await download.path()
+    const fs = await import('fs')
+    const content = fs.readFileSync(path, 'utf8')
+    const exportData = JSON.parse(content)
+
+    // Verify structure
+    expect(exportData.metadata).toBeDefined()
+    expect(exportData.metadata.appName).toBe('LZ Radio')
+    expect(exportData.metadata.schemaVersion).toBe(1)
+    expect(exportData.metadata.contactCount).toBe(1)
+    expect(exportData.contacts).toHaveLength(1)
+
+    // Verify contact data
+    const contact = exportData.contacts[0]
+    expect(contact.baseCallsign).toBe('W1ABC')
+    expect(contact.suffix).toBe('M')
+    expect(contact.date).toBe('2025-01-20')
+    expect(contact.time).toBe('14:00:00')
+    expect(contact.frequency).toBe(14.25)
+    expect(contact.mode).toBe('SSB')
+    expect(contact.power).toBe(100)
+    expect(contact.rstSent).toBe('59')
+    expect(contact.rstReceived).toBe('57')
+    expect(contact.qslSent).toBe(true)
+    expect(contact.remarks).toBe('Test contact')
+  })
+
+  test('should show alert when exporting with no contacts', async ({ page }) => {
+    await page.goto('/#/logbook')
+
+    // Setup dialog promise before clicking
+    const dialogPromise = page.waitForEvent('dialog')
+
+    // Click export button
+    await page.locator('button:has-text("Export")').click()
+
+    // Wait for and verify alert
+    const dialog = await dialogPromise
+    expect(dialog.message()).toBe('No contacts to export.')
+    await dialog.accept()
+  })
+
+  test('should import contacts from valid JSON file', async ({ page }) => {
+    await page.goto('/#/logbook')
+
+    // Create test import file
+    const importData = {
+      metadata: {
+        appName: 'LZ Radio',
+        appVersion: '1.0.0',
+        exportDate: '2025-01-20T10:00:00.000Z',
+        contactCount: 2,
+        schemaVersion: 1
+      },
+      contacts: [
+        {
+          baseCallsign: 'K2XYZ',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-21',
+          time: '10:00:00',
+          frequency: 7.1,
+          mode: 'CW',
+          power: 50,
+          rstSent: '599',
+          rstReceived: '599',
+          qslSent: false,
+          qslReceived: false,
+          remarks: 'Nice QSO'
+        },
+        {
+          baseCallsign: 'DL5ABC',
+          prefix: null,
+          suffix: 'P',
+          date: '2025-01-22',
+          time: '15:30:00',
+          frequency: 21.2,
+          mode: 'FT8',
+          power: null,
+          rstSent: null,
+          rstReceived: null,
+          qslSent: false,
+          qslReceived: false,
+          remarks: ''
+        }
+      ]
+    }
+
+    // Setup file chooser
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    // Create a temporary file
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-import.json')
+    fs.writeFileSync(tmpFile, JSON.stringify(importData))
+
+    // Select the file
+    await fileChooser.setFiles(tmpFile)
+
+    // Wait for preview modal to appear
+    await page.waitForSelector('.modal-backdrop')
+    await expect(page.locator('.modal-header h2')).toContainText('Import LogBook Contacts')
+
+    // Verify statistics
+    await expect(page.locator('.stat-row').nth(0)).toContainText('Existing contacts in your logbook:')
+    await expect(page.locator('.stat-row').nth(0)).toContainText('0')
+    await expect(page.locator('.stat-row').nth(1)).toContainText('Total contacts in import file:')
+    await expect(page.locator('.stat-row').nth(1)).toContainText('2')
+    await expect(page.locator('.stat-row').nth(2)).toContainText('New contacts to be imported:')
+    await expect(page.locator('.stat-row').nth(2)).toContainText('2')
+
+    // Setup dialog promise before clicking
+    const dialogPromise = page.waitForEvent('dialog')
+
+    // Confirm import
+    await page.locator('.modal-footer button:has-text("Import")').click()
+
+    // Wait for and verify success alert
+    const dialog = await dialogPromise
+    expect(dialog.message()).toContain('Successfully imported 2 contacts')
+    await dialog.accept()
+
+    // Verify contacts are displayed
+    await expect(page.locator('.count')).toContainText('(2')
+    await expect(page.locator('.contact-table')).toContainText('K2XYZ')
+    await expect(page.locator('.contact-table')).toContainText('DL5ABC/P')
+
+    // Cleanup
+    fs.unlinkSync(tmpFile)
+  })
+
+  test('should detect and skip duplicate contacts during import', async ({ page }) => {
+    // First, add a contact directly
+    await page.goto('/#/logbook/add')
+    await page.fill('#callsign', 'K2XYZ')
+    await page.fill('#date', '2025-01-21')
+    await page.fill('#time', '10:00:00')
+    await page.fill('#frequency', '7.1')
+    await page.selectOption('#mode', 'CW')
+    await page.click('button[type="submit"]')
+    await page.waitForSelector('.contact-table')
+
+    // Now import file with 2 contacts (1 duplicate, 1 new)
+    const importData = {
+      metadata: {
+        appName: 'LZ Radio',
+        schemaVersion: 1,
+        contactCount: 2
+      },
+      contacts: [
+        {
+          baseCallsign: 'K2XYZ',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-21',
+          time: '10:00:00',
+          frequency: 7.1,
+          mode: 'CW',
+          power: null,
+          rstSent: null,
+          rstReceived: null,
+          qslSent: false,
+          qslReceived: false,
+          remarks: ''
+        },
+        {
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-22',
+          time: '11:00:00',
+          frequency: 14.25,
+          mode: 'SSB',
+          power: null,
+          rstSent: null,
+          rstReceived: null,
+          qslSent: false,
+          qslReceived: false,
+          remarks: ''
+        }
+      ]
+    }
+
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-import-dup.json')
+    fs.writeFileSync(tmpFile, JSON.stringify(importData))
+    await fileChooser.setFiles(tmpFile)
+
+    // Wait for preview modal
+    await page.waitForSelector('.modal-backdrop')
+
+    // Verify statistics show duplicate detection
+    await expect(page.locator('.stat-row').nth(0)).toContainText('1') // Existing
+    await expect(page.locator('.stat-row').nth(1)).toContainText('2') // Total in file
+    await expect(page.locator('.stat-row').nth(2)).toContainText('1') // New
+    await expect(page.locator('.stat-row').nth(3)).toContainText('Duplicate contacts (skipped):')
+    await expect(page.locator('.stat-row').nth(3)).toContainText('1')
+
+    // Verify duplicate is listed
+    await expect(page.locator('.duplicates-section')).toBeVisible()
+    await expect(page.locator('.duplicate-list')).toContainText('K2XYZ on 2025-01-21 at 10:00:00')
+
+    // Setup dialog promise before clicking
+    const dialogPromise = page.waitForEvent('dialog')
+
+    // Confirm import
+    await page.locator('.modal-footer button:has-text("Import")').click()
+
+    // Wait for and verify success alert
+    const dialog = await dialogPromise
+    expect(dialog.message()).toContain('Successfully imported 1 contact')
+    await dialog.accept()
+
+    // Verify only 1 new contact was imported
+    await expect(page.locator('.count')).toContainText('(2') // Still only 2 total
+
+    fs.unlinkSync(tmpFile)
+  })
+
+  test('should show message when all contacts are duplicates', async ({ page }) => {
+    // Add a contact
+    await page.goto('/#/logbook/add')
+    await page.fill('#callsign', 'K2XYZ')
+    await page.fill('#date', '2025-01-21')
+    await page.fill('#time', '10:00:00')
+    await page.fill('#frequency', '7.1')
+    await page.selectOption('#mode', 'CW')
+    await page.click('button[type="submit"]')
+    await page.waitForSelector('.contact-table')
+
+    // Import file with only the duplicate contact
+    const importData = {
+      metadata: {
+        appName: 'LZ Radio',
+        schemaVersion: 1,
+        contactCount: 1
+      },
+      contacts: [
+        {
+          baseCallsign: 'K2XYZ',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-21',
+          time: '10:00:00',
+          frequency: 7.1,
+          mode: 'CW',
+          power: null,
+          rstSent: null,
+          rstReceived: null,
+          qslSent: false,
+          qslReceived: false,
+          remarks: ''
+        }
+      ]
+    }
+
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-import-all-dup.json')
+    fs.writeFileSync(tmpFile, JSON.stringify(importData))
+    await fileChooser.setFiles(tmpFile)
+
+    await page.waitForSelector('.modal-backdrop')
+
+    // Verify warning message is shown
+    await expect(page.locator('.warning-box')).toBeVisible()
+    await expect(page.locator('.warning-box')).toContainText(
+      'All contacts in this file already exist in your logbook'
+    )
+    await expect(page.locator('.warning-box')).toContainText('No new contacts to import')
+
+    // Verify OK button instead of Import button
+    await expect(page.locator('.modal-footer button:has-text("OK")')).toBeVisible()
+    await expect(page.locator('.modal-footer button:has-text("Import")')).not.toBeVisible()
+
+    // Click OK to close
+    await page.locator('.modal-footer button:has-text("OK")').click()
+    await expect(page.locator('.modal-backdrop')).not.toBeVisible()
+
+    fs.unlinkSync(tmpFile)
+  })
+
+  test('should reject invalid JSON file', async ({ page }) => {
+    await page.goto('/#/logbook')
+
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-invalid.json')
+    fs.writeFileSync(tmpFile, 'not valid json {{{')
+
+    // Setup dialog promise before setting files
+    const dialogPromise = page.waitForEvent('dialog')
+    await fileChooser.setFiles(tmpFile)
+
+    // Wait for and verify alert
+    const dialog = await dialogPromise
+    expect(dialog.message()).toBe('Invalid JSON file. Please select a valid LZ Radio export file.')
+    await dialog.accept()
+
+    fs.unlinkSync(tmpFile)
+  })
+
+  test('should reject non-LZ Radio export file', async ({ page }) => {
+    await page.goto('/#/logbook')
+
+    const importData = {
+      metadata: {
+        appName: 'Some Other App',
+        schemaVersion: 1
+      },
+      contacts: []
+    }
+
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-other-app.json')
+    fs.writeFileSync(tmpFile, JSON.stringify(importData))
+
+    // Setup dialog promise before setting files
+    const dialogPromise = page.waitForEvent('dialog')
+    await fileChooser.setFiles(tmpFile)
+
+    // Wait for and verify alert
+    const dialog = await dialogPromise
+    expect(dialog.message()).toContain('This file was not exported from LZ Radio')
+    await dialog.accept()
+
+    fs.unlinkSync(tmpFile)
+  })
+
+  test('should reject file with missing required fields', async ({ page }) => {
+    await page.goto('/#/logbook')
+
+    const importData = {
+      metadata: {
+        appName: 'LZ Radio',
+        schemaVersion: 1,
+        contactCount: 1
+      },
+      contacts: [
+        {
+          baseCallsign: 'W1ABC',
+          date: '2025-01-21',
+          // Missing time, frequency, mode
+          power: null,
+          rstSent: null,
+          rstReceived: null,
+          qslSent: false,
+          qslReceived: false,
+          remarks: ''
+        }
+      ]
+    }
+
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-missing-fields.json')
+    fs.writeFileSync(tmpFile, JSON.stringify(importData))
+
+    // Setup dialog promise before setting files
+    const dialogPromise = page.waitForEvent('dialog')
+    await fileChooser.setFiles(tmpFile)
+
+    // Wait for and verify alert
+    const dialog = await dialogPromise
+    expect(dialog.message()).toContain('Import validation failed')
+    expect(dialog.message()).toContain('missing required field')
+    await dialog.accept()
+
+    fs.unlinkSync(tmpFile)
+  })
+
+  test('should cancel import and close modal', async ({ page }) => {
+    await page.goto('/#/logbook')
+
+    const importData = {
+      metadata: {
+        appName: 'LZ Radio',
+        schemaVersion: 1,
+        contactCount: 1
+      },
+      contacts: [
+        {
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-21',
+          time: '10:00:00',
+          frequency: 14.25,
+          mode: 'SSB',
+          power: null,
+          rstSent: null,
+          rstReceived: null,
+          qslSent: false,
+          qslReceived: false,
+          remarks: ''
+        }
+      ]
+    }
+
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-cancel.json')
+    fs.writeFileSync(tmpFile, JSON.stringify(importData))
+    await fileChooser.setFiles(tmpFile)
+
+    await page.waitForSelector('.modal-backdrop')
+
+    // Click Cancel
+    await page.locator('.modal-footer button:has-text("Cancel")').click()
+
+    // Modal should close
+    await expect(page.locator('.modal-backdrop')).not.toBeVisible()
+
+    // Verify no contacts were imported
+    await expect(page.locator('.count')).toContainText('(0')
+    await expect(page.locator('.empty-state')).toBeVisible()
+
+    fs.unlinkSync(tmpFile)
+  })
+
+  test('should close import modal with Escape key', async ({ page }) => {
+    await page.goto('/#/logbook')
+
+    const importData = {
+      metadata: {
+        appName: 'LZ Radio',
+        schemaVersion: 1,
+        contactCount: 1
+      },
+      contacts: [
+        {
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-21',
+          time: '10:00:00',
+          frequency: 14.25,
+          mode: 'SSB',
+          power: null,
+          rstSent: null,
+          rstReceived: null,
+          qslSent: false,
+          qslReceived: false,
+          remarks: ''
+        }
+      ]
+    }
+
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-escape.json')
+    fs.writeFileSync(tmpFile, JSON.stringify(importData))
+    await fileChooser.setFiles(tmpFile)
+
+    await page.waitForSelector('.modal-backdrop')
+
+    // Press Escape
+    await page.keyboard.press('Escape')
+
+    // Modal should close
+    await expect(page.locator('.modal-backdrop')).not.toBeVisible()
+
+    // Verify no contacts were imported
+    await expect(page.locator('.count')).toContainText('(0')
+
+    fs.unlinkSync(tmpFile)
+  })
 })

@@ -2,16 +2,22 @@
   import { onMount } from 'svelte'
   import { link, push } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
-  import { getAllContacts, getContactCount, deleteContact } from '../lib/logbookDB.js'
+  import { getAllContacts, getContactCount, deleteContact, addContact } from '../lib/logbookDB.js'
   import { buildCallsign } from '../lib/callsignParser.js'
+  import { validateImportData, normalizeContact } from '../lib/importValidator.js'
+  import { calculateImportStatistics } from '../lib/importStatistics.js'
   import DropdownMenu from '../components/shared/DropdownMenu.svelte'
   import DeleteConfirmationModal from '../components/shared/DeleteConfirmationModal.svelte'
+  import ImportPreviewModal from '../components/shared/ImportPreviewModal.svelte'
 
   let contacts = []
   let contactCount = 0
   let loading = true
   let contactToDelete = null
   let deleting = false
+  let importData = null
+  let importStatistics = null
+  let importing = false
 
   onMount(async () => {
     await loadContacts()
@@ -56,6 +62,130 @@
       deleting = false
     }
   }
+
+  async function handleExport() {
+    try {
+      const allContacts = await getAllContacts()
+
+      if (allContacts.length === 0) {
+        alert('No contacts to export.')
+        return
+      }
+
+      // Create export data structure
+      const exportData = {
+        metadata: {
+          appName: 'LZ Radio',
+          appVersion: '1.0.0',
+          exportDate: new Date().toISOString(),
+          contactCount: allContacts.length,
+          schemaVersion: 1
+        },
+        contacts: allContacts
+      }
+
+      // Convert to JSON string with pretty formatting
+      const jsonString = JSON.stringify(exportData, null, 2)
+
+      // Create blob and download
+      const blob = new Blob([jsonString], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `lzradio-logbook-${new Date().toISOString().split('T')[0]}.json`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error('Failed to export contacts:', error)
+      alert('Failed to export contacts. Please try again.')
+    }
+  }
+
+  async function handleImport() {
+    // Create file input element
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = 'application/json,.json'
+
+    input.onchange = async (e) => {
+      const file = e.target.files[0]
+      if (!file) return
+
+      try {
+        const text = await file.text()
+        let data
+
+        // Parse JSON
+        try {
+          data = JSON.parse(text)
+        } catch (parseError) {
+          alert('Invalid JSON file. Please select a valid LZ Radio export file.')
+          return
+        }
+
+        // Validate import data
+        const validation = validateImportData(data)
+        if (!validation.valid) {
+          alert(`Import validation failed: ${validation.error}`)
+          return
+        }
+
+        // Calculate statistics
+        const existingContacts = await getAllContacts()
+        const statistics = calculateImportStatistics(validation.contacts, existingContacts)
+
+        // Show preview modal
+        importData = {
+          fileName: file.name,
+          metadata: data.metadata,
+          contacts: validation.contacts
+        }
+        importStatistics = statistics
+      } catch (error) {
+        console.error('Failed to process import file:', error)
+        alert('Failed to process import file. Please try again.')
+      }
+    }
+
+    input.click()
+  }
+
+  async function confirmImport() {
+    if (!importData || !importStatistics) return
+
+    importing = true
+    try {
+      // Import only the new contacts
+      for (const contact of importStatistics.newContacts) {
+        const normalized = normalizeContact(contact)
+        await addContact(normalized)
+      }
+
+      // Reload contacts
+      await loadContacts()
+
+      // Show success message
+      alert(
+        `Successfully imported ${importStatistics.newCount} contact${importStatistics.newCount === 1 ? '' : 's'}!`
+      )
+
+      // Close modal
+      importData = null
+      importStatistics = null
+    } catch (error) {
+      console.error('Failed to import contacts:', error)
+      alert('Failed to import contacts. Please try again.')
+    } finally {
+      importing = false
+    }
+  }
+
+  function cancelImport() {
+    importData = null
+    importStatistics = null
+  }
 </script>
 
 <div class="page">
@@ -64,8 +194,8 @@
     <h1>{$_('logbook.title')} <span class="count">({contactCount} {$_('logbook.contacts')})</span></h1>
     <div class="header-actions">
       <a href="/logbook/add" use:link class="btn-primary">+ {$_('logbook.addContact')}</a>
-      <button class="btn-secondary">📤 {$_('logbook.exportData')}</button>
-      <button class="btn-secondary">📥 {$_('logbook.importData')}</button>
+      <button class="btn-secondary" on:click={handleExport}>📤 {$_('logbook.exportData')}</button>
+      <button class="btn-secondary" on:click={handleImport}>📥 {$_('logbook.importData')}</button>
     </div>
   </div>
 
@@ -139,6 +269,15 @@
   onConfirm={handleDelete}
   onCancel={cancelDelete}
   {deleting}
+/>
+
+<!-- Import Preview Modal -->
+<ImportPreviewModal
+  {importData}
+  statistics={importStatistics}
+  onConfirm={confirmImport}
+  onCancel={cancelImport}
+  {importing}
 />
 
 <style>
