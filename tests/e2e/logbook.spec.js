@@ -679,21 +679,31 @@ test.describe('LogBook', () => {
     expect(contact.rstReceived).toBe('57')
     expect(contact.qslSent).toBe(true)
     expect(contact.remarks).toBe('Test contact')
+
+    // Verify success toast appears
+    const toast = page.locator('.toast-success')
+    await expect(toast).toBeVisible()
+    await expect(toast).toContainText('1 contact exported')
+    await expect(toast).toContainText('2025-01-20')
+    await expect(toast).toContainText('KB')
+
+    // Verify toast auto-dismisses
+    await expect(toast).not.toBeVisible({ timeout: 5000 })
   })
 
-  test('should show alert when exporting with no contacts', async ({ page }) => {
+  test('should show warning toast when exporting with no contacts', async ({ page }) => {
     await page.goto('/#/logbook')
-
-    // Setup dialog promise before clicking
-    const dialogPromise = page.waitForEvent('dialog')
 
     // Click export button
     await page.locator('button:has-text("Export")').click()
 
-    // Wait for and verify alert
-    const dialog = await dialogPromise
-    expect(dialog.message()).toBe('No contacts to export.')
-    await dialog.accept()
+    // Verify warning toast appears
+    const toast = page.locator('.toast-warning')
+    await expect(toast).toBeVisible()
+    await expect(toast).toContainText('No contacts to export')
+
+    // Verify toast auto-dismisses
+    await expect(toast).not.toBeVisible({ timeout: 4000 })
   })
 
   test('should import contacts from valid JSON file', async ({ page }) => {

@@ -76,7 +76,7 @@
           <div class="duplicates-section">
             <h4>ℹ️ Duplicates detected:</h4>
             <ul class="duplicate-list">
-              {#each statistics.duplicates.slice(0, 5) as dup}
+              {#each statistics.duplicates.slice(0, 5) as dup, index (index)}
                 <li>{dup.callsign} on {dup.date} at {dup.time}</li>
               {/each}
               {#if statistics.duplicates.length > 5}

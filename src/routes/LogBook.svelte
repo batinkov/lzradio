@@ -6,6 +6,7 @@
   import { buildCallsign } from '../lib/callsignParser.js'
   import { validateImportData, normalizeContact } from '../lib/importValidator.js'
   import { calculateImportStatistics } from '../lib/importStatistics.js'
+  import { toast } from '../lib/toastStore.js'
   import DropdownMenu from '../components/shared/DropdownMenu.svelte'
   import DeleteConfirmationModal from '../components/shared/DeleteConfirmationModal.svelte'
   import ImportPreviewModal from '../components/shared/ImportPreviewModal.svelte'
@@ -68,7 +69,7 @@
       const allContacts = await getAllContacts()
 
       if (allContacts.length === 0) {
-        alert('No contacts to export.')
+        toast.warning($_('logbook.noContactsToExport'))
         return
       }
 
@@ -87,19 +88,35 @@
       // Convert to JSON string with pretty formatting
       const jsonString = JSON.stringify(exportData, null, 2)
 
+      // Calculate file size
+      const sizeInKB = (new Blob([jsonString]).size / 1024).toFixed(1)
+
+      // Calculate date range
+      const dates = allContacts.map((c) => c.date).sort()
+      const dateRange =
+        dates.length > 1 ? `${dates[0]} to ${dates[dates.length - 1]}` : dates[0]
+
       // Create blob and download
       const blob = new Blob([jsonString], { type: 'application/json' })
       const url = URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = url
-      link.download = `lzradio-logbook-${new Date().toISOString().split('T')[0]}.json`
+      const fileName = `lzradio-logbook-${new Date().toISOString().split('T')[0]}.json`
+      link.download = fileName
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
       URL.revokeObjectURL(url)
+
+      // Show success toast with statistics
+      const contactLabel =
+        allContacts.length === 1
+          ? $_('logbook.exportSuccess')
+          : $_('logbook.exportSuccessPlural')
+      toast.success(`✓ ${allContacts.length} ${contactLabel} • ${dateRange} • ${sizeInKB} KB`, 4000)
     } catch (error) {
       console.error('Failed to export contacts:', error)
-      alert('Failed to export contacts. Please try again.')
+      toast.error($_('logbook.exportFailed'))
     }
   }
 
@@ -120,7 +137,7 @@
         // Parse JSON
         try {
           data = JSON.parse(text)
-        } catch (parseError) {
+        } catch {
           alert('Invalid JSON file. Please select a valid LZ Radio export file.')
           return
         }

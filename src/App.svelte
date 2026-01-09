@@ -4,6 +4,7 @@
   import { setupI18n } from './lib/i18n.js'
   import { initializeTheme } from './lib/theme.js'
   import Nav from './components/shared/Nav.svelte'
+  import Toast from './components/shared/Toast.svelte'
   import Home from './routes/Home.svelte'
   import LogBook from './routes/LogBook.svelte'
   import LogBookAdd from './routes/LogBookAdd.svelte'
@@ -42,6 +43,7 @@
   <main>
     <Router {routes} />
   </main>
+  <Toast />
 {/if}
 
 <style>
