@@ -237,7 +237,7 @@
             <th>{$_('logbook.qslSent')}</th>
             <th>{$_('logbook.qslRcvd')}</th>
             <th>{$_('logbook.remarks')}</th>
-            <th class="actions-header">Actions</th>
+            <th class="actions-header">{$_('common.actions')}</th>
           </tr>
         </thead>
         <tbody>
@@ -259,10 +259,10 @@
               <td class="actions-cell">
                 <DropdownMenu let:closeMenu>
                   <button on:click={() => { handleEdit(contact.id); closeMenu(); }}>
-                    ✏️ Edit
+                    ✏️ {$_('common.edit')}
                   </button>
                   <button class="danger" on:click={() => { confirmDelete(contact); closeMenu(); }}>
-                    🗑️ Delete
+                    🗑️ {$_('common.delete')}
                   </button>
                 </DropdownMenu>
               </td>

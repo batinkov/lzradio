@@ -179,6 +179,7 @@
     "save": "Save",
     "delete": "Delete",
     "edit": "Edit",
+    "actions": "Actions",
     "loading": "Loading..."
   },
   "notFound": {
