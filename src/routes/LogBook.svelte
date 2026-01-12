@@ -7,9 +7,11 @@
   import { validateImportData, normalizeContact } from '../lib/importValidator.js'
   import { calculateImportStatistics } from '../lib/importStatistics.js'
   import { toast } from '../lib/toastStore.js'
+  import { getStationCallsign, setStationCallsign } from '../lib/logbookSettings.js'
   import DropdownMenu from '../components/shared/DropdownMenu.svelte'
   import DeleteConfirmationModal from '../components/shared/DeleteConfirmationModal.svelte'
   import ImportPreviewModal from '../components/shared/ImportPreviewModal.svelte'
+  import SettingsModal from '../components/shared/SettingsModal.svelte'
 
   let contacts = []
   let contactCount = 0
@@ -19,9 +21,13 @@
   let importData = null
   let importStatistics = null
   let importing = false
+  let settingsModalOpen = false
+  let stationCallsign = null
+  let shouldSetCallsign = null
 
   onMount(async () => {
     await loadContacts()
+    stationCallsign = getStationCallsign()
   })
 
   async function loadContacts() {
@@ -73,6 +79,8 @@
         return
       }
 
+      const userCallsign = getStationCallsign()
+
       // Create export data structure
       const exportData = {
         metadata: {
@@ -80,7 +88,8 @@
           appVersion: '1.0.0',
           exportDate: new Date().toISOString(),
           contactCount: allContacts.length,
-          schemaVersion: 1
+          schemaVersion: 1,
+          stationCallsign: userCallsign
         },
         contacts: allContacts
       }
@@ -101,7 +110,9 @@
       const url = URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = url
-      const fileName = `lzradio-logbook-${new Date().toISOString().split('T')[0]}.json`
+      // Include callsign in filename if set
+      const callsignPart = userCallsign ? `-${userCallsign}` : ''
+      const fileName = `lzradio-logbook${callsignPart}-${new Date().toISOString().split('T')[0]}.json`
       link.download = fileName
       document.body.appendChild(link)
       link.click()
@@ -142,12 +153,16 @@
           return
         }
 
-        // Validate import data
-        const validation = validateImportData(data)
+        // Validate import data with callsign check
+        const userCallsign = getStationCallsign()
+        const validation = validateImportData(data, userCallsign)
         if (!validation.valid) {
           alert(`Import validation failed: ${validation.error}`)
           return
         }
+
+        // Store whether we should set callsign after import
+        shouldSetCallsign = validation.shouldSetCallsign || null
 
         // Calculate statistics
         const existingContacts = await getAllContacts()
@@ -180,20 +195,37 @@
         await addContact(normalized)
       }
 
+      // Set callsign if needed (user had none, import file has one)
+      if (shouldSetCallsign) {
+        setStationCallsign(shouldSetCallsign)
+        stationCallsign = shouldSetCallsign
+      }
+
       // Reload contacts
       await loadContacts()
 
-      // Show success message
-      alert(
-        `Successfully imported ${importStatistics.newCount} contact${importStatistics.newCount === 1 ? '' : 's'}!`
-      )
+      // Show success toast
+      const contactCount = importStatistics.newCount
+      const contactLabel = contactCount === 1 ? 'contact' : 'contacts'
 
-      // Close modal
+      if (shouldSetCallsign) {
+        // Show special message when callsign was auto-set
+        toast.success(
+          `✓ Imported ${contactCount} ${contactLabel} • ${$_('logbook.importCallsignSet')} ${shouldSetCallsign}`,
+          4000
+        )
+      } else {
+        // Regular success message
+        toast.success(`✓ Imported ${contactCount} ${contactLabel}`, 3000)
+      }
+
+      // Close modal and reset state
       importData = null
       importStatistics = null
+      shouldSetCallsign = null
     } catch (error) {
       console.error('Failed to import contacts:', error)
-      alert('Failed to import contacts. Please try again.')
+      toast.error('Failed to import contacts. Please try again.')
     } finally {
       importing = false
     }
@@ -202,17 +234,48 @@
   function cancelImport() {
     importData = null
     importStatistics = null
+    shouldSetCallsign = null
+  }
+
+  function openSettings() {
+    settingsModalOpen = true
+  }
+
+  function closeSettings() {
+    settingsModalOpen = false
+    // Reload callsign in case it changed
+    stationCallsign = getStationCallsign()
   }
 </script>
 
 <div class="page">
-  <!-- Header with Add Button -->
+  <!-- Header with callsign and actions -->
   <div class="header">
-    <h1>{$_('logbook.title')} <span class="count">({contactCount} {$_('logbook.contacts')})</span></h1>
+    <h1>
+      📻 {$_('logbook.logbookOf')}
+      <button class="callsign-button" on:click={openSettings}>
+        {#if stationCallsign}
+          <span class="callsign">{stationCallsign}</span>
+        {:else}
+          <span class="callsign-notset">{$_('logbook.notSet')}</span>
+        {/if}
+      </button>
+      <span class="count">({contactCount} {$_('logbook.contacts')})</span>
+    </h1>
     <div class="header-actions">
       <a href="/logbook/add" use:link class="btn-primary">+ {$_('logbook.addContact')}</a>
-      <button class="btn-secondary" on:click={handleExport}>📤 {$_('logbook.exportData')}</button>
-      <button class="btn-secondary" on:click={handleImport}>📥 {$_('logbook.importData')}</button>
+      <DropdownMenu let:closeMenu>
+        <button on:click={() => { openSettings(); closeMenu(); }}>
+          ⚙️ {$_('logbook.settings')}
+        </button>
+        <div class="dropdown-divider"></div>
+        <button on:click={() => { handleExport(); closeMenu(); }}>
+          📤 {$_('logbook.exportData')}
+        </button>
+        <button on:click={() => { handleImport(); closeMenu(); }}>
+          📥 {$_('logbook.importData')}
+        </button>
+      </DropdownMenu>
     </div>
   </div>
 
@@ -297,6 +360,12 @@
   {importing}
 />
 
+<!-- Settings Modal -->
+<SettingsModal
+  open={settingsModalOpen}
+  onClose={closeSettings}
+/>
+
 <style>
   /* Component-specific styles */
   .count {
@@ -309,6 +378,44 @@
     display: flex;
     gap: var(--space-2);
     flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* Callsign display */
+  .callsign-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    display: inline;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 4px;
+    transition: all 0.15s ease;
+  }
+
+  .callsign-button:hover {
+    text-decoration-style: solid;
+    color: var(--color-primary);
+  }
+
+  .callsign {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .callsign-notset {
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  /* Dropdown divider */
+  .dropdown-divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: var(--space-1) 0;
   }
 
   /* Contact Table */

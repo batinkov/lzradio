@@ -38,6 +38,12 @@
             <span class="label">File:</span>
             <span class="value">{importData.fileName}</span>
           </div>
+          {#if importData.metadata.stationCallsign}
+            <div class="info-row">
+              <span class="label">Station:</span>
+              <span class="value monospace">{importData.metadata.stationCallsign}</span>
+            </div>
+          {/if}
           {#if importData.metadata.exportDate}
             <div class="info-row">
               <span class="label">Export Date:</span>

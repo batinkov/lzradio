@@ -5,9 +5,10 @@
 /**
  * Validates the structure and content of an import JSON file
  * @param {any} data - Parsed JSON data
- * @returns {{ valid: boolean, error?: string, contacts?: Array }} Validation result
+ * @param {string|null} userCallsign - Current user's station callsign (optional)
+ * @returns {{ valid: boolean, error?: string, contacts?: Array, shouldSetCallsign?: string }} Validation result
  */
-export function validateImportData(data) {
+export function validateImportData(data, userCallsign = null) {
   // Check if data is an object
   if (!data || typeof data !== 'object') {
     return { valid: false, error: 'Invalid JSON format. Expected an object.' }
@@ -17,6 +18,13 @@ export function validateImportData(data) {
   const metadataValidation = validateMetadata(data.metadata)
   if (!metadataValidation.valid) {
     return metadataValidation
+  }
+
+  // Validate callsign compatibility
+  const importCallsign = data.metadata?.stationCallsign || null
+  const callsignValidation = validateCallsignCompatibility(userCallsign, importCallsign)
+  if (!callsignValidation.valid) {
+    return callsignValidation
   }
 
   // Validate contacts array
@@ -36,7 +44,35 @@ export function validateImportData(data) {
     }
   }
 
-  return { valid: true, contacts: data.contacts }
+  const result = { valid: true, contacts: data.contacts }
+
+  // If user has no callsign but import does, suggest setting it
+  if (!userCallsign && importCallsign) {
+    result.shouldSetCallsign = importCallsign
+  }
+
+  return result
+}
+
+/**
+ * Validates callsign compatibility between user and import
+ * Implements the truth table logic for import validation
+ * @param {string|null} userCallsign - User's current callsign
+ * @param {string|null} importCallsign - Callsign from import metadata
+ * @returns {{ valid: boolean, error?: string }} Validation result
+ */
+function validateCallsignCompatibility(userCallsign, importCallsign) {
+  // Both set and different - REJECT
+  if (userCallsign && importCallsign && userCallsign !== importCallsign) {
+    return {
+      valid: false,
+      error: `Cannot import this logbook. Your callsign is ${userCallsign}, but this logbook belongs to ${importCallsign}.`
+    }
+  }
+
+  // All other cases - ALLOW
+  // Same callsign, one not set, or both not set
+  return { valid: true }
 }
 
 /**

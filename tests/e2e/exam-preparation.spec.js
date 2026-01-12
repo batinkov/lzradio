@@ -52,7 +52,7 @@ test.describe('Exam Preparation Mode', () => {
     await expect(page.locator('.progress-text')).toContainText('Question 1 of');
 
     // Click Next button
-    await page.click('button:has-text("Next")');
+    await page.click('.btn-nav-primary');
 
     // Verify we're now on question 2
     await expect(page.locator('.progress-text')).toContainText('Question 2 of');
@@ -63,11 +63,11 @@ test.describe('Exam Preparation Mode', () => {
     await page.waitForSelector('.question-container', { timeout: 5000 });
 
     // Go to question 2
-    await page.click('button:has-text("Next")');
+    await page.click('.btn-nav-primary');
     await expect(page.locator('.progress-text')).toContainText('Question 2 of');
 
     // Go back to question 1
-    await page.click('button:has-text("Previous")');
+    await page.click('.navigation button:first-child');
     await expect(page.locator('.progress-text')).toContainText('Question 1 of');
   });
 
@@ -76,11 +76,11 @@ test.describe('Exam Preparation Mode', () => {
     await page.waitForSelector('.question-container', { timeout: 5000 });
 
     // On first question, Previous should be disabled
-    const prevButton = page.locator('button:has-text("Previous")');
+    const prevButton = page.locator('.navigation button:first-child');
     await expect(prevButton).toBeDisabled();
 
     // Next button should be enabled
-    const nextButton = page.locator('button:has-text("Next")');
+    const nextButton = page.locator('.btn-nav-primary');
     await expect(nextButton).toBeEnabled();
   });
 
@@ -107,11 +107,11 @@ test.describe('Exam Preparation Mode', () => {
     await expect(firstChoice).toBeChecked();
 
     // Navigate to question 2
-    await page.click('button:has-text("Next")');
+    await page.click('.btn-nav-primary');
     await expect(page.locator('.progress-text')).toContainText('Question 2 of');
 
     // Navigate back to question 1
-    await page.click('button:has-text("Previous")');
+    await page.click('.navigation button:first-child');
     await expect(page.locator('.progress-text')).toContainText('Question 1 of');
 
     // Verify answer is still selected
@@ -200,7 +200,7 @@ test.describe('Exam Preparation Mode', () => {
     await page.click('.answer-card:first-child');
 
     // Go to question 2
-    await page.click('button:has-text("Next")');
+    await page.click('.btn-nav-primary');
 
     // Answer question 2
     await page.click('.answer-card:first-child');

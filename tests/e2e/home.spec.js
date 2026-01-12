@@ -50,7 +50,7 @@ test.describe('Home Page', () => {
     await expect(page).toHaveURL(/#\/logbook/);
 
     // DOM Assertion: Verify LogBook page loaded
-    await expect(page.locator('h1')).toContainText('LogBook');
+    await expect(page.locator('h1')).toContainText('The logbook of');
   });
 
   test('should navigate to Exam Prep when clicking the card', async ({ page }) => {

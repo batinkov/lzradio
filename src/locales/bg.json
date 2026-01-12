@@ -56,10 +56,15 @@
     "startLogging": "Започнете да записвате радио контактите си",
     "exportData": "Експорт на данни",
     "importData": "Импорт на данни",
+    "settings": "Настройки на дневника",
+    "logbookOf": "Дневникът на",
+    "notSet": "(не е зададено)",
+    "settingsSaved": "Настройките са запазени",
     "exportSuccess": "контакт експортиран",
     "exportSuccessPlural": "контакта експортирани",
     "noContactsToExport": "Няма контакти за експортиране",
     "exportFailed": "Грешка при експортиране на контактите. Моля, опитайте отново.",
+    "importCallsignSet": "Вашата позивна е зададена на",
     "contacts": "контакти",
     "contact": "контакт",
     "callsign": "Позивна",
@@ -87,7 +92,13 @@
     "additionalNotes": "Допълнителни бележки...",
     "saveContact": "Запази контакт",
     "clearForm": "Изчисти формата",
-    "required": "Задължително поле"
+    "required": "Задължително поле",
+    "settingsModal": {
+      "title": "Настройки на дневника",
+      "stationCallsign": "Станционна позивна",
+      "stationCallsignHelp": "Вашата радиолюбителска позивна",
+      "stationCallsignPlaceholder": "напр., LZ1ABC"
+    }
   },
   "exam": {
     "title": "Подготовка за изпит",

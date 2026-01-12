@@ -31,7 +31,7 @@ test.describe('LogBook', () => {
     await page.waitForSelector('h1')
 
     // Verify page title
-    await expect(page.locator('h1')).toContainText('LogBook')
+    await expect(page.locator('h1')).toContainText('The logbook of')
 
     // Verify contact count shows 0
     await expect(page.locator('.count')).toContainText('(0')
@@ -452,8 +452,8 @@ test.describe('LogBook', () => {
     // Wait for logbook page
     await page.waitForSelector('.contact-table')
 
-    // Find and click the dropdown menu button (⋮)
-    const dropdownButton = page.locator('.dropdown-button').first()
+    // Find and click the dropdown menu button (⋮) in the table row
+    const dropdownButton = page.locator('.contact-table .dropdown-button').first()
     await expect(dropdownButton).toBeVisible()
     await dropdownButton.click()
 
@@ -479,7 +479,7 @@ test.describe('LogBook', () => {
     await page.waitForSelector('.contact-table')
 
     // Click dropdown menu and select Edit
-    await page.locator('.dropdown-button').first().click()
+    await page.locator('.contact-table .dropdown-button').first().click()
     await page.locator('.dropdown-content button:has-text("Edit")').click()
 
     // Should navigate to edit page
@@ -527,7 +527,7 @@ test.describe('LogBook', () => {
     await page.waitForSelector('.contact-table')
 
     // Click dropdown menu and select Delete
-    await page.locator('.dropdown-button').first().click()
+    await page.locator('.contact-table .dropdown-button').first().click()
     await page.locator('.dropdown-content button:has-text("Delete")').click()
 
     // Verify modal appears
@@ -561,7 +561,7 @@ test.describe('LogBook', () => {
     await expect(page.locator('.count')).toContainText('(1')
 
     // Click dropdown menu and select Delete
-    await page.locator('.dropdown-button').first().click()
+    await page.locator('.contact-table .dropdown-button').first().click()
     await page.locator('.dropdown-content button:has-text("Delete")').click()
 
     // Confirm deletion
@@ -588,7 +588,7 @@ test.describe('LogBook', () => {
     await page.waitForSelector('.contact-table')
 
     // Click dropdown menu and select Delete
-    await page.locator('.dropdown-button').first().click()
+    await page.locator('.contact-table .dropdown-button').first().click()
     await page.locator('.dropdown-content button:has-text("Delete")').click()
 
     // Cancel deletion
@@ -615,7 +615,7 @@ test.describe('LogBook', () => {
     await page.waitForSelector('.contact-table')
 
     // Open delete modal
-    await page.locator('.dropdown-button').first().click()
+    await page.locator('.contact-table .dropdown-button').first().click()
     await page.locator('.dropdown-content button:has-text("Delete")').click()
 
     // Press Escape key
@@ -644,6 +644,9 @@ test.describe('LogBook', () => {
 
     // Wait for logbook page
     await page.waitForSelector('.contact-table')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
 
     // Start waiting for download before clicking
     const downloadPromise = page.waitForEvent('download')
@@ -693,6 +696,9 @@ test.describe('LogBook', () => {
 
   test('should show warning toast when exporting with no contacts', async ({ page }) => {
     await page.goto('/#/logbook')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
 
     // Click export button
     await page.locator('button:has-text("Export")').click()
@@ -754,6 +760,10 @@ test.describe('LogBook', () => {
 
     // Setup file chooser
     const fileChooserPromise = page.waitForEvent('filechooser')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
+
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
 
@@ -779,16 +789,13 @@ test.describe('LogBook', () => {
     await expect(page.locator('.stat-row').nth(2)).toContainText('New contacts to be imported:')
     await expect(page.locator('.stat-row').nth(2)).toContainText('2')
 
-    // Setup dialog promise before clicking
-    const dialogPromise = page.waitForEvent('dialog')
-
     // Confirm import
     await page.locator('.modal-footer button:has-text("Import")').click()
 
-    // Wait for and verify success alert
-    const dialog = await dialogPromise
-    expect(dialog.message()).toContain('Successfully imported 2 contacts')
-    await dialog.accept()
+    // Wait for and verify success toast
+    const toast = page.locator('.toast-success')
+    await expect(toast).toBeVisible()
+    await expect(toast).toContainText('Imported 2 contacts')
 
     // Verify contacts are displayed
     await expect(page.locator('.count')).toContainText('(2')
@@ -852,6 +859,10 @@ test.describe('LogBook', () => {
     }
 
     const fileChooserPromise = page.waitForEvent('filechooser')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
+
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
 
@@ -876,16 +887,13 @@ test.describe('LogBook', () => {
     await expect(page.locator('.duplicates-section')).toBeVisible()
     await expect(page.locator('.duplicate-list')).toContainText('K2XYZ on 2025-01-21 at 10:00:00')
 
-    // Setup dialog promise before clicking
-    const dialogPromise = page.waitForEvent('dialog')
-
     // Confirm import
     await page.locator('.modal-footer button:has-text("Import")').click()
 
-    // Wait for and verify success alert
-    const dialog = await dialogPromise
-    expect(dialog.message()).toContain('Successfully imported 1 contact')
-    await dialog.accept()
+    // Wait for and verify success toast
+    const toast = page.locator('.toast-success')
+    await expect(toast).toBeVisible()
+    await expect(toast).toContainText('Imported 1 contact')
 
     // Verify only 1 new contact was imported
     await expect(page.locator('.count')).toContainText('(2') // Still only 2 total
@@ -931,6 +939,10 @@ test.describe('LogBook', () => {
     }
 
     const fileChooserPromise = page.waitForEvent('filechooser')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
+
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
 
@@ -965,6 +977,10 @@ test.describe('LogBook', () => {
     await page.goto('/#/logbook')
 
     const fileChooserPromise = page.waitForEvent('filechooser')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
+
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
 
@@ -998,6 +1014,10 @@ test.describe('LogBook', () => {
     }
 
     const fileChooserPromise = page.waitForEvent('filechooser')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
+
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
 
@@ -1044,6 +1064,10 @@ test.describe('LogBook', () => {
     }
 
     const fileChooserPromise = page.waitForEvent('filechooser')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
+
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
 
@@ -1095,6 +1119,10 @@ test.describe('LogBook', () => {
     }
 
     const fileChooserPromise = page.waitForEvent('filechooser')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
+
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
 
@@ -1149,6 +1177,10 @@ test.describe('LogBook', () => {
     }
 
     const fileChooserPromise = page.waitForEvent('filechooser')
+
+    // Open the header dropdown menu
+    await page.locator('.header-actions .dropdown-button').click()
+
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
 

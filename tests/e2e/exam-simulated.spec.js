@@ -408,8 +408,8 @@ test.describe('Simulated Exam Mode', () => {
     // Wait for review mode state to fully settle before attempting navigation
     await page.waitForTimeout(200);
 
-    // Click Next button
-    await page.click('button:has-text("Next")');
+    // Click Next button (use class selector to avoid matching answer cards)
+    await page.click('.btn-nav-primary');
 
     // Should navigate to question 2
     await expect(page.locator('.progress-text')).toContainText('Question 2 of');

@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 LZ Radio is a fully client-side web application for amateur radio operators. It provides:
-- **LogBook**: Log and track radio contacts (UI complete, data persistence planned)
+- **LogBook**: Log and track radio contacts with full CRUD operations and IndexedDB persistence
 - **Exam Prep**: Practice for Bulgarian amateur radio license exams (Class 1 and Class 2)
 
 **Technology Stack:**
@@ -51,7 +51,7 @@ npm run test:run
 npm run test:ui
 ```
 
-**Test Coverage:** 144 passing unit tests across all business logic modules.
+**Test Coverage:** 297 passing unit tests across all business logic modules.
 
 ### Linting
 ```bash
@@ -73,7 +73,7 @@ npm run format
 ## Architecture
 
 ### High-Level Structure
-Fully client-side single-page application (SPA). No backend server. All data stored locally in user's browser using a unified storage adapter architecture. LocalStorage for preferences (via storage adapters), IndexedDB planned for LogBook data.
+Fully client-side single-page application (SPA). No backend server. All data stored locally in user's browser using a unified storage adapter architecture. LocalStorage for preferences (via storage adapters), IndexedDB with Dexie.js for LogBook data persistence.
 
 ### Key Components
 - **Routes** (`src/routes/`): Page-level components (Home, LogBook, Exam pages)
@@ -89,6 +89,11 @@ Fully client-side single-page application (SPA). No backend server. All data sto
   - `examProgress.js` - Progress tracking calculations (pure functions, tested)
   - `navigationGuard.js` - Navigation protection during exams (tested)
   - `urlParams.js` - Type-safe URL parameter parsing (tested)
+  - `logbookDB.js` - IndexedDB operations with Dexie.js (tested)
+  - `callsignParser.js` - Parse/build callsigns with prefix/base/suffix (tested)
+  - `importValidator.js` - Validate LogBook import JSON files (tested)
+  - `importStatistics.js` - Calculate import statistics and detect duplicates (tested)
+  - `toastStore.js` - Toast notification system (tested)
   - `storage/` - Storage adapter architecture:
     - `storageAdapter.js` - Base adapter with unified API (tested)
     - `localStorage.js` - LocalStorage adapter
@@ -105,8 +110,9 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 
 **Main Routes:**
 - `/` - Home page
-- `/logbook` - View contacts
+- `/logbook` - View contacts (with export/import)
 - `/logbook/add` - Add new contact
+- `/logbook/edit/:id` - Edit existing contact
 - `/exam` - Exam home page
 - `/exam/class1` - Class 1 exam selection
 - `/exam/class2` - Class 2 exam selection
@@ -129,11 +135,12 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 - **Question banks**: Static JSON files bundled with app (separate files for Bulgarian and English)
 - **Exam practice answers**: In-memory state only (intentionally NOT persisted - ephemeral by design)
 - **Exam simulated mode**: In-memory state only (intentionally NOT persisted - real exam behavior)
+- **LogBook contacts**: IndexedDB with Dexie.js v4.2.1 - full CRUD operations, persistent local storage
+- **LogBook export/import**: JSON files with validation, duplicate detection, and metadata
 
 **Planned for Future:**
-- **LogBook contacts**: IndexedDB (will use Dexie.js - not yet installed) - persistent local storage
 - **Exam history/statistics**: Use storage adapters to save past exam results
-- **Export/Import**: JSON files for data backup/restore
+- **Operator settings**: Store user's own callsign and station preferences
 
 ### External Dependencies
 None. Fully offline-capable. No external APIs or services.
@@ -163,9 +170,9 @@ None. Fully offline-capable. No external APIs or services.
 
 ### State Management
 - Local component state using Svelte's reactive declarations (`$:`)
-- Svelte stores for shared state (when needed)
+- Svelte stores for shared state (toast notifications, theme preferences)
 - Storage adapters for persistent data (LocalStorage, SessionStorage)
-- IndexedDB planned for LogBook (will use Dexie.js)
+- IndexedDB with Dexie.js for LogBook data (contacts with auto-incrementing IDs, indexed fields)
 - No global state management library (not needed for this scale)
 
 ### Design System
@@ -190,6 +197,23 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Math formula rendering in questions (KaTeX)
 - Responsive design
 - Language preference persistence
+- Toast notification system
+
+**LogBook (Fully Implemented):**
+- IndexedDB persistence with Dexie.js v4.2.1
+- Complete CRUD operations (Create, Read, Update, Delete)
+- Contact form with validation (callsign, date, time, frequency, mode required)
+- Smart callsign parsing (handles prefix/base/suffix: HB/W1ABC/P)
+- Edit mode for existing contacts
+- Delete confirmation modal
+- JSON export with metadata, statistics, and date ranges
+- JSON import with comprehensive validation:
+  - Schema version checking
+  - Required field validation
+  - Date/time format validation
+  - Duplicate detection (by callsign + date + time + frequency)
+- Import preview modal showing new/duplicate/total counts
+- Toast notifications for export/import feedback
 
 **Architecture & Code Quality:**
 - Business logic separation from UI components
@@ -197,23 +221,27 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Type-safe URL parameter parsing
 - Navigation guard system
 - Loading states for async operations
-- Testing framework (Vitest) with 144 passing unit tests
-  - examScoring.js (16 tests)
-  - examTimer.js (19 tests)
-  - examProgress.js (22 tests)
-  - navigationGuard.js (23 tests)
+- Testing framework (Vitest) with 297 passing unit tests
+  - importValidator.js (40 tests) ✅
   - urlParams.js (33 tests)
   - storageAdapter.js (31 tests)
+  - toastStore.js (27 tests) ✅
+  - callsignParser.js (23 tests) ✅
+  - navigationGuard.js (23 tests)
+  - examProgress.js (22 tests)
+  - examTimer.js (19 tests)
+  - logbookDB.js (18 tests) ✅
+  - importStatistics.js (17 tests) ✅
+  - examScoring.js (16 tests)
+  - theme.js (14 tests) ✅
 - Linting (ESLint + Prettier with Svelte support)
 
-### 🚧 In Progress
-- LogBook UI (static placeholder data only)
-
 ### 📋 Planned Features
-- LogBook data persistence (will require installing Dexie.js for IndexedDB)
-- LogBook CRUD operations
+- Operator settings page (store user's own callsign)
+- Country flag indicators based on callsign prefix
+- Q-code and C-code reference section
 - Exam history/statistics tracking (save results via storage adapters)
-- Data export/import functionality
 - PWA support (manifest.json, service worker)
 - Keyboard shortcuts for exam navigation
 - "Mark for review" feature during exams
+- Error boundaries and question data validation

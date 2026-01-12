@@ -56,10 +56,15 @@
     "startLogging": "Start logging your radio contacts",
     "exportData": "Export Data",
     "importData": "Import Data",
+    "settings": "LogBook Settings",
+    "logbookOf": "The logbook of",
+    "notSet": "(not set)",
+    "settingsSaved": "Settings saved",
     "exportSuccess": "contact exported",
     "exportSuccessPlural": "contacts exported",
     "noContactsToExport": "No contacts to export",
     "exportFailed": "Failed to export contacts. Please try again.",
+    "importCallsignSet": "Your callsign set to",
     "contacts": "contacts",
     "contact": "contact",
     "callsign": "Callsign",
@@ -87,7 +92,13 @@
     "additionalNotes": "Additional notes...",
     "saveContact": "Save Contact",
     "clearForm": "Clear Form",
-    "required": "Required field"
+    "required": "Required field",
+    "settingsModal": {
+      "title": "LogBook Settings",
+      "stationCallsign": "Station Callsign",
+      "stationCallsignHelp": "Your amateur radio callsign",
+      "stationCallsignPlaceholder": "e.g., LZ1ABC"
+    }
   },
   "exam": {
     "title": "Exam Preparation",

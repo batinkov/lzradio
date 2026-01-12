@@ -724,6 +724,96 @@ describe('importValidator', () => {
     })
   })
 
+  describe('callsign validation (truth table)', () => {
+    const validContact = {
+      baseCallsign: 'W1ABC',
+      date: '2025-01-20',
+      time: '14:30:00',
+      frequency: 14.25,
+      mode: 'SSB'
+    }
+
+    const createImportData = (stationCallsign) => ({
+      metadata: {
+        appName: 'LZ Radio',
+        schemaVersion: 1,
+        exportDate: '2025-01-20T10:00:00.000Z',
+        contactCount: 1,
+        stationCallsign: stationCallsign
+      },
+      contacts: [validContact]
+    })
+
+    it('should accept when both callsigns match (LZ1ABC == LZ1ABC)', () => {
+      const data = createImportData('LZ1ABC')
+      const result = validateImportData(data, 'LZ1ABC')
+      expect(result.valid).toBe(true)
+      expect(result.contacts).toHaveLength(1)
+      expect(result.shouldSetCallsign).toBeUndefined()
+    })
+
+    it('should reject when callsigns differ (LZ1ABC != LZ2XYZ)', () => {
+      const data = createImportData('LZ2XYZ')
+      const result = validateImportData(data, 'LZ1ABC')
+      expect(result.valid).toBe(false)
+      expect(result.error).toContain('Your callsign is LZ1ABC')
+      expect(result.error).toContain('this logbook belongs to LZ2XYZ')
+    })
+
+    it('should accept when user has callsign but import does not', () => {
+      const data = createImportData(null)
+      const result = validateImportData(data, 'LZ1ABC')
+      expect(result.valid).toBe(true)
+      expect(result.contacts).toHaveLength(1)
+      expect(result.shouldSetCallsign).toBeUndefined()
+    })
+
+    it('should accept and suggest callsign when user has none but import does', () => {
+      const data = createImportData('LZ1ABC')
+      const result = validateImportData(data, null)
+      expect(result.valid).toBe(true)
+      expect(result.contacts).toHaveLength(1)
+      expect(result.shouldSetCallsign).toBe('LZ1ABC')
+    })
+
+    it('should accept when neither has callsign set', () => {
+      const data = createImportData(null)
+      const result = validateImportData(data, null)
+      expect(result.valid).toBe(true)
+      expect(result.contacts).toHaveLength(1)
+      expect(result.shouldSetCallsign).toBeUndefined()
+    })
+
+    it('should handle missing stationCallsign field in metadata (backwards compatibility)', () => {
+      const data = {
+        metadata: {
+          appName: 'LZ Radio',
+          schemaVersion: 1,
+          exportDate: '2025-01-20T10:00:00.000Z',
+          contactCount: 1
+          // No stationCallsign field
+        },
+        contacts: [validContact]
+      }
+      const result = validateImportData(data, 'LZ1ABC')
+      expect(result.valid).toBe(true)
+    })
+
+    it('should handle empty string as user callsign (treated as null)', () => {
+      const data = createImportData('LZ1ABC')
+      const result = validateImportData(data, '')
+      expect(result.valid).toBe(true)
+      expect(result.shouldSetCallsign).toBe('LZ1ABC')
+    })
+
+    it('should handle empty string in import metadata (treated as null)', () => {
+      const data = createImportData('')
+      const result = validateImportData(data, 'LZ1ABC')
+      expect(result.valid).toBe(true)
+      expect(result.shouldSetCallsign).toBeUndefined()
+    })
+  })
+
   describe('normalizeContact', () => {
     it('should normalize contact with all fields', () => {
       const contact = {
