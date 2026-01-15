@@ -143,3 +143,16 @@ a:hover {
 .monospace {
   font-family: var(--font-mono);
 }
+
+/* Search Highlighting */
+mark {
+  background-color: #FEF3C7; /* Light yellow background */
+  color: #78350F; /* Dark brown text for contrast */
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+:root[data-theme="dark"] mark {
+  background-color: #92400E; /* Dark orange/brown background */
+  color: #FEF3C7; /* Light yellow text */
+}
