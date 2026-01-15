@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte'
+  import { onMount, onDestroy } from 'svelte'
   import { link, push } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
   import { getAllContacts, getContactCount, deleteContact, addContact } from '../lib/logbookDB.js'
@@ -8,6 +8,7 @@
   import { calculateImportStatistics } from '../lib/importStatistics.js'
   import { toast } from '../lib/toastStore.js'
   import { getStationCallsign, setStationCallsign } from '../lib/logbookSettings.js'
+  import { createFuseInstance, filterContacts, highlightMatch } from '../lib/logbookSearch.js'
   import DropdownMenu from '../components/shared/DropdownMenu.svelte'
   import DeleteConfirmationModal from '../components/shared/DeleteConfirmationModal.svelte'
   import ImportPreviewModal from '../components/shared/ImportPreviewModal.svelte'
@@ -24,6 +25,11 @@
   let settingsModalOpen = false
   let stationCallsign = null
   let shouldSetCallsign = null
+
+  // Search state
+  let searchQuery = ''
+  let searchInput
+  let debounceTimer
 
   onMount(async () => {
     await loadContacts()
@@ -246,10 +252,67 @@
     // Reload callsign in case it changed
     stationCallsign = getStationCallsign()
   }
+
+  // Search functionality
+  // Prepare contacts with searchable full callsign
+  $: contactsWithCallsign = contacts.map(contact => ({
+    ...contact,
+    fullCallsign: buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix)
+  }))
+
+  // Configure Fuse.js for fuzzy search
+  $: fuse = createFuseInstance(contactsWithCallsign)
+
+  // Filtered contacts based on search query
+  $: filteredContacts = filterContacts(contacts, searchQuery, fuse)
+
+  // Track if we're showing filtered results
+  $: isFiltering = searchQuery.trim().length >= 2 && filteredContacts.length < contacts.length
+
+  function clearSearch() {
+    searchQuery = ''
+    if (searchInput) {
+      searchInput.focus()
+    }
+  }
+
+  function handleSearchKeydown(event) {
+    if (event.key === 'Escape') {
+      clearSearch()
+    }
+  }
+
+  function handleGlobalKeydown(event) {
+    // Ctrl+F / Cmd+F to focus search
+    if ((event.ctrlKey || event.metaKey) && event.key === 'f') {
+      event.preventDefault()
+      if (searchInput) {
+        searchInput.focus()
+      }
+    }
+  }
+
+  onMount(async () => {
+    await loadContacts()
+    stationCallsign = getStationCallsign()
+
+    // Add global keyboard shortcut listener
+    window.addEventListener('keydown', handleGlobalKeydown)
+  })
+
+  onDestroy(() => {
+    // Clean up event listener
+    window.removeEventListener('keydown', handleGlobalKeydown)
+
+    // Clear any pending debounce timer
+    if (debounceTimer) {
+      clearTimeout(debounceTimer)
+    }
+  })
 </script>
 
 <div class="page">
-  <!-- Header with callsign and actions -->
+  <!-- Header with callsign -->
   <div class="header">
     <h1>
       📻 {$_('logbook.logbookOf')}
@@ -262,22 +325,66 @@
       </button>
       <span class="count">({contactCount} {$_('logbook.contacts')})</span>
     </h1>
-    <div class="header-actions">
-      <a href="/logbook/add" use:link class="btn-primary">+ {$_('logbook.addContact')}</a>
-      <DropdownMenu let:closeMenu>
-        <button on:click={() => { openSettings(); closeMenu(); }}>
-          ⚙️ {$_('logbook.settings')}
-        </button>
-        <div class="dropdown-divider"></div>
-        <button on:click={() => { handleExport(); closeMenu(); }}>
-          📤 {$_('logbook.exportData')}
-        </button>
-        <button on:click={() => { handleImport(); closeMenu(); }}>
-          📥 {$_('logbook.importData')}
-        </button>
-      </DropdownMenu>
-    </div>
   </div>
+
+  <!-- Actions Bar (always visible) -->
+  {#if !loading}
+    <div class="actions-bar">
+      <!-- Search Bar (always visible, disabled when no contacts) -->
+      <div class="search-container">
+        <div class="search-input-wrapper" class:disabled={contacts.length === 0}>
+          <span class="search-icon">🔍</span>
+          <input
+            bind:this={searchInput}
+            bind:value={searchQuery}
+            type="text"
+            placeholder={$_('logbook.searchPlaceholder')}
+            class="search-input"
+            disabled={contacts.length === 0}
+            on:keydown={handleSearchKeydown}
+          />
+          {#if searchQuery}
+            <button class="clear-button" on:click={clearSearch} aria-label="Clear search">
+              ×
+            </button>
+          {/if}
+        </div>
+      </div>
+
+      <div class="actions-right">
+        <a href="/logbook/add" use:link class="btn-primary">+ {$_('logbook.addContact')}</a>
+        <DropdownMenu let:closeMenu>
+          <button on:click={() => { openSettings(); closeMenu(); }}>
+            ⚙️ {$_('logbook.settings')}
+          </button>
+          <div class="dropdown-divider"></div>
+          <button on:click={() => { handleExport(); closeMenu(); }}>
+            📤 {$_('logbook.exportData')}
+          </button>
+          <button on:click={() => { handleImport(); closeMenu(); }}>
+            📥 {$_('logbook.importData')}
+          </button>
+        </DropdownMenu>
+      </div>
+    </div>
+
+    {#if isFiltering}
+      <div class="search-status">
+        <span class="fuzzy-indicator">⚡ {$_('logbook.fuzzyMatch')}</span>
+        <span class="result-count">
+          {$_('logbook.showingResults', {
+            values: { shown: filteredContacts.length, total: contacts.length }
+          })}
+        </span>
+      </div>
+    {/if}
+
+    {#if searchQuery.trim().length >= 2 && filteredContacts.length === 0}
+      <div class="no-results">
+        📭 {$_('logbook.noResults')}
+      </div>
+    {/if}
+  {/if}
 
   <!-- Contact Table -->
   {#if loading}
@@ -304,10 +411,11 @@
           </tr>
         </thead>
         <tbody>
-          {#each contacts as contact (contact.id)}
+          {#each filteredContacts as contact (contact.id)}
             <tr>
               <td class="monospace bold">
-                {buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix)}
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html highlightMatch(buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix), searchQuery)}
               </td>
               <td>{contact.date}</td>
               <td>{contact.time}</td>
@@ -318,7 +426,10 @@
               <td>{contact.rstReceived || '—'}</td>
               <td>{#if contact.qslSent}<span class="qsl-badge">✓</span>{:else}—{/if}</td>
               <td>{#if contact.qslReceived}<span class="qsl-badge">✓</span>{:else}—{/if}</td>
-              <td>{contact.remarks || ''}</td>
+              <td>
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html highlightMatch(contact.remarks || '', searchQuery)}
+              </td>
               <td class="actions-cell">
                 <DropdownMenu let:closeMenu>
                   <button on:click={() => { handleEdit(contact.id); closeMenu(); }}>
@@ -418,6 +529,134 @@
     margin: var(--space-1) 0;
   }
 
+  /* Actions Bar (Search left, Buttons right) */
+  .actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .actions-right {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .actions-right .btn-primary {
+    white-space: nowrap;
+    height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Search Container */
+  .search-container {
+    flex: 0 1 500px;
+    max-width: 500px;
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    height: 44px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+
+  .search-input-wrapper:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .search-input-wrapper.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--color-bg);
+  }
+
+  .search-input-wrapper.disabled:focus-within {
+    border-color: var(--color-border);
+    box-shadow: none;
+  }
+
+  .search-icon {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    outline: none;
+  }
+
+  .search-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .clear-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0 var(--space-2);
+    line-height: 1;
+    transition: color 0.15s ease;
+  }
+
+  .clear-button:hover {
+    color: var(--color-text);
+  }
+
+  .search-status {
+    margin-bottom: var(--space-3);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .fuzzy-indicator {
+    color: #f59e0b;
+    font-weight: 500;
+  }
+
+  .result-count {
+    color: var(--color-text-muted);
+  }
+
+  .no-results {
+    margin-bottom: var(--space-4);
+    padding: var(--space-4);
+    text-align: center;
+    color: var(--color-text-muted);
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+  }
+
+  /* Highlight matched text */
+  :global(mark) {
+    background-color: #fef08a;
+    color: inherit;
+    font-weight: 600;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+
   /* Contact Table */
   .contact-table-wrapper {
     background: var(--color-bg-card);
@@ -504,14 +743,24 @@
 
   /* Mobile Responsive */
   @media (max-width: 767px) {
-    .header-actions {
-      width: 100%;
+    .actions-bar {
+      flex-direction: column;
+      align-items: stretch;
     }
 
-    .btn-primary,
-    .btn-secondary {
+    .search-container {
+      max-width: 100%;
       flex: 1;
-      text-align: center;
+    }
+
+    .actions-right {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .actions-right .btn-primary {
+      flex: 1;
+      justify-content: center;
     }
 
     .contact-table {

@@ -267,8 +267,11 @@ test.describe('LogBook', () => {
   test('should navigate to Add Contact page', async ({ page }) => {
     await page.goto('/#/logbook')
 
-    // Click Add Contact button
-    await page.click('.btn-primary:has-text("Add")')
+    // Wait for page to load
+    await page.waitForSelector('h1')
+
+    // Click Add Contact button (should be visible even with no contacts)
+    await page.click('.actions-right .btn-primary:has-text("Add")')
 
     // Verify navigation to add page
     await expect(page).toHaveURL(/#\/logbook\/add/)
@@ -645,8 +648,8 @@ test.describe('LogBook', () => {
     // Wait for logbook page
     await page.waitForSelector('.contact-table')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     // Start waiting for download before clicking
     const downloadPromise = page.waitForEvent('download')
@@ -697,8 +700,34 @@ test.describe('LogBook', () => {
   test('should show warning toast when exporting with no contacts', async ({ page }) => {
     await page.goto('/#/logbook')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Add a contact to make actions bar visible
+    await page.evaluate(async () => {
+      const { addContact } = await import('/src/lib/logbookDB.js')
+      await addContact({
+        baseCallsign: 'W1ABC',
+        prefix: null,
+        suffix: null,
+        date: '2025-01-20',
+        time: '14:00:00',
+        frequency: 14.25,
+        mode: 'SSB'
+      })
+    })
+
+    await page.reload()
+    await page.waitForSelector('.contact-table')
+
+    // Clear database directly without UI interaction so actions bar stays visible
+    await page.evaluate(async () => {
+      const { getAllContacts, deleteContact } = await import('/src/lib/logbookDB.js')
+      const contacts = await getAllContacts()
+      for (const contact of contacts) {
+        await deleteContact(contact.id)
+      }
+    })
+
+    // Open the actions dropdown menu (still visible because we didn't reload)
+    await page.locator('.actions-right .dropdown-button').click()
 
     // Click export button
     await page.locator('button:has-text("Export")').click()
@@ -714,6 +743,23 @@ test.describe('LogBook', () => {
 
   test('should import contacts from valid JSON file', async ({ page }) => {
     await page.goto('/#/logbook')
+
+    // Add a dummy contact so actions bar appears
+    await page.evaluate(async () => {
+      const { addContact } = await import('/src/lib/logbookDB.js')
+      await addContact({
+        baseCallsign: 'DUMMY',
+        prefix: null,
+        suffix: null,
+        date: '2025-01-01',
+        time: '12:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+    })
+
+    await page.reload()
+    await page.waitForSelector('.contact-table')
 
     // Create test import file
     const importData = {
@@ -761,8 +807,8 @@ test.describe('LogBook', () => {
     // Setup file chooser
     const fileChooserPromise = page.waitForEvent('filechooser')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
@@ -781,9 +827,9 @@ test.describe('LogBook', () => {
     await page.waitForSelector('.modal-backdrop')
     await expect(page.locator('.modal-header h2')).toContainText('Import LogBook Contacts')
 
-    // Verify statistics
+    // Verify statistics (we have 1 DUMMY contact already)
     await expect(page.locator('.stat-row').nth(0)).toContainText('Existing contacts in your logbook:')
-    await expect(page.locator('.stat-row').nth(0)).toContainText('0')
+    await expect(page.locator('.stat-row').nth(0)).toContainText('1')
     await expect(page.locator('.stat-row').nth(1)).toContainText('Total contacts in import file:')
     await expect(page.locator('.stat-row').nth(1)).toContainText('2')
     await expect(page.locator('.stat-row').nth(2)).toContainText('New contacts to be imported:')
@@ -797,8 +843,8 @@ test.describe('LogBook', () => {
     await expect(toast).toBeVisible()
     await expect(toast).toContainText('Imported 2 contacts')
 
-    // Verify contacts are displayed
-    await expect(page.locator('.count')).toContainText('(2')
+    // Verify contacts are displayed (3 total: 1 DUMMY + 2 imported)
+    await expect(page.locator('.count')).toContainText('(3')
     await expect(page.locator('.contact-table')).toContainText('K2XYZ')
     await expect(page.locator('.contact-table')).toContainText('DL5ABC/P')
 
@@ -860,8 +906,8 @@ test.describe('LogBook', () => {
 
     const fileChooserPromise = page.waitForEvent('filechooser')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
@@ -940,8 +986,8 @@ test.describe('LogBook', () => {
 
     const fileChooserPromise = page.waitForEvent('filechooser')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
@@ -976,10 +1022,27 @@ test.describe('LogBook', () => {
   test('should reject invalid JSON file', async ({ page }) => {
     await page.goto('/#/logbook')
 
+    // Add a dummy contact so actions bar appears
+    await page.evaluate(async () => {
+      const { addContact } = await import('/src/lib/logbookDB.js')
+      await addContact({
+        baseCallsign: 'DUMMY',
+        prefix: null,
+        suffix: null,
+        date: '2025-01-01',
+        time: '12:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+    })
+
+    await page.reload()
+    await page.waitForSelector('.contact-table')
+
     const fileChooserPromise = page.waitForEvent('filechooser')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
@@ -1005,6 +1068,23 @@ test.describe('LogBook', () => {
   test('should reject non-LZ Radio export file', async ({ page }) => {
     await page.goto('/#/logbook')
 
+    // Add a dummy contact so actions bar appears
+    await page.evaluate(async () => {
+      const { addContact } = await import('/src/lib/logbookDB.js')
+      await addContact({
+        baseCallsign: 'DUMMY',
+        prefix: null,
+        suffix: null,
+        date: '2025-01-01',
+        time: '12:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+    })
+
+    await page.reload()
+    await page.waitForSelector('.contact-table')
+
     const importData = {
       metadata: {
         appName: 'Some Other App',
@@ -1015,8 +1095,8 @@ test.describe('LogBook', () => {
 
     const fileChooserPromise = page.waitForEvent('filechooser')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
@@ -1042,6 +1122,23 @@ test.describe('LogBook', () => {
   test('should reject file with missing required fields', async ({ page }) => {
     await page.goto('/#/logbook')
 
+    // Add a dummy contact so actions bar appears
+    await page.evaluate(async () => {
+      const { addContact } = await import('/src/lib/logbookDB.js')
+      await addContact({
+        baseCallsign: 'DUMMY',
+        prefix: null,
+        suffix: null,
+        date: '2025-01-01',
+        time: '12:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+    })
+
+    await page.reload()
+    await page.waitForSelector('.contact-table')
+
     const importData = {
       metadata: {
         appName: 'LZ Radio',
@@ -1065,8 +1162,8 @@ test.describe('LogBook', () => {
 
     const fileChooserPromise = page.waitForEvent('filechooser')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
@@ -1093,6 +1190,23 @@ test.describe('LogBook', () => {
   test('should cancel import and close modal', async ({ page }) => {
     await page.goto('/#/logbook')
 
+    // Add a dummy contact so actions bar appears
+    await page.evaluate(async () => {
+      const { addContact } = await import('/src/lib/logbookDB.js')
+      await addContact({
+        baseCallsign: 'DUMMY',
+        prefix: null,
+        suffix: null,
+        date: '2025-01-01',
+        time: '12:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+    })
+
+    await page.reload()
+    await page.waitForSelector('.contact-table')
+
     const importData = {
       metadata: {
         appName: 'LZ Radio',
@@ -1120,8 +1234,8 @@ test.describe('LogBook', () => {
 
     const fileChooserPromise = page.waitForEvent('filechooser')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
@@ -1141,15 +1255,32 @@ test.describe('LogBook', () => {
     // Modal should close
     await expect(page.locator('.modal-backdrop')).not.toBeVisible()
 
-    // Verify no contacts were imported
-    await expect(page.locator('.count')).toContainText('(0')
-    await expect(page.locator('.empty-state')).toBeVisible()
+    // Verify no contacts were imported (still just the DUMMY contact)
+    await expect(page.locator('.count')).toContainText('(1')
+    await expect(page.locator('.contact-table')).toContainText('DUMMY')
 
     fs.unlinkSync(tmpFile)
   })
 
   test('should close import modal with Escape key', async ({ page }) => {
     await page.goto('/#/logbook')
+
+    // Add a dummy contact so actions bar appears
+    await page.evaluate(async () => {
+      const { addContact } = await import('/src/lib/logbookDB.js')
+      await addContact({
+        baseCallsign: 'DUMMY',
+        prefix: null,
+        suffix: null,
+        date: '2025-01-01',
+        time: '12:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+    })
+
+    await page.reload()
+    await page.waitForSelector('.contact-table')
 
     const importData = {
       metadata: {
@@ -1178,8 +1309,8 @@ test.describe('LogBook', () => {
 
     const fileChooserPromise = page.waitForEvent('filechooser')
 
-    // Open the header dropdown menu
-    await page.locator('.header-actions .dropdown-button').click()
+    // Open the actions dropdown menu
+    await page.locator('.actions-right .dropdown-button').click()
 
     await page.locator('button:has-text("Import")').click()
     const fileChooser = await fileChooserPromise
@@ -1199,9 +1330,379 @@ test.describe('LogBook', () => {
     // Modal should close
     await expect(page.locator('.modal-backdrop')).not.toBeVisible()
 
-    // Verify no contacts were imported
-    await expect(page.locator('.count')).toContainText('(0')
+    // Verify no contacts were imported (still just the DUMMY contact)
+    await expect(page.locator('.count')).toContainText('(1')
 
     fs.unlinkSync(tmpFile)
+  })
+
+  test.describe('Search Functionality', () => {
+    test('should show disabled search bar when no contacts exist', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Verify search bar is visible
+      await expect(page.locator('.search-container')).toBeVisible()
+
+      // Verify search input is disabled
+      await expect(page.locator('.search-input')).toBeDisabled()
+
+      // Verify the wrapper has disabled class
+      await expect(page.locator('.search-input-wrapper')).toHaveClass(/disabled/)
+
+      // Verify Add Contact button IS visible (critical for UX)
+      await expect(page.locator('.actions-right .btn-primary:has-text("Add")')).toBeVisible()
+
+      // Verify empty state
+      await expect(page.locator('.empty-state')).toBeVisible()
+    })
+
+    test('should show enabled search bar when contacts exist', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Add a contact
+      await page.evaluate(async () => {
+        const { addContact } = await import('/src/lib/logbookDB.js')
+        await addContact({
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-20',
+          time: '14:00:00',
+          frequency: 14.25,
+          mode: 'SSB'
+        })
+      })
+
+      await page.reload()
+      await page.waitForSelector('.contact-table')
+
+      // Verify search bar is visible
+      await expect(page.locator('.search-container')).toBeVisible()
+      await expect(page.locator('.search-input')).toBeVisible()
+
+      // Verify search input is NOT disabled (enabled)
+      await expect(page.locator('.search-input')).toBeEnabled()
+
+      // Verify the wrapper does NOT have disabled class
+      await expect(page.locator('.search-input-wrapper')).not.toHaveClass(/disabled/)
+    })
+
+    test('should filter contacts based on search query', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Add multiple contacts
+      await page.evaluate(async () => {
+        const { addContact } = await import('/src/lib/logbookDB.js')
+
+        await addContact({
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-20',
+          time: '14:00:00',
+          frequency: 14.25,
+          mode: 'SSB',
+          remarks: 'First contact'
+        })
+
+        await addContact({
+          baseCallsign: 'K2XYZ',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-19',
+          time: '13:00:00',
+          frequency: 7.1,
+          mode: 'CW',
+          remarks: 'Second contact'
+        })
+
+        await addContact({
+          baseCallsign: 'LZ1DEF',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-18',
+          time: '12:00:00',
+          frequency: 21.2,
+          mode: 'FT8',
+          remarks: 'Third contact'
+        })
+      })
+
+      await page.reload()
+      await page.waitForSelector('.contact-table')
+
+      // Verify all 3 contacts are shown initially
+      let rows = page.locator('.contact-table tbody tr')
+      await expect(rows).toHaveCount(3)
+
+      // Type search query
+      await page.fill('.search-input', 'W1ABC')
+
+      // Wait for filtering to occur
+      await page.waitForTimeout(100)
+
+      // Verify only 1 contact is shown
+      rows = page.locator('.contact-table tbody tr')
+      await expect(rows).toHaveCount(1)
+      await expect(rows.first()).toContainText('W1ABC')
+
+      // Verify search status is shown
+      await expect(page.locator('.search-status')).toBeVisible()
+      await expect(page.locator('.result-count')).toContainText('Showing 1 of 3 contacts')
+    })
+
+    test('should clear search when X button is clicked', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Add contacts
+      await page.evaluate(async () => {
+        const { addContact } = await import('/src/lib/logbookDB.js')
+        await addContact({
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-20',
+          time: '14:00:00',
+          frequency: 14.25,
+          mode: 'SSB'
+        })
+        await addContact({
+          baseCallsign: 'K2XYZ',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-19',
+          time: '13:00:00',
+          frequency: 7.1,
+          mode: 'CW'
+        })
+      })
+
+      await page.reload()
+      await page.waitForSelector('.contact-table')
+
+      // Type search query
+      await page.fill('.search-input', 'W1ABC')
+      await page.waitForTimeout(100)
+
+      // Verify clear button appears
+      await expect(page.locator('.clear-button')).toBeVisible()
+
+      // Click clear button
+      await page.click('.clear-button')
+
+      // Verify search is cleared
+      await expect(page.locator('.search-input')).toHaveValue('')
+      await expect(page.locator('.clear-button')).not.toBeVisible()
+
+      // Verify all contacts are shown again
+      const rows = page.locator('.contact-table tbody tr')
+      await expect(rows).toHaveCount(2)
+    })
+
+    test('should show "No results found" when search has no matches', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Add a contact
+      await page.evaluate(async () => {
+        const { addContact } = await import('/src/lib/logbookDB.js')
+        await addContact({
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-20',
+          time: '14:00:00',
+          frequency: 14.25,
+          mode: 'SSB'
+        })
+      })
+
+      await page.reload()
+      await page.waitForSelector('.contact-table')
+
+      // Search for non-existent callsign
+      await page.fill('.search-input', 'ZZ9ZZZ')
+      await page.waitForTimeout(100)
+
+      // Verify "No results found" message
+      await expect(page.locator('.no-results')).toBeVisible()
+      await expect(page.locator('.no-results')).toContainText('No results found')
+
+      // Verify table still exists but has no rows
+      const rows = page.locator('.contact-table tbody tr')
+      await expect(rows).toHaveCount(0)
+    })
+
+    test('should perform fuzzy matching on callsigns', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Add contacts with similar callsigns
+      await page.evaluate(async () => {
+        const { addContact } = await import('/src/lib/logbookDB.js')
+
+        await addContact({
+          baseCallsign: 'LZ1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-20',
+          time: '14:00:00',
+          frequency: 14.25,
+          mode: 'SSB'
+        })
+
+        await addContact({
+          baseCallsign: 'LZ1XBC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-19',
+          time: '13:00:00',
+          frequency: 7.1,
+          mode: 'CW'
+        })
+
+        await addContact({
+          baseCallsign: 'K2XYZ',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-18',
+          time: '12:00:00',
+          frequency: 21.2,
+          mode: 'FT8'
+        })
+      })
+
+      await page.reload()
+      await page.waitForSelector('.contact-table')
+
+      // Search for "LZ1ABC" should find both LZ1ABC and LZ1XBC (fuzzy match)
+      await page.fill('.search-input', 'LZ1ABC')
+      await page.waitForTimeout(100)
+
+      // Verify both similar callsigns are found
+      const rows = page.locator('.contact-table tbody tr')
+      const rowCount = await rows.count()
+      expect(rowCount).toBeGreaterThanOrEqual(2)
+
+      // Verify both callsigns appear
+      const tableText = await page.locator('.contact-table').textContent()
+      expect(tableText).toContain('LZ1ABC')
+      expect(tableText).toContain('LZ1XBC')
+    })
+
+    test('should highlight matched text in search results', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Add a contact
+      await page.evaluate(async () => {
+        const { addContact } = await import('/src/lib/logbookDB.js')
+        await addContact({
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-20',
+          time: '14:00:00',
+          frequency: 14.25,
+          mode: 'SSB',
+          remarks: 'Test ARRL contact'
+        })
+      })
+
+      await page.reload()
+      await page.waitForSelector('.contact-table')
+
+      // Search for "ABC"
+      await page.fill('.search-input', 'ABC')
+      await page.waitForTimeout(100)
+
+      // Verify <mark> tag is present in the callsign cell
+      const callsignCell = page.locator('.contact-table tbody tr td').first()
+      const html = await callsignCell.innerHTML()
+      expect(html).toContain('<mark>')
+      expect(html).toContain('ABC')
+      expect(html).toContain('</mark>')
+    })
+
+    test('should focus search input when Ctrl+F is pressed', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Add a contact
+      await page.evaluate(async () => {
+        const { addContact } = await import('/src/lib/logbookDB.js')
+        await addContact({
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-20',
+          time: '14:00:00',
+          frequency: 14.25,
+          mode: 'SSB'
+        })
+      })
+
+      await page.reload()
+      await page.waitForSelector('.contact-table')
+
+      // Dispatch Ctrl+F keyboard event programmatically to avoid browser's native find dialog
+      await page.evaluate(() => {
+        const event = new KeyboardEvent('keydown', {
+          key: 'f',
+          code: 'KeyF',
+          ctrlKey: true,
+          bubbles: true,
+          cancelable: true
+        })
+        window.dispatchEvent(event)
+      })
+
+      // Wait a moment for focus to happen
+      await page.waitForTimeout(100)
+
+      // Verify search input is focused
+      const searchInput = page.locator('.search-input')
+      await expect(searchInput).toBeFocused()
+    })
+
+    test('should search in remarks field', async ({ page }) => {
+      await page.goto('/#/logbook')
+
+      // Add contacts with different remarks
+      await page.evaluate(async () => {
+        const { addContact } = await import('/src/lib/logbookDB.js')
+
+        await addContact({
+          baseCallsign: 'W1ABC',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-20',
+          time: '14:00:00',
+          frequency: 14.25,
+          mode: 'SSB',
+          remarks: 'ARRL headquarters'
+        })
+
+        await addContact({
+          baseCallsign: 'K2XYZ',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-19',
+          time: '13:00:00',
+          frequency: 7.1,
+          mode: 'CW',
+          remarks: 'Contest QSO'
+        })
+      })
+
+      await page.reload()
+      await page.waitForSelector('.contact-table')
+
+      // Search for text in remarks
+      await page.fill('.search-input', 'ARRL')
+      await page.waitForTimeout(100)
+
+      // Verify only matching contact is shown
+      const rows = page.locator('.contact-table tbody tr')
+      await expect(rows).toHaveCount(1)
+      await expect(rows.first()).toContainText('W1ABC')
+      await expect(rows.first()).toContainText('ARRL headquarters')
+    })
   })
 })
