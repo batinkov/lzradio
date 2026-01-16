@@ -107,6 +107,9 @@
       "stationCallsign": "Station Callsign",
       "stationCallsignHelp": "Your amateur radio callsign",
       "stationCallsignPlaceholder": "e.g., LZ1ABC"
+    },
+    "alphaBanner": {
+      "message": "Use with caution. Export your data regularly."
     }
   },
   "exam": {

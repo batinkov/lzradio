@@ -107,6 +107,9 @@
       "stationCallsign": "Станционна позивна",
       "stationCallsignHelp": "Вашата радиолюбителска позивна",
       "stationCallsignPlaceholder": "напр., LZ1ABC"
+    },
+    "alphaBanner": {
+      "message": "Използвайте внимателно. Експортирайте редовно."
     }
   },
   "exam": {
