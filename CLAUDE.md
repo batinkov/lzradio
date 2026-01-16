@@ -38,17 +38,17 @@ npm run preview
 
 ### Testing
 ```bash
-# Run all tests
+# Run unit tests (single run, CI-friendly)
 npm test
 
-# Run tests in watch mode
-npm run test
-
-# Run tests once (CI mode)
-npm run test:run
+# Run unit tests in watch mode (for development)
+npm run test:watch
 
 # Run tests with UI
 npm run test:ui
+
+# Run e2e tests
+npm run test:e2e
 ```
 
 **Test Coverage:** 297 passing unit tests across all business logic modules.

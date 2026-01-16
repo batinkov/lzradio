@@ -104,15 +104,13 @@ test.describe('LogBook', () => {
     await expect(rows).toHaveCount(2)
 
     // Verify first contact (newest first - W1ABC)
+    // Note: Power, RST Sent, RST Rcvd columns are hidden in table view
     const firstRow = rows.nth(0)
     await expect(firstRow).toContainText('W1ABC')
     await expect(firstRow).toContainText('2025-01-15')
     await expect(firstRow).toContainText('14:23:00')
     await expect(firstRow).toContainText('14.25')
     await expect(firstRow).toContainText('SSB')
-    await expect(firstRow).toContainText('37')
-    await expect(firstRow).toContainText('59')
-    await expect(firstRow).toContainText('57')
     await expect(firstRow).toContainText('Great contact')
 
     // Verify second contact (K2XYZ)
@@ -154,115 +152,9 @@ test.describe('LogBook', () => {
     await expect(callsignCell).toHaveText('HB/W1ABC/P')
   })
 
-  test('should display QSL badges correctly', async ({ page }) => {
-    await page.goto('/#/logbook')
-
-    // Add contacts with different QSL statuses
-    await page.evaluate(async () => {
-      const { addContact } = await import('/src/lib/logbookDB.js')
-
-      // Both QSL sent and received
-      await addContact({
-        baseCallsign: 'W1ABC',
-        prefix: null,
-        suffix: null,
-        date: '2025-01-15',
-        time: '14:00:00',
-        frequency: 14.0,
-        mode: 'SSB',
-        qslSent: true,
-        qslReceived: true
-      })
-
-      // Only QSL sent
-      await addContact({
-        baseCallsign: 'K2XYZ',
-        prefix: null,
-        suffix: null,
-        date: '2025-01-14',
-        time: '13:00:00',
-        frequency: 7.0,
-        mode: 'CW',
-        qslSent: true,
-        qslReceived: false
-      })
-
-      // No QSL
-      await addContact({
-        baseCallsign: 'DL1DEF',
-        prefix: null,
-        suffix: null,
-        date: '2025-01-13',
-        time: '12:00:00',
-        frequency: 21.0,
-        mode: 'FT8',
-        qslSent: false,
-        qslReceived: false
-      })
-    })
-
-    await page.reload()
-    await page.waitForSelector('.contact-table')
-
-    const rows = page.locator('.contact-table tbody tr')
-
-    // First row - both QSL should show checkmarks
-    const firstRowQslSent = rows.nth(0).locator('td').nth(8) // QSL Sent column
-    const firstRowQslRcvd = rows.nth(0).locator('td').nth(9) // QSL Rcvd column
-    await expect(firstRowQslSent).toContainText('✓')
-    await expect(firstRowQslRcvd).toContainText('✓')
-
-    // Second row - only sent should show checkmark
-    const secondRowQslSent = rows.nth(1).locator('td').nth(8)
-    const secondRowQslRcvd = rows.nth(1).locator('td').nth(9)
-    await expect(secondRowQslSent).toContainText('✓')
-    await expect(secondRowQslRcvd).toContainText('—')
-
-    // Third row - both should show dashes
-    const thirdRowQslSent = rows.nth(2).locator('td').nth(8)
-    const thirdRowQslRcvd = rows.nth(2).locator('td').nth(9)
-    await expect(thirdRowQslSent).toContainText('—')
-    await expect(thirdRowQslRcvd).toContainText('—')
-  })
-
-  test('should handle optional fields correctly', async ({ page }) => {
-    await page.goto('/#/logbook')
-
-    // Add contact with minimal required fields only
-    await page.evaluate(async () => {
-      const { addContact } = await import('/src/lib/logbookDB.js')
-
-      await addContact({
-        baseCallsign: 'W1ABC',
-        prefix: null,
-        suffix: null,
-        date: '2025-01-15',
-        time: '14:00:00',
-        frequency: 14.0,
-        mode: 'SSB',
-        power: null, // Optional
-        rstSent: null, // Optional
-        rstReceived: null, // Optional
-        qslSent: false,
-        qslReceived: false,
-        remarks: '' // Optional
-      })
-    })
-
-    await page.reload()
-    await page.waitForSelector('.contact-table')
-
-    const row = page.locator('.contact-table tbody tr').first()
-
-    // Verify optional fields show dash when empty
-    const powerCell = row.locator('td').nth(5)
-    const rstSentCell = row.locator('td').nth(6)
-    const rstRcvdCell = row.locator('td').nth(7)
-
-    await expect(powerCell).toContainText('—')
-    await expect(rstSentCell).toContainText('—')
-    await expect(rstRcvdCell).toContainText('—')
-  })
+  // Note: QSL badges and optional field display tests removed
+  // because Power, RST, QSL columns are now hidden in table view
+  // These fields are still stored and visible in View/Edit modes
 
   test('should navigate to Add Contact page', async ({ page }) => {
     await page.goto('/#/logbook')
@@ -410,18 +302,13 @@ test.describe('LogBook', () => {
     await expect(page).toHaveURL(/#\/logbook/)
     await page.waitForSelector('.contact-table')
 
-    // Verify contact is saved with dashes for optional fields
+    // Verify contact is saved and displayed in table
     const row = page.locator('.contact-table tbody tr').first()
     await expect(row).toContainText('K2XYZ')
-
-    // Power, RST should show dashes
-    const powerCell = row.locator('td').nth(5)
-    const rstSentCell = row.locator('td').nth(6)
-    const rstRcvdCell = row.locator('td').nth(7)
-
-    await expect(powerCell).toContainText('—')
-    await expect(rstSentCell).toContainText('—')
-    await expect(rstRcvdCell).toContainText('—')
+    await expect(row).toContainText('2025-01-21')
+    await expect(row).toContainText('16:00:00')
+    await expect(row).toContainText('21.3')
+    await expect(row).toContainText('FT8')
   })
 
   test('should cancel and return to logbook without saving', async ({ page }) => {
@@ -441,7 +328,7 @@ test.describe('LogBook', () => {
     await expect(page.locator('.empty-state')).toBeVisible()
   })
 
-  test('should show actions menu with edit and delete options', async ({ page }) => {
+  test('should show actions menu with view, edit, and delete options', async ({ page }) => {
     await page.goto('/#/logbook/add')
 
     // Add a contact first
@@ -460,10 +347,167 @@ test.describe('LogBook', () => {
     await expect(dropdownButton).toBeVisible()
     await dropdownButton.click()
 
-    // Verify dropdown menu appears with Edit and Delete options
+    // Verify dropdown menu appears with View, Edit and Delete options
     await expect(page.locator('.dropdown-content')).toBeVisible()
+    await expect(page.locator('.dropdown-content button:has-text("View")')).toBeVisible()
     await expect(page.locator('.dropdown-content button:has-text("Edit")')).toBeVisible()
     await expect(page.locator('.dropdown-content button:has-text("Delete")')).toBeVisible()
+  })
+
+  test('should navigate to view mode from dropdown', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact first
+    await page.fill('#callsign', 'W1ABC')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:00:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.click('button[type="submit"]')
+
+    // Wait for logbook page
+    await page.waitForSelector('.contact-table')
+
+    // Click the dropdown menu and select View
+    const dropdownButton = page.locator('.contact-table .dropdown-button').first()
+    await dropdownButton.click()
+    await page.locator('.dropdown-content button:has-text("View")').click()
+
+    // Verify navigation to view page
+    await expect(page).toHaveURL(/\/#\/logbook\/view\/\d+/)
+  })
+
+  test('should display contact data in view mode', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact with all fields
+    await page.fill('#callsign', 'HB/W1ABC/P')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:30:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.fill('#power', '100')
+    await page.fill('#rstSent', '59')
+    await page.fill('#rstReceived', '57')
+    await page.fill('#remarks', 'Test contact for view mode')
+    await page.click('button[type="submit"]')
+
+    // Navigate to view mode via dropdown
+    await page.waitForSelector('.contact-table')
+    const dropdownButton = page.locator('.contact-table .dropdown-button').first()
+    await dropdownButton.click()
+    await page.locator('.dropdown-content button:has-text("View")').click()
+
+    // Verify all fields display correct data
+    await expect(page.locator('#callsign')).toHaveValue('HB/W1ABC/P')
+    await expect(page.locator('#date')).toHaveValue('2025-01-20')
+    await expect(page.locator('#time')).toHaveValue('14:30:00')
+    await expect(page.locator('#frequency')).toHaveValue('14.25')
+    await expect(page.locator('#mode')).toHaveValue('SSB')
+    await expect(page.locator('#power')).toHaveValue('100')
+    await expect(page.locator('#rstSent')).toHaveValue('59')
+    await expect(page.locator('#rstReceived')).toHaveValue('57')
+    await expect(page.locator('#remarks')).toHaveValue('Test contact for view mode')
+  })
+
+  test('should have all inputs disabled in view mode', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact
+    await page.fill('#callsign', 'W1ABC')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:00:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.click('button[type="submit"]')
+
+    // Navigate to view mode
+    await page.waitForSelector('.contact-table')
+    const dropdownButton = page.locator('.contact-table .dropdown-button').first()
+    await dropdownButton.click()
+    await page.locator('.dropdown-content button:has-text("View")').click()
+
+    // Verify all form inputs are disabled
+    await expect(page.locator('#callsign')).toBeDisabled()
+    await expect(page.locator('#date')).toBeDisabled()
+    await expect(page.locator('#time')).toBeDisabled()
+    await expect(page.locator('#frequency')).toBeDisabled()
+    await expect(page.locator('#mode')).toBeDisabled()
+    await expect(page.locator('#power')).toBeDisabled()
+    await expect(page.locator('#rstSent')).toBeDisabled()
+    await expect(page.locator('#rstReceived')).toBeDisabled()
+    await expect(page.locator('#qslSent')).toBeDisabled()
+    await expect(page.locator('#qslReceived')).toBeDisabled()
+    await expect(page.locator('#remarks')).toBeDisabled()
+  })
+
+  test('should show "View Contact" as page title in view mode', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact
+    await page.fill('#callsign', 'W1ABC')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:00:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.click('button[type="submit"]')
+
+    // Navigate to view mode
+    await page.waitForSelector('.contact-table')
+    const dropdownButton = page.locator('.contact-table .dropdown-button').first()
+    await dropdownButton.click()
+    await page.locator('.dropdown-content button:has-text("View")').click()
+
+    // Verify page title
+    await expect(page.locator('h1')).toContainText('View Contact')
+  })
+
+  test('should not show form action buttons in view mode', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact
+    await page.fill('#callsign', 'W1ABC')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:00:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.click('button[type="submit"]')
+
+    // Navigate to view mode
+    await page.waitForSelector('.contact-table')
+    const dropdownButton = page.locator('.contact-table .dropdown-button').first()
+    await dropdownButton.click()
+    await page.locator('.dropdown-content button:has-text("View")').click()
+
+    // Verify no Save/Update, Clear, or Cancel buttons
+    await expect(page.locator('button[type="submit"]')).not.toBeVisible()
+    await expect(page.locator('button:has-text("Clear")')).not.toBeVisible()
+    await expect(page.locator('a:has-text("Cancel")')).not.toBeVisible()
+  })
+
+  test('should navigate back to logbook via Back to Log link in view mode', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact
+    await page.fill('#callsign', 'W1ABC')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:00:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.click('button[type="submit"]')
+
+    // Navigate to view mode
+    await page.waitForSelector('.contact-table')
+    const dropdownButton = page.locator('.contact-table .dropdown-button').first()
+    await dropdownButton.click()
+    await page.locator('.dropdown-content button:has-text("View")').click()
+
+    // Click "Back to Log" link
+    await page.click('a:has-text("Back to Log")')
+
+    // Verify navigation back to logbook
+    await expect(page).toHaveURL('/#/logbook')
+    await expect(page.locator('.contact-table')).toBeVisible()
   })
 
   test('should edit an existing contact', async ({ page }) => {
@@ -512,6 +556,55 @@ test.describe('LogBook', () => {
     await expect(page.locator('.contact-table')).toContainText('K2XYZ')
     await expect(page.locator('.contact-table')).toContainText('Updated remark')
     await expect(page.locator('.contact-table')).not.toContainText('W1ABC')
+  })
+
+  test('should only show Update Contact button in edit mode', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact first
+    await page.fill('#callsign', 'W1ABC')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:00:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.click('button[type="submit"]')
+
+    // Navigate to edit mode
+    await page.waitForSelector('.contact-table')
+    await page.locator('.contact-table .dropdown-button').first().click()
+    await page.locator('.dropdown-content button:has-text("Edit")').click()
+
+    // Verify only Update Contact button is visible
+    await expect(page.locator('button[type="submit"]')).toBeVisible()
+    await expect(page.locator('button[type="submit"]')).toContainText('Update Contact')
+
+    // Verify Clear Form and Cancel buttons are NOT visible
+    await expect(page.locator('button:has-text("Clear")')).not.toBeVisible()
+    await expect(page.locator('a:has-text("Cancel")')).not.toBeVisible()
+  })
+
+  test('should navigate back to logbook via Back to Log link in edit mode', async ({ page }) => {
+    await page.goto('/#/logbook/add')
+
+    // Add a contact first
+    await page.fill('#callsign', 'W1ABC')
+    await page.fill('#date', '2025-01-20')
+    await page.fill('#time', '14:00:00')
+    await page.fill('#frequency', '14.250')
+    await page.selectOption('#mode', 'SSB')
+    await page.click('button[type="submit"]')
+
+    // Navigate to edit mode
+    await page.waitForSelector('.contact-table')
+    await page.locator('.contact-table .dropdown-button').first().click()
+    await page.locator('.dropdown-content button:has-text("Edit")').click()
+
+    // Click "Back to Log" link
+    await page.click('a:has-text("Back to Log")')
+
+    // Verify navigation back to logbook without saving changes
+    await expect(page).toHaveURL('/#/logbook')
+    await expect(page.locator('.contact-table')).toBeVisible()
   })
 
   test('should show delete confirmation modal', async ({ page }) => {

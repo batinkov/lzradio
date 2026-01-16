@@ -401,11 +401,6 @@
             <th>{$_('logbook.time')}</th>
             <th>{$_('logbook.frequency')}</th>
             <th>{$_('logbook.mode')}</th>
-            <th>{$_('logbook.power')}</th>
-            <th>{$_('logbook.rstSent')}</th>
-            <th>{$_('logbook.rstRcvd')}</th>
-            <th>{$_('logbook.qslSent')}</th>
-            <th>{$_('logbook.qslRcvd')}</th>
             <th>{$_('logbook.remarks')}</th>
             <th class="actions-header">{$_('common.actions')}</th>
           </tr>
@@ -421,17 +416,17 @@
               <td>{contact.time}</td>
               <td>{contact.frequency}</td>
               <td>{contact.mode}</td>
-              <td>{contact.power || '—'}</td>
-              <td>{contact.rstSent || '—'}</td>
-              <td>{contact.rstReceived || '—'}</td>
-              <td>{#if contact.qslSent}<span class="qsl-badge">✓</span>{:else}—{/if}</td>
-              <td>{#if contact.qslReceived}<span class="qsl-badge">✓</span>{:else}—{/if}</td>
-              <td>
-                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                {@html highlightMatch(contact.remarks || '', searchQuery)}
+              <td class="remarks-cell">
+                <span class="remarks-content" title={contact.remarks || ''}>
+                  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                  {@html highlightMatch(contact.remarks || '', searchQuery)}
+                </span>
               </td>
               <td class="actions-cell">
                 <DropdownMenu let:closeMenu>
+                  <button on:click={() => { push(`/logbook/view/${contact.id}`); closeMenu(); }}>
+                    👁️ {$_('common.view')}
+                  </button>
                   <button on:click={() => { handleEdit(contact.id); closeMenu(); }}>
                     ✏️ {$_('common.edit')}
                   </button>
@@ -672,6 +667,38 @@
     font-size: 0.875rem;
   }
 
+  /* Column width constraints for compact display */
+  .contact-table th:nth-child(1),
+  .contact-table td:nth-child(1) {
+    width: 120px; /* Callsign */
+  }
+
+  .contact-table th:nth-child(2),
+  .contact-table td:nth-child(2) {
+    width: 120px; /* Date */
+  }
+
+  .contact-table th:nth-child(3),
+  .contact-table td:nth-child(3) {
+    width: 90px; /* Time */
+  }
+
+  .contact-table th:nth-child(4),
+  .contact-table td:nth-child(4) {
+    width: 100px; /* Frequency */
+  }
+
+  .contact-table th:nth-child(5),
+  .contact-table td:nth-child(5) {
+    width: 70px; /* Mode */
+  }
+
+  /* Remarks column takes remaining space */
+  .contact-table th:nth-child(6),
+  .contact-table td:nth-child(6) {
+    width: auto;
+  }
+
   .contact-table thead {
     background: var(--color-bg);
     border-bottom: 2px solid var(--color-border);
@@ -689,6 +716,7 @@
     padding: 12px 16px;
     border-bottom: 1px solid var(--color-border);
     color: var(--color-text);
+    white-space: nowrap;
   }
 
   .contact-table tbody tr:last-child td {
@@ -710,15 +738,41 @@
     font-weight: bold;
   }
 
-  /* Actions Column */
+  /* Remarks Column - Truncate long text */
+  .remarks-cell {
+    max-width: 200px;
+  }
+
+  .remarks-content {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: help;
+  }
+
+  /* Actions Column - Sticky on right */
   .actions-header {
     width: 80px;
     text-align: center;
+    position: sticky;
+    right: 0;
+    background: var(--color-bg);
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
   }
 
   .actions-cell {
     text-align: center;
     padding: 8px !important;
+    position: sticky;
+    right: 0;
+    background: var(--color-bg-card);
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Maintain background on hover for sticky column */
+  .contact-table tbody tr:hover .actions-cell {
+    background: var(--color-bg);
   }
 
   /* Empty State and Loading State */

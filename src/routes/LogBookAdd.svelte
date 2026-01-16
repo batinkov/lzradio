@@ -1,15 +1,17 @@
 <script>
   import { onMount } from 'svelte'
-  import { link, push } from 'svelte-spa-router'
+  import { link, push, location } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
   import { addContact, getContact, updateContact } from '../lib/logbookDB.js'
   import { parseCallsign, buildCallsign } from '../lib/callsignParser.js'
 
   export let params = {}
 
-  // Edit mode detection
+  // Mode detection
   $: contactId = params.id ? parseInt(params.id) : null
-  $: isEditMode = contactId !== null
+  $: isViewMode = $location.includes('/view/')
+  $: isEditMode = contactId !== null && !isViewMode
+  $: isReadOnly = isViewMode
 
   // Form state
   let formData = {
@@ -32,7 +34,7 @@
   let loading = false
 
   onMount(async () => {
-    if (isEditMode) {
+    if (isEditMode || isViewMode) {
       await loadContact()
     }
   })
@@ -185,7 +187,7 @@
 
 <div class="page page-narrow">
   <div class="header">
-    <h1>{isEditMode ? 'Edit Contact' : $_('logbook.addContactTitle')}</h1>
+    <h1>{isViewMode ? $_('logbook.viewContact') : isEditMode ? $_('logbook.editContact') : $_('logbook.addContactTitle')}</h1>
     <a href="/logbook" use:link class="btn-secondary">← {$_('logbook.backToLog')}</a>
   </div>
 
@@ -214,7 +216,7 @@
             class="monospace"
             bind:value={formData.callsign}
             class:error={errors.callsign}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           />
           {#if errors.callsign}
             <span class="error-text">{errors.callsign}</span>
@@ -231,7 +233,7 @@
             id="date"
             bind:value={formData.date}
             class:error={errors.date}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           />
           {#if errors.date}
             <span class="error-text">{errors.date}</span>
@@ -245,7 +247,7 @@
             step="1"
             bind:value={formData.time}
             class:error={errors.time}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           />
           {#if errors.time}
             <span class="error-text">{errors.time}</span>
@@ -264,7 +266,7 @@
             step="0.001"
             bind:value={formData.frequency}
             class:error={errors.frequency}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           />
           {#if errors.frequency}
             <span class="error-text">{errors.frequency}</span>
@@ -276,7 +278,7 @@
             id="mode"
             bind:value={formData.mode}
             class:error={errors.mode}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           >
             <option value="">{$_('logbook.selectMode')}</option>
             <option value="SSB">SSB</option>
@@ -300,7 +302,7 @@
             placeholder="37"
             step="1"
             bind:value={formData.power}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           />
         </div>
       </div>
@@ -315,7 +317,7 @@
             placeholder="59"
             maxlength="5"
             bind:value={formData.rstSent}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           />
         </div>
         <div class="form-field">
@@ -326,7 +328,7 @@
             placeholder="57"
             maxlength="5"
             bind:value={formData.rstReceived}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           />
         </div>
       </div>
@@ -339,7 +341,7 @@
               type="checkbox"
               id="qslSent"
               bind:checked={formData.qslSent}
-              disabled={saving}
+              disabled={saving || isReadOnly}
             />
             <span>{$_('logbook.qslSent')}</span>
           </label>
@@ -350,7 +352,7 @@
               type="checkbox"
               id="qslReceived"
               bind:checked={formData.qslReceived}
-              disabled={saving}
+              disabled={saving || isReadOnly}
             />
             <span>{$_('logbook.qslRcvd')}</span>
           </label>
@@ -366,30 +368,34 @@
             rows="3"
             placeholder={$_('logbook.additionalNotes')}
             bind:value={formData.remarks}
-            disabled={saving}
+            disabled={saving || isReadOnly}
           ></textarea>
         </div>
       </div>
 
-      <!-- Submit Button -->
+      <!-- Form Actions -->
+      {#if !isViewMode}
       <div class="form-actions">
-        <button type="submit" class="btn-primary" disabled={saving}>
-          {#if saving}
-            💾 {isEditMode ? 'Updating...' : 'Saving...'}
-          {:else}
-            {isEditMode ? '✏️ Update Contact' : $_('logbook.saveContact')}
+          <button type="submit" class="btn-primary" disabled={saving}>
+            {#if saving}
+              💾 {isEditMode ? $_('logbook.updating') : $_('logbook.saving')}
+            {:else}
+              {isEditMode ? '✏️ ' + $_('logbook.updateContact') : $_('logbook.saveContact')}
+            {/if}
+          </button>
+          {#if !isEditMode}
+          <button
+            type="button"
+            class="btn-secondary"
+            on:click={handleClear}
+            disabled={saving}
+          >
+            {$_('logbook.clearForm')}
+          </button>
+          <a href="/logbook" use:link class="btn-text">{$_('common.cancel')}</a>
           {/if}
-        </button>
-        <button
-          type="button"
-          class="btn-secondary"
-          on:click={handleClear}
-          disabled={saving}
-        >
-          {$_('logbook.clearForm')}
-        </button>
-        <a href="/logbook" use:link class="btn-text">{$_('common.cancel')}</a>
       </div>
+      {/if}
     </form>
     {/if}
   </div>

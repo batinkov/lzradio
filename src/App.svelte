@@ -24,6 +24,7 @@
     '/': Home,
     '/logbook': LogBook,
     '/logbook/add': LogBookAdd,
+    '/logbook/view/:id': LogBookAdd,
     '/logbook/edit/:id': LogBookAdd,
     '/exam': ExamHome,
     '/exam/class1': ExamClassHome,

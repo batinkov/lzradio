@@ -1,5 +1,5 @@
 <script>
-  import { onMount, onDestroy } from 'svelte'
+  import { onMount, onDestroy, tick } from 'svelte'
 
   export let buttonLabel = '⋮'
   export let align = 'right' // 'left' or 'right'
@@ -7,6 +7,7 @@
   let isOpen = false
   let buttonElement
   let menuElement
+  let portalContainer
   let menuPosition = { top: 0, left: 0, right: 'auto' }
 
   function toggleMenu() {
@@ -26,7 +27,7 @@
     const buttonRect = buttonElement.getBoundingClientRect()
     const viewportHeight = window.innerHeight
     const viewportWidth = window.innerWidth
-    const menuHeight = 100 // Approximate menu height
+    const menuHeight = 120 // Approximate menu height (increased for 3 items)
     const menuWidth = 150 // Min width from CSS
 
     // Calculate vertical position
@@ -84,7 +85,25 @@
     }
   }
 
+  // Move menu to portal when it opens
+  async function moveToPortal() {
+    await tick()
+    if (menuElement && portalContainer) {
+      portalContainer.appendChild(menuElement)
+    }
+  }
+
+  // Watch for menu open state changes
+  $: if (isOpen) {
+    moveToPortal()
+  }
+
   onMount(() => {
+    // Create portal container in document body
+    portalContainer = document.createElement('div')
+    portalContainer.className = 'dropdown-portal'
+    document.body.appendChild(portalContainer)
+
     document.addEventListener('click', handleClickOutside)
     document.addEventListener('keydown', handleKeydown)
     window.addEventListener('scroll', handleScroll, true)
@@ -92,6 +111,11 @@
   })
 
   onDestroy(() => {
+    // Clean up portal container
+    if (portalContainer && portalContainer.parentNode) {
+      portalContainer.parentNode.removeChild(portalContainer)
+    }
+
     document.removeEventListener('click', handleClickOutside)
     document.removeEventListener('keydown', handleKeydown)
     window.removeEventListener('scroll', handleScroll, true)
@@ -155,7 +179,7 @@
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
     min-width: 150px;
-    z-index: 1000;
+    z-index: 9999;
     overflow: hidden;
     animation: dropdownFadeIn 0.15s ease;
   }
