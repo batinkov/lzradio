@@ -195,7 +195,7 @@
 <!-- Features Modal -->
 {#if showFeaturesModal}
   <div class="modal-backdrop" on:click={closeFeaturesModal} role="presentation">
-    <div class="modal" on:click|stopPropagation role="dialog" tabindex="-1">
+    <div class="modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
       <div class="modal-header">
         <h2>{$_('features.title')}</h2>
         <button class="icon-btn" on:click={closeFeaturesModal} aria-label={$_('common.close')}>
@@ -226,7 +226,7 @@
 <!-- About Modal -->
 {#if showAboutModal}
   <div class="modal-backdrop" on:click={closeAboutModal} role="presentation">
-    <div class="modal" on:click|stopPropagation role="dialog" tabindex="-1">
+    <div class="modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
       <div class="modal-header">
         <h2>{$_('about.title')}</h2>
         <button class="icon-btn" on:click={closeAboutModal} aria-label={$_('common.close')}>

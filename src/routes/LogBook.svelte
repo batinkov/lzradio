@@ -486,13 +486,6 @@
     font-weight: normal;
   }
 
-  .header-actions {
-    display: flex;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
   /* Callsign display */
   .callsign-button {
     background: none;
@@ -779,12 +772,6 @@
   .bold {
     font-weight: 600;
     color: var(--color-primary);
-  }
-
-  .qsl-badge {
-    display: inline-block;
-    color: var(--color-success);
-    font-weight: bold;
   }
 
   /* Remarks Column - Truncate long text */

@@ -506,8 +506,7 @@
   }
 
   input.error,
-  select.error,
-  textarea.error {
+  select.error {
     border-color: #c00;
   }
 

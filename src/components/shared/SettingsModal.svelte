@@ -55,8 +55,8 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if open}
-  <div class="modal-backdrop" on:click={handleBackdropClick}>
-    <div class="modal-content">
+  <div class="modal-backdrop" on:click={handleBackdropClick} on:keydown|stopPropagation role="presentation">
+    <div class="modal-content" role="dialog">
       <div class="modal-header">
         <h2>⚙️ {$_('logbook.settings')}</h2>
       </div>

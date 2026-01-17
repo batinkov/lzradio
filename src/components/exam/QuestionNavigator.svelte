@@ -48,6 +48,7 @@
     <div
       class="modal navigator-modal"
       on:click|stopPropagation
+      on:keydown|stopPropagation
       role="dialog"
       tabindex="-1"
     >

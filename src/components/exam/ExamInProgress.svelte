@@ -99,7 +99,7 @@
 <!-- Submit Confirmation Modal -->
 {#if showSubmitModal}
   <div class="modal-backdrop" on:click={closeSubmitModal} role="presentation">
-    <div class="modal submit-modal" on:click|stopPropagation role="dialog" tabindex="-1">
+    <div class="modal submit-modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
       <div class="modal-header">
         <h3>{$_('exam.confirmSubmit')}</h3>
         <button class="icon-btn" on:click={closeSubmitModal}>×</button>

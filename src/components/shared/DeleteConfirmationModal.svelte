@@ -27,8 +27,8 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if contact}
-  <div class="modal-backdrop" on:click={handleBackdropClick}>
-    <div class="modal-content">
+  <div class="modal-backdrop" on:click={handleBackdropClick} on:keydown|stopPropagation role="presentation">
+    <div class="modal-content" role="dialog">
       <div class="modal-header">
         <h2>🗑️ Delete Contact</h2>
       </div>
