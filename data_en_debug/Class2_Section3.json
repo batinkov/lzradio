@@ -1,0 +1,54 @@
+[
+  {
+    "id": "C2-S3-Q1",
+    "class": 2,
+    "category": 3,
+    "question": "What is the Gray Line in radio propagation?",
+    "answers": [
+      "The boundary between day and night",
+      "A zone of high interference",
+      "The equator",
+      "The magnetic north pole"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": "C2-S3-Q2",
+    "class": 2,
+    "category": 3,
+    "question": "Which layer of the ionosphere is most important for long-distance HF communication?",
+    "answers": [
+      "D layer",
+      "E layer",
+      "F1 layer",
+      "F2 layer"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": "C2-S3-Q3",
+    "class": 2,
+    "category": 3,
+    "question": "What is tropospheric ducting?",
+    "answers": [
+      "Signal reflection from buildings",
+      "Signal bending due to temperature inversion",
+      "Underground wave propagation",
+      "Satellite signal bounce"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": "C2-S3-Q4",
+    "class": 2,
+    "category": 3,
+    "question": "During a geomagnetic storm, which frequency range is least affected?",
+    "answers": [
+      "HF",
+      "VHF",
+      "UHF",
+      "All equally affected"
+    ],
+    "correctAnswer": 2
+  }
+]

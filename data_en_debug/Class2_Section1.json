@@ -1,0 +1,54 @@
+[
+  {
+    "id": "C2-S1-Q1",
+    "class": 2,
+    "category": 1,
+    "question": "What is the maximum EIRP allowed for Class 2 amateur radio stations?",
+    "answers": [
+      "100 watts",
+      "500 watts",
+      "1000 watts",
+      "1500 watts"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": "C2-S1-Q2",
+    "class": 2,
+    "category": 1,
+    "question": "Which of the following requires special authorization for Class 2 operators?",
+    "answers": [
+      "Satellite communications",
+      "Digital modes",
+      "FM voice",
+      "CW operation"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": "C2-S1-Q3",
+    "class": 2,
+    "category": 1,
+    "question": "What is the minimum passing score for the Class 2 examination?",
+    "answers": [
+      "60%",
+      "70%",
+      "75%",
+      "80%"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": "C2-S1-Q4",
+    "class": 2,
+    "category": 1,
+    "question": "How often must Class 2 license holders renew their license?",
+    "answers": [
+      "Every 5 years",
+      "Every 10 years",
+      "Every 15 years",
+      "No renewal required"
+    ],
+    "correctAnswer": 1
+  }
+]
