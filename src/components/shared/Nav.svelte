@@ -6,6 +6,9 @@
   import { navigationBlocked } from '../../lib/navigationGuard.js'
   import { theme, toggleTheme } from '../../lib/theme.js'
 
+  // Version injected by Vite at build time
+  const appVersion = __APP_VERSION__
+
   let showMobileMenu = false
   let showHelpModal = false
 
@@ -154,7 +157,7 @@
       </div>
       <div class="modal-body">
         <p><strong>{$_('help.description')}</strong></p>
-        <p>{$_('help.version')}</p>
+        <p>{$_('help.version')} {appVersion}</p>
 
         <h3>{$_('help.features')}</h3>
 
@@ -234,6 +237,18 @@
 
   .nav-links a.active {
     color: var(--color-primary);
+    background: var(--color-bg);
+  }
+
+  /* Light mode: use more visible background for active/hover states */
+  :global(:root) .nav-links a.active,
+  :global(:root) .nav-links a:hover {
+    background: #E5E7EB;
+  }
+
+  /* Dark mode: keep using the CSS variable */
+  :global([data-theme="dark"]) .nav-links a.active,
+  :global([data-theme="dark"]) .nav-links a:hover {
     background: var(--color-bg);
   }
 

@@ -503,6 +503,7 @@
     display: inline;
     text-decoration: underline;
     text-decoration-style: dotted;
+    text-decoration-color: var(--color-primary);
     text-underline-offset: 4px;
     transition: all 0.15s ease;
   }
