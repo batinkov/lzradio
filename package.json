@@ -2,6 +2,10 @@
   "name": "lzradio",
   "private": true,
   "version": "0.0.1",
+  "maintainer": {
+    "callsign": "LZ3DY",
+    "github": "batinkov/lzradio"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

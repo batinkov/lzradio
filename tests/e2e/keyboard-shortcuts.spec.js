@@ -221,11 +221,15 @@ test.describe('Keyboard Shortcuts', () => {
   })
 
   test.describe('ESC key behavior', () => {
-    test('should close help modal with ESC key', async ({ page }) => {
+    test('should close features modal with ESC key', async ({ page }) => {
       await page.goto('/')
 
-      // Open help modal
+      // Open help dropdown menu
       await page.click('button[aria-label*="Help"]')
+      await page.waitForSelector('.help-dropdown', { timeout: 2000 })
+
+      // Click on Features to open modal
+      await page.click('.help-dropdown button:first-child')
       await page.waitForSelector('.modal', { timeout: 2000 })
 
       // Modal should be visible

@@ -22,22 +22,20 @@
       "description": "Practice for your amateur radio license exam"
     }
   },
-  "help": {
-    "title": "About LZ Radio",
-    "description": "LZ Radio - Amateur Radio Tools",
-    "version": "Version",
+  "helpMenu": {
     "features": "Features",
+    "about": "About"
+  },
+  "features": {
+    "title": "Features",
     "logbook": {
       "title": "📻 LogBook",
-      "description": "Log contacts during operation. All data stored locally in your browser - no server needed."
+      "description": "Log contacts during operation. All data stored locally in your browser - no server needed.",
+      "exportImport": "Use Export to back up your data, Import to restore."
     },
     "examPrep": {
       "title": "📝 Exam Prep",
       "description": "Practice for Technician, General, and Extra class exams with question pools."
-    },
-    "exportImport": {
-      "title": "💾 Export/Import",
-      "description": "Your logbook data stays in your browser. Use Export to back up, Import to restore data."
     },
     "keyboardShortcuts": "Keyboard Shortcuts",
     "shortcuts": {
@@ -45,8 +43,21 @@
       "numberKeys": "Select answer (1-4)",
       "closeModals": "Close modals"
     },
-    "footer": "Made for ham radio operators",
-    "openSource": "Open source • MIT License"
+    "footer": "Made for ham radio operators"
+  },
+  "about": {
+    "title": "About",
+    "appName": "LZ Radio",
+    "appDescription": "Amateur Radio Tools",
+    "version": "Version",
+    "maintainedBy": "Maintained by",
+    "feedback": "Feedback",
+    "reportBug": "Report Bug",
+    "featureRequest": "Feature Request",
+    "generalFeedback": "General Feedback",
+    "openSource": "Open Source",
+    "license": "MIT License",
+    "viewOnGitHub": "View on GitHub"
   },
   "logbook": {
     "title": "LogBook",

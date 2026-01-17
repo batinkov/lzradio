@@ -6,22 +6,44 @@
   import { navigationBlocked } from '../../lib/navigationGuard.js'
   import { theme, toggleTheme } from '../../lib/theme.js'
 
-  // Version injected by Vite at build time
+  // Build-time injected values from package.json via Vite
   const appVersion = __APP_VERSION__
+  const maintainerCallsign = __MAINTAINER_CALLSIGN__
+  const githubRepo = __GITHUB_REPO__
 
   let showMobileMenu = false
-  let showHelpModal = false
+  let showHelpMenu = false
+  let showFeaturesModal = false
+  let showAboutModal = false
 
   function toggleMobileMenu() {
     showMobileMenu = !showMobileMenu
   }
 
-  function toggleHelpModal() {
-    showHelpModal = !showHelpModal
+  function toggleHelpMenu() {
+    showHelpMenu = !showHelpMenu
   }
 
-  function closeHelpModal() {
-    showHelpModal = false
+  function closeHelpMenu() {
+    showHelpMenu = false
+  }
+
+  function openFeaturesModal() {
+    showFeaturesModal = true
+    closeHelpMenu()
+  }
+
+  function closeFeaturesModal() {
+    showFeaturesModal = false
+  }
+
+  function openAboutModal() {
+    showAboutModal = true
+    closeHelpMenu()
+  }
+
+  function closeAboutModal() {
+    showAboutModal = false
   }
 
   function switchLanguage(lang) {
@@ -32,19 +54,30 @@
     toggleTheme()
   }
 
-  // Handle ESC key to close help modal
+  // Handle ESC key to close modals
   function handleEscapeKey(event) {
-    if (event.key === 'Escape' && showHelpModal) {
-      closeHelpModal()
+    if (event.key === 'Escape') {
+      if (showFeaturesModal) closeFeaturesModal()
+      if (showAboutModal) closeAboutModal()
+      if (showHelpMenu) closeHelpMenu()
+    }
+  }
+
+  // Handle click outside to close help menu
+  function handleClickOutside(event) {
+    if (showHelpMenu && !event.target.closest('.help-menu-container')) {
+      closeHelpMenu()
     }
   }
 
   onMount(() => {
     window.addEventListener('keydown', handleEscapeKey)
+    window.addEventListener('click', handleClickOutside)
   })
 
   onDestroy(() => {
     window.removeEventListener('keydown', handleEscapeKey)
+    window.removeEventListener('click', handleClickOutside)
   })
 
   // Close mobile menu when route changes
@@ -109,13 +142,27 @@
         {$theme === 'light' ? '🌙' : '☀️'}
       </button>
 
-      <button
-        class="icon-btn"
-        on:click={toggleHelpModal}
-        aria-label={$_('nav.help')}
-      >
-        ?
-      </button>
+      <!-- Help Menu Dropdown -->
+      <div class="help-menu-container">
+        <button
+          class="icon-btn"
+          on:click={toggleHelpMenu}
+          aria-label={$_('nav.help')}
+          aria-expanded={showHelpMenu}
+        >
+          ?
+        </button>
+        {#if showHelpMenu}
+          <div class="help-dropdown">
+            <button on:click={openFeaturesModal}>
+              📋 {$_('helpMenu.features')}
+            </button>
+            <button on:click={openAboutModal}>
+              ℹ️ {$_('helpMenu.about')}
+            </button>
+          </div>
+        {/if}
+      </div>
 
       <!-- Mobile Menu Toggle -->
       <button class="icon-btn mobile-menu-btn" on:click={toggleMobileMenu} aria-label={$_('nav.menu')}>
@@ -145,40 +192,79 @@
   {/if}
 </nav>
 
-<!-- Help Modal -->
-{#if showHelpModal}
-  <div class="modal-backdrop" on:click={closeHelpModal} role="presentation">
+<!-- Features Modal -->
+{#if showFeaturesModal}
+  <div class="modal-backdrop" on:click={closeFeaturesModal} role="presentation">
     <div class="modal" on:click|stopPropagation role="dialog" tabindex="-1">
       <div class="modal-header">
-        <h2>{$_('help.title')}</h2>
-        <button class="icon-btn" on:click={closeHelpModal} aria-label={$_('common.close')}>
+        <h2>{$_('features.title')}</h2>
+        <button class="icon-btn" on:click={closeFeaturesModal} aria-label={$_('common.close')}>
           ×
         </button>
       </div>
       <div class="modal-body">
-        <p><strong>{$_('help.description')}</strong></p>
-        <p>{$_('help.version')} {appVersion}</p>
+        <p><strong>{$_('features.logbook.title')}</strong><br>
+        {$_('features.logbook.description')}<br>
+        <span class="feature-subsection">💾 {$_('features.logbook.exportImport')}</span></p>
 
-        <h3>{$_('help.features')}</h3>
+        <p><strong>{$_('features.examPrep.title')}</strong><br>
+        {$_('features.examPrep.description')}</p>
 
-        <p><strong>{$_('help.logbook.title')}</strong><br>
-        {$_('help.logbook.description')}</p>
-
-        <p><strong>{$_('help.examPrep.title')}</strong><br>
-        {$_('help.examPrep.description')}</p>
-
-        <p><strong>{$_('help.exportImport.title')}</strong><br>
-        {$_('help.exportImport.description')}</p>
-
-        <h3>{$_('help.keyboardShortcuts')}</h3>
+        <h3>{$_('features.keyboardShortcuts')}</h3>
         <ul>
-          <li><code>← →</code> → {$_('help.shortcuts.arrowKeys')}</li>
-          <li><code>1-4</code> → {$_('help.shortcuts.numberKeys')}</li>
-          <li><code>Esc</code> → {$_('help.shortcuts.closeModals')}</li>
+          <li><code>← →</code> → {$_('features.shortcuts.arrowKeys')}</li>
+          <li><code>1-4</code> → {$_('features.shortcuts.numberKeys')}</li>
+          <li><code>Esc</code> → {$_('features.shortcuts.closeModals')}</li>
         </ul>
 
-        <p class="footer-text">{$_('help.footer')}<br>
-        {$_('help.openSource')}</p>
+        <p class="footer-text">{$_('features.footer')}</p>
+      </div>
+    </div>
+  </div>
+{/if}
+
+<!-- About Modal -->
+{#if showAboutModal}
+  <div class="modal-backdrop" on:click={closeAboutModal} role="presentation">
+    <div class="modal" on:click|stopPropagation role="dialog" tabindex="-1">
+      <div class="modal-header">
+        <h2>{$_('about.title')}</h2>
+        <button class="icon-btn" on:click={closeAboutModal} aria-label={$_('common.close')}>
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="about-header">
+          <h3>{$_('about.appName')}</h3>
+          <p class="app-description">{$_('about.appDescription')}</p>
+          <p class="version">{$_('about.version')} {appVersion}</p>
+        </div>
+
+        <div class="about-section">
+          <p><strong>{$_('about.maintainedBy')}</strong> {maintainerCallsign}</p>
+        </div>
+
+        <div class="about-section">
+          <h4>{$_('about.feedback')}</h4>
+          <div class="feedback-links">
+            <a href="https://github.com/{githubRepo}/issues/new?template=bug_report.md" target="_blank" rel="noopener noreferrer">
+              🐛 {$_('about.reportBug')}
+            </a>
+            <a href="https://github.com/{githubRepo}/issues/new?template=feature_request.md" target="_blank" rel="noopener noreferrer">
+              💡 {$_('about.featureRequest')}
+            </a>
+            <a href="https://github.com/{githubRepo}/issues/new" target="_blank" rel="noopener noreferrer">
+              💬 {$_('about.generalFeedback')}
+            </a>
+          </div>
+        </div>
+
+        <div class="about-footer">
+          <p>{$_('about.openSource')} • {$_('about.license')}</p>
+          <a href="https://github.com/{githubRepo}" target="_blank" rel="noopener noreferrer">
+            {$_('about.viewOnGitHub')}
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -332,7 +418,127 @@
     background: var(--color-bg);
   }
 
+  /* Help Menu Dropdown */
+  .help-menu-container {
+    position: relative;
+  }
+
+  .help-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: var(--space-2);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    min-width: 160px;
+    z-index: 100;
+    overflow: hidden;
+  }
+
+  .help-dropdown button {
+    display: block;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border: none;
+    background: none;
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .help-dropdown button:hover {
+    background: var(--color-bg);
+  }
+
+  /* About Modal Styles */
+  .about-header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .about-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-1);
+  }
+
+  .about-header .app-description {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .about-header .version {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .about-section {
+    margin-bottom: var(--space-4);
+  }
+
+  .about-section h4 {
+    font-size: 1rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .feedback-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .feedback-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.15s ease;
+  }
+
+  .feedback-links a:hover {
+    background: var(--color-border);
+  }
+
+  .about-footer {
+    text-align: center;
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .about-footer p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .about-footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  .about-footer a:hover {
+    text-decoration: underline;
+  }
+
   /* Modal-specific styles */
+  .feature-subsection {
+    display: inline-block;
+    margin-top: var(--space-1);
+    padding-left: var(--space-4);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
   .footer-text {
     text-align: center;
     color: var(--color-text-muted);

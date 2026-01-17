@@ -9,6 +9,8 @@ const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'))
 export default defineConfig({
   plugins: [svelte()],
   define: {
-    __APP_VERSION__: JSON.stringify(pkg.version)
+    __APP_VERSION__: JSON.stringify(pkg.version),
+    __MAINTAINER_CALLSIGN__: JSON.stringify(pkg.maintainer.callsign),
+    __GITHUB_REPO__: JSON.stringify(pkg.maintainer.github)
   }
 })

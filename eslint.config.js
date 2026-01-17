@@ -10,7 +10,9 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
-        __APP_VERSION__: 'readonly'
+        __APP_VERSION__: 'readonly',
+        __MAINTAINER_CALLSIGN__: 'readonly',
+        __GITHUB_REPO__: 'readonly'
       },
       ecmaVersion: 2022,
       sourceType: 'module'
