@@ -87,6 +87,11 @@
 
   // Disable language switching during prep mode (simulated mode already disables entire nav)
   $: isInPrepMode = $location.includes('/prep')
+
+  // Documentation URL based on current locale
+  $: documentationUrl = $locale === 'bg'
+    ? 'https://github.com/batinkov/lzradio/wiki/bg-Home'
+    : 'https://github.com/batinkov/lzradio/wiki/en-Home'
 </script>
 
 <nav class="nav" class:nav-blocked={$navigationBlocked}>
@@ -154,6 +159,9 @@
         </button>
         {#if showHelpMenu}
           <div class="help-dropdown">
+            <a href={documentationUrl} target="_blank" rel="noopener noreferrer" on:click={closeHelpMenu}>
+              📖 {$_('helpMenu.documentation')}
+            </a>
             <button on:click={openFeaturesModal}>
               📋 {$_('helpMenu.features')}
             </button>
@@ -437,7 +445,8 @@
     overflow: hidden;
   }
 
-  .help-dropdown button {
+  .help-dropdown button,
+  .help-dropdown a {
     display: block;
     width: 100%;
     padding: var(--space-3) var(--space-4);
@@ -448,9 +457,12 @@
     color: var(--color-text);
     cursor: pointer;
     transition: background 0.15s ease;
+    text-decoration: none;
+    white-space: nowrap;
   }
 
-  .help-dropdown button:hover {
+  .help-dropdown button:hover,
+  .help-dropdown a:hover {
     background: var(--color-bg);
   }
 

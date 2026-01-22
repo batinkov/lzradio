@@ -13,7 +13,11 @@ test.describe('Help Menu', () => {
     // Dropdown should be visible
     await expect(page.locator('.help-dropdown')).toBeVisible()
 
-    // Should have Features and About options
+    // Should have Documentation link, Features and About buttons
+    const docLink = page.locator('.help-dropdown a')
+    await expect(docLink).toHaveCount(1)
+    await expect(docLink).toContainText('Documentation')
+
     const buttons = page.locator('.help-dropdown button')
     await expect(buttons).toHaveCount(2)
     await expect(buttons.first()).toContainText('Features')
@@ -37,7 +41,7 @@ test.describe('Help Menu', () => {
     test('should open Features modal from dropdown', async ({ page }) => {
       // Open dropdown and click Features
       await page.click('button[aria-label*="Help"]')
-      await page.click('.help-dropdown button:first-child')
+      await page.click('.help-dropdown button:has-text("Features")')
 
       // Modal should be visible with correct title
       await expect(page.locator('.modal')).toBeVisible()
@@ -46,7 +50,7 @@ test.describe('Help Menu', () => {
 
     test('should display LogBook feature description', async ({ page }) => {
       await page.click('button[aria-label*="Help"]')
-      await page.click('.help-dropdown button:first-child')
+      await page.click('.help-dropdown button:has-text("Features")')
 
       // Should show LogBook feature
       await expect(page.locator('.modal-body')).toContainText('LogBook')
@@ -55,7 +59,7 @@ test.describe('Help Menu', () => {
 
     test('should display Exam Prep feature description', async ({ page }) => {
       await page.click('button[aria-label*="Help"]')
-      await page.click('.help-dropdown button:first-child')
+      await page.click('.help-dropdown button:has-text("Features")')
 
       // Should show Exam Prep feature
       await expect(page.locator('.modal-body')).toContainText('Exam Prep')
@@ -63,7 +67,7 @@ test.describe('Help Menu', () => {
 
     test('should display keyboard shortcuts', async ({ page }) => {
       await page.click('button[aria-label*="Help"]')
-      await page.click('.help-dropdown button:first-child')
+      await page.click('.help-dropdown button:has-text("Features")')
 
       // Should show keyboard shortcuts
       await expect(page.locator('.modal-body')).toContainText('Keyboard Shortcuts')
@@ -72,7 +76,7 @@ test.describe('Help Menu', () => {
 
     test('should close Features modal with close button', async ({ page }) => {
       await page.click('button[aria-label*="Help"]')
-      await page.click('.help-dropdown button:first-child')
+      await page.click('.help-dropdown button:has-text("Features")')
       await expect(page.locator('.modal')).toBeVisible()
 
       // Click close button
@@ -167,6 +171,89 @@ test.describe('Help Menu', () => {
       await page.waitForTimeout(200)
 
       await expect(page.locator('.modal')).not.toBeVisible()
+    })
+  })
+
+  test.describe('Documentation Link', () => {
+    test('should display documentation link in dropdown', async ({ page }) => {
+      await page.click('button[aria-label*="Help"]')
+
+      const docLink = page.locator('.help-dropdown a')
+      await expect(docLink).toBeVisible()
+      await expect(docLink).toContainText('Documentation')
+    })
+
+    test('should link to English wiki when in English', async ({ page }) => {
+      // Ensure English is selected
+      await page.click('button.lang-btn:has-text("EN")')
+      await page.waitForTimeout(100)
+
+      await page.click('button[aria-label*="Help"]')
+
+      const docLink = page.locator('.help-dropdown a')
+      await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/en-Home')
+    })
+
+    test('should link to Bulgarian wiki when in Bulgarian', async ({ page }) => {
+      // Switch to Bulgarian
+      await page.click('button.lang-btn:has-text("BG")')
+      await page.waitForTimeout(100)
+
+      // Use container selector since aria-label changes with language
+      await page.click('.help-menu-container .icon-btn')
+
+      const docLink = page.locator('.help-dropdown a')
+      await expect(docLink).toContainText('Документация')
+      await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/bg-Home')
+    })
+
+    test('should open documentation in new tab', async ({ page }) => {
+      await page.click('button[aria-label*="Help"]')
+
+      const docLink = page.locator('.help-dropdown a')
+      await expect(docLink).toHaveAttribute('target', '_blank')
+      await expect(docLink).toHaveAttribute('rel', 'noopener noreferrer')
+    })
+
+    test('should close dropdown when clicking documentation link', async ({ page, context }) => {
+      await page.click('button[aria-label*="Help"]')
+      await expect(page.locator('.help-dropdown')).toBeVisible()
+
+      // Listen for new page (since link opens in new tab)
+      const pagePromise = context.waitForEvent('page')
+      await page.click('.help-dropdown a')
+
+      // Wait for new page to open
+      const newPage = await pagePromise
+
+      // Dropdown should be closed on original page
+      await expect(page.locator('.help-dropdown')).not.toBeVisible()
+
+      // Close the new page
+      await newPage.close()
+    })
+
+    test('should update link when switching language', async ({ page }) => {
+      // Start in English
+      await page.click('button.lang-btn:has-text("EN")')
+      await page.waitForTimeout(100)
+
+      await page.click('.help-menu-container .icon-btn')
+      let docLink = page.locator('.help-dropdown a')
+      await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/en-Home')
+
+      // Close dropdown
+      await page.click('.nav-brand')
+      await page.waitForTimeout(200)
+
+      // Switch to Bulgarian
+      await page.click('button.lang-btn:has-text("BG")')
+      await page.waitForTimeout(100)
+
+      // Reopen dropdown (use container selector since aria-label changed)
+      await page.click('.help-menu-container .icon-btn')
+      docLink = page.locator('.help-dropdown a')
+      await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/bg-Home')
     })
   })
 })

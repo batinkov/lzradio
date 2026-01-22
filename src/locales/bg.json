@@ -24,7 +24,8 @@
   },
   "helpMenu": {
     "features": "Функции",
-    "about": "Относно"
+    "about": "Относно",
+    "documentation": "Документация"
   },
   "features": {
     "title": "Функции",

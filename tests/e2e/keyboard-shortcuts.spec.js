@@ -229,7 +229,7 @@ test.describe('Keyboard Shortcuts', () => {
       await page.waitForSelector('.help-dropdown', { timeout: 2000 })
 
       // Click on Features to open modal
-      await page.click('.help-dropdown button:first-child')
+      await page.click('.help-dropdown button:has-text("Features")')
       await page.waitForSelector('.modal', { timeout: 2000 })
 
       // Modal should be visible

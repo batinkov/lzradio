@@ -24,7 +24,8 @@
   },
   "helpMenu": {
     "features": "Features",
-    "about": "About"
+    "about": "About",
+    "documentation": "Documentation"
   },
   "features": {
     "title": "Features",
