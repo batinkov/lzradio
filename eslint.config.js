@@ -12,7 +12,8 @@ export default [
         ...globals.node,
         __APP_VERSION__: 'readonly',
         __MAINTAINER_CALLSIGN__: 'readonly',
-        __GITHUB_REPO__: 'readonly'
+        __GITHUB_REPO__: 'readonly',
+        __SECTION_NAMES__: 'readonly'
       },
       ecmaVersion: 2022,
       sourceType: 'module'

@@ -1,10 +1,14 @@
 <script>
   import { link, push, location } from 'svelte-spa-router'
-  import { _ } from 'svelte-i18n'
+  import { _, locale } from 'svelte-i18n'
   import { examConfig } from '../lib/examConfig.js'
 
   // Extract class number from URL path (/exam/class1 or /exam/class2)
   $: classNum = $location.includes('class2') ? '2' : '1'
+
+  // Get section names for current locale and class (injected at build time)
+  $: currentLocale = $locale?.substring(0, 2) || 'en'
+  $: sectionNamesForClass = __SECTION_NAMES__[currentLocale]?.[classNum] || {}
 
   let questionOrder = 'sequential'
   let selectedCategories = [1, 2, 3]
@@ -78,7 +82,7 @@
                 checked={selectedCategories.includes(1)}
                 on:change={() => toggleCategory(1)}
               />
-              <span>{$_('exam.category')} 1</span>
+              <span>{sectionNamesForClass[1] || `${$_('exam.category')} 1`}</span>
             </label>
             <label class="checkbox-option">
               <input
@@ -86,7 +90,7 @@
                 checked={selectedCategories.includes(2)}
                 on:change={() => toggleCategory(2)}
               />
-              <span>{$_('exam.category')} 2</span>
+              <span>{sectionNamesForClass[2] || `${$_('exam.category')} 2`}</span>
             </label>
             <label class="checkbox-option">
               <input
@@ -94,7 +98,7 @@
                 checked={selectedCategories.includes(3)}
                 on:change={() => toggleCategory(3)}
               />
-              <span>{$_('exam.category')} 3</span>
+              <span>{sectionNamesForClass[3] || `${$_('exam.category')} 3`}</span>
             </label>
           </div>
         </div>

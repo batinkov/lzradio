@@ -85,11 +85,11 @@ test.describe('Exam Navigation', () => {
     await expect(prepCard.locator('text=Sequential')).toBeVisible();
     await expect(prepCard.locator('text=Random')).toBeVisible();
 
-    // Verify category selection
+    // Verify category selection (now shows full section names from JSON)
     await expect(prepCard.locator('text=Categories')).toBeVisible();
-    await expect(prepCard.locator('text=Category 1')).toBeVisible();
-    await expect(prepCard.locator('text=Category 2')).toBeVisible();
-    await expect(prepCard.locator('text=Category 3')).toBeVisible();
+    await expect(prepCard.locator('text=/Section 1/')).toBeVisible();
+    await expect(prepCard.locator('text=/Section 2/')).toBeVisible();
+    await expect(prepCard.locator('text=/Section 3/')).toBeVisible();
 
     // Verify all categories are checked by default
     const checkboxes = prepCard.locator('input[type="checkbox"]');
