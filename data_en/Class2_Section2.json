@@ -1,7 +1,7 @@
 {
     "class": "Amateur Radio Class 2",
     "section": "Section 2 - Codes and amateur radio abbreviations. Rules and procedures for conducting amateur radio communications",
-    "update": "Updated syllabus 31.05.2022",
+    "update": "Updated syllabus 11.08.2025",
     "questions": [
         {
             "question_number": 1,
@@ -965,7 +965,7 @@
                 },
                 {
                     "key": "D",
-                    "text": "They have the right if they comply with the Rules"
+                    "text": "Have the right if they comply with the Rules for the use of radio frequency spectrum for radio equipment from amateur radio service"
                 }
             ]
         },
@@ -994,75 +994,6 @@
         },
         {
             "question_number": 44,
-            "question_body": "If you hear the call sign LZ1AW/1, this means?",
-            "correct_answer": "D",
-            "choices": [
-                {
-                    "key": "A",
-                    "text": "LZ1AW is using a portable station"
-                },
-                {
-                    "key": "B",
-                    "text": "LZ1AW is using a radio station with a power of 1 watt"
-                },
-                {
-                    "key": "C",
-                    "text": "LZ1AW's wife is using his radio station"
-                },
-                {
-                    "key": "D",
-                    "text": "LZ1AW is operating from his cottage in Sozopol"
-                }
-            ]
-        },
-        {
-            "question_number": 45,
-            "question_body": "If you hear the call sign LZ1AW/2, this means?",
-            "correct_answer": "B",
-            "choices": [
-                {
-                    "key": "A",
-                    "text": "LZ1AW is using his radio station while driving his car"
-                },
-                {
-                    "key": "B",
-                    "text": "LZ1AW is operating from a friend's apartment in Ruse"
-                },
-                {
-                    "key": "C",
-                    "text": "LZ1AW is operating from his cottage in Sozopol"
-                },
-                {
-                    "key": "D",
-                    "text": "LZ1AW indicates that he is operating through repeater #2"
-                }
-            ]
-        },
-        {
-            "question_number": 46,
-            "question_body": "If you hear the call sign LZ1AW/M, this means?",
-            "correct_answer": "A",
-            "choices": [
-                {
-                    "key": "A",
-                    "text": "LZ1AW is using his radio station while driving his car"
-                },
-                {
-                    "key": "B",
-                    "text": "LZ1AW is operating from Montana"
-                },
-                {
-                    "key": "C",
-                    "text": "LZ1AW is only working with stations participating in the ongoing contest"
-                },
-                {
-                    "key": "D",
-                    "text": "LZ1AW is operating from aboard a watercraft"
-                }
-            ]
-        },
-        {
-            "question_number": 47,
             "question_body": "If you hear LZ1AW transmitting CQ DX, does this apply to you?",
             "correct_answer": "A",
             "choices": [
@@ -1085,7 +1016,7 @@
             ]
         },
         {
-            "question_number": 48,
+            "question_number": 45,
             "question_body": "What is recorded in the station logbook?",
             "correct_answer": "D",
             "choices": [
@@ -1108,7 +1039,7 @@
             ]
         },
         {
-            "question_number": 49,
+            "question_number": 46,
             "question_body": "If you are transmitted the message Q5, this means?",
             "correct_answer": "A",
             "choices": [
@@ -1131,7 +1062,7 @@
             ]
         },
         {
-            "question_number": 50,
+            "question_number": 47,
             "question_body": "If you are filling out a QSL card for a radio amateur from a neighboring country, what time of radio contact will you record?",
             "correct_answer": "C",
             "choices": [
@@ -1154,7 +1085,7 @@
             ]
         },
         {
-            "question_number": 51,
+            "question_number": 48,
             "question_body": "If you are communicating your name to the radio amateur with whom you are in radio contact, how will you do it?",
             "correct_answer": "A",
             "choices": [
@@ -1177,7 +1108,7 @@
             ]
         },
         {
-            "question_number": 52,
+            "question_number": 49,
             "question_body": "When participating in a radio amateur contest, the main goal is?",
             "correct_answer": "D",
             "choices": [
@@ -1200,7 +1131,7 @@
             ]
         },
         {
-            "question_number": 53,
+            "question_number": 50,
             "question_body": "Why is it necessary to use short messages when transmitting through a repeater?",
             "correct_answer": "C",
             "choices": [
@@ -1223,7 +1154,7 @@
             ]
         },
         {
-            "question_number": 54,
+            "question_number": 51,
             "question_body": "What is the correct way to join a conversation through a repeater?",
             "correct_answer": "D",
             "choices": [
@@ -1246,7 +1177,7 @@
             ]
         },
         {
-            "question_number": 55,
+            "question_number": 52,
             "question_body": "When talking to another radio station through a repeater, how can you tell if you can use simplex?",
             "correct_answer": "C",
             "choices": [
@@ -1269,7 +1200,7 @@
             ]
         },
         {
-            "question_number": 56,
+            "question_number": 53,
             "question_body": "When choosing a transmit frequency, what do you need to do?",
             "correct_answer": "D",
             "choices": [
