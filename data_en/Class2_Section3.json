@@ -1,7 +1,7 @@
 {
     "class": "Amateur Radio Class 2",
     "section": "Section 3 – Regulatory Framework",
-    "update": "Updated syllabus 31.05.2022",
+    "update": "Updated syllabus 11.08.2025",
     "questions": [
         {
             "question_number": 1,
@@ -1086,12 +1086,12 @@
         },
         {
             "question_number": 48,
-            "question_body": "Which of the following activities is prohibited?",
+            "question_body": "What is not transmitted during a radio contact?",
             "correct_answer": "C",
             "choices": [
                 {
                     "key": "A",
-                    "text": "Transmission of facts and information that constitute amateur radio secret"
+                    "text": "Transmission of technical parameters for operation of radio equipment from amateur radio service"
                 },
                 {
                     "key": "B",
@@ -1201,52 +1201,6 @@
         },
         {
             "question_number": 53,
-            "question_body": "If LZ1AA operates from the radio station of LZ1BB, what call sign should he use?",
-            "correct_answer": "D",
-            "choices": [
-                {
-                    "key": "A",
-                    "text": "LZ1AA"
-                },
-                {
-                    "key": "B",
-                    "text": "LZ1BB"
-                },
-                {
-                    "key": "C",
-                    "text": "LZ1AA / LZ1BB"
-                },
-                {
-                    "key": "D",
-                    "text": "LZ1BB / LZ1AA"
-                }
-            ]
-        },
-        {
-            "question_number": 54,
-            "question_body": "If LZ1AA with permanent address in Sofia operates with his personal radio station from his cottage in Nessebar, what call sign should he use?",
-            "correct_answer": "C",
-            "choices": [
-                {
-                    "key": "A",
-                    "text": "LZ1AA"
-                },
-                {
-                    "key": "B",
-                    "text": "LZ1AA / M"
-                },
-                {
-                    "key": "C",
-                    "text": "LZ1AA / 1"
-                },
-                {
-                    "key": "D",
-                    "text": "LZ1AA / MM"
-                }
-            ]
-        },
-        {
-            "question_number": 55,
             "question_body": "If a class 2 radio amateur hears in the 144-146 MHz band a radio station with call sign LZ75HAM, what behavior should he have towards it?",
             "correct_answer": "A",
             "choices": [
@@ -1269,7 +1223,7 @@
             ]
         },
         {
-            "question_number": 56,
+            "question_number": 54,
             "question_body": "What call sign is LZ0AAA?",
             "correct_answer": "B",
             "choices": [
@@ -1292,7 +1246,7 @@
             ]
         },
         {
-            "question_number": 57,
+            "question_number": 55,
             "question_body": "Which of the following is a personal listener sign?",
             "correct_answer": "D",
             "choices": [
@@ -1315,7 +1269,7 @@
             ]
         },
         {
-            "question_number": 58,
+            "question_number": 56,
             "question_body": "What call sign is LZ/DL6AA?",
             "correct_answer": "B",
             "choices": [
@@ -1338,53 +1292,7 @@
             ]
         },
         {
-            "question_number": 59,
-            "question_body": "What call sign is LZ1AW/M?",
-            "correct_answer": "B",
-            "choices": [
-                {
-                    "key": "A",
-                    "text": "Of a radio amateur operating from a maritime vessel"
-                },
-                {
-                    "key": "B",
-                    "text": "Of a radio amateur operating from a land vehicle"
-                },
-                {
-                    "key": "C",
-                    "text": "Of a radio amateur operating with a portable radio station"
-                },
-                {
-                    "key": "D",
-                    "text": "Such a call sign is invalid and its use is improper"
-                }
-            ]
-        },
-        {
-            "question_number": 60,
-            "question_body": "When must a radio amateur transmit after their call sign under a slash the letter \"P\" or the word \"portable\"?",
-            "correct_answer": "C",
-            "choices": [
-                {
-                    "key": "A",
-                    "text": "When using a factory-produced radio station"
-                },
-                {
-                    "key": "B",
-                    "text": "When using a personally constructed radio station"
-                },
-                {
-                    "key": "C",
-                    "text": "When using a portable radio station"
-                },
-                {
-                    "key": "D",
-                    "text": "When using a low-power radio station"
-                }
-            ]
-        },
-        {
-            "question_number": 61,
+            "question_number": 57,
             "question_body": "What is the permissible band of modulating audio frequencies in an amateur radio contact?",
             "correct_answer": "C",
             "choices": [
@@ -1407,7 +1315,7 @@
             ]
         },
         {
-            "question_number": 62,
+            "question_number": 58,
             "question_body": "What is the maximum permissible bandwidth of emission in the bands allowed for operation by class 2 radio amateurs?",
             "correct_answer": "B",
             "choices": [
@@ -1430,7 +1338,7 @@
             ]
         },
         {
-            "question_number": 63,
+            "question_number": 59,
             "question_body": "What is the maximum permissible frequency deviation in the bands allowed for operation by class 2 radio amateurs?",
             "correct_answer": "B",
             "choices": [
@@ -1453,7 +1361,7 @@
             ]
         },
         {
-            "question_number": 64,
+            "question_number": 60,
             "question_body": "What is the maximum permissible power of spurious emissions of the radio transmitter of a personal amateur radio station of a class 2 radio amateur?",
             "correct_answer": "A",
             "choices": [
@@ -1476,7 +1384,7 @@
             ]
         },
         {
-            "question_number": 65,
+            "question_number": 61,
             "question_body": "Is it permissible for a VHF antenna of an amateur radio station or the cable connecting it to pass over overhead high-voltage and telecommunication lines?",
             "correct_answer": "C",
             "choices": [
@@ -1499,7 +1407,7 @@
             ]
         },
         {
-            "question_number": 66,
+            "question_number": 62,
             "question_body": "What should be the minimum distance inside a building between an amateur radio antenna system (including the antenna line) and an existing electronic communication installation?",
             "correct_answer": "A",
             "choices": [
@@ -1522,7 +1430,7 @@
             ]
         },
         {
-            "question_number": 67,
+            "question_number": 63,
             "question_body": "Which of the listed connections of ground conductors is not permissible?",
             "correct_answer": "D",
             "choices": [
@@ -1545,7 +1453,7 @@
             ]
         },
         {
-            "question_number": 68,
+            "question_number": 64,
             "question_body": "When do you have the right to conduct radio contacts and use your call sign on the air?",
             "correct_answer": "C",
             "choices": [
@@ -1568,7 +1476,7 @@
             ]
         },
         {
-            "question_number": 69,
+            "question_number": 65,
             "question_body": "Who has the right to revoke permits for competence as a radio amateur?",
             "correct_answer": "A",
             "choices": [
@@ -1591,7 +1499,7 @@
             ]
         },
         {
-            "question_number": 70,
+            "question_number": 66,
             "question_body": "Who has the right to revoke provided call signs?",
             "correct_answer": "A",
             "choices": [
@@ -1614,7 +1522,7 @@
             ]
         },
         {
-            "question_number": 71,
+            "question_number": 67,
             "question_body": "In which case is the issued permit for competence as a radio amateur revoked?",
             "correct_answer": "D",
             "choices": [
@@ -1633,6 +1541,144 @@
                 {
                     "key": "D",
                     "text": "All three are correct"
+                }
+            ]
+        },
+        {
+            "question_number": 68,
+            "question_body": "For what period of time is the personal call sign valid?",
+            "correct_answer": "D",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Indefinite"
+                },
+                {
+                    "key": "B",
+                    "text": "2 years"
+                },
+                {
+                    "key": "C",
+                    "text": "5 years"
+                },
+                {
+                    "key": "D",
+                    "text": "10 years"
+                }
+            ]
+        },
+        {
+            "question_number": 69,
+            "question_body": "For what period of time is the club call sign valid?",
+            "correct_answer": "B",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "2 years"
+                },
+                {
+                    "key": "B",
+                    "text": "10 years"
+                },
+                {
+                    "key": "C",
+                    "text": "15 years"
+                },
+                {
+                    "key": "D",
+                    "text": "Indefinite"
+                }
+            ]
+        },
+        {
+            "question_number": 70,
+            "question_body": "For what period of time is the call sign of an amateur radio repeater valid?",
+            "correct_answer": "C",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "1 year"
+                },
+                {
+                    "key": "B",
+                    "text": "5 years"
+                },
+                {
+                    "key": "C",
+                    "text": "10 years"
+                },
+                {
+                    "key": "D",
+                    "text": "Indefinite"
+                }
+            ]
+        },
+        {
+            "question_number": 71,
+            "question_body": "After my personal call sign validity expires, if I do not renew it, for how long will it not be provided to another radio amateur?",
+            "correct_answer": "B",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "5 years"
+                },
+                {
+                    "key": "B",
+                    "text": "10 years"
+                },
+                {
+                    "key": "C",
+                    "text": "15 years"
+                },
+                {
+                    "key": "D",
+                    "text": "Immediately after expiration it can be provided to another radio amateur"
+                }
+            ]
+        },
+        {
+            "question_number": 72,
+            "question_body": "What actions must I take after expiration of my personal call sign validity to continue my radio amateur activity?",
+            "correct_answer": "B",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "No action is necessary"
+                },
+                {
+                    "key": "B",
+                    "text": "It is necessary to submit an application to the Communications Regulation Commission for reissue of my personal call sign"
+                },
+                {
+                    "key": "C",
+                    "text": "It is necessary to submit an application to the Communications Regulation Commission for provision of a new personal call sign"
+                },
+                {
+                    "key": "D",
+                    "text": "It is necessary to submit an application to the Bulgarian Federation of Radio Amateurs for reissue of my personal call sign"
+                }
+            ]
+        },
+        {
+            "question_number": 73,
+            "question_body": "What actions should I take to renew my personal call sign after expiration of its validity?",
+            "correct_answer": "A",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "To submit an application to the Communications Regulation Commission for provision of my personal call sign and pay the respective administrative fee for reissue of the permit for radio amateur competence"
+                },
+                {
+                    "key": "B",
+                    "text": "To submit an application to the Bulgarian Federation of Radio Amateurs for provision of my personal call sign and pay the respective administrative fee for reissue of the permit for radio amateur competence"
+                },
+                {
+                    "key": "C",
+                    "text": "All documents are renewed automatically by the Communications Regulation Commission"
+                },
+                {
+                    "key": "D",
+                    "text": "Personal call signs are renewed automatically by the Communications Regulation Commission"
                 }
             ]
         }
