@@ -227,7 +227,7 @@
   .radio-option,
   .checkbox-option {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-2);
     cursor: pointer;
     padding: var(--space-2);
@@ -244,12 +244,15 @@
   .checkbox-option input[type="checkbox"] {
     width: 18px;
     height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
     cursor: pointer;
   }
 
   .radio-option span,
   .checkbox-option span {
     font-size: 0.875rem;
+    line-height: 1.5;
     user-select: none;
   }
 
