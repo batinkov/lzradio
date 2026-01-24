@@ -85,6 +85,42 @@ test.describe('Keyboard Shortcuts', () => {
       await page.waitForTimeout(200) // Give time for navigation to complete
       await expect(page.locator('.progress-text')).toContainText('Question 2 of')
     })
+
+    test('should allow keyboard shortcuts after clicking answer with mouse', async ({ page }) => {
+      await page.goto('/#/exam/class1/prep?order=sequential&categories=1')
+      await page.waitForSelector('.question-container', { timeout: 5000 })
+
+      // Verify at question 1
+      await expect(page.locator('.progress-text')).toContainText('Question 1 of')
+
+      // Click first answer with mouse
+      await page.locator('.answer-card').first().click()
+      await page.waitForTimeout(100)
+
+      // First answer should be selected
+      const firstRadio = page.locator('.answer-card').first().locator('input[type="radio"]')
+      await expect(firstRadio).toBeChecked()
+
+      // Arrow keys should still work after clicking answer
+      await page.keyboard.press('ArrowRight')
+      await expect(page.locator('.progress-text')).toContainText('Question 2 of')
+
+      // Click second answer with mouse on question 2
+      await page.locator('.answer-card').nth(1).click()
+      await page.waitForTimeout(100)
+
+      // Number keys should still work after clicking answer
+      await page.keyboard.press('3')
+      await page.waitForTimeout(100)
+
+      // Third answer should now be selected
+      const thirdRadio = page.locator('.answer-card').nth(2).locator('input[type="radio"]')
+      await expect(thirdRadio).toBeChecked()
+
+      // Arrow navigation should still work
+      await page.keyboard.press('ArrowLeft')
+      await expect(page.locator('.progress-text')).toContainText('Question 1 of')
+    })
   })
 
   test.describe('Simulated Exam Mode', () => {
@@ -169,6 +205,46 @@ test.describe('Keyboard Shortcuts', () => {
       await page.keyboard.press('ArrowRight')
       await page.waitForTimeout(200) // Give time for navigation to complete
       await expect(page.locator('.progress-text')).toContainText('Question 2 of 60')
+    })
+
+    test('should allow keyboard shortcuts after clicking answer with mouse', async ({ page }) => {
+      await page.goto('/#/exam/class1/simulated')
+      await page.waitForSelector('.page-centered', { timeout: 5000 })
+
+      // Start the exam
+      await page.click('button:has-text("Start Exam")')
+      await page.waitForSelector('.question-container', { timeout: 5000 })
+
+      // Verify at question 1
+      await expect(page.locator('.progress-text')).toContainText('Question 1 of 60')
+
+      // Click second answer with mouse
+      await page.locator('.answer-card').nth(1).click()
+      await page.waitForTimeout(100)
+
+      // Second answer should be selected
+      const secondRadio = page.locator('.answer-card').nth(1).locator('input[type="radio"]')
+      await expect(secondRadio).toBeChecked()
+
+      // Arrow keys should still work after clicking answer
+      await page.keyboard.press('ArrowRight')
+      await expect(page.locator('.progress-text')).toContainText('Question 2 of 60')
+
+      // Click third answer with mouse on question 2
+      await page.locator('.answer-card').nth(2).click()
+      await page.waitForTimeout(100)
+
+      // Number keys should still work after clicking answer
+      await page.keyboard.press('1')
+      await page.waitForTimeout(100)
+
+      // First answer should now be selected
+      const firstRadio = page.locator('.answer-card').first().locator('input[type="radio"]')
+      await expect(firstRadio).toBeChecked()
+
+      // Arrow navigation should still work
+      await page.keyboard.press('ArrowLeft')
+      await expect(page.locator('.progress-text')).toContainText('Question 1 of 60')
     })
   })
 

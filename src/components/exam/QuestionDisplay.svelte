@@ -88,7 +88,10 @@
             class:selected={selectedAnswer === choice.key && (!showResult || !isAnswered)}
             class:correct={showResult && selectedAnswer === choice.key && isCorrect}
             class:incorrect={showResult && selectedAnswer === choice.key && !isCorrect && isAnswered}
-            on:click={() => onAnswerSelect(choice.key)}
+            on:click={(e) => {
+              onAnswerSelect(choice.key)
+              e.currentTarget.blur()
+            }}
           >
             {#if showResult}
               <!-- Practice mode with radio buttons -->
