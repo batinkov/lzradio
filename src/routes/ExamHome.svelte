@@ -2,6 +2,7 @@
   import { link } from 'svelte-spa-router'
   import { _, locale } from 'svelte-i18n'
   import { getAllQuestions } from '../lib/questions.js'
+  import Banner from '../components/shared/Banner.svelte'
 
   // State for question counts
   let class1Count = 0
@@ -25,6 +26,15 @@
 </script>
 
 <div class="page page-centered">
+  <!-- Language Warning (English only) -->
+  {#if $locale?.startsWith('en')}
+    <Banner
+      badgeText="Important"
+      message="Official amateur radio exams in Bulgaria are conducted only in Bulgarian. This English version is for practice purposes only."
+      dismissible={false}
+    />
+  {/if}
+
   <div class="header">
     <h1>{$_('exam.title')}</h1>
   </div>

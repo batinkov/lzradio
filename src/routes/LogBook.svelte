@@ -13,6 +13,7 @@
   import DeleteConfirmationModal from '../components/shared/DeleteConfirmationModal.svelte'
   import ImportPreviewModal from '../components/shared/ImportPreviewModal.svelte'
   import SettingsModal from '../components/shared/SettingsModal.svelte'
+  import Banner from '../components/shared/Banner.svelte'
 
   let contacts = []
   let contactCount = 0
@@ -313,10 +314,11 @@
 
 <div class="page">
   <!-- Alpha Version Banner -->
-  <div class="alpha-banner">
-    <span class="alpha-badge">ALPHA</span>
-    <span class="alpha-message">{$_('logbook.alphaBanner.message')}</span>
-  </div>
+  <Banner
+    badgeText="Alpha Version"
+    message={$_('logbook.alphaBanner.message')}
+    dismissible={false}
+  />
 
   <!-- Header with callsign -->
   <div class="header">
@@ -515,48 +517,6 @@
   .callsign-notset {
     color: var(--color-text-muted);
     font-style: italic;
-  }
-
-  /* Alpha Banner */
-  .alpha-banner {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-3);
-    margin-bottom: var(--space-6);
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border: 1px solid #f59e0b;
-    border-radius: var(--radius-md);
-    font-size: 0.8rem;
-  }
-
-  :global([data-theme="dark"]) .alpha-banner {
-    background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
-    border-color: #b45309;
-  }
-
-  .alpha-badge {
-    background: #f59e0b;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: var(--radius-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  :global([data-theme="dark"]) .alpha-badge {
-    background: #d97706;
-  }
-
-  .alpha-message {
-    flex: 1;
-    color: #92400e;
-  }
-
-  :global([data-theme="dark"]) .alpha-message {
-    color: #fef3c7;
   }
 
   /* Dropdown divider */
