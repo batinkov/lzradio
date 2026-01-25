@@ -314,4 +314,101 @@ describe('toastStore', () => {
       expect(id2).toBeGreaterThan(id1) // ID continues incrementing
     })
   })
+
+  describe('options with links', () => {
+    it('should include link when provided in options', () => {
+      toast.show('Test message', 'info', 0, {
+        link: 'https://example.com',
+        linkText: 'Click here'
+      })
+
+      const toasts = get(toast)
+      expect(toasts[0].link).toBe('https://example.com')
+      expect(toasts[0].linkText).toBe('Click here')
+    })
+
+    it('should use default linkText when not provided', () => {
+      toast.show('Test message', 'info', 0, {
+        link: 'https://example.com'
+      })
+
+      const toasts = get(toast)
+      expect(toasts[0].link).toBe('https://example.com')
+      expect(toasts[0].linkText).toBe('Learn more')
+    })
+
+    it('should work without options parameter', () => {
+      toast.show('Test message', 'info', 0)
+
+      const toasts = get(toast)
+      expect(toasts[0].link).toBeUndefined()
+      expect(toasts[0].linkText).toBe('Learn more') // Default is still set
+    })
+
+    it('should pass options through info() helper', () => {
+      toast.info('Info message', 3000, {
+        link: 'https://example.com/info',
+        linkText: 'More info'
+      })
+
+      const toasts = get(toast)
+      expect(toasts[0].type).toBe('info')
+      expect(toasts[0].link).toBe('https://example.com/info')
+      expect(toasts[0].linkText).toBe('More info')
+    })
+
+    it('should pass options through success() helper', () => {
+      toast.success('Success message', 3000, {
+        link: 'https://example.com/success',
+        linkText: 'Details'
+      })
+
+      const toasts = get(toast)
+      expect(toasts[0].type).toBe('success')
+      expect(toasts[0].link).toBe('https://example.com/success')
+      expect(toasts[0].linkText).toBe('Details')
+    })
+
+    it('should pass options through error() helper', () => {
+      toast.error('Error message', 4000, {
+        link: 'https://example.com/error',
+        linkText: 'Get help'
+      })
+
+      const toasts = get(toast)
+      expect(toasts[0].type).toBe('error')
+      expect(toasts[0].link).toBe('https://example.com/error')
+      expect(toasts[0].linkText).toBe('Get help')
+    })
+
+    it('should pass options through warning() helper', () => {
+      toast.warning('Warning message', 3000, {
+        link: 'https://example.com/warning',
+        linkText: 'Read more'
+      })
+
+      const toasts = get(toast)
+      expect(toasts[0].type).toBe('warning')
+      expect(toasts[0].link).toBe('https://example.com/warning')
+      expect(toasts[0].linkText).toBe('Read more')
+    })
+
+    it('should work with empty options object', () => {
+      toast.show('Test message', 'info', 0, {})
+
+      const toasts = get(toast)
+      expect(toasts[0].link).toBeUndefined()
+      expect(toasts[0].linkText).toBe('Learn more')
+    })
+
+    it('should handle link without linkText in helper methods', () => {
+      toast.info('Info message', 3000, {
+        link: 'https://example.com'
+      })
+
+      const toasts = get(toast)
+      expect(toasts[0].link).toBe('https://example.com')
+      expect(toasts[0].linkText).toBe('Learn more')
+    })
+  })
 })

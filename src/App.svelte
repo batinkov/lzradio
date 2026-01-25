@@ -1,9 +1,11 @@
 <script>
+  import { onMount } from 'svelte'
   import Router from 'svelte-spa-router'
   import { wrap } from 'svelte-spa-router/wrap'
   import { isLoading } from 'svelte-i18n'
   import { setupI18n } from './lib/i18n.js'
   import { initializeTheme } from './lib/theme.js'
+  import { toast } from './lib/toastStore.js'
   import Nav from './components/shared/Nav.svelte'
   import Toast from './components/shared/Toast.svelte'
 
@@ -12,6 +14,27 @@
 
   // Initialize theme
   initializeTheme()
+
+  // Check for version updates and notify user
+  onMount(() => {
+    const currentVersion = __APP_VERSION__
+    const lastSeenVersion = localStorage.getItem('lastSeenVersion')
+
+    // Only show notification if there was a previous version and it's different
+    if (lastSeenVersion && lastSeenVersion !== currentVersion) {
+      toast.info(
+        `New version available: ${currentVersion}`,
+        5000,
+        {
+          link: 'https://github.com/batinkov/lzradio/blob/main/CHANGELOG.md',
+          linkText: 'View changelog'
+        }
+      )
+    }
+
+    // Update last seen version
+    localStorage.setItem('lastSeenVersion', currentVersion)
+  })
 
   // Routes with code splitting - components are loaded on demand
   const routes = {

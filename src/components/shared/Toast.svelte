@@ -1,8 +1,8 @@
 <script>
-  import { toast } from '../../lib/toastStore.js'
+  import { toast as toastStore } from '../../lib/toastStore.js'
   import { fly } from 'svelte/transition'
 
-  $: toasts = $toast
+  $: toasts = $toastStore
 </script>
 
 <div class="toast-container">
@@ -24,10 +24,17 @@
           ℹ
         {/if}
       </div>
-      <div class="toast-message">{toast.message}</div>
+      <div class="toast-message">
+        {toast.message}
+        {#if toast.link}
+          <a href={toast.link} target="_blank" rel="noopener noreferrer" class="toast-link">
+            {toast.linkText}
+          </a>
+        {/if}
+      </div>
       <button
         class="toast-close"
-        on:click={() => toast.dismiss(toast.id)}
+        on:click={() => toastStore.dismiss(toast.id)}
         aria-label="Close notification"
       >
         ✕
@@ -112,6 +119,18 @@
     font-size: 0.875rem;
     line-height: 1.5;
     color: var(--color-text);
+  }
+
+  .toast-link {
+    display: inline-block;
+    margin-left: var(--space-2);
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .toast-link:hover {
+    color: var(--color-primary-hover);
   }
 
   .toast-close {
