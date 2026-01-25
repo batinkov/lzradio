@@ -1,5 +1,5 @@
 <script>
-  import { _ } from 'svelte-i18n'
+  import { _, locale } from 'svelte-i18n'
   import { renderMath } from '../../lib/katex.js'
   import { getAnswerStatus } from '../../lib/examScoring.js'
 
@@ -16,7 +16,7 @@
   $: answerStatus = getAnswerStatus(question, selectedAnswer)
   $: isAnswered = answerStatus !== 'unanswered'
   $: isCorrect = answerStatus === 'correct'
-  $: locale = $_.locale || 'en'
+  $: currentLocale = $locale || 'en'
 </script>
 
 {#if question}
@@ -45,7 +45,7 @@
     {#if question.image}
       <div class="question-image">
         <img
-          src="/images/questions/{locale.startsWith('bg') ? 'bg' : 'en'}/{question.image}"
+          src="/images/questions/{currentLocale.startsWith('bg') ? 'bg' : 'en'}/{question.image}"
           alt="Question diagram"
         />
       </div>

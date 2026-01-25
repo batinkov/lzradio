@@ -185,7 +185,7 @@
 }
 
 .question-image img {
-  max-width: 40%;
+  max-width: 70%;
   height: auto;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -500,6 +500,10 @@
 
   .question-text {
     font-size: 1.125rem;
+  }
+
+  .question-image img {
+    max-width: 100%;
   }
 
   .question-grid {
