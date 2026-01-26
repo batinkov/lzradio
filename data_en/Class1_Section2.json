@@ -1,7 +1,7 @@
 {
     "class": "Amateur Radio Class 1",
     "section": "Section 2 – Codes and Amateur Radio Abbreviations. Rules and Procedures for Amateur Radio Contacts",
-    "update": "Updated syllabus 31.05.2022",
+    "update": "Updated syllabus 11.08.2025",
     "questions": [
         {
             "question_number": 1,
@@ -175,15 +175,15 @@
                 },
                 {
                     "key": "B",
-                    "text": "Repeat everything after.."
+                    "text": "Repeat everything after..."
                 },
                 {
                     "key": "C",
-                    "text": "Repeat everything before.."
+                    "text": "Repeat everything before..."
                 },
                 {
                     "key": "D",
-                    "text": "Repeat everything between.."
+                    "text": "Repeat everything between..."
                 }
             ]
         },
@@ -252,7 +252,7 @@
                 },
                 {
                     "key": "D",
-                    "text": "Who is calling me"
+                    "text": "Who is calling me?"
                 }
             ]
         },
