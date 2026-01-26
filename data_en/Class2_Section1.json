@@ -551,7 +551,7 @@
                 },
                 {
                     "key": "D",
-                    "text": "1/30 ohm"
+                    "text": "$\\dfrac{1}{30}$ ohm"
                 }
             ]
         },
@@ -1327,7 +1327,7 @@
         },
         {
             "question_number": 58,
-            "question_body": "Due to what advantage do many radio amateurs use a 5/8 λ antenna instead of a quarter-wave vertical antenna when operating in VHF bands from a car?",
+            "question_body": "Due to what advantage do many radio amateurs use a $\\dfrac{5}{8}\\lambda$ antenna instead of a quarter-wave vertical antenna when operating in VHF bands from a car?",
             "correct_answer": "B",
             "choices": [
                 {
@@ -1350,7 +1350,7 @@
         },
         {
             "question_number": 59,
-            "question_body": "What is the radiation pattern of a 5/8 λ vertical antenna?",
+            "question_body": "What is the radiation pattern of a $\\dfrac{5}{8}\\lambda$ vertical antenna?",
             "correct_answer": "C",
             "choices": [
                 {
