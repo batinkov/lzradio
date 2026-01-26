@@ -26,8 +26,7 @@ export default [
       '.svelte-kit/',
       'node_modules/',
       'data_bg/',
-      'data_en/',
-      'data_en_debug/'
+      'data_en/'
     ]
   }
 ];
