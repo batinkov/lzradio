@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Working Principles
 
+**Understand Before Implementing**: Before writing any code, verify that you fully understand the task requirements. Check that the task is clear, logical, and makes sense within the project context. If you have any questions, uncertainties, or notice ambiguities, ALWAYS ask the user for clarification first. Never start implementation with unresolved questions. It's better to ask upfront than to build the wrong solution.
+
 **Be Critical, Not Compliant**: The user values honest technical feedback over agreement. Challenge proposals when you see potential issues, suggest alternatives when there are better approaches, and point out trade-offs. Don't hesitate to disagree or recommend a different direction if it leads to a better solution. The goal is rigorous thinking and optimal outcomes, not validation.
+
+**Follow Established Patterns**: Study and follow existing code patterns in the codebase before introducing new approaches. The project has established conventions (storage adapters, pure functions with comprehensive tests, separation of business logic from UI components). Consistency with existing architecture is more valuable than introducing novel patterns. When in doubt, look for similar implementations already in the codebase.
 
 ## Project Overview
 
