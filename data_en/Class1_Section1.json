@@ -1321,7 +1321,7 @@
             "choices": [
                 {
                     "key": "A",
-                    "text": "$f = 1 / LC$"
+                    "text": "$f = \\dfrac{1}{LC}$"
                 },
                 {
                     "key": "B",
@@ -1333,7 +1333,7 @@
                 },
                 {
                     "key": "D",
-                    "text": "$f = \\frac{1}{2\\pi\\sqrt{LC}}$"
+                    "text": "$f = \\dfrac{1}{2\\pi\\sqrt{LC}}$"
                 }
             ]
         },
@@ -1436,11 +1436,11 @@
             "choices": [
                 {
                     "key": "A",
-                    "text": "$Q = R X$"
+                    "text": "$Q = RX$"
                 },
                 {
                     "key": "B",
-                    "text": "$Q = R/X$"
+                    "text": "$Q = \\dfrac{R}{X}$"
                 },
                 {
                     "key": "C",
@@ -1448,7 +1448,7 @@
                 },
                 {
                     "key": "D",
-                    "text": "$Q = R/2\\pi X$"
+                    "text": "$Q = \\dfrac{R}{2\\pi X}$"
                 }
             ]
         },
@@ -1528,11 +1528,11 @@
             "choices": [
                 {
                     "key": "A",
-                    "text": "$\\Delta f = f_p/Q$"
+                    "text": "$\\Delta f = \\dfrac{f_p}{Q}$"
                 },
                 {
                     "key": "B",
-                    "text": "$\\Delta f = Q/f_p$"
+                    "text": "$\\Delta f = \\dfrac{Q}{f_p}$"
                 },
                 {
                     "key": "C",
