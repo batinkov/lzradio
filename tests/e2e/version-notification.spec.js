@@ -23,7 +23,7 @@ test.describe('Version Notification', () => {
     const link = page.locator('.toast a')
     await expect(link).toHaveAttribute(
       'href',
-      'https://github.com/batinkov/lzradio/blob/main/CHANGELOG.md'
+      'https://github.com/batinkov/lzradio/blob/master/CHANGELOG.md'
     )
     await expect(link).toHaveText('View changelog')
     await expect(link).toHaveAttribute('target', '_blank')

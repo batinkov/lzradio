@@ -26,7 +26,7 @@
         `New version available: ${currentVersion}`,
         5000,
         {
-          link: 'https://github.com/batinkov/lzradio/blob/main/CHANGELOG.md',
+          link: 'https://github.com/batinkov/lzradio/blob/master/CHANGELOG.md',
           linkText: 'View changelog'
         }
       )
