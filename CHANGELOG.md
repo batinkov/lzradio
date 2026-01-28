@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.1] - 2026-01-28
+
+### Added
+- Pre-commit hook to enforce email consistency and prevent accidental email leaks
+  - Checks `git config user.email` against expected email
+  - Blocks commits with `GIT_AUTHOR_EMAIL` environment variable override
+  - Warns if `GIT_AUTHOR_NAME` is overridden
+  - Hook stored in `scripts/hooks/pre-commit` (version controlled)
+  - Installed via symbolic link to `.git/hooks/pre-commit`
+
+### Changed
+- Switched default branch from `main` to `master`
+- Updated GitHub Actions deploy workflow to trigger on `master` branch
+
 ## [0.4.0] - 2026-01-28
 
 ### Changed

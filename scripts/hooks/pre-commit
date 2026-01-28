@@ -1,0 +1,58 @@
+#!/bin/bash
+#
+# Pre-commit hook to enforce email and author consistency
+# Prevents commits with incorrect email or author information
+#
+
+EXPECTED_EMAIL="1894862+batinkov@users.noreply.github.com"
+EXPECTED_NAME="batinkov"
+
+echo "🔍 Checking commit author information..."
+
+# Check 1: git config user.email
+CONFIGURED_EMAIL=$(git config user.email)
+if [ -z "$CONFIGURED_EMAIL" ]; then
+    echo "❌ ERROR: No email configured for this repository"
+    echo ""
+    echo "Please configure your email:"
+    echo "  git config user.email \"$EXPECTED_EMAIL\""
+    exit 1
+fi
+
+if [ "$CONFIGURED_EMAIL" != "$EXPECTED_EMAIL" ]; then
+    echo "❌ ERROR: Git config email mismatch!"
+    echo ""
+    echo "Configured: $CONFIGURED_EMAIL"
+    echo "Expected:   $EXPECTED_EMAIL"
+    echo ""
+    echo "To fix this, run:"
+    echo "  git config user.email \"$EXPECTED_EMAIL\""
+    exit 1
+fi
+
+# Check 2: GIT_AUTHOR_EMAIL environment variable
+if [ -n "$GIT_AUTHOR_EMAIL" ] && [ "$GIT_AUTHOR_EMAIL" != "$EXPECTED_EMAIL" ]; then
+    echo "❌ ERROR: GIT_AUTHOR_EMAIL environment variable mismatch!"
+    echo ""
+    echo "GIT_AUTHOR_EMAIL is set to: $GIT_AUTHOR_EMAIL"
+    echo "Expected:                   $EXPECTED_EMAIL"
+    echo ""
+    echo "This prevents using --author or GIT_AUTHOR_EMAIL override."
+    echo "Unset it or use the correct email."
+    exit 1
+fi
+
+# Check 3: GIT_AUTHOR_NAME environment variable (optional but recommended)
+CONFIGURED_NAME=$(git config user.name)
+if [ -n "$GIT_AUTHOR_NAME" ] && [ "$GIT_AUTHOR_NAME" != "$CONFIGURED_NAME" ]; then
+    echo "⚠️  WARNING: GIT_AUTHOR_NAME is overridden"
+    echo ""
+    echo "GIT_AUTHOR_NAME: $GIT_AUTHOR_NAME"
+    echo "Configured name: $CONFIGURED_NAME"
+    echo ""
+    echo "Proceeding, but author name may be inconsistent."
+fi
+
+# All checks passed
+echo "✅ Author information verified: $CONFIGURED_EMAIL"
+exit 0
