@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-01-30
+
+### Added
+- Analytics observer pattern for pageview tracking (infrastructure ready for provider integration)
+- Comprehensive README.md with project overview, quick start, and development guide
+- 23 unit tests for analytics system (377 total tests, up from 297)
+
+### Changed
+- Updated CLAUDE.md with analytics documentation and test count
+
 ## [0.4.2] - 2026-01-28
 
 ### Fixed

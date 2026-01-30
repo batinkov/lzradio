@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { createStorageAdapter, createMockStorage } from './storageAdapter.js'
 
 describe('storageAdapter', () => {
@@ -228,12 +228,33 @@ describe('storageAdapter', () => {
   })
 
   describe('error handling', () => {
+    let consoleWarnSpy
+    let consoleErrorSpy
+
+    beforeEach(() => {
+      // Suppress console output during error handling tests
+      consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+      consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    })
+
+    afterEach(() => {
+      // Restore console
+      consoleWarnSpy.mockRestore()
+      consoleErrorSpy.mockRestore()
+    })
+
     it('should handle JSON parse errors gracefully', () => {
       // Directly set invalid JSON
       storage.setItem('invalid', 'not valid json {[')
 
       expect(adapter.get('invalid')).toBeNull()
       expect(adapter.get('invalid', 'fallback')).toBe('fallback')
+
+      // Verify error was logged (even though we mocked it)
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        expect.stringContaining('Failed to get item "invalid" from storage'),
+        expect.any(Error)
+      )
     })
 
     it('should handle set failures gracefully', () => {
@@ -249,6 +270,12 @@ describe('storageAdapter', () => {
 
       const failingAdapter = createStorageAdapter(failingStorage)
       expect(failingAdapter.set('key', 'value')).toBe(false)
+
+      // Verify error was logged
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        expect.stringContaining('Failed to set item "key" in storage'),
+        expect.any(Error)
+      )
     })
   })
 

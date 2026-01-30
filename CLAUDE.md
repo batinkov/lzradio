@@ -55,7 +55,7 @@ npm run test:ui
 npm run test:e2e
 ```
 
-**Test Coverage:** 297 passing unit tests across all business logic modules.
+**Test Coverage:** 377 passing unit tests across all business logic modules.
 
 ### Linting
 ```bash
@@ -98,6 +98,8 @@ Fully client-side single-page application (SPA). No backend server. All data sto
   - `importValidator.js` - Validate LogBook import JSON files (tested)
   - `importStatistics.js` - Calculate import statistics and detect duplicates (tested)
   - `toastStore.js` - Toast notification system (tested)
+  - `analytics.js` - Analytics observer pattern for pageview tracking (tested)
+  - `analyticsProviders.js` - Analytics provider registration (dev logger active in dev mode)
   - `storage/` - Storage adapter architecture:
     - `storageAdapter.js` - Base adapter with unified API (tested)
     - `localStorage.js` - LocalStorage adapter
@@ -182,6 +184,19 @@ None. Fully offline-capable. No external APIs or services.
 ### Design System
 CSS variables in `src/app.css` define colors, spacing, typography, shadows. All components use these variables for consistency.
 
+### Testing Conventions
+- **Unit tests** co-located with source files (`filename.test.js` next to `filename.js`)
+- **E2E tests** in separate `tests/e2e/` directory
+- **Pure functions** in `src/lib/` are fully tested with comprehensive coverage
+- **Console mocking** for error handling tests:
+  - Use `vi.spyOn(console, 'error').mockImplementation()` in `beforeEach`
+  - Restore with `mockRestore()` in `afterEach`
+  - Verify logging with assertions: `expect(spy).toHaveBeenCalledWith(...)`
+  - Keeps test output clean while ensuring errors are properly logged
+  - See `storageAdapter.test.js` and `analytics.test.js` for examples
+- **Test organization**: Group related tests in `describe` blocks with clear names
+- **Naming**: Test descriptions should complete the sentence "it should..."
+
 ## Implementation Status
 
 ### ✅ Completed Features
@@ -222,14 +237,16 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 **Architecture & Code Quality:**
 - Business logic separation from UI components
 - Storage adapter architecture (LocalStorage, SessionStorage)
+- Analytics observer pattern for extensible pageview tracking
 - Type-safe URL parameter parsing
 - Navigation guard system
 - Loading states for async operations
-- Testing framework (Vitest) with 297 passing unit tests
+- Testing framework (Vitest) with 377 passing unit tests
   - importValidator.js (40 tests) ✅
   - urlParams.js (33 tests)
   - storageAdapter.js (31 tests)
   - toastStore.js (27 tests) ✅
+  - analytics.js (23 tests) ✅
   - callsignParser.js (23 tests) ✅
   - navigationGuard.js (23 tests)
   - examProgress.js (22 tests)

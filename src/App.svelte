@@ -1,11 +1,13 @@
 <script>
   import { onMount } from 'svelte'
-  import Router from 'svelte-spa-router'
+  import Router, { location } from 'svelte-spa-router'
   import { wrap } from 'svelte-spa-router/wrap'
   import { isLoading } from 'svelte-i18n'
   import { setupI18n } from './lib/i18n.js'
   import { initializeTheme } from './lib/theme.js'
   import { toast } from './lib/toastStore.js'
+  import { analytics } from './lib/analytics.js'
+  import './lib/analyticsProviders.js' // Register analytics providers
   import Nav from './components/shared/Nav.svelte'
   import Toast from './components/shared/Toast.svelte'
 
@@ -34,6 +36,27 @@
 
     // Update last seen version
     localStorage.setItem('lastSeenVersion', currentVersion)
+  })
+
+  // Track pageviews for analytics
+  onMount(() => {
+    let isInitialCall = true
+
+    // Subscribe to route changes
+    // Note: subscription fires immediately with current value, then on each change
+    const unsubscribe = location.subscribe(newLocation => {
+      if (isInitialCall) {
+        // Track initial page load
+        isInitialCall = false
+        analytics.trackPageview(newLocation)
+      } else {
+        // Track subsequent route changes
+        analytics.trackPageview(newLocation)
+      }
+    })
+
+    // Cleanup subscription on component destroy
+    return unsubscribe
   })
 
   // Routes with code splitting - components are loaded on demand
