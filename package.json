@@ -1,7 +1,7 @@
 {
   "name": "lzradio",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "maintainer": {
     "callsign": "LZ3DY",
     "github": "batinkov/lzradio"

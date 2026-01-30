@@ -47,16 +47,27 @@ if (import.meta.env.DEV) {
  *    <script data-goatcounter="https://YOURCODE.goatcounter.com/count"
  *            async src="//gc.zgo.at/count.js"></script>
  * 3. Uncomment below:
- *
- * export const goatcounterProvider = (path) => {
- *   if (window.goatcounter) {
- *     window.goatcounter.count({
- *       path: '/#' + path  // Add hash prefix for hash-based routing
- *     })
- *   }
- * }
- * analytics.register(goatcounterProvider)
  */
+
+export const goatcounterProvider = (path) => {
+  // Retry mechanism to handle script loading timing
+  let retries = 0
+  const maxRetries = 10
+
+  const tryTrack = () => {
+    if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+      window.goatcounter.count({
+        path: '/#' + path  // Add hash prefix for hash-based routing
+      })
+    } else if (retries < maxRetries) {
+      retries++
+      setTimeout(tryTrack, 100)
+    }
+  }
+
+  tryTrack()
+}
+analytics.register(goatcounterProvider)
 
 /*
  * Plausible Analytics Provider (Manual Mode)
