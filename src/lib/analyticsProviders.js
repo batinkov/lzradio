@@ -110,15 +110,32 @@ analytics.register(goatcounterProvider)
  * 1. Sign up at https://umami.is or self-host
  * 2. Add to index.html:
  *    <script defer src="https://your-umami-instance.com/script.js"
- *            data-website-id="your-website-id"></script>
+ *            data-website-id="your-website-id"
+ *            data-auto-track="false"></script>
  * 3. Uncomment below:
- *
- * export const umamiProvider = (path) => {
- *   if (window.umami) {
- *     window.umami.track({
- *       url: '/#' + path
- *     })
- *   }
- * }
- * analytics.register(umamiProvider)
  */
+
+export const umamiProvider = (path) => {
+  // Skip localhost to prevent development data pollution
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return
+  }
+
+  // Retry mechanism to handle script loading timing
+  let retries = 0
+  const maxRetries = 10
+
+  const tryTrack = () => {
+    if (window.umami && typeof window.umami.track === 'function') {
+      // Umami manual pageview tracking - uses callback function pattern
+      // See: https://umami.is/docs/tracker-functions
+      window.umami.track(props => ({ ...props, url: '/#' + path }))
+    } else if (retries < maxRetries) {
+      retries++
+      setTimeout(tryTrack, 100)
+    }
+  }
+
+  tryTrack()
+}
+analytics.register(umamiProvider)
