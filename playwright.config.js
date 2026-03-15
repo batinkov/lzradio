@@ -1,4 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
+import { existsSync } from 'fs';
+
+function getChromiumPath() {
+  if (process.env.PLAYWRIGHT_CHROMIUM_PATH) return process.env.PLAYWRIGHT_CHROMIUM_PATH;
+  const systemPaths = ['/usr/bin/chromium-browser', '/usr/bin/chromium', '/usr/bin/google-chrome'];
+  return systemPaths.find((p) => existsSync(p)) || undefined;
+}
+
+const executablePath = getChromiumPath();
 
 /**
  * Playwright configuration for LZ Radio e2e tests
@@ -38,7 +47,10 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        ...(executablePath && { launchOptions: { executablePath } }),
+      },
     },
   ],
 
