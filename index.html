@@ -6,17 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LZ Radio - Amateur Radio Tools</title>
 
-    <!-- GoatCounter Analytics -->
-    <script>window.goatcounter = { no_onload: true }</script>
-    <script data-goatcounter="https://batinkov.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
+    <!-- Analytics (GoatCounter + Umami): only on the production host.
+         Avoids contacting external CDNs from local dev / e2e / preview deploys,
+         which can hang the page `load` event when those CDNs are slow. -->
+    <script>
+      (function () {
+        var host = location.hostname;
+        if (host !== 'lzradio.eu' && host !== 'www.lzradio.eu') return;
 
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js"
-            data-website-id="4e4c5f3a-53ba-4876-a8ef-35441bf41d0f"
-            data-host-url="https://cloud.umami.is"
-            data-domains="lzradio.eu"
-            data-auto-track="false"></script>
+        window.goatcounter = { no_onload: true };
+        var gc = document.createElement('script');
+        gc.async = true;
+        gc.src = '//gc.zgo.at/count.js';
+        gc.setAttribute('data-goatcounter', 'https://batinkov.goatcounter.com/count');
+        document.head.appendChild(gc);
+
+        var um = document.createElement('script');
+        um.defer = true;
+        um.src = 'https://cloud.umami.is/script.js';
+        um.setAttribute('data-website-id', '4e4c5f3a-53ba-4876-a8ef-35441bf41d0f');
+        um.setAttribute('data-host-url', 'https://cloud.umami.is');
+        um.setAttribute('data-domains', 'lzradio.eu');
+        um.setAttribute('data-auto-track', 'false');
+        document.head.appendChild(um);
+      })();
+    </script>
   </head>
   <body>
     <div id="app"></div>

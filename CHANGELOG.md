@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.3] - 2026-04-25
+
+### Fixed
+- Analytics scripts (GoatCounter, Umami) now only load on the production host (`lzradio.eu` / `www.lzradio.eu`); external CDN requests no longer happen in local development, preview deploys, or e2e tests, fixing intermittent test flakes caused by slow CDN responses delaying the page `load` event
+- E2E tests now use a system-installed Chromium when available, with fallback to Playwright's bundled browser (Fedora compatibility, supports `PLAYWRIGHT_CHROMIUM_PATH` env override)
+
+### Added
+- Playwright e2e fixture (`tests/e2e/fixtures.js`) that blocks analytics requests at the network layer as defense in depth; all 10 spec files now import `test`/`expect` from this fixture
+
+### Changed
+- E2E dev server pinned to port 5173 with `--strictPort` to fail loudly on port conflicts instead of silently binding to another port
+- Dependency bumps: `svelte` 5.53.0 → 5.53.12, `vite` 6.4.1 → 6.4.2, plus transitive updates (`rollup`, `postcss`, `minimatch`, `picomatch`, `flatted`, `devalue`)
+
 ## [0.5.2] - 2026-01-30
 
 ### Added
