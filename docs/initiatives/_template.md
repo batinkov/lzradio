@@ -1,9 +1,10 @@
 # <Initiative name>
 
+_One-page brief — one per initiative, in `docs/initiatives/`._
+
 <!--
-One initiative per file: docs/initiatives/<name>.md
 Keep the whole thing to about one screen. If it's growing, move detail into
-GitHub issues — the board is for backlog detail, this doc is the stable frame.
+GitHub issues — the board is for backlog detail, the brief is the stable frame.
 See docs/ways-of-working.md for how the two fit together.
 -->
 
