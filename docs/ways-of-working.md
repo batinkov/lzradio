@@ -26,16 +26,18 @@ call**, so an async disagreement never deadlocks.
 When in doubt about which bucket a decision falls in, the person who'd own the
 *consequence* owns the call.
 
-## The board vs. the docs
+## The board vs. the brief
+
+Each initiative has a one-page **brief** in `docs/initiatives/<name>.md`.
 
 - **GitHub Project board** = the backlog. Priorities, grooming, issue detail.
-  The PO's domain. This is the "what's happening now" view.
-- **`docs/`** = the stable frame and the paper trail. Why the initiative
+  The PO/PM's domain. This is the "what's happening now" view.
+- **The brief** = the stable frame and the paper trail. Why the initiative
   exists, what's out of scope, and what we decided along the way.
 
-Backlog detail must not leak into the initiative doc, and strategy must not live
-only in issue comments. If either happens, we have two half-maintained versions
-of the truth.
+Backlog detail must not leak into the brief, and strategy must not live only in
+issue comments. If either happens, we have two half-maintained versions of the
+truth.
 
 ## Definition of Ready
 
