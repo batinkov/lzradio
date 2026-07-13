@@ -1,6 +1,6 @@
 # <Initiative name>
 
-_One-page brief — one per initiative, in `docs/initiatives/`._
+_One-page brief — one per initiative, saved as `docs/initiatives/<name>/README.md`._
 
 <!--
 Keep the whole thing to about one screen. If it's growing, move detail into
