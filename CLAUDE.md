@@ -10,6 +10,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Follow Established Patterns**: Study and follow existing code patterns in the codebase before introducing new approaches. The project has established conventions (storage adapters, pure functions with comprehensive tests, separation of business logic from UI components). Consistency with existing architecture is more valuable than introducing novel patterns. When in doubt, look for similar implementations already in the codebase.
 
+## GitHub CLI (`gh`) Safety
+
+**Never run destructive `gh` commands.** When working with GitHub from the CLI, you may create, read, and update (create issues/projects, add or edit items and fields, comment, change status). You must NEVER delete or otherwise destroy GitHub resources. Explicitly forbidden without a fresh, explicit, per-instance confirmation from the user in the current conversation:
+
+- Deleting Projects, project items, or fields (`gh project delete`, `gh project item-delete`, `gh project field-delete`)
+- Deleting repositories, issues, releases, or comments (`gh repo delete`, `gh issue delete`, `gh release delete`, etc.)
+- Closing/archiving Projects or issues in bulk, force-pushing, deleting branches, or editing Actions workflows
+- Any `gh api`/`gh api graphql` call that performs a delete/destroy mutation
+
+If a task seems to require one of these, stop and ask the user to run it themselves or to explicitly confirm. Read/create/update only, by default.
+
 ## Project Overview
 
 LZ Radio is a fully client-side web application for amateur radio operators. It provides:
