@@ -28,7 +28,9 @@ When in doubt about which bucket a decision falls in, the person who'd own the
 
 ## The board vs. the brief
 
-Each initiative has a one-page **brief** in `docs/initiatives/<name>.md`.
+Each initiative has its own folder, `docs/initiatives/<name>/`, whose `README.md`
+is the one-page **brief** (it renders as the folder's landing page). Any
+supporting artifacts (research notes, etc.) live in subfolders alongside it.
 
 - **GitHub Project board** = the backlog. Priorities, grooming, issue detail.
   The PO/PM's domain. This is the "what's happening now" view.
