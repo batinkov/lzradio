@@ -13,10 +13,22 @@ anyone mid-QSO, often has to look them up somewhere off-app. LZ Radio already
 serves LZ operators (LogBook, exam prep); a quick, offline, bilingual codes
 reference is a natural, low-cost addition that keeps them in one app.
 
+People reach for it three ways:
+
+- **Forward lookup** — I have the code, I want the meaning. (Hear "tell me your
+  QTH" on the radio, don't know what QTH is.)
+- **Reverse lookup** — I have the meaning, I want the code. (Know there's a
+  Q-code for location, search "location" to find `QTH`.)
+- **Browse** — no target in mind, just show me what exists and let me learn.
+
 ## Goals
 
 - A standalone reference page listing the common on-air codes with their
-  meanings, searchable/filterable, in both English and Bulgarian.
+  meanings, in both English and Bulgarian, supporting all three access patterns:
+  forward lookup (by code), **reverse lookup (by meaning/keyword)**, and browse.
+  Reverse lookup is called out because it's the non-trivial one — it means
+  searching over meaning text, not just code strings, and it must not get
+  dropped under time pressure.
 - Q-codes represented in **both** forms — the interrogative and the affirmative
   (`QRM?` = "Are you being interfered with?" / `QRM.` = "I am being
   interfered with") — so the reference is actually correct, not flattened.
@@ -51,6 +63,11 @@ route. No per-user behaviour is tracked, by design.
 
 <!-- Newest at top. Items below are proposed, pending PO/PM sign-off. -->
 
+- **2026-07-20** — Scoped the brief around three access patterns (forward /
+  reverse / browse) from PO/PM use cases. Reverse lookup implies searching
+  Bulgarian meaning text too, not just English — "search location" has to work
+  in both languages or the feature silently works in one. Flagged here so it
+  doesn't surprise us at build time; the search index must cover `data_bg/`.
 - **2026-07-12** — _Proposed:_ model Q-codes as `{ code, question, answer }`
   from day one. Costs nothing now; retrofitting the dual form later means
   touching every row in both languages.
