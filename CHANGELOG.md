@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.5] - 2026-08-18
+
+Infrastructure release. No application source changes.
+
+### Changed
+- Deployment is now triggered by pushing a semver tag (`vX.Y.Z`) instead of by pushing to `master`, so the version shown in the app always matches the deployed build
+- Split CI and deployment into separate workflows: `.github/workflows/ci.yml` runs on `master` pushes and pull requests; `.github/workflows/deploy.yml` runs only on tag pushes
+- CI now runs ESLint in addition to unit tests and the production build; linting previously ran only locally
+
+### Added
+- Release guards in the deploy workflow: the tag must be strict semver, must match `version` in `package.json`, and must be an ancestor of `master`
+- Prerelease tags (`vX.Y.Z-rc.1`) are filtered out and never trigger a deployment
+- CI warning when `master` has commits that have not been released
+- `Release Process` section in `CLAUDE.md` documenting the tag-based release steps
+
+### Fixed
+- README deployment section described a `gh-pages` branch that has never existed; the project uses GitHub Pages artifact deployment
+
 ## [0.5.4] - 2026-08-18
 
 Maintenance release. No application source changes — dependency updates only.
