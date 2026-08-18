@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.4] - 2026-08-18
+
+Maintenance release. No application source changes — dependency updates only.
+
+### Security
+- Resolved `npm_and_yarn` advisories in build/test tooling: `brace-expansion` 1.1.12 → 1.1.18, `js-yaml` 4.1.1 → 4.3.1, `postcss` 8.5.15 → 8.5.26, `devalue` 5.6.4 → 5.8.1
+- Known remaining (all development-only, not shipped in `dist/`): `flatted` / `yaml` transitives via `@vitest/ui` and `postcss-load-config`, and `esbuild` via `svelte-i18n` (dev-server advisory; fix requires a breaking `svelte-i18n` downgrade)
+
+### Changed
+- Build tooling major upgrades: `vite` 6.4.2 → 8.0.16, `@sveltejs/vite-plugin-svelte` 5.0.2 → 7.1.2
+- Dependency bumps: `svelte` 5.53.12 → 5.55.7, `vitest` 4.0.8 → 4.1.0
+- Verified against the upgraded toolchain: lint clean, 377/377 unit tests passing, production build succeeds
+
 ## [0.5.3] - 2026-04-25
 
 ### Fixed
