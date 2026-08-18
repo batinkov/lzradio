@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Note unreleased commits
+        if: github.ref == 'refs/heads/master'
+        run: |
+          LAST=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST" ]; then
+            echo "No tags found; skipping release-drift check."
+            exit 0
+          fi
+          N=$(git rev-list --count "$LAST"..HEAD)
+          if [ "$N" -gt 0 ]; then
+            echo "::warning::$N commit(s) on master since $LAST are not released. Tag to deploy."
+          else
+            echo "master is level with $LAST."
+          fi

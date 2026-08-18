@@ -193,13 +193,25 @@ Uses hash-based routing (`/#/page`) for compatibility with static hosting (GitHu
 
 ## 🚢 Deployment
 
-The application is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the `master` branch.
+The application is deployed to [GitHub Pages](https://lzradio.eu) via GitHub Actions when a semver tag (`vX.Y.Z`) is pushed. Pushing to `master` runs CI only — it does **not** deploy.
 
-**Deployment Workflow:**
-1. Push to `master` branch
-2. GitHub Actions triggers build (`npm run build`)
-3. Build artifacts deployed to `gh-pages` branch
-4. Available at [lzradio.eu](https://lzradio.eu)
+**Release Workflow:**
+1. Merge work to `master` — CI runs lint, unit tests, and build
+2. Bump `version` in `package.json` and add a `CHANGELOG.md` entry
+3. Commit, then tag: `git tag -a vX.Y.Z -m "Release X.Y.Z"`
+4. Push both: `git push origin master && git push origin vX.Y.Z`
+5. The deploy workflow verifies the tag before building:
+   - strict semver (`vX.Y.Z`, no prerelease suffix)
+   - matches `version` in `package.json`
+   - the tagged commit is an ancestor of `master`
+
+Prerelease tags (`v1.2.3-rc.1`) are ignored and never trigger a deploy.
+
+**Workflows:**
+| File | Trigger | Does |
+| --- | --- | --- |
+| `.github/workflows/ci.yml` | push to `master`, pull requests | lint, unit tests, build |
+| `.github/workflows/deploy.yml` | push of a `vX.Y.Z` tag | verify, build, publish to Pages |
 
 **Manual Deployment:**
 ```bash
