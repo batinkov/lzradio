@@ -1,13 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
-import { existsSync } from 'fs';
 
-function getChromiumPath() {
-  if (process.env.PLAYWRIGHT_CHROMIUM_PATH) return process.env.PLAYWRIGHT_CHROMIUM_PATH;
-  const systemPaths = ['/usr/bin/chromium-browser', '/usr/bin/chromium', '/usr/bin/google-chrome'];
-  return systemPaths.find((p) => existsSync(p)) || undefined;
-}
-
-const executablePath = getChromiumPath();
+// Use the Chromium build that Playwright pins, so results are identical on
+// every machine and in CI. Set PLAYWRIGHT_CHROMIUM_PATH to override when the
+// bundled browser cannot run (e.g. missing system libraries on a distro
+// Playwright does not ship dependencies for).
+const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH || undefined;
 
 /**
  * Playwright configuration for LZ Radio e2e tests
