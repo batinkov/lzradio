@@ -17,7 +17,7 @@ test.describe('Version Notification', () => {
     await page.waitForSelector('.toast', { timeout: 3000 })
 
     // Should contain version update message
-    await expect(page.locator('.toast')).toContainText('New version available')
+    await expect(page.locator('.toast')).toContainText('Updated to')
 
     // Check link attributes
     const link = page.locator('.toast a')
@@ -28,6 +28,30 @@ test.describe('Version Notification', () => {
     await expect(link).toHaveText('View changelog')
     await expect(link).toHaveAttribute('target', '_blank')
     await expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+  })
+
+  test('should show the toast in Bulgarian when that locale is selected', async ({ page }) => {
+    // Translations load asynchronously, so the toast must wait for the locale
+    // before rendering. A missing key falls back to English rather than
+    // failing loudly, producing a silently mixed-language toast.
+    await page.addInitScript(() => {
+      // The language preference goes through localStorageAdapter, which
+      // JSON-serializes; lastSeenVersion is written as a raw string.
+      localStorage.setItem('lzradio-language', JSON.stringify('bg'))
+      localStorage.setItem('lastSeenVersion', '0.0.0')
+    })
+
+    await page.goto('/')
+
+    await page.waitForSelector('.toast', { timeout: 3000 })
+
+    // Bulgarian message, with the current version interpolated
+    const toast = page.locator('.toast')
+    await expect(toast).toContainText('Обновено до')
+    await expect(toast).not.toContainText('about.updatedTo')
+
+    // Link text is translated too
+    await expect(page.locator('.toast a')).toHaveText('Виж промените')
   })
 
   test('should not show toast for first-time users', async ({ page }) => {

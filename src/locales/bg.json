@@ -58,7 +58,9 @@
     "generalFeedback": "Обща обратна връзка",
     "openSource": "Отворен код",
     "license": "MIT Лиценз",
-    "viewOnGitHub": "Виж в GitHub"
+    "viewOnGitHub": "Виж в GitHub",
+    "updatedTo": "Обновено до {version}",
+    "viewChangelog": "Виж промените"
   },
   "logbook": {
     "title": "Дневник",
@@ -122,7 +124,12 @@
     },
     "alphaBanner": {
       "message": "Използвайте внимателно. Експортирайте редовно."
-    }
+    },
+    "settingsSaveFailed": "Грешка при запазване на настройките. Моля, опитайте отново.",
+    "importFailed": "Грешка при импортиране на контактите. Моля, опитайте отново.",
+    "importSuccess": "Импортиран {count} контакт",
+    "importSuccessPlural": "Импортирани {count} контакта",
+    "dateRangeTo": "до"
   },
   "exam": {
     "title": "Подготовка за изпит",

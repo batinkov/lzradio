@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import Router, { location } from 'svelte-spa-router'
   import { wrap } from 'svelte-spa-router/wrap'
-  import { isLoading } from 'svelte-i18n'
+  import { isLoading, waitLocale, _ } from 'svelte-i18n'
   import { setupI18n } from './lib/i18n.js'
   import { initializeTheme } from './lib/theme.js'
   import { toast } from './lib/toastStore.js'
@@ -17,19 +17,21 @@
   // Initialize theme
   initializeTheme()
 
-  // Check for version updates and notify user
-  onMount(() => {
+  // Notify the user that the app has updated to a new version
+  onMount(async () => {
     const currentVersion = __APP_VERSION__
     const lastSeenVersion = localStorage.getItem('lastSeenVersion')
 
-    // Only show notification if there was a previous version and it's different
+    // Only notify if a previous version was seen and it differs from this one
     if (lastSeenVersion && lastSeenVersion !== currentVersion) {
+      // Translations load asynchronously; wait so the toast is not shown untranslated
+      await waitLocale()
       toast.info(
-        `New version available: ${currentVersion}`,
+        $_('about.updatedTo', { values: { version: currentVersion } }),
         5000,
         {
           link: 'https://github.com/batinkov/lzradio/blob/master/CHANGELOG.md',
-          linkText: 'View changelog'
+          linkText: $_('about.viewChangelog')
         }
       )
     }

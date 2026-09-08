@@ -39,7 +39,7 @@
       onClose()
     } catch (error) {
       console.error('Failed to save settings:', error)
-      toast.error('Failed to save settings. Please try again.')
+      toast.error($_('logbook.settingsSaveFailed'))
     } finally {
       saving = false
     }

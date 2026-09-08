@@ -110,7 +110,9 @@
       // Calculate date range
       const dates = allContacts.map((c) => c.date).sort()
       const dateRange =
-        dates.length > 1 ? `${dates[0]} to ${dates[dates.length - 1]}` : dates[0]
+        dates.length > 1
+          ? `${dates[0]} ${$_('logbook.dateRangeTo')} ${dates[dates.length - 1]}`
+          : dates[0]
 
       // Create blob and download
       const blob = new Blob([jsonString], { type: 'application/json' })
@@ -213,17 +215,20 @@
 
       // Show success toast
       const contactCount = importStatistics.newCount
-      const contactLabel = contactCount === 1 ? 'contact' : 'contacts'
+      const importedLabel = $_(
+        contactCount === 1 ? 'logbook.importSuccess' : 'logbook.importSuccessPlural',
+        { values: { count: contactCount } }
+      )
 
       if (shouldSetCallsign) {
         // Show special message when callsign was auto-set
         toast.success(
-          `✓ Imported ${contactCount} ${contactLabel} • ${$_('logbook.importCallsignSet')} ${shouldSetCallsign}`,
+          `✓ ${importedLabel} • ${$_('logbook.importCallsignSet')} ${shouldSetCallsign}`,
           4000
         )
       } else {
         // Regular success message
-        toast.success(`✓ Imported ${contactCount} ${contactLabel}`, 3000)
+        toast.success(`✓ ${importedLabel}`, 3000)
       }
 
       // Close modal and reset state
@@ -232,7 +237,7 @@
       shouldSetCallsign = null
     } catch (error) {
       console.error('Failed to import contacts:', error)
-      toast.error('Failed to import contacts. Please try again.')
+      toast.error($_('logbook.importFailed'))
     } finally {
       importing = false
     }

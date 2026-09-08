@@ -58,7 +58,9 @@
     "generalFeedback": "General Feedback",
     "openSource": "Open Source",
     "license": "MIT License",
-    "viewOnGitHub": "View on GitHub"
+    "viewOnGitHub": "View on GitHub",
+    "updatedTo": "Updated to {version}",
+    "viewChangelog": "View changelog"
   },
   "logbook": {
     "title": "LogBook",
@@ -122,7 +124,12 @@
     },
     "alphaBanner": {
       "message": "Use with caution. Export your data regularly."
-    }
+    },
+    "settingsSaveFailed": "Failed to save settings. Please try again.",
+    "importFailed": "Failed to import contacts. Please try again.",
+    "importSuccess": "Imported {count} contact",
+    "importSuccessPlural": "Imported {count} contacts",
+    "dateRangeTo": "to"
   },
   "exam": {
     "title": "Exam Preparation",
