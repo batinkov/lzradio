@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.6] - 2026-09-08
+
+Infrastructure release. No application source changes.
+
+### Added
+- E2E tests now run in CI on `master` pushes and pull requests; the Playwright HTML report is uploaded as an artifact when the job fails
+
+### Changed
+- Playwright always uses its own pinned Chromium build instead of searching `/usr/bin` for a system browser, so results are identical locally and in CI (`PLAYWRIGHT_CHROMIUM_PATH` remains as an override)
+- Dependency bump: `postcss-selector-parser` 7.1.0 → 7.1.6 (transitive, development only)
+
 ## [0.5.5] - 2026-08-18
 
 Infrastructure release. No application source changes.
