@@ -10,6 +10,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Follow Established Patterns**: Study and follow existing code patterns in the codebase before introducing new approaches. The project has established conventions (storage adapters, pure functions with comprehensive tests, separation of business logic from UI components). Consistency with existing architecture is more valuable than introducing novel patterns. When in doubt, look for similar implementations already in the codebase.
 
+## Git and GitHub Safety
+
+**Claude uses git and `gh` in read-only mode.** Any command that changes the
+working tree, the index, local history, or anything on the remote is performed
+by the user, not by Claude.
+
+Claude may run **local, read-only** git: `status`, `log`, `diff`, `show`,
+`describe`, `branch` (listing), `tag` (listing and inspection — `git tag`, `-l`,
+`--sort=`, `--contains`, `--points-at`, `--merged`), `for-each-ref`, `rev-list`,
+`merge-base`, and read-only `gh` (`view`, `list`, `status`, `gh api` without a
+write method).
+
+Claude must not run: `add`, `commit`, `checkout`, `switch`, `push`, `pull`,
+`fetch`, `config`, `remote`, `ls-remote`, `merge`, `rebase`, `reset`, `restore`,
+`revert`, `stash`, `cherry-pick`, `clean`, `rm`, `mv`, `apply`, tag creation or
+deletion, branch deletion or rename, `worktree`/`submodule` mutations, or any
+`gh` subcommand that creates, edits, closes, merges, or deletes.
+
+Some of these are blocked despite leaving the working tree alone: `fetch`
+rewrites remote-tracking refs, `config` cannot be split into read and write
+forms by a prefix rule, and `remote`/`ls-remote` contact or describe the remote,
+which is the user's business.
+
+**Consequence to state honestly:** Claude cannot observe the remote at all. Any
+claim about whether a branch is in sync with `origin` rests on the
+remote-tracking refs left by the user's last fetch, and must be described that
+way rather than as current fact.
+
+## Installing Software
+
+**Claude does not install, remove, or update software.** When something is
+missing or out of date, Claude reports the exact command and the user runs it.
+
+Blocked: `npm install` / `i` / `ci` / `uninstall` / `update` / `link` /
+`publish` / `prune` / `dedupe`, `npm audit fix`, `npm pkg set|delete`,
+`npx playwright install`, `npx -y`, the equivalents in `yarn`/`pnpm`/`bun`,
+`pip`/`cargo`/`go`/`gem` installs, every system package manager
+(`dnf`, `apt`, `rpm`, `brew`, `flatpak`, `snap`, …), `sudo` and `doas`, and
+piping a downloaded script into a shell (`curl … | sh`).
+
+Still available: `npm run <script>`, `npm test`, `npm audit` (reporting only),
+`npm ls`, `npm pkg get`, and `npx` invocations of already-installed local
+binaries such as `npx playwright test`, `npx vitest run`, `npx prettier`.
+
+This matters after merging a Dependabot PR: the lockfile changes but
+`node_modules` does not, so Claude will say local dependencies are stale and
+name `npm ci` rather than running it.
+
+When such a command is needed, print it for the user to run and explain what it
+does. Do not propose working around the restriction, and never suggest a
+force-push or a tag rewrite as a routine step.
+
+This is enforced, not advisory: `permissions.deny` in `.claude/settings.json`
+blocks these by prefix, and `.claude/hooks/block-git-writes.sh` is a PreToolUse
+hook that also catches compound commands (`cd x && git push`), leading env
+assignments, and `gh api -X POST`. The hook matches command text, so a command
+that merely *mentions* a blocked verb in a quoted string is refused too — write
+such text to a file rather than embedding it in a shell command.
+
 ## Project Overview
 
 LZ Radio is a fully client-side web application for amateur radio operators. It provides:
