@@ -25,11 +25,11 @@
     "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.63.0",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@vitest/ui": "^5.0.0",
-    "eslint": "^9.39.1",
+    "eslint": "^10.10.0",
     "eslint-plugin-svelte": "^3.23.0",
     "fake-indexeddb": "^6.2.5",
     "globals": "^17.12.0",
