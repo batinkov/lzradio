@@ -25,6 +25,29 @@ updates:
       prefix-development: chore
       include: scope
     groups:
+      # Some families publish their packages with exact cross-pins, so a major
+      # cannot move one package at a time. vitest@4.1.0 depends on
+      # "@vitest/mocker": "4.1.0" and @vitest/ui@4.1.0 peer-depends on
+      # "vitest": "4.1.0" — all exact. Splitting that major produced three
+      # individually-red PRs (#15, #20, #21) that were really one upgrade.
+      # eslint@9.39.1 pins "@eslint/js": "9.39.1" the same way.
+      #
+      # Scoped to major only: minor and patch already travel together in the
+      # dev group below, so this adds no extra weekly PR. Listed first, because
+      # a dependency joins the first group whose criteria it matches.
+      vitest:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+        update-types:
+          - major
+      eslint:
+        patterns:
+          - "eslint"
+          - "@eslint/*"
+          - "eslint-plugin-*"
+        update-types:
+          - major
       production-dependencies:
         dependency-type: production
         update-types:
