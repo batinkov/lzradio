@@ -26,17 +26,17 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@playwright/test": "^1.56.1",
-    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "@playwright/test": "^1.63.0",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@vitest/ui": "^5.0.0",
     "eslint": "^9.39.1",
-    "eslint-plugin-svelte": "^3.13.0",
+    "eslint-plugin-svelte": "^3.23.0",
     "fake-indexeddb": "^6.2.5",
     "globals": "^16.5.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.9.6",
     "prettier-plugin-svelte": "^3.4.0",
-    "svelte": "^5.55.7",
-    "vite": "^8.0.16",
+    "svelte": "^5.57.0",
+    "vite": "^8.2.2",
     "vitest": "^5.0.0"
   },
   "dependencies": {
