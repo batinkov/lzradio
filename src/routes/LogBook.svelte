@@ -71,7 +71,7 @@
       contactToDelete = null
     } catch (error) {
       console.error('Failed to delete contact:', error)
-      alert('Failed to delete contact. Please try again.')
+      toast.error($_('logbook.deleteFailed'))
     } finally {
       deleting = false
     }
@@ -158,7 +158,7 @@
         try {
           data = JSON.parse(text)
         } catch {
-          alert('Invalid JSON file. Please select a valid LZ Radio export file.')
+          toast.error($_('logbook.importInvalidJson'))
           return
         }
 
@@ -166,7 +166,12 @@
         const userCallsign = getStationCallsign()
         const validation = validateImportData(data, userCallsign)
         if (!validation.valid) {
-          alert(`Import validation failed: ${validation.error}`)
+          // Longer than the default: this message carries variable-length detail
+          // about which contact failed and why, and replaced a blocking alert()
+          toast.error(
+            $_('logbook.importValidationFailed', { values: { error: validation.error } }),
+            8000
+          )
           return
         }
 
@@ -186,7 +191,7 @@
         importStatistics = statistics
       } catch (error) {
         console.error('Failed to process import file:', error)
-        alert('Failed to process import file. Please try again.')
+        toast.error($_('logbook.importProcessFailed'))
       }
     }
 

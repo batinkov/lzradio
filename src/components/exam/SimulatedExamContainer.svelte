@@ -12,6 +12,7 @@
   import { calculateExamResults } from '../../lib/examScoring.js'
   import { formatTime, getTimerWarningLevel } from '../../lib/examTimer.js'
   import { createExamKeyboardHandler } from '../../lib/examKeyboardShortcuts.js'
+  import { toast } from '../../lib/toastStore.js'
   import 'katex/dist/katex.min.css'
   import '../../styles/exam-shared.css'
 
@@ -102,7 +103,7 @@
       startTimer()
     } catch (error) {
       console.error('Failed to start exam:', error)
-      alert('Failed to load exam questions. Please try again.')
+      toast.error($_('exam.loadQuestionsFailed'))
       examState = EXAM_STATE.NOT_STARTED
     }
   }

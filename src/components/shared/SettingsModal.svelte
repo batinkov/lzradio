@@ -82,7 +82,7 @@
           {$_('common.cancel')}
         </button>
         <button class="btn-primary" on:click={handleSave} disabled={saving}>
-          {saving ? '💾 Saving...' : $_('common.save')}
+          {saving ? `💾 ${$_('common.saving')}` : $_('common.save')}
         </button>
       </div>
     </div>

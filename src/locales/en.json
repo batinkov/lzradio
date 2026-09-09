@@ -129,7 +129,11 @@
     "importFailed": "Failed to import contacts. Please try again.",
     "importSuccess": "Imported {count} contact",
     "importSuccessPlural": "Imported {count} contacts",
-    "dateRangeTo": "to"
+    "dateRangeTo": "to",
+    "deleteFailed": "Failed to delete contact. Please try again.",
+    "importInvalidJson": "Invalid JSON file. Please select a valid LZ Radio export file.",
+    "importValidationFailed": "Import validation failed: {error}",
+    "importProcessFailed": "Failed to process import file. Please try again."
   },
   "exam": {
     "title": "Exam Preparation",
@@ -213,7 +217,8 @@
     "leaveExam": "Leave Exam",
     "leaveExamButton": "Exit Exam",
     "leaveExamTooltip": "Leave the exam and return to exam selection",
-    "leaveExamConfirm": "Are you sure you want to leave the exam? Your progress will be lost."
+    "leaveExamConfirm": "Are you sure you want to leave the exam? Your progress will be lost.",
+    "loadQuestionsFailed": "Failed to load exam questions. Please try again."
   },
   "common": {
     "close": "Close",
@@ -223,7 +228,8 @@
     "edit": "Edit",
     "view": "View",
     "actions": "Actions",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "saving": "Saving..."
   },
   "notFound": {
     "title": "404 - Page Not Found",

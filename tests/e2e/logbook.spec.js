@@ -1146,14 +1146,12 @@ test.describe('LogBook', () => {
     const tmpFile = path.join(os.tmpdir(), 'test-invalid.json')
     fs.writeFileSync(tmpFile, 'not valid json {{{')
 
-    // Setup dialog promise before setting files
-    const dialogPromise = page.waitForEvent('dialog')
     await fileChooser.setFiles(tmpFile)
 
-    // Wait for and verify alert
-    const dialog = await dialogPromise
-    expect(dialog.message()).toBe('Invalid JSON file. Please select a valid LZ Radio export file.')
-    await dialog.accept()
+    // Error is surfaced as a toast, not a native dialog
+    const toast = page.locator('.toast')
+    await expect(toast).toBeVisible()
+    await expect(toast).toContainText('Invalid JSON file')
 
     fs.unlinkSync(tmpFile)
   })
@@ -1200,14 +1198,12 @@ test.describe('LogBook', () => {
     const tmpFile = path.join(os.tmpdir(), 'test-other-app.json')
     fs.writeFileSync(tmpFile, JSON.stringify(importData))
 
-    // Setup dialog promise before setting files
-    const dialogPromise = page.waitForEvent('dialog')
     await fileChooser.setFiles(tmpFile)
 
-    // Wait for and verify alert
-    const dialog = await dialogPromise
-    expect(dialog.message()).toContain('This file was not exported from LZ Radio')
-    await dialog.accept()
+    // Error is surfaced as a toast, not a native dialog
+    const toast = page.locator('.toast')
+    await expect(toast).toBeVisible()
+    await expect(toast).toContainText('This file was not exported from LZ Radio')
 
     fs.unlinkSync(tmpFile)
   })
@@ -1267,15 +1263,13 @@ test.describe('LogBook', () => {
     const tmpFile = path.join(os.tmpdir(), 'test-missing-fields.json')
     fs.writeFileSync(tmpFile, JSON.stringify(importData))
 
-    // Setup dialog promise before setting files
-    const dialogPromise = page.waitForEvent('dialog')
     await fileChooser.setFiles(tmpFile)
 
-    // Wait for and verify alert
-    const dialog = await dialogPromise
-    expect(dialog.message()).toContain('Import validation failed')
-    expect(dialog.message()).toContain('missing required field')
-    await dialog.accept()
+    // Error is surfaced as a toast, not a native dialog
+    const toast = page.locator('.toast')
+    await expect(toast).toBeVisible()
+    await expect(toast).toContainText('Import validation failed')
+    await expect(toast).toContainText('missing required field')
 
     fs.unlinkSync(tmpFile)
   })
