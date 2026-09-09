@@ -1,0 +1,53 @@
+version: 2
+
+# Routine version updates. Security updates are separate: GitHub opens those
+# automatically from Dependabot alerts and does not read this file, so nothing
+# here can delay a fix for a published advisory.
+#
+# Grouping: minor and patch bumps arrive as one PR per ecosystem per week.
+# Major bumps are deliberately left out of the groups so each one arrives as its
+# own PR — a major deserves to be looked at on its own, not merged as part of a
+# batch. Before this config existed, dependencies only ever moved when an
+# advisory forced them, which is how vite went 6.4.2 -> 8.0.16 in a single
+# commit alongside a security fix.
+
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Sofia
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      prefix-development: chore
+      include: scope
+    groups:
+      production-dependencies:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Sofia
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      github-actions:
+        patterns:
+          - "*"
