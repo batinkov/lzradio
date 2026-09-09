@@ -30,7 +30,6 @@
   // Search state
   let searchQuery = ''
   let searchInput
-  let debounceTimer
 
   onMount(async () => {
     await loadContacts()
@@ -314,11 +313,6 @@
   onDestroy(() => {
     // Clean up event listener
     window.removeEventListener('keydown', handleGlobalKeydown)
-
-    // Clear any pending debounce timer
-    if (debounceTimer) {
-      clearTimeout(debounceTimer)
-    }
   })
 </script>
 
