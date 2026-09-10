@@ -26,7 +26,12 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if importData && statistics}
-  <div class="modal-backdrop" on:click={handleBackdropClick} on:keydown|stopPropagation role="presentation">
+  <div
+    class="modal-backdrop"
+    on:click={handleBackdropClick}
+    on:keydown|stopPropagation
+    role="presentation"
+  >
     <div class="modal-content" role="dialog">
       <div class="modal-header">
         <h2>📥 Import LogBook Contacts</h2>
@@ -99,7 +104,10 @@
           </div>
         {:else}
           <div class="info-note">
-            <p>Note: Contacts with matching callsign, date, and time will be skipped to avoid duplicates.</p>
+            <p>
+              Note: Contacts with matching callsign, date, and time will be skipped to avoid
+              duplicates.
+            </p>
           </div>
         {/if}
       </div>
@@ -110,12 +118,12 @@
         </button>
         {#if hasNewContacts}
           <button class="btn-primary" on:click={onConfirm} disabled={importing}>
-            {importing ? '📥 Importing...' : `📥 Import ${statistics.newCount} Contact${statistics.newCount === 1 ? '' : 's'}`}
+            {importing
+              ? '📥 Importing...'
+              : `📥 Import ${statistics.newCount} Contact${statistics.newCount === 1 ? '' : 's'}`}
           </button>
         {:else}
-          <button class="btn-primary" on:click={onCancel}>
-            OK
-          </button>
+          <button class="btn-primary" on:click={onCancel}> OK </button>
         {/if}
       </div>
     </div>

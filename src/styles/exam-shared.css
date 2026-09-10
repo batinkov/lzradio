@@ -280,13 +280,13 @@
   flex-shrink: 0;
 }
 
-.answer-radio input[type="radio"] {
+.answer-radio input[type='radio'] {
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
 
-.answer-card.review .answer-radio input[type="radio"] {
+.answer-card.review .answer-radio input[type='radio'] {
   cursor: default;
 }
 

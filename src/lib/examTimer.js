@@ -25,7 +25,7 @@ export function formatTime(totalSeconds) {
  */
 export function getTimerWarningLevel(remainingSeconds) {
   if (remainingSeconds <= 300) return 'critical' // 5 minutes or less
-  if (remainingSeconds <= 600) return 'warning'  // 10 minutes or less
+  if (remainingSeconds <= 600) return 'warning' // 10 minutes or less
   return 'normal'
 }
 

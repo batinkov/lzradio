@@ -17,6 +17,7 @@
 ## ✨ Features
 
 ### 📖 LogBook
+
 - **Contact Management** - Full CRUD operations for radio contacts
 - **Smart Callsign Parsing** - Handles prefix/base/suffix (e.g., HB/W1ABC/P)
 - **Data Persistence** - Local storage using IndexedDB (Dexie.js)
@@ -24,6 +25,7 @@
 - **Offline-Capable** - Works completely offline, no backend required
 
 ### 🎓 Exam Preparation
+
 - **Official Question Banks** - Based on Bulgarian CRC exam syllabus (2025)
 - **Two License Classes** - Class 1 (374 questions) and Class 2 (237 questions)
 - **Practice Mode** - Study at your own pace with instant feedback
@@ -32,11 +34,13 @@
 - **Bilingual Support** - Full English and Bulgarian translations
 
 ### 🌍 Internationalization
+
 - **Two Languages** - English and Bulgarian UI
 - **Language Preference** - Persisted locally across sessions
 - **Aligned Question Banks** - Semantically verified translations
 
 ### 🔒 Privacy & Data
+
 - **100% Client-Side** - No backend server, no data leaves your device
 - **No Tracking** - Privacy-focused analytics architecture (optional)
 - **Local Storage** - All data stored in browser (IndexedDB + LocalStorage)
@@ -47,6 +51,7 @@
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+ and npm
 
 ### Installation & Development
@@ -103,33 +108,40 @@ npm run format
 ## 🛠️ Tech Stack
 
 ### Core Framework
+
 - **[Svelte 5](https://svelte.dev/)** - Reactive UI framework
 - **[Vite](https://vitejs.dev/)** - Fast build tool and dev server
 
 ### Routing & State
+
 - **[svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router)** - Hash-based client-side routing
 - **Svelte Stores** - Reactive state management
 
 ### Data & Storage
+
 - **[Dexie.js](https://dexie.org/)** - IndexedDB wrapper for LogBook persistence
 - **LocalStorage** - User preferences and settings
 - **Storage Adapters** - Unified API for different storage backends
 
 ### Internationalization
+
 - **[svelte-i18n](https://github.com/kaisermann/svelte-i18n)** - i18n framework
 - **Languages:** English (en), Bulgarian (bg)
 
 ### UI & Styling
+
 - **CSS Variables** - Design system with consistent theming
 - **Responsive Design** - Mobile-first approach
 - **[KaTeX](https://katex.org/)** - Math formula rendering in exam questions
 
 ### Testing & Quality
+
 - **[Vitest](https://vitest.dev/)** - Unit testing framework (377 tests)
 - **[Playwright](https://playwright.dev/)** - E2E testing
 - **[ESLint](https://eslint.org/)** + **[Prettier](https://prettier.io/)** - Code quality and formatting
 
 ### Development Tools
+
 - **Hot Module Replacement** - Fast development feedback
 - **Code Splitting** - Optimized bundle sizes
 - **Git Hooks** - Pre-commit checks for code quality
@@ -174,12 +186,14 @@ lzradio/
 ## 🏗️ Architecture
 
 ### Design Patterns
+
 - **Observer Pattern** - Analytics system with pluggable providers
 - **Factory Pattern** - Testable component instantiation
 - **Storage Adapter Pattern** - Unified API for different storage backends
 - **Pure Functions** - Business logic separated from UI (fully tested)
 
 ### Key Principles
+
 - **Client-Side Only** - No backend server, no external dependencies
 - **Offline-First** - All functionality works without internet
 - **Privacy-Focused** - No data collection, no tracking by default
@@ -187,6 +201,7 @@ lzradio/
 - **Separation of Concerns** - Business logic isolated from UI components
 
 ### Hash-Based Routing
+
 Uses hash-based routing (`/#/page`) for compatibility with static hosting (GitHub Pages) without server configuration. Routes like `/#/logbook`, `/#/exam/class1`.
 
 ---
@@ -196,6 +211,7 @@ Uses hash-based routing (`/#/page`) for compatibility with static hosting (GitHu
 The application is deployed to [GitHub Pages](https://lzradio.eu) via GitHub Actions when a semver tag (`vX.Y.Z`) is pushed. Pushing to `master` runs CI only — it does **not** deploy.
 
 **Release Workflow:**
+
 1. Merge work to `master` — CI runs lint, unit tests, and build
 2. Bump `version` in `package.json` and add a `CHANGELOG.md` entry
 3. Commit, then tag: `git tag -a vX.Y.Z -m "Release X.Y.Z"`
@@ -208,12 +224,14 @@ The application is deployed to [GitHub Pages](https://lzradio.eu) via GitHub Act
 Prerelease tags (`v1.2.3-rc.1`) are ignored and never trigger a deploy.
 
 **Workflows:**
-| File | Trigger | Does |
-| --- | --- | --- |
-| `.github/workflows/ci.yml` | push to `master`, pull requests | lint, unit tests, build |
-| `.github/workflows/deploy.yml` | push of a `vX.Y.Z` tag | verify, build, publish to Pages |
+
+| File                           | Trigger                         | Does                            |
+| ------------------------------ | ------------------------------- | ------------------------------- |
+| `.github/workflows/ci.yml`     | push to `master`, pull requests | lint, unit tests, build         |
+| `.github/workflows/deploy.yml` | push of a `vX.Y.Z` tag          | verify, build, publish to Pages |
 
 **Manual Deployment:**
+
 ```bash
 npm run build
 # Deploy the dist/ directory to your static hosting provider
@@ -224,6 +242,7 @@ npm run build
 ## 🧪 Testing
 
 ### Unit Tests
+
 - **377 passing tests** across all business logic modules
 - **Test-Driven Development** - Pure functions fully tested
 - **Frameworks:** Vitest with jsdom
@@ -235,6 +254,7 @@ npm run test:ui          # Interactive UI
 ```
 
 ### E2E Tests
+
 - **Playwright** - Full browser automation
 - Tests user workflows: navigation, LogBook CRUD, exam completion
 
@@ -243,6 +263,7 @@ npm run test:e2e
 ```
 
 ### Code Quality
+
 ```bash
 npm run lint             # ESLint
 npm run format           # Prettier
@@ -256,6 +277,7 @@ npm run format:check     # Check formatting
 Contributions are welcome! This project is designed for Bulgarian amateur radio operators, but improvements to code quality, tests, and architecture are always appreciated.
 
 ### Development Workflow
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
@@ -265,12 +287,14 @@ Contributions are welcome! This project is designed for Bulgarian amateur radio 
 7. Open a Pull Request
 
 ### Guidelines
+
 - Follow existing code style (ESLint + Prettier)
 - Write unit tests for business logic
 - Keep UI and business logic separated
 - Update documentation if needed
 
 ### Reporting Issues
+
 Found a bug or have a feature request? [Open an issue](https://github.com/batinkov/lzradio/issues)
 
 ---
@@ -290,20 +314,25 @@ You are free to use, modify, and distribute this software for any purpose, inclu
 ## 🙏 Credits & Acknowledgments
 
 ### Question Banks
+
 - Exam questions based on official syllabus from **[Bulgarian Communications Regulation Commission (CRC)](https://crc.bg)**
 - Class 1: 374 questions across 3 sections
 - Class 2: 237 questions across 3 sections
 - Last updated: August 11, 2025 (Syllabus: 11.08.2025)
 
 ### Technologies
+
 Built with open-source technologies:
+
 - [Svelte](https://svelte.dev/) - Cybernetically enhanced web apps
 - [Vite](https://vitejs.dev/) - Next generation frontend tooling
 - [Dexie.js](https://dexie.org/) - Minimalistic IndexedDB wrapper
 - [KaTeX](https://katex.org/) - Fast math typesetting library
 
 ### Community
+
 Special thanks to:
+
 - Bulgarian amateur radio community
 - Open-source contributors
 - All operators using and testing the application
@@ -326,6 +355,7 @@ Special thanks to:
 **Latest Release:** See [Changelog](CHANGELOG.md) for version history
 
 **Features:**
+
 - ✅ LogBook with full CRUD operations
 - ✅ Exam preparation with official 2025 question banks
 - ✅ Bilingual support (English & Bulgarian)
@@ -338,7 +368,7 @@ Special thanks to:
 
 **73 de LZ Radio** 📻
 
-*Open-source tools for amateur radio operators*
+_Open-source tools for amateur radio operators_
 
 [⬆ Back to Top](#-lz-radio)
 

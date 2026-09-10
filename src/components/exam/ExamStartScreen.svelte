@@ -13,7 +13,9 @@
 <div class="page page-centered">
   <div class="header">
     <h1>{$_('exam.simulatedExam')}</h1>
-    <a href="/exam/class{classNum}" use:link class="btn-secondary">← {$_('exam.backToClass', { values: { classNum } })}</a>
+    <a href="/exam/class{classNum}" use:link class="btn-secondary"
+      >← {$_('exam.backToClass', { values: { classNum } })}</a
+    >
   </div>
 
   <!-- Class info -->
@@ -25,9 +27,21 @@
   <!-- Exam Configuration -->
   <div class="card">
     <h3>{$_('exam.examConfiguration')}</h3>
-    <p><strong>{$_('exam.questionsLabel')}:</strong> {examConfig.numberOfQuestions} {$_('exam.randomQuestions')}</p>
-    <p><strong>{$_('exam.durationLabel')}:</strong> {examConfig.examDuration} {$_('exam.minutes')}</p>
-    <p><strong>{$_('exam.passingCriteria')}:</strong> {examConfig.minCorrectAnswers} {$_('exam.correctAnswersRequired')}</p>
+    <p>
+      <strong>{$_('exam.questionsLabel')}:</strong>
+      {examConfig.numberOfQuestions}
+      {$_('exam.randomQuestions')}
+    </p>
+    <p>
+      <strong>{$_('exam.durationLabel')}:</strong>
+      {examConfig.examDuration}
+      {$_('exam.minutes')}
+    </p>
+    <p>
+      <strong>{$_('exam.passingCriteria')}:</strong>
+      {examConfig.minCorrectAnswers}
+      {$_('exam.correctAnswersRequired')}
+    </p>
   </div>
 
   <!-- Exam Rules -->
@@ -41,10 +55,7 @@
     </ul>
   </div>
 
-  <button
-    class="btn-primary btn-large"
-    on:click={() => dispatch('start')}
-  >
+  <button class="btn-primary btn-large" on:click={() => dispatch('start')}>
     {$_('exam.startExam')}
   </button>
 </div>

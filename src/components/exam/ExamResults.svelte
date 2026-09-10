@@ -29,7 +29,9 @@
     <div class="result-details">
       <div class="result-row">
         <span class="result-label">{$_('exam.correctAnswers')}:</span>
-        <span class="result-value correct">{examResults.correctCount} / {examResults.totalQuestions}</span>
+        <span class="result-value correct"
+          >{examResults.correctCount} / {examResults.totalQuestions}</span
+        >
       </div>
       <div class="result-row">
         <span class="result-label">{$_('exam.wrongAnswers')}:</span>
@@ -60,7 +62,11 @@
     <button class="btn-primary btn-large" on:click={() => dispatch('tryAgain')}>
       {$_('exam.tryAgain')}
     </button>
-    <button class="btn-leave-exam btn-large" on:click={() => dispatch('leave')} title={$_('exam.leaveExamTooltip')}>
+    <button
+      class="btn-leave-exam btn-large"
+      on:click={() => dispatch('leave')}
+      title={$_('exam.leaveExamTooltip')}
+    >
       {$_('exam.leaveExamButton')}
     </button>
   </div>

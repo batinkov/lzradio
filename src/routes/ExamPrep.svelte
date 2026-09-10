@@ -104,7 +104,9 @@
         ☰ {$_('exam.questionsMenu')}
       </button>
       <div class="progress-text">
-        {$_('exam.questionOf', { values: { current: currentQuestionIndex + 1, total: totalQuestions } })}
+        {$_('exam.questionOf', {
+          values: { current: currentQuestionIndex + 1, total: totalQuestions }
+        })}
       </div>
     </div>
     <a href="/exam/class{classNum}" use:link class="btn-secondary">
@@ -129,7 +131,7 @@
   {:else}
     <QuestionDisplay
       question={currentQuestion}
-      selectedAnswer={selectedAnswer}
+      {selectedAnswer}
       isReviewMode={false}
       showResult={true}
       onAnswerSelect={selectAnswer}
@@ -148,9 +150,9 @@
 <!-- Question Navigator Modal -->
 <QuestionNavigator
   show={showNavigator}
-  questions={questions}
-  currentQuestionIndex={currentQuestionIndex}
-  userAnswers={userAnswers}
+  {questions}
+  {currentQuestionIndex}
+  {userAnswers}
   examState="REVIEW"
   onClose={toggleNavigator}
   onJumpTo={jumpToQuestion}

@@ -261,7 +261,9 @@ describe('storageAdapter', () => {
       // Create a storage that throws on setItem
       const failingStorage = {
         getItem: () => null,
-        setItem: () => { throw new Error('Storage full') },
+        setItem: () => {
+          throw new Error('Storage full')
+        },
         removeItem: () => {},
         clear: () => {},
         length: 0,

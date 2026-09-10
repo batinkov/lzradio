@@ -71,8 +71,8 @@ export function parseSections(categoriesParam) {
 
   const sections = categoriesParam
     .split(',')
-    .map(s => parseInt(s.trim(), 10))
-    .filter(num => !isNaN(num) && VALID_SECTIONS.includes(num))
+    .map((s) => parseInt(s.trim(), 10))
+    .filter((num) => !isNaN(num) && VALID_SECTIONS.includes(num))
 
   // Remove duplicates
   const uniqueSections = [...new Set(sections)]

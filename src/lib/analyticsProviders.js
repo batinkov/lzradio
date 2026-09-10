@@ -57,7 +57,7 @@ export const goatcounterProvider = (path) => {
   const tryTrack = () => {
     if (window.goatcounter && typeof window.goatcounter.count === 'function') {
       window.goatcounter.count({
-        path: '/#' + path  // Add hash prefix for hash-based routing
+        path: '/#' + path // Add hash prefix for hash-based routing
       })
     } else if (retries < maxRetries) {
       retries++
@@ -129,7 +129,7 @@ export const umamiProvider = (path) => {
     if (window.umami && typeof window.umami.track === 'function') {
       // Umami manual pageview tracking - uses callback function pattern
       // See: https://umami.is/docs/tracker-functions
-      window.umami.track(props => ({ ...props, url: '/#' + path }))
+      window.umami.track((props) => ({ ...props, url: '/#' + path }))
     } else if (retries < maxRetries) {
       retries++
       setTimeout(tryTrack, 100)

@@ -71,7 +71,9 @@ test.describe('Banner Component', () => {
   })
 
   test.describe('ExamHome Language Warning Banner', () => {
-    test('should display "Important" banner on /exam when English is selected', async ({ page }) => {
+    test('should display "Important" banner on /exam when English is selected', async ({
+      page
+    }) => {
       // Set language to English via localStorage before navigation
       await page.goto('/#/')
       await page.evaluate(() => {

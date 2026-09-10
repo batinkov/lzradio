@@ -24,7 +24,13 @@
     <div class="question-header">
       <span class="question-number">{$_('exam.question')} {question.question_number}</span>
       {#if isReviewMode}
-        <span class="question-status status-{isAnswered ? (isCorrect ? 'correct' : 'incorrect') : 'unanswered'}">
+        <span
+          class="question-status status-{isAnswered
+            ? isCorrect
+              ? 'correct'
+              : 'incorrect'
+            : 'unanswered'}"
+        >
           {#if isCorrect}
             ✓ {$_('exam.correct')}
           {:else if isAnswered && !isCorrect}
@@ -59,16 +65,12 @@
             class="answer-card review"
             class:user-answer={selectedAnswer === choice.key}
             class:correct-answer={choice.key === question.correct_answer}
-            class:incorrect-answer={selectedAnswer === choice.key && choice.key !== question.correct_answer}
+            class:incorrect-answer={selectedAnswer === choice.key &&
+              choice.key !== question.correct_answer}
             disabled
           >
             <div class="answer-radio">
-              <input
-                type="radio"
-                name="answer"
-                checked={selectedAnswer === choice.key}
-                readonly
-              />
+              <input type="radio" name="answer" checked={selectedAnswer === choice.key} readonly />
             </div>
             <div class="answer-label">{choice.key}.</div>
             <!-- KaTeX math rendering from trusted static JSON -->
@@ -87,7 +89,10 @@
             class="answer-card"
             class:selected={selectedAnswer === choice.key && (!showResult || !isAnswered)}
             class:correct={showResult && selectedAnswer === choice.key && isCorrect}
-            class:incorrect={showResult && selectedAnswer === choice.key && !isCorrect && isAnswered}
+            class:incorrect={showResult &&
+              selectedAnswer === choice.key &&
+              !isCorrect &&
+              isAnswered}
             on:click={(e) => {
               onAnswerSelect(choice.key)
               e.currentTarget.blur()

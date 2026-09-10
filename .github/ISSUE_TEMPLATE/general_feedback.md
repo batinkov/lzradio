@@ -1,7 +1,7 @@
 ---
 name: General Feedback
 about: Share feedback, questions, or suggestions
-title: "[Feedback]: "
+title: '[Feedback]: '
 labels: feedback
 assignees: ''
 ---

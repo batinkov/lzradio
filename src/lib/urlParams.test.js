@@ -108,10 +108,7 @@ describe('urlParams', () => {
 
   describe('parseExamParams', () => {
     it('should parse all parameters correctly', () => {
-      const result = parseExamParams(
-        '/exam/class2/prep',
-        'order=random&categories=1,3'
-      )
+      const result = parseExamParams('/exam/class2/prep', 'order=random&categories=1,3')
 
       expect(result).toEqual({
         classNum: '2',
@@ -131,10 +128,7 @@ describe('urlParams', () => {
     })
 
     it('should handle partial parameters', () => {
-      const result = parseExamParams(
-        '/exam/class2/simulated',
-        'order=random'
-      )
+      const result = parseExamParams('/exam/class2/simulated', 'order=random')
 
       expect(result).toEqual({
         classNum: '2',
@@ -144,10 +138,7 @@ describe('urlParams', () => {
     })
 
     it('should handle URL-encoded parameters', () => {
-      const result = parseExamParams(
-        '/exam/class1/prep',
-        'categories=1%2C2%2C3'
-      )
+      const result = parseExamParams('/exam/class1/prep', 'categories=1%2C2%2C3')
 
       expect(result.sections).toEqual([1, 2, 3])
     })
@@ -225,10 +216,7 @@ describe('urlParams', () => {
 
   describe('real-world scenarios', () => {
     it('should handle typical class1 prep URL', () => {
-      const result = parseExamParams(
-        '/exam/class1/prep',
-        'order=sequential&categories=1,2,3'
-      )
+      const result = parseExamParams('/exam/class1/prep', 'order=sequential&categories=1,2,3')
 
       expect(result).toEqual({
         classNum: '1',
@@ -238,10 +226,7 @@ describe('urlParams', () => {
     })
 
     it('should handle class2 with random order and subset of sections', () => {
-      const result = parseExamParams(
-        '/exam/class2/prep',
-        'order=random&categories=2'
-      )
+      const result = parseExamParams('/exam/class2/prep', 'order=random&categories=2')
 
       expect(result).toEqual({
         classNum: '2',
@@ -251,10 +236,7 @@ describe('urlParams', () => {
     })
 
     it('should gracefully handle malformed URLs', () => {
-      const result = parseExamParams(
-        '',
-        'order=invalid&categories=99,100'
-      )
+      const result = parseExamParams('', 'order=invalid&categories=99,100')
 
       expect(result).toEqual({
         classNum: '1',

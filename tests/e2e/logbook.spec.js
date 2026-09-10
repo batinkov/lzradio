@@ -58,7 +58,7 @@ test.describe('LogBook', () => {
         suffix: null,
         date: '2025-01-15',
         time: '14:23:00',
-        frequency: 14.250,
+        frequency: 14.25,
         mode: 'SSB',
         power: 37,
         rstSent: '59',
@@ -133,7 +133,7 @@ test.describe('LogBook', () => {
         suffix: 'P',
         date: '2025-01-10',
         time: '10:30:00',
-        frequency: 3.750,
+        frequency: 3.75,
         mode: 'SSB',
         power: 100,
         rstSent: '59',
@@ -921,7 +921,9 @@ test.describe('LogBook', () => {
     await expect(page.locator('.modal-header h2')).toContainText('Import LogBook Contacts')
 
     // Verify statistics (we have 1 DUMMY contact already)
-    await expect(page.locator('.stat-row').nth(0)).toContainText('Existing contacts in your logbook:')
+    await expect(page.locator('.stat-row').nth(0)).toContainText(
+      'Existing contacts in your logbook:'
+    )
     await expect(page.locator('.stat-row').nth(0)).toContainText('1')
     await expect(page.locator('.stat-row').nth(1)).toContainText('Total contacts in import file:')
     await expect(page.locator('.stat-row').nth(1)).toContainText('2')

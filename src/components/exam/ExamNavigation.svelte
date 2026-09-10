@@ -11,19 +11,12 @@
 </script>
 
 <div class="navigation">
-  <button
-    class="btn-nav"
-    on:click={onPrevious}
-    disabled={currentIndex === 0}
-  >
+  <button class="btn-nav" on:click={onPrevious} disabled={currentIndex === 0}>
     ← {$_('exam.previous')}
   </button>
 
   {#if onSubmit}
-    <button
-      class="btn-submit"
-      on:click={onSubmit}
-    >
+    <button class="btn-submit" on:click={onSubmit}>
       {submitLabel || $_('exam.submitExam')}
     </button>
   {/if}

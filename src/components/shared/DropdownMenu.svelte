@@ -138,7 +138,11 @@
     <div
       bind:this={menuElement}
       class="dropdown-content"
-      style="top: {menuPosition.top}px; left: {menuPosition.left === 'auto' ? 'auto' : menuPosition.left + 'px'}; right: {menuPosition.right === 'auto' ? 'auto' : menuPosition.right + 'px'};"
+      style="top: {menuPosition.top}px; left: {menuPosition.left === 'auto'
+        ? 'auto'
+        : menuPosition.left + 'px'}; right: {menuPosition.right === 'auto'
+        ? 'auto'
+        : menuPosition.right + 'px'};"
     >
       <slot {closeMenu} />
     </div>
@@ -159,7 +163,9 @@
     padding: 4px 8px;
     color: var(--color-text-muted);
     border-radius: var(--radius-md);
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
     line-height: 1;
   }
 

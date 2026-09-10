@@ -18,7 +18,9 @@
       ☰ {$_('exam.questionsMenu')}
     </button>
     <div class="progress-text">
-      {$_('exam.questionOf', { values: { current: currentQuestionIndex + 1, total: totalQuestions } })}
+      {$_('exam.questionOf', {
+        values: { current: currentQuestionIndex + 1, total: totalQuestions }
+      })}
       {#if answeredCount !== null}
         <span class="answered-count">({answeredCount} {$_('exam.answered')})</span>
       {/if}
@@ -35,7 +37,11 @@
         ⏱️ {timerDisplay}
       </div>
     {/if}
-    <button class="btn-leave-exam" on:click={() => dispatch('leave')} title={$_('exam.leaveExamTooltip')}>
+    <button
+      class="btn-leave-exam"
+      on:click={() => dispatch('leave')}
+      title={$_('exam.leaveExamTooltip')}
+    >
       {$_('exam.leaveExamButton')}
     </button>
   </div>
@@ -73,8 +79,13 @@
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
   }
 
   @media (max-width: 767px) {

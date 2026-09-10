@@ -15,7 +15,7 @@
 
   function toggleCategory(category) {
     if (selectedCategories.includes(category)) {
-      selectedCategories = selectedCategories.filter(c => c !== category)
+      selectedCategories = selectedCategories.filter((c) => c !== category)
     } else {
       selectedCategories = [...selectedCategories, category].sort()
     }
@@ -52,21 +52,11 @@
           <div class="config-label">{$_('exam.questionOrder')}</div>
           <div class="radio-group">
             <label class="radio-option">
-              <input
-                type="radio"
-                name="order"
-                value="sequential"
-                bind:group={questionOrder}
-              />
+              <input type="radio" name="order" value="sequential" bind:group={questionOrder} />
               <span>{$_('exam.sequential')}</span>
             </label>
             <label class="radio-option">
-              <input
-                type="radio"
-                name="order"
-                value="random"
-                bind:group={questionOrder}
-              />
+              <input type="radio" name="order" value="random" bind:group={questionOrder} />
               <span>{$_('exam.random')}</span>
             </label>
           </div>
@@ -117,9 +107,15 @@
         <div class="mode-icon">📝</div>
         <h4>{$_('exam.simulatedExam')}</h4>
         <ul class="mode-features">
-          <li>{$_('exam.randomQuestionsFromAllSections', { values: { count: examConfig.numberOfQuestions } })}</li>
+          <li>
+            {$_('exam.randomQuestionsFromAllSections', {
+              values: { count: examConfig.numberOfQuestions }
+            })}
+          </li>
           <li>{examConfig.examDuration} {$_('exam.minuteCountdown')}</li>
-          <li>{$_('exam.minCorrectToPass', { values: { count: examConfig.minCorrectAnswers } })}</li>
+          <li>
+            {$_('exam.minCorrectToPass', { values: { count: examConfig.minCorrectAnswers } })}
+          </li>
         </ul>
         <a href="/exam/class{classNum}/simulated" use:link class="btn-primary">
           {$_('exam.startExam')}
@@ -191,7 +187,7 @@
   }
 
   .mode-features li::before {
-    content: "•";
+    content: '•';
     position: absolute;
     left: var(--space-3);
     color: var(--color-primary);
@@ -240,8 +236,8 @@
     background: var(--color-bg);
   }
 
-  .radio-option input[type="radio"],
-  .checkbox-option input[type="checkbox"] {
+  .radio-option input[type='radio'],
+  .checkbox-option input[type='checkbox'] {
     width: 18px;
     height: 18px;
     margin-top: 2px;

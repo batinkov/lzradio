@@ -67,7 +67,7 @@ export const createAnalytics = () => {
      * analytics.trackPageview('/logbook')
      */
     trackPageview(path) {
-      providers.forEach(provider => {
+      providers.forEach((provider) => {
         try {
           provider(path)
         } catch (error) {

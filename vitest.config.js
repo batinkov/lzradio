@@ -9,11 +9,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
-      exclude: [
-        'node_modules/',
-        'src/**/*.test.js',
-        'src/**/*.spec.js',
-      ],
-    },
-  },
+      exclude: ['node_modules/', 'src/**/*.test.js', 'src/**/*.spec.js']
+    }
+  }
 })

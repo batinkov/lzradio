@@ -377,7 +377,9 @@ describe('importStatistics', () => {
         prefix: null,
         suffix: null,
         date: '2025-01-20',
-        time: `${Math.floor(i / 60).toString().padStart(2, '0')}:${(i % 60).toString().padStart(2, '0')}:00`,
+        time: `${Math.floor(i / 60)
+          .toString()
+          .padStart(2, '0')}:${(i % 60).toString().padStart(2, '0')}:00`,
         frequency: 14.25,
         mode: 'SSB'
       }))
@@ -385,7 +387,9 @@ describe('importStatistics', () => {
       const existingContacts = Array.from({ length: 500 }, (_, i) => ({
         baseCallsign: `W1${i.toString().padStart(3, '0')}`,
         date: '2025-01-20',
-        time: `${Math.floor(i / 60).toString().padStart(2, '0')}:${(i % 60).toString().padStart(2, '0')}:00`
+        time: `${Math.floor(i / 60)
+          .toString()
+          .padStart(2, '0')}:${(i % 60).toString().padStart(2, '0')}:00`
       }))
 
       const start = performance.now()

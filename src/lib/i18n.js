@@ -55,7 +55,7 @@ function getInitialLocale() {
 export function setupI18n() {
   init({
     fallbackLocale: DEFAULT_LOCALE,
-    initialLocale: getInitialLocale(),
+    initialLocale: getInitialLocale()
   })
 }
 

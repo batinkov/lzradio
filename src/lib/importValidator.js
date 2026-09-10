@@ -211,14 +211,22 @@ function validateContact(contact, index) {
   }
 
   // Validate optional fields types if present
-  if (contact.prefix !== null && contact.prefix !== undefined && typeof contact.prefix !== 'string') {
+  if (
+    contact.prefix !== null &&
+    contact.prefix !== undefined &&
+    typeof contact.prefix !== 'string'
+  ) {
     return {
       valid: false,
       error: `Contact at index ${index} has invalid type for prefix. Expected string or null`
     }
   }
 
-  if (contact.suffix !== null && contact.suffix !== undefined && typeof contact.suffix !== 'string') {
+  if (
+    contact.suffix !== null &&
+    contact.suffix !== undefined &&
+    typeof contact.suffix !== 'string'
+  ) {
     return {
       valid: false,
       error: `Contact at index ${index} has invalid type for suffix. Expected string or null`
@@ -234,35 +242,55 @@ function validateContact(contact, index) {
     }
   }
 
-  if (contact.rstSent !== null && contact.rstSent !== undefined && typeof contact.rstSent !== 'string') {
+  if (
+    contact.rstSent !== null &&
+    contact.rstSent !== undefined &&
+    typeof contact.rstSent !== 'string'
+  ) {
     return {
       valid: false,
       error: `Contact at index ${index} has invalid type for rstSent. Expected string or null`
     }
   }
 
-  if (contact.rstReceived !== null && contact.rstReceived !== undefined && typeof contact.rstReceived !== 'string') {
+  if (
+    contact.rstReceived !== null &&
+    contact.rstReceived !== undefined &&
+    typeof contact.rstReceived !== 'string'
+  ) {
     return {
       valid: false,
       error: `Contact at index ${index} has invalid type for rstReceived. Expected string or null`
     }
   }
 
-  if (contact.qslSent !== null && contact.qslSent !== undefined && typeof contact.qslSent !== 'boolean') {
+  if (
+    contact.qslSent !== null &&
+    contact.qslSent !== undefined &&
+    typeof contact.qslSent !== 'boolean'
+  ) {
     return {
       valid: false,
       error: `Contact at index ${index} has invalid type for qslSent. Expected boolean or null`
     }
   }
 
-  if (contact.qslReceived !== null && contact.qslReceived !== undefined && typeof contact.qslReceived !== 'boolean') {
+  if (
+    contact.qslReceived !== null &&
+    contact.qslReceived !== undefined &&
+    typeof contact.qslReceived !== 'boolean'
+  ) {
     return {
       valid: false,
       error: `Contact at index ${index} has invalid type for qslReceived. Expected boolean or null`
     }
   }
 
-  if (contact.remarks !== null && contact.remarks !== undefined && typeof contact.remarks !== 'string') {
+  if (
+    contact.remarks !== null &&
+    contact.remarks !== undefined &&
+    typeof contact.remarks !== 'string'
+  ) {
     return {
       valid: false,
       error: `Contact at index ${index} has invalid type for remarks. Expected string or null`

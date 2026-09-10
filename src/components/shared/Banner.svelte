@@ -46,7 +46,7 @@
     font-size: 0.8rem;
   }
 
-  :global([data-theme="dark"]) .banner {
+  :global([data-theme='dark']) .banner {
     background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
     border-color: #b45309;
   }
@@ -62,7 +62,7 @@
     letter-spacing: 0.05em;
   }
 
-  :global([data-theme="dark"]) .badge {
+  :global([data-theme='dark']) .badge {
     background: #d97706;
   }
 
@@ -71,7 +71,7 @@
     color: #92400e;
   }
 
-  :global([data-theme="dark"]) .message {
+  :global([data-theme='dark']) .message {
     color: #fef3c7;
   }
 
@@ -96,11 +96,11 @@
     background: rgba(0, 0, 0, 0.1);
   }
 
-  :global([data-theme="dark"]) .close-btn {
+  :global([data-theme='dark']) .close-btn {
     color: #fef3c7;
   }
 
-  :global([data-theme="dark"]) .close-btn:hover {
+  :global([data-theme='dark']) .close-btn:hover {
     background: rgba(255, 255, 255, 0.1);
   }
 </style>

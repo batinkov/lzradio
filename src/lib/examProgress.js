@@ -18,9 +18,7 @@
 export function calculateProgress(userAnswers, totalQuestions) {
   const answeredCount = Object.keys(userAnswers).length
   const unansweredCount = totalQuestions - answeredCount
-  const percentage = totalQuestions > 0
-    ? Math.round((answeredCount / totalQuestions) * 100)
-    : 0
+  const percentage = totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0
 
   return {
     answeredCount,

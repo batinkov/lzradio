@@ -1,9 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import {
-  getAnswerStatus,
-  calculateExamResults,
-  calculatePercentage
-} from './examScoring.js'
+import { getAnswerStatus, calculateExamResults, calculatePercentage } from './examScoring.js'
 
 describe('examScoring', () => {
   describe('getAnswerStatus', () => {
@@ -34,11 +30,7 @@ describe('examScoring', () => {
 
   describe('calculateExamResults', () => {
     it('should correctly count all correct answers', () => {
-      const questions = [
-        { correct_answer: 'a' },
-        { correct_answer: 'b' },
-        { correct_answer: 'c' }
-      ]
+      const questions = [{ correct_answer: 'a' }, { correct_answer: 'b' }, { correct_answer: 'c' }]
       const userAnswers = { 0: 'a', 1: 'b', 2: 'c' }
       const config = { minCorrectAnswers: 2 }
 
@@ -54,11 +46,7 @@ describe('examScoring', () => {
     })
 
     it('should correctly count wrong answers', () => {
-      const questions = [
-        { correct_answer: 'a' },
-        { correct_answer: 'b' },
-        { correct_answer: 'c' }
-      ]
+      const questions = [{ correct_answer: 'a' }, { correct_answer: 'b' }, { correct_answer: 'c' }]
       const userAnswers = { 0: 'x', 1: 'y', 2: 'z' }
       const config = { minCorrectAnswers: 2 }
 
@@ -74,11 +62,7 @@ describe('examScoring', () => {
     })
 
     it('should correctly count unanswered questions', () => {
-      const questions = [
-        { correct_answer: 'a' },
-        { correct_answer: 'b' },
-        { correct_answer: 'c' }
-      ]
+      const questions = [{ correct_answer: 'a' }, { correct_answer: 'b' }, { correct_answer: 'c' }]
       const userAnswers = {} // No answers provided
       const config = { minCorrectAnswers: 2 }
 
@@ -102,11 +86,11 @@ describe('examScoring', () => {
         { correct_answer: 'e' }
       ]
       const userAnswers = {
-        0: 'a',  // correct
-        1: 'x',  // wrong
-        2: 'c',  // correct
+        0: 'a', // correct
+        1: 'x', // wrong
+        2: 'c', // correct
         // 3: undefined (unanswered)
-        4: 'y'   // wrong
+        4: 'y' // wrong
       }
       const config = { minCorrectAnswers: 3 }
 

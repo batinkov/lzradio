@@ -55,7 +55,12 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if open}
-  <div class="modal-backdrop" on:click={handleBackdropClick} on:keydown|stopPropagation role="presentation">
+  <div
+    class="modal-backdrop"
+    on:click={handleBackdropClick}
+    on:keydown|stopPropagation
+    role="presentation"
+  >
     <div class="modal-content" role="dialog">
       <div class="modal-header">
         <h2>⚙️ {$_('logbook.settings')}</h2>
@@ -162,12 +167,14 @@
     color: var(--color-text);
   }
 
-  input[type="text"] {
+  input[type='text'] {
     padding: 10px 12px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     font-size: 1rem;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   input:focus {

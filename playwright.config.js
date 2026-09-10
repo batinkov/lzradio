@@ -1,10 +1,10 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test'
 
 // Use the Chromium build that Playwright pins, so results are identical on
 // every machine and in CI. Set PLAYWRIGHT_CHROMIUM_PATH to override when the
 // bundled browser cannot run (e.g. missing system libraries on a distro
 // Playwright does not ship dependencies for).
-const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH || undefined;
+const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH || undefined
 
 /**
  * Playwright configuration for LZ Radio e2e tests
@@ -37,7 +37,7 @@ export default defineConfig({
     trace: 'on-first-retry',
 
     // Screenshot on failure
-    screenshot: 'only-on-failure',
+    screenshot: 'only-on-failure'
   },
 
   // Configure projects for major browsers
@@ -46,9 +46,9 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        ...(executablePath && { launchOptions: { executablePath } }),
-      },
-    },
+        ...(executablePath && { launchOptions: { executablePath } })
+      }
+    }
   ],
 
   // Run your local dev server before starting the tests
@@ -57,6 +57,6 @@ export default defineConfig({
     url: 'http://localhost:5173',
     reuseExistingServer: !process.env.CI,
     stdout: 'ignore',
-    stderr: 'pipe',
-  },
-});
+    stderr: 'pipe'
+  }
+})

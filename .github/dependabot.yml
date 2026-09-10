@@ -13,11 +13,11 @@ version: 2
 
 updates:
   - package-ecosystem: npm
-    directory: "/"
+    directory: '/'
     schedule:
       interval: weekly
       day: monday
-      time: "06:00"
+      time: '06:00'
       timezone: Europe/Sofia
     open-pull-requests-limit: 5
     commit-message:
@@ -37,15 +37,15 @@ updates:
       # a dependency joins the first group whose criteria it matches.
       vitest:
         patterns:
-          - "vitest"
-          - "@vitest/*"
+          - 'vitest'
+          - '@vitest/*'
         update-types:
           - major
       eslint:
         patterns:
-          - "eslint"
-          - "@eslint/*"
-          - "eslint-plugin-*"
+          - 'eslint'
+          - '@eslint/*'
+          - 'eslint-plugin-*'
         update-types:
           - major
       production-dependencies:
@@ -60,11 +60,11 @@ updates:
           - patch
 
   - package-ecosystem: github-actions
-    directory: "/"
+    directory: '/'
     schedule:
       interval: weekly
       day: monday
-      time: "06:00"
+      time: '06:00'
       timezone: Europe/Sofia
     open-pull-requests-limit: 3
     commit-message:
@@ -73,4 +73,4 @@ updates:
     groups:
       github-actions:
         patterns:
-          - "*"
+          - '*'

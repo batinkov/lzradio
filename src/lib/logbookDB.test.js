@@ -55,7 +55,7 @@ describe('logbookDB', () => {
         suffix: 'M',
         date: '2025-01-29',
         time: '14:23:00',
-        frequency: 14.250,
+        frequency: 14.25,
         mode: 'SSB',
         power: 100,
         rstSent: '59',
@@ -74,7 +74,7 @@ describe('logbookDB', () => {
         baseCallsign: 'W1ABC',
         date: '2025-01-29',
         time: '14:23:00',
-        frequency: 14.250,
+        frequency: 14.25,
         mode: 'SSB'
       }
 
@@ -89,8 +89,20 @@ describe('logbookDB', () => {
     })
 
     it('should auto-increment IDs for multiple contacts', async () => {
-      const contact1 = { baseCallsign: 'W1ABC', date: '2025-01-29', time: '14:00:00', frequency: 14.0, mode: 'SSB' }
-      const contact2 = { baseCallsign: 'K2XYZ', date: '2025-01-29', time: '15:00:00', frequency: 7.0, mode: 'CW' }
+      const contact1 = {
+        baseCallsign: 'W1ABC',
+        date: '2025-01-29',
+        time: '14:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      }
+      const contact2 = {
+        baseCallsign: 'K2XYZ',
+        date: '2025-01-29',
+        time: '15:00:00',
+        frequency: 7.0,
+        mode: 'CW'
+      }
 
       const id1 = await addContact(contact1)
       const id2 = await addContact(contact2)
@@ -109,7 +121,7 @@ describe('logbookDB', () => {
         suffix: 'P',
         date: '2025-01-29',
         time: '14:23:00',
-        frequency: 14.250,
+        frequency: 14.25,
         mode: 'SSB',
         power: 100,
         rstSent: '59',
@@ -141,9 +153,27 @@ describe('logbookDB', () => {
     })
 
     it('should return all contacts sorted by date (newest first)', async () => {
-      await addContact({ baseCallsign: 'W1ABC', date: '2025-01-15', time: '10:00:00', frequency: 14.0, mode: 'SSB' })
-      await addContact({ baseCallsign: 'K2XYZ', date: '2025-01-29', time: '11:00:00', frequency: 7.0, mode: 'CW' })
-      await addContact({ baseCallsign: 'DL1DEF', date: '2025-01-20', time: '12:00:00', frequency: 21.0, mode: 'FT8' })
+      await addContact({
+        baseCallsign: 'W1ABC',
+        date: '2025-01-15',
+        time: '10:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+      await addContact({
+        baseCallsign: 'K2XYZ',
+        date: '2025-01-29',
+        time: '11:00:00',
+        frequency: 7.0,
+        mode: 'CW'
+      })
+      await addContact({
+        baseCallsign: 'DL1DEF',
+        date: '2025-01-20',
+        time: '12:00:00',
+        frequency: 21.0,
+        mode: 'FT8'
+      })
 
       const contacts = await getAllContacts()
 
@@ -157,15 +187,33 @@ describe('logbookDB', () => {
   describe('searchByCallsign', () => {
     beforeEach(async () => {
       // Add test data
-      await addContact({ baseCallsign: 'W1ABC', date: '2025-01-15', time: '10:00:00', frequency: 14.0, mode: 'SSB' })
-      await addContact({ baseCallsign: 'W1ABC', date: '2025-01-20', time: '11:00:00', frequency: 7.0, mode: 'CW' })
-      await addContact({ baseCallsign: 'K2XYZ', date: '2025-01-20', time: '12:00:00', frequency: 21.0, mode: 'FT8' })
+      await addContact({
+        baseCallsign: 'W1ABC',
+        date: '2025-01-15',
+        time: '10:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+      await addContact({
+        baseCallsign: 'W1ABC',
+        date: '2025-01-20',
+        time: '11:00:00',
+        frequency: 7.0,
+        mode: 'CW'
+      })
+      await addContact({
+        baseCallsign: 'K2XYZ',
+        date: '2025-01-20',
+        time: '12:00:00',
+        frequency: 21.0,
+        mode: 'FT8'
+      })
     })
 
     it('should find all contacts with matching base callsign', async () => {
       const matches = await searchByCallsign('W1ABC')
       expect(matches).toHaveLength(2)
-      expect(matches.every(c => c.baseCallsign === 'W1ABC')).toBe(true)
+      expect(matches.every((c) => c.baseCallsign === 'W1ABC')).toBe(true)
     })
 
     it('should be case-insensitive', async () => {
@@ -194,7 +242,7 @@ describe('logbookDB', () => {
       const originalUpdatedAt = originalContact.updatedAt
 
       // Wait a bit to ensure timestamp changes
-      await new Promise(resolve => setTimeout(resolve, 10))
+      await new Promise((resolve) => setTimeout(resolve, 10))
 
       await updateContact(id, { qslReceived: true, remarks: 'QSL confirmed' })
 
@@ -206,7 +254,13 @@ describe('logbookDB', () => {
     })
 
     it('should return 1 when contact is updated', async () => {
-      const id = await addContact({ baseCallsign: 'W1ABC', date: '2025-01-29', time: '14:00:00', frequency: 14.0, mode: 'SSB' })
+      const id = await addContact({
+        baseCallsign: 'W1ABC',
+        date: '2025-01-29',
+        time: '14:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
       const result = await updateContact(id, { mode: 'CW' })
       expect(result).toBe(1)
     })
@@ -219,7 +273,13 @@ describe('logbookDB', () => {
 
   describe('deleteContact', () => {
     it('should delete an existing contact', async () => {
-      const id = await addContact({ baseCallsign: 'W1ABC', date: '2025-01-29', time: '14:00:00', frequency: 14.0, mode: 'SSB' })
+      const id = await addContact({
+        baseCallsign: 'W1ABC',
+        date: '2025-01-29',
+        time: '14:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
 
       await deleteContact(id)
 
@@ -239,17 +299,47 @@ describe('logbookDB', () => {
     })
 
     it('should return correct count of contacts', async () => {
-      await addContact({ baseCallsign: 'W1ABC', date: '2025-01-29', time: '14:00:00', frequency: 14.0, mode: 'SSB' })
-      await addContact({ baseCallsign: 'K2XYZ', date: '2025-01-29', time: '15:00:00', frequency: 7.0, mode: 'CW' })
-      await addContact({ baseCallsign: 'DL1DEF', date: '2025-01-29', time: '16:00:00', frequency: 21.0, mode: 'FT8' })
+      await addContact({
+        baseCallsign: 'W1ABC',
+        date: '2025-01-29',
+        time: '14:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+      await addContact({
+        baseCallsign: 'K2XYZ',
+        date: '2025-01-29',
+        time: '15:00:00',
+        frequency: 7.0,
+        mode: 'CW'
+      })
+      await addContact({
+        baseCallsign: 'DL1DEF',
+        date: '2025-01-29',
+        time: '16:00:00',
+        frequency: 21.0,
+        mode: 'FT8'
+      })
 
       const count = await getContactCount()
       expect(count).toBe(3)
     })
 
     it('should decrement count after deletion', async () => {
-      const id1 = await addContact({ baseCallsign: 'W1ABC', date: '2025-01-29', time: '14:00:00', frequency: 14.0, mode: 'SSB' })
-      await addContact({ baseCallsign: 'K2XYZ', date: '2025-01-29', time: '15:00:00', frequency: 7.0, mode: 'CW' })
+      const id1 = await addContact({
+        baseCallsign: 'W1ABC',
+        date: '2025-01-29',
+        time: '14:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+      await addContact({
+        baseCallsign: 'K2XYZ',
+        date: '2025-01-29',
+        time: '15:00:00',
+        frequency: 7.0,
+        mode: 'CW'
+      })
 
       expect(await getContactCount()).toBe(2)
 

@@ -10,26 +10,26 @@
          Avoids contacting external CDNs from local dev / e2e / preview deploys,
          which can hang the page `load` event when those CDNs are slow. -->
     <script>
-      (function () {
-        var host = location.hostname;
-        if (host !== 'lzradio.eu' && host !== 'www.lzradio.eu') return;
+      ;(function () {
+        var host = location.hostname
+        if (host !== 'lzradio.eu' && host !== 'www.lzradio.eu') return
 
-        window.goatcounter = { no_onload: true };
-        var gc = document.createElement('script');
-        gc.async = true;
-        gc.src = '//gc.zgo.at/count.js';
-        gc.setAttribute('data-goatcounter', 'https://batinkov.goatcounter.com/count');
-        document.head.appendChild(gc);
+        window.goatcounter = { no_onload: true }
+        var gc = document.createElement('script')
+        gc.async = true
+        gc.src = '//gc.zgo.at/count.js'
+        gc.setAttribute('data-goatcounter', 'https://batinkov.goatcounter.com/count')
+        document.head.appendChild(gc)
 
-        var um = document.createElement('script');
-        um.defer = true;
-        um.src = 'https://cloud.umami.is/script.js';
-        um.setAttribute('data-website-id', '4e4c5f3a-53ba-4876-a8ef-35441bf41d0f');
-        um.setAttribute('data-host-url', 'https://cloud.umami.is');
-        um.setAttribute('data-domains', 'lzradio.eu');
-        um.setAttribute('data-auto-track', 'false');
-        document.head.appendChild(um);
-      })();
+        var um = document.createElement('script')
+        um.defer = true
+        um.src = 'https://cloud.umami.is/script.js'
+        um.setAttribute('data-website-id', '4e4c5f3a-53ba-4876-a8ef-35441bf41d0f')
+        um.setAttribute('data-host-url', 'https://cloud.umami.is')
+        um.setAttribute('data-domains', 'lzradio.eu')
+        um.setAttribute('data-auto-track', 'false')
+        document.head.appendChild(um)
+      })()
     </script>
   </head>
   <body>

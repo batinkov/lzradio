@@ -66,16 +66,18 @@ This is enforced, not advisory: `permissions.deny` in `.claude/settings.json`
 blocks these by prefix, and `.claude/hooks/block-git-writes.sh` is a PreToolUse
 hook that also catches compound commands (`cd x && git push`), leading env
 assignments, and `gh api -X POST`. The hook matches command text, so a command
-that merely *mentions* a blocked verb in a quoted string is refused too — write
+that merely _mentions_ a blocked verb in a quoted string is refused too — write
 such text to a file rather than embedding it in a shell command.
 
 ## Project Overview
 
 LZ Radio is a fully client-side web application for amateur radio operators. It provides:
+
 - **LogBook**: Log and track radio contacts with full CRUD operations and IndexedDB persistence
 - **Exam Prep**: Practice for Bulgarian amateur radio license exams (Class 1 and Class 2)
 
 **Technology Stack:**
+
 - Svelte 5 (UI framework)
 - Vite (build tool)
 - svelte-spa-router (client-side routing with hash mode)
@@ -85,12 +87,14 @@ LZ Radio is a fully client-side web application for amateur radio operators. It 
 ## Common Commands
 
 ### Development
+
 ```bash
 # Start development server (http://localhost:5173)
 npm run dev
 ```
 
 ### Building
+
 ```bash
 # Build for production
 npm run build
@@ -100,6 +104,7 @@ npm run preview
 ```
 
 ### Testing
+
 ```bash
 # Run unit tests (single run, CI-friendly)
 npm test
@@ -117,6 +122,7 @@ npm run test:e2e
 **Test Coverage:** 377 passing unit tests across all business logic modules.
 
 ### Linting
+
 ```bash
 # Run ESLint
 npm run lint
@@ -138,6 +144,7 @@ npm run format
 Deployment is **tag-triggered**, not branch-triggered. Pushing to `master` runs CI only (`.github/workflows/ci.yml`: lint, unit tests, build). A release happens when a semver tag is pushed (`.github/workflows/deploy.yml`).
 
 To cut a release:
+
 1. Ensure `master` is green and holds everything to ship
 2. Bump `version` in `package.json` (and the two `version` fields in `package-lock.json`)
 3. Add a `CHANGELOG.md` entry under a new `## [X.Y.Z] - YYYY-MM-DD` heading
@@ -152,9 +159,11 @@ The deploy workflow refuses to publish unless the tag is strict semver, matches 
 ## Architecture
 
 ### High-Level Structure
+
 Fully client-side single-page application (SPA). No backend server. All data stored locally in user's browser using a unified storage adapter architecture. LocalStorage for preferences (via storage adapters), IndexedDB with Dexie.js for LogBook data persistence.
 
 ### Key Components
+
 - **Routes** (`src/routes/`): Page-level components (Home, LogBook, Exam pages)
 - **Shared Components** (`src/components/shared/`): Navigation, modals
 - **Feature Components** (`src/components/logbook/`, `src/components/exam/`): Directories exist but not yet utilized
@@ -183,13 +192,16 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 - **Locales** (`src/locales/`): Translation files (en.json, bg.json)
 
 ### Routing
+
 **Hash-based routing** using `svelte-spa-router`:
+
 - URLs use `#` for routes: `/#/logbook`, `/#/exam/class1`, `/#/exam/class2`
 - Works on ANY static hosting with zero configuration
 - **Important limitation**: Cannot use traditional in-page anchors (`#section-id`)
 - If in-page anchors become necessary, can migrate to history mode (requires server config)
 
 **Main Routes:**
+
 - `/` - Home page
 - `/logbook` - View contacts (with export/import)
 - `/logbook/add` - Add new contact
@@ -205,6 +217,7 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 ### Data Storage
 
 **Storage Architecture:**
+
 - **Storage Adapters**: Unified API for all storage operations (`src/lib/storage/`)
   - Automatic JSON serialization/deserialization
   - Error handling with graceful fallbacks
@@ -212,6 +225,7 @@ Fully client-side single-page application (SPA). No backend server. All data sto
   - Methods: `get()`, `set()`, `remove()`, `clear()`, `has()`, `keys()`, `size()`
 
 **Currently Implemented:**
+
 - **Language preference**: LocalStorage via `localStorageAdapter` - persists user's language choice
 - **Question banks**: Static JSON files bundled with app (separate files for Bulgarian and English)
 - **Exam practice answers**: In-memory state only (intentionally NOT persisted - ephemeral by design)
@@ -220,13 +234,16 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 - **LogBook export/import**: JSON files with validation, duplicate detection, and metadata
 
 **Planned for Future:**
+
 - **Exam history/statistics**: Use storage adapters to save past exam results
 - **Operator settings**: Store user's own callsign and station preferences
 
 ### External Dependencies
+
 None. Fully offline-capable. No external APIs or services.
 
 ### Internationalization
+
 - **Supported Languages**: English (en) and Bulgarian (bg)
 - **Default Language**: English
 - **Language Detection**: Falls back to browser language, then English
@@ -238,6 +255,7 @@ None. Fully offline-capable. No external APIs or services.
 ## Project-Specific Conventions
 
 ### Code Organization
+
 - Routes in `src/routes/` - one file per page
 - Shared components in `src/components/shared/`
 - Feature components in `src/components/[feature]/`
@@ -245,11 +263,13 @@ None. Fully offline-capable. No external APIs or services.
 - Design system variables in `src/app.css`
 
 ### Configuration
+
 - Build config: `vite.config.js`
 - Svelte config: `svelte.config.js`
 - Dependencies: `package.json`
 
 ### State Management
+
 - Local component state using Svelte's reactive declarations (`$:`)
 - Svelte stores for shared state (toast notifications, theme preferences)
 - Storage adapters for persistent data (LocalStorage, SessionStorage)
@@ -257,9 +277,11 @@ None. Fully offline-capable. No external APIs or services.
 - No global state management library (not needed for this scale)
 
 ### Design System
+
 CSS variables in `src/app.css` define colors, spacing, typography, shadows. All components use these variables for consistency.
 
 ### Testing Conventions
+
 - **Unit tests** co-located with source files (`filename.test.js` next to `filename.js`)
 - **E2E tests** in separate `tests/e2e/` directory
 - **Pure functions** in `src/lib/` are fully tested with comprehensive coverage
@@ -277,6 +299,7 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 ### ✅ Completed Features
 
 **Core Functionality:**
+
 - Basic routing structure (hash-based routing)
 - Internationalization (English/Bulgarian) with localStorageAdapter
 - Exam practice mode with question navigation
@@ -294,6 +317,7 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Toast notification system
 
 **LogBook (Fully Implemented):**
+
 - IndexedDB persistence with Dexie.js v4.2.1
 - Complete CRUD operations (Create, Read, Update, Delete)
 - Contact form with validation (callsign, date, time, frequency, mode required)
@@ -310,6 +334,7 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Toast notifications for export/import feedback
 
 **Architecture & Code Quality:**
+
 - Business logic separation from UI components
 - Storage adapter architecture (LocalStorage, SessionStorage)
 - Analytics observer pattern for extensible pageview tracking
@@ -333,6 +358,7 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Linting (ESLint + Prettier with Svelte support)
 
 ### 📋 Planned Features
+
 - Operator settings page (store user's own callsign)
 - Country flag indicators based on callsign prefix
 - Q-code and C-code reference section

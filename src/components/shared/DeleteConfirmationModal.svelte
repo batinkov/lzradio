@@ -19,15 +19,18 @@
     }
   }
 
-  $: callsign = contact
-    ? buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix)
-    : ''
+  $: callsign = contact ? buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix) : ''
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
 
 {#if contact}
-  <div class="modal-backdrop" on:click={handleBackdropClick} on:keydown|stopPropagation role="presentation">
+  <div
+    class="modal-backdrop"
+    on:click={handleBackdropClick}
+    on:keydown|stopPropagation
+    role="presentation"
+  >
     <div class="modal-content" role="dialog">
       <div class="modal-header">
         <h2>🗑️ Delete Contact</h2>

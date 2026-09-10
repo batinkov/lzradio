@@ -33,7 +33,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer: vi.fn(),
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const event = createKeyboardEvent('ArrowLeft')
@@ -50,7 +50,7 @@ describe('examKeyboardShortcuts', () => {
           onNext,
           onSelectAnswer: vi.fn(),
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const event = createKeyboardEvent('ArrowRight')
@@ -70,7 +70,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer,
           getCurrentQuestion: () => question,
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const event = createKeyboardEvent('1')
@@ -88,7 +88,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer,
           getCurrentQuestion: () => question,
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const event = createKeyboardEvent('2')
@@ -105,7 +105,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer,
           getCurrentQuestion: () => question,
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const event = createKeyboardEvent('3')
@@ -139,7 +139,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer,
           getCurrentQuestion: () => question,
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const event = createKeyboardEvent('4') // Try to select 4th choice
@@ -160,7 +160,7 @@ describe('examKeyboardShortcuts', () => {
           onNext,
           onSelectAnswer,
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => true, // Modal is open
+          isModalOpen: () => true // Modal is open
         })
 
         // Try arrow keys
@@ -187,7 +187,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer: vi.fn(),
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const button = { matches: (selector) => selector === 'input, textarea, select, button' }
@@ -204,7 +204,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer: vi.fn(),
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const input = { matches: (selector) => selector === 'input, textarea, select, button' }
@@ -221,7 +221,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer: vi.fn(),
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const textarea = { matches: (selector) => selector === 'input, textarea, select, button' }
@@ -238,7 +238,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer: vi.fn(),
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const select = { matches: (selector) => selector === 'input, textarea, select, button' }
@@ -259,7 +259,7 @@ describe('examKeyboardShortcuts', () => {
           onNext,
           onSelectAnswer,
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const event = createKeyboardEvent('a')
@@ -278,7 +278,7 @@ describe('examKeyboardShortcuts', () => {
           onNext: vi.fn(),
           onSelectAnswer,
           getCurrentQuestion: () => createQuestion(),
-          isModalOpen: () => false,
+          isModalOpen: () => false
         })
 
         const event5 = createKeyboardEvent('5')

@@ -9,13 +9,7 @@
  * @returns {Function} Event handler function for keydown events
  */
 export function createExamKeyboardHandler(options) {
-  const {
-    onPrevious,
-    onNext,
-    onSelectAnswer,
-    getCurrentQuestion,
-    isModalOpen
-  } = options
+  const { onPrevious, onNext, onSelectAnswer, getCurrentQuestion, isModalOpen } = options
 
   return function handleKeydown(event) {
     // Don't trigger shortcuts if any modal is open or if focus is on an interactive element

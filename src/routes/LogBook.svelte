@@ -129,9 +129,7 @@
 
       // Show success toast with statistics
       const contactLabel =
-        allContacts.length === 1
-          ? $_('logbook.exportSuccess')
-          : $_('logbook.exportSuccessPlural')
+        allContacts.length === 1 ? $_('logbook.exportSuccess') : $_('logbook.exportSuccessPlural')
       toast.success(`✓ ${allContacts.length} ${contactLabel} • ${dateRange} • ${sizeInKB} KB`, 4000)
     } catch (error) {
       console.error('Failed to export contacts:', error)
@@ -265,7 +263,7 @@
 
   // Search functionality
   // Prepare contacts with searchable full callsign
-  $: contactsWithCallsign = contacts.map(contact => ({
+  $: contactsWithCallsign = contacts.map((contact) => ({
     ...contact,
     fullCallsign: buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix)
   }))
@@ -366,14 +364,29 @@
       <div class="actions-right">
         <a href="/logbook/add" use:link class="btn-primary">+ {$_('logbook.addContact')}</a>
         <DropdownMenu let:closeMenu>
-          <button on:click={() => { openSettings(); closeMenu(); }}>
+          <button
+            on:click={() => {
+              openSettings()
+              closeMenu()
+            }}
+          >
             ⚙️ {$_('logbook.settings')}
           </button>
           <div class="dropdown-divider"></div>
-          <button on:click={() => { handleExport(); closeMenu(); }}>
+          <button
+            on:click={() => {
+              handleExport()
+              closeMenu()
+            }}
+          >
             📤 {$_('logbook.exportData')}
           </button>
-          <button on:click={() => { handleImport(); closeMenu(); }}>
+          <button
+            on:click={() => {
+              handleImport()
+              closeMenu()
+            }}
+          >
             📥 {$_('logbook.importData')}
           </button>
         </DropdownMenu>
@@ -422,7 +435,10 @@
             <tr>
               <td class="monospace bold">
                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                {@html highlightMatch(buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix), searchQuery)}
+                {@html highlightMatch(
+                  buildCallsign(contact.baseCallsign, contact.prefix, contact.suffix),
+                  searchQuery
+                )}
               </td>
               <td>{contact.date}</td>
               <td>{contact.time}</td>
@@ -436,13 +452,29 @@
               </td>
               <td class="actions-cell">
                 <DropdownMenu let:closeMenu>
-                  <button on:click={() => { push(`/logbook/view/${contact.id}`); closeMenu(); }}>
+                  <button
+                    on:click={() => {
+                      push(`/logbook/view/${contact.id}`)
+                      closeMenu()
+                    }}
+                  >
                     👁️ {$_('common.view')}
                   </button>
-                  <button on:click={() => { handleEdit(contact.id); closeMenu(); }}>
+                  <button
+                    on:click={() => {
+                      handleEdit(contact.id)
+                      closeMenu()
+                    }}
+                  >
                     ✏️ {$_('common.edit')}
                   </button>
-                  <button class="danger" on:click={() => { confirmDelete(contact); closeMenu(); }}>
+                  <button
+                    class="danger"
+                    on:click={() => {
+                      confirmDelete(contact)
+                      closeMenu()
+                    }}
+                  >
                     🗑️ {$_('common.delete')}
                   </button>
                 </DropdownMenu>
@@ -479,10 +511,7 @@
 />
 
 <!-- Settings Modal -->
-<SettingsModal
-  open={settingsModalOpen}
-  onClose={closeSettings}
-/>
+<SettingsModal open={settingsModalOpen} onClose={closeSettings} />
 
 <style>
   /* Component-specific styles */
@@ -568,7 +597,10 @@
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      opacity 0.2s ease;
   }
 
   .search-input-wrapper:focus-within {

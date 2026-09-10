@@ -27,7 +27,8 @@ export const showNavigationConfirmation = writable(false)
 /**
  * Default warning message for browser navigation
  */
-const DEFAULT_WARNING_MESSAGE = 'Your exam progress will be lost if you leave this page. Are you sure?'
+const DEFAULT_WARNING_MESSAGE =
+  'Your exam progress will be lost if you leave this page. Are you sure?'
 
 /**
  * Determines if navigation guards should be enabled based on exam state
@@ -51,10 +52,7 @@ export function shouldEnableGuards(examState) {
  * @param {Window} [options.window] - Window object (for testing)
  */
 export function enableNavigationGuards(options = {}) {
-  const {
-    warningMessage = DEFAULT_WARNING_MESSAGE,
-    window: win = globalThis.window
-  } = options
+  const { warningMessage = DEFAULT_WARNING_MESSAGE, window: win = globalThis.window } = options
 
   // Set browser beforeunload warning
   if (win) {

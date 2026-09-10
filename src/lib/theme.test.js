@@ -93,7 +93,7 @@ describe('theme', () => {
 
     it('should update the theme store', () => {
       const themeValues = []
-      const unsubscribe = theme.subscribe(value => {
+      const unsubscribe = theme.subscribe((value) => {
         themeValues.push(value)
       })
 

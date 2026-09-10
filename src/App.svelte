@@ -26,14 +26,10 @@
     if (lastSeenVersion && lastSeenVersion !== currentVersion) {
       // Translations load asynchronously; wait so the toast is not shown untranslated
       await waitLocale()
-      toast.info(
-        $_('about.updatedTo', { values: { version: currentVersion } }),
-        5000,
-        {
-          link: 'https://github.com/batinkov/lzradio/blob/master/CHANGELOG.md',
-          linkText: $_('about.viewChangelog')
-        }
-      )
+      toast.info($_('about.updatedTo', { values: { version: currentVersion } }), 5000, {
+        link: 'https://github.com/batinkov/lzradio/blob/master/CHANGELOG.md',
+        linkText: $_('about.viewChangelog')
+      })
     }
 
     // Update last seen version
@@ -46,7 +42,7 @@
 
     // Subscribe to route changes
     // Note: subscription fires immediately with current value, then on each change
-    const unsubscribe = location.subscribe(newLocation => {
+    const unsubscribe = location.subscribe((newLocation) => {
       if (isInitialCall) {
         // Track initial page load
         isInitialCall = false

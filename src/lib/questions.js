@@ -116,7 +116,7 @@ export async function getSectionInfo(classNum, sectionNum) {
   return {
     class: section.class,
     section: section.section,
-    update: section.update,
+    update: section.update
   }
 }
 
@@ -131,6 +131,6 @@ export async function getClassInfo(classNum) {
   // All sections should have the same class and update info
   return {
     class: classSections[0].class,
-    update: classSections[0].update,
+    update: classSections[0].update
   }
 }

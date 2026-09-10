@@ -35,7 +35,7 @@
   <!-- Question Display -->
   <QuestionDisplay
     question={currentQuestion}
-    selectedAnswer={selectedAnswer}
+    {selectedAnswer}
     isReviewMode={true}
     showResult={false}
     onAnswerSelect={() => {}}

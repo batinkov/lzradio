@@ -8,12 +8,12 @@ import Fuse from 'fuse.js'
 export function createFuseInstance(contacts) {
   return new Fuse(contacts, {
     keys: [
-      { name: 'fullCallsign', weight: 0.7 },  // Prioritize callsign
-      { name: 'remarks', weight: 0.3 }        // Secondary search in remarks
+      { name: 'fullCallsign', weight: 0.7 }, // Prioritize callsign
+      { name: 'remarks', weight: 0.3 } // Secondary search in remarks
     ],
-    threshold: 0.3,        // Balanced fuzzy threshold
-    ignoreLocation: true,  // Match anywhere in string
-    minMatchCharLength: 2  // Don't match single characters
+    threshold: 0.3, // Balanced fuzzy threshold
+    ignoreLocation: true, // Match anywhere in string
+    minMatchCharLength: 2 // Don't match single characters
   })
 }
 
@@ -33,7 +33,7 @@ export function filterContacts(contacts, query, fuse) {
   }
 
   // Use Fuse.js for fuzzy search
-  return fuse.search(trimmedQuery).map(result => result.item)
+  return fuse.search(trimmedQuery).map((result) => result.item)
 }
 
 /**

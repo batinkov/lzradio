@@ -1,10 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import {
-  formatTime,
-  getTimerWarningLevel,
-  parseTime,
-  createExamTimer
-} from './examTimer.js'
+import { formatTime, getTimerWarningLevel, parseTime, createExamTimer } from './examTimer.js'
 
 describe('examTimer', () => {
   describe('formatTime', () => {

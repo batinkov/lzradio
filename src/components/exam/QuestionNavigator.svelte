@@ -40,11 +40,7 @@
 </script>
 
 {#if show}
-  <div
-    class="modal-backdrop"
-    on:click={onClose}
-    role="presentation"
-  >
+  <div class="modal-backdrop" on:click={onClose} role="presentation">
     <div
       class="modal navigator-modal"
       on:click|stopPropagation
@@ -73,24 +69,30 @@
         </div>
         <div class="legend">
           <div class="legend-item">
-            <span class="legend-dot legend-current"></span> {$_('exam.current')}
+            <span class="legend-dot legend-current"></span>
+            {$_('exam.current')}
           </div>
           {#if isInProgress}
             <div class="legend-item">
-              <span class="legend-dot legend-answered"></span> {$_('exam.answered')}
+              <span class="legend-dot legend-answered"></span>
+              {$_('exam.answered')}
             </div>
             <div class="legend-item">
-              <span class="legend-dot legend-unanswered"></span> {$_('exam.unanswered')}
+              <span class="legend-dot legend-unanswered"></span>
+              {$_('exam.unanswered')}
             </div>
           {:else}
             <div class="legend-item">
-              <span class="legend-dot legend-correct"></span> {$_('exam.correct')}
+              <span class="legend-dot legend-correct"></span>
+              {$_('exam.correct')}
             </div>
             <div class="legend-item">
-              <span class="legend-dot legend-incorrect"></span> {$_('exam.incorrect')}
+              <span class="legend-dot legend-incorrect"></span>
+              {$_('exam.incorrect')}
             </div>
             <div class="legend-item">
-              <span class="legend-dot legend-unanswered"></span> {$_('exam.unanswered')}
+              <span class="legend-dot legend-unanswered"></span>
+              {$_('exam.unanswered')}
             </div>
           {/if}
         </div>

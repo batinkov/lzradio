@@ -40,7 +40,7 @@ describe('logbookSearch', () => {
       const fuse = createFuseInstance(mockContacts)
       const result = filterContacts(mockContacts, 'lz1abc', fuse)
       expect(result.length).toBeGreaterThan(0)
-      const callsigns = result.map(c => c.fullCallsign)
+      const callsigns = result.map((c) => c.fullCallsign)
       expect(callsigns).toContain('LZ1ABC')
     })
 
@@ -48,7 +48,7 @@ describe('logbookSearch', () => {
       const fuse = createFuseInstance(mockContacts)
       const result = filterContacts(mockContacts, 'LZ1ABC', fuse)
       // Should find both LZ1ABC (exact) and LZ1XBC (fuzzy match)
-      const callsigns = result.map(c => c.fullCallsign)
+      const callsigns = result.map((c) => c.fullCallsign)
       expect(callsigns).toContain('LZ1ABC')
       expect(callsigns).toContain('LZ1XBC')
     })
@@ -117,9 +117,7 @@ describe('logbookSearch', () => {
 
   describe('createFuseInstance', () => {
     it('creates a Fuse instance with correct configuration', () => {
-      const mockContacts = [
-        { fullCallsign: 'LZ1ABC', remarks: 'Test' }
-      ]
+      const mockContacts = [{ fullCallsign: 'LZ1ABC', remarks: 'Test' }]
       const fuse = createFuseInstance(mockContacts)
 
       expect(fuse).toBeDefined()

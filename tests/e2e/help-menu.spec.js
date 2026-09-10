@@ -191,7 +191,10 @@ test.describe('Help Menu', () => {
       await expect(page.locator('.help-dropdown')).toBeVisible()
 
       const docLink = page.locator('.help-dropdown a')
-      await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/en-Home')
+      await expect(docLink).toHaveAttribute(
+        'href',
+        'https://github.com/batinkov/lzradio/wiki/en-Home'
+      )
     })
 
     test('should link to Bulgarian wiki when in Bulgarian', async ({ page }) => {
@@ -205,7 +208,10 @@ test.describe('Help Menu', () => {
 
       const docLink = page.locator('.help-dropdown a')
       await expect(docLink).toContainText('Документация')
-      await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/bg-Home')
+      await expect(docLink).toHaveAttribute(
+        'href',
+        'https://github.com/batinkov/lzradio/wiki/bg-Home'
+      )
     })
 
     test('should open documentation in new tab', async ({ page }) => {
@@ -244,7 +250,10 @@ test.describe('Help Menu', () => {
       await page.click('.help-menu-container .icon-btn')
       await expect(page.locator('.help-dropdown')).toBeVisible()
       let docLink = page.locator('.help-dropdown a')
-      await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/en-Home')
+      await expect(docLink).toHaveAttribute(
+        'href',
+        'https://github.com/batinkov/lzradio/wiki/en-Home'
+      )
 
       // Close dropdown
       await page.click('.nav-brand')
@@ -258,7 +267,10 @@ test.describe('Help Menu', () => {
       await page.click('.help-menu-container .icon-btn')
       await expect(page.locator('.help-dropdown')).toBeVisible()
       docLink = page.locator('.help-dropdown a')
-      await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/bg-Home')
+      await expect(docLink).toHaveAttribute(
+        'href',
+        'https://github.com/batinkov/lzradio/wiki/bg-Home'
+      )
     })
   })
 })

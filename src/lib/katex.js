@@ -22,7 +22,7 @@ export function renderMath(text) {
     try {
       return katex.renderToString(latex, {
         displayMode: true,
-        throwOnError: false,
+        throwOnError: false
       })
     } catch (e) {
       console.error('KaTeX rendering error (display):', e)
@@ -35,7 +35,7 @@ export function renderMath(text) {
     try {
       return katex.renderToString(latex, {
         displayMode: false,
-        throwOnError: false,
+        throwOnError: false
       })
     } catch (e) {
       console.error('KaTeX rendering error (inline):', e)

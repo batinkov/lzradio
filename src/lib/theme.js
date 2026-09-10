@@ -32,7 +32,11 @@ export function getInitialTheme() {
   }
 
   // Try system preference (only in browser environment)
-  if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  if (
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  ) {
     return 'dark'
   }
 
@@ -71,7 +75,7 @@ export function applyTheme(newTheme) {
  */
 export function toggleTheme() {
   let currentTheme
-  theme.subscribe(value => {
+  theme.subscribe((value) => {
     currentTheme = value
   })()
 

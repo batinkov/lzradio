@@ -89,33 +89,24 @@
   $: isInPrepMode = $location.includes('/prep')
 
   // Documentation URL based on current locale
-  $: documentationUrl = $locale === 'bg'
-    ? 'https://github.com/batinkov/lzradio/wiki/bg-Home'
-    : 'https://github.com/batinkov/lzradio/wiki/en-Home'
+  $: documentationUrl =
+    $locale === 'bg'
+      ? 'https://github.com/batinkov/lzradio/wiki/bg-Home'
+      : 'https://github.com/batinkov/lzradio/wiki/en-Home'
 </script>
 
 <nav class="nav" class:nav-blocked={$navigationBlocked}>
   <div class="nav-content">
     <div class="nav-brand">
-      <a href="/" use:link>
-        LZ Radio
-      </a>
+      <a href="/" use:link> LZ Radio </a>
     </div>
 
     <!-- Desktop Navigation -->
     <div class="nav-links desktop">
-      <a
-        href="/logbook"
-        use:link
-        class:active={$location === '/logbook'}
-      >
+      <a href="/logbook" use:link class:active={$location === '/logbook'}>
         {$_('nav.logbook')}
       </a>
-      <a
-        href="/exam"
-        use:link
-        class:active={$location.startsWith('/exam')}
-      >
+      <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
         {$_('nav.examPrep')}
       </a>
     </div>
@@ -159,7 +150,12 @@
         </button>
         {#if showHelpMenu}
           <div class="help-dropdown">
-            <a href={documentationUrl} target="_blank" rel="noopener noreferrer" on:click={closeHelpMenu}>
+            <a
+              href={documentationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              on:click={closeHelpMenu}
+            >
               📖 {$_('helpMenu.documentation')}
             </a>
             <button on:click={openFeaturesModal}>
@@ -173,7 +169,11 @@
       </div>
 
       <!-- Mobile Menu Toggle -->
-      <button class="icon-btn mobile-menu-btn" on:click={toggleMobileMenu} aria-label={$_('nav.menu')}>
+      <button
+        class="icon-btn mobile-menu-btn"
+        on:click={toggleMobileMenu}
+        aria-label={$_('nav.menu')}
+      >
         {showMobileMenu ? '×' : '≡'}
       </button>
     </div>
@@ -182,18 +182,10 @@
   <!-- Mobile Menu -->
   {#if showMobileMenu}
     <div class="mobile-menu">
-      <a
-        href="/logbook"
-        use:link
-        class:active={$location === '/logbook'}
-      >
+      <a href="/logbook" use:link class:active={$location === '/logbook'}>
         {$_('nav.logbook')}
       </a>
-      <a
-        href="/exam"
-        use:link
-        class:active={$location.startsWith('/exam')}
-      >
+      <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
         {$_('nav.examPrep')}
       </a>
     </div>
@@ -203,7 +195,13 @@
 <!-- Features Modal -->
 {#if showFeaturesModal}
   <div class="modal-backdrop" on:click={closeFeaturesModal} role="presentation">
-    <div class="modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
+    <div
+      class="modal"
+      on:click|stopPropagation
+      on:keydown|stopPropagation
+      role="dialog"
+      tabindex="-1"
+    >
       <div class="modal-header">
         <h2>{$_('features.title')}</h2>
         <button class="icon-btn" on:click={closeFeaturesModal} aria-label={$_('common.close')}>
@@ -211,12 +209,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <p><strong>{$_('features.logbook.title')}</strong><br>
-        {$_('features.logbook.description')}<br>
-        <span class="feature-subsection">💾 {$_('features.logbook.exportImport')}</span></p>
+        <p>
+          <strong>{$_('features.logbook.title')}</strong><br />
+          {$_('features.logbook.description')}<br />
+          <span class="feature-subsection">💾 {$_('features.logbook.exportImport')}</span>
+        </p>
 
-        <p><strong>{$_('features.examPrep.title')}</strong><br>
-        {$_('features.examPrep.description')}</p>
+        <p>
+          <strong>{$_('features.examPrep.title')}</strong><br />
+          {$_('features.examPrep.description')}
+        </p>
 
         <h3>{$_('features.keyboardShortcuts')}</h3>
         <ul>
@@ -234,7 +236,13 @@
 <!-- About Modal -->
 {#if showAboutModal}
   <div class="modal-backdrop" on:click={closeAboutModal} role="presentation">
-    <div class="modal" on:click|stopPropagation on:keydown|stopPropagation role="dialog" tabindex="-1">
+    <div
+      class="modal"
+      on:click|stopPropagation
+      on:keydown|stopPropagation
+      role="dialog"
+      tabindex="-1"
+    >
       <div class="modal-header">
         <h2>{$_('about.title')}</h2>
         <button class="icon-btn" on:click={closeAboutModal} aria-label={$_('common.close')}>
@@ -255,13 +263,25 @@
         <div class="about-section">
           <h4>{$_('about.feedback')}</h4>
           <div class="feedback-links">
-            <a href="https://github.com/{githubRepo}/issues/new?template=bug_report.md" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/{githubRepo}/issues/new?template=bug_report.md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               🐛 {$_('about.reportBug')}
             </a>
-            <a href="https://github.com/{githubRepo}/issues/new?template=feature_request.md" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/{githubRepo}/issues/new?template=feature_request.md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               💡 {$_('about.featureRequest')}
             </a>
-            <a href="https://github.com/{githubRepo}/issues/new" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/{githubRepo}/issues/new"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               💬 {$_('about.generalFeedback')}
             </a>
           </div>
@@ -337,12 +357,12 @@
   /* Light mode: use more visible background for active/hover states */
   :global(:root) .nav-links a.active,
   :global(:root) .nav-links a:hover {
-    background: #E5E7EB;
+    background: #e5e7eb;
   }
 
   /* Dark mode: keep using the CSS variable */
-  :global([data-theme="dark"]) .nav-links a.active,
-  :global([data-theme="dark"]) .nav-links a:hover {
+  :global([data-theme='dark']) .nav-links a.active,
+  :global([data-theme='dark']) .nav-links a:hover {
     background: var(--color-bg);
   }
 

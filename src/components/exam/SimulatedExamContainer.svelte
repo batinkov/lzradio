@@ -234,12 +234,10 @@
 
 {#if examState === EXAM_STATE.NOT_STARTED}
   <ExamStartScreen {classNum} {classInfo} on:start={startExam} />
-
 {:else if examState === EXAM_STATE.LOADING}
   <div class="page page-centered">
     <Loading message={$_('exam.loadingQuestions')} />
   </div>
-
 {:else if examState === EXAM_STATE.IN_PROGRESS}
   <ExamInProgress
     {classInfo}
@@ -255,7 +253,6 @@
     on:submit={submitExam}
     on:leave={leaveExam}
   />
-
 {:else if examState === EXAM_STATE.COMPLETED}
   <ExamResults
     {examResults}
@@ -263,7 +260,6 @@
     on:tryAgain={tryAgain}
     on:leave={leaveExam}
   />
-
 {:else if examState === EXAM_STATE.REVIEW}
   <ExamReview
     {classInfo}

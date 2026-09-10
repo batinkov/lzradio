@@ -13,5 +13,5 @@ export const examConfig = {
   examDuration: 40,
 
   // Minimum correct answers required to pass
-  minCorrectAnswers: 48,
+  minCorrectAnswers: 48
 }

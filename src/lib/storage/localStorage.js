@@ -12,9 +12,7 @@ import { createStorageAdapter } from './storageAdapter.js'
  * Uses browser's localStorage if available, otherwise creates a mock
  */
 export const localStorageAdapter = createStorageAdapter(
-  typeof window !== 'undefined' && window.localStorage
-    ? window.localStorage
-    : createMockStorage()
+  typeof window !== 'undefined' && window.localStorage ? window.localStorage : createMockStorage()
 )
 
 // Re-export createMockStorage for testing
