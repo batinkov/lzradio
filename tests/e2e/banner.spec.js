@@ -216,9 +216,6 @@ test.describe('Banner Component', () => {
       // Switch to Bulgarian via language button
       await page.click('.lang-btn:has-text("bg")')
 
-      // Wait for language change
-      await page.waitForTimeout(500)
-
       // Banner should disappear
       await expect(banner).not.toBeVisible()
 

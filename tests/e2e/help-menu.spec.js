@@ -31,7 +31,6 @@ test.describe('Help Menu', () => {
 
     // Click outside (on the page body)
     await page.click('.nav-brand')
-    await page.waitForTimeout(200)
 
     // Dropdown should be closed
     await expect(page.locator('.help-dropdown')).not.toBeVisible()
@@ -81,7 +80,6 @@ test.describe('Help Menu', () => {
 
       // Click close button
       await page.click('.modal-header .icon-btn')
-      await page.waitForTimeout(200)
 
       await expect(page.locator('.modal')).not.toBeVisible()
     })
@@ -168,7 +166,6 @@ test.describe('Help Menu', () => {
 
       // Click close button
       await page.click('.modal-header .icon-btn')
-      await page.waitForTimeout(200)
 
       await expect(page.locator('.modal')).not.toBeVisible()
     })
@@ -184,23 +181,27 @@ test.describe('Help Menu', () => {
     })
 
     test('should link to English wiki when in English', async ({ page }) => {
-      // Ensure English is selected
+      // Ensure English is selected. Wait for the switch to take effect rather
+      // than sleeping: changing language re-renders the nav, and clicking a
+      // button mid-re-render lands on a node Svelte is about to replace.
       await page.click('button.lang-btn:has-text("EN")')
-      await page.waitForTimeout(100)
+      await expect(page.locator('button.lang-btn:has-text("EN")')).toHaveClass(/active/)
 
       await page.click('button[aria-label*="Help"]')
+      await expect(page.locator('.help-dropdown')).toBeVisible()
 
       const docLink = page.locator('.help-dropdown a')
       await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/en-Home')
     })
 
     test('should link to Bulgarian wiki when in Bulgarian', async ({ page }) => {
-      // Switch to Bulgarian
+      // Switch to Bulgarian and wait for the nav to finish re-rendering
       await page.click('button.lang-btn:has-text("BG")')
-      await page.waitForTimeout(100)
+      await expect(page.locator('button.lang-btn:has-text("BG")')).toHaveClass(/active/)
 
       // Use container selector since aria-label changes with language
       await page.click('.help-menu-container .icon-btn')
+      await expect(page.locator('.help-dropdown')).toBeVisible()
 
       const docLink = page.locator('.help-dropdown a')
       await expect(docLink).toContainText('Документация')
@@ -234,24 +235,28 @@ test.describe('Help Menu', () => {
     })
 
     test('should update link when switching language', async ({ page }) => {
-      // Start in English
+      // Start in English. Each language switch re-renders the nav, so wait for
+      // the switch to land before clicking into it — a click during the
+      // re-render hits a node Svelte is about to replace and is lost.
       await page.click('button.lang-btn:has-text("EN")')
-      await page.waitForTimeout(100)
+      await expect(page.locator('button.lang-btn:has-text("EN")')).toHaveClass(/active/)
 
       await page.click('.help-menu-container .icon-btn')
+      await expect(page.locator('.help-dropdown')).toBeVisible()
       let docLink = page.locator('.help-dropdown a')
       await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/en-Home')
 
       // Close dropdown
       await page.click('.nav-brand')
-      await page.waitForTimeout(200)
+      await expect(page.locator('.help-dropdown')).not.toBeVisible()
 
       // Switch to Bulgarian
       await page.click('button.lang-btn:has-text("BG")')
-      await page.waitForTimeout(100)
+      await expect(page.locator('button.lang-btn:has-text("BG")')).toHaveClass(/active/)
 
       // Reopen dropdown (use container selector since aria-label changed)
       await page.click('.help-menu-container .icon-btn')
+      await expect(page.locator('.help-dropdown')).toBeVisible()
       docLink = page.locator('.help-dropdown a')
       await expect(docLink).toHaveAttribute('href', 'https://github.com/batinkov/lzradio/wiki/bg-Home')
     })

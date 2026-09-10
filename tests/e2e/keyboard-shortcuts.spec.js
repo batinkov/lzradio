@@ -313,7 +313,6 @@ test.describe('Keyboard Shortcuts', () => {
 
       // Press ESC to close
       await page.keyboard.press('Escape')
-      await page.waitForTimeout(200)
 
       // Modal should be closed
       await expect(page.locator('.modal')).not.toBeVisible()
@@ -336,7 +335,6 @@ test.describe('Keyboard Shortcuts', () => {
 
       // Press ESC to close
       await page.keyboard.press('Escape')
-      await page.waitForTimeout(200)
 
       // Modal should be closed
       await expect(page.locator('.submit-modal')).not.toBeVisible()

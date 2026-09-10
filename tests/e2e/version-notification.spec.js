@@ -62,11 +62,13 @@ test.describe('Version Notification', () => {
 
     await page.goto('/')
 
-    // Wait a bit to ensure no toast appears
-    await page.waitForTimeout(500)
+    // Wait for the app to actually render before asserting the toast is absent.
+    // Without a barrier, "no toast" is satisfied just as well by "nothing has
+    // mounted yet", so the assertion would pass for the wrong reason.
+    await expect(page.locator('.hero h1')).toBeVisible()
 
-    // Toast should not be visible
-    await expect(page.locator('.toast')).not.toBeVisible()
+    // No toast for a first-time user
+    await expect(page.locator('.toast')).toHaveCount(0)
 
     // Verify version was saved to localStorage
     const lastSeenVersion = await page.evaluate(() => localStorage.getItem('lastSeenVersion'))
