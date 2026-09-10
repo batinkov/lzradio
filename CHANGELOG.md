@@ -5,6 +5,53 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-09-10
+
+The first release with user-visible changes since 0.5.3. Bulgarian users were
+seeing English toast messages throughout the app; that is fixed, along with
+several native browser dialogs that never belonged.
+
+### Fixed
+- Toast messages are now translated. Every toast in the LogBook and the exam
+  container was hardcoded English in a bilingual app, so Bulgarian users saw
+  English text for export, import, delete and settings feedback
+- The export toast's date range joined its two dates with an English "to",
+  leaving a half-translated string for Bulgarian users
+- The update notification said "New version available", but it fires from
+  `onMount` after the new bundle has already loaded — there was nothing to
+  fetch. It now reads "Updated to X"
+- The update notification and its changelog link were themselves untranslated,
+  and could render before the locale finished loading
+
+### Changed
+- Five `alert()` calls replaced with toasts (LogBook delete, invalid JSON,
+  import validation, import processing, and exam question loading). Native
+  dialogs cannot be themed, block the event loop, carry no links, and browsers
+  offer to suppress them permanently after a few appearances. The import
+  validation toast is shown for 8s rather than the default 4s, since it
+  carries variable-length detail and replaced a blocking dialog
+- Dependency updates reaching the app: `katex` 0.16.25 → 0.18.7,
+  `dexie` 4.2.1 → 4.4.5, `fuse.js` 7.1.0 → 7.5.0,
+  `svelte-spa-router` 4.0.1 → 4.0.2
+- Build and test tooling: `svelte` 5.57.0, `vite` 8.2.2, `vitest` 5.0.0,
+  `eslint` 10.10.0, `@playwright/test` 1.63.0, and the six GitHub Actions used
+  by CI and deployment
+
+### Removed
+- A dead debounce timer in `LogBook.svelte`. It was declared and cleared on
+  destroy but never assigned — there is no `setTimeout` in the file — so the
+  search debounce it implied never existed. Search behaviour is unchanged;
+  filtering already ran reactively on every keystroke
+
+### Added
+- `.github/dependabot.yml`, so routine version updates are scheduled rather
+  than arriving only when a dependency earns a security advisory. Packages
+  that cross-pin exactly (`vitest`, `eslint`) are grouped, since splitting
+  those majors produces individually unmergeable pull requests
+- `npm run test:e2e:repeat` for hunting flaky e2e tests
+- Locale consistency tests covering key parity, matching interpolation
+  placeholders, and untranslated values across both locale files
+
 ## [0.5.6] - 2026-09-08
 
 Infrastructure release. No application source changes.
