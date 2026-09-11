@@ -1,20 +1,20 @@
 <script>
   import { onMount } from 'svelte'
-  import { link, push, location } from 'svelte-spa-router'
+  import { link, push, router } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
   import { addContact, getContact, updateContact } from '../lib/logbookDB.js'
   import { parseCallsign, buildCallsign } from '../lib/callsignParser.js'
 
-  export let params = {}
+  let { params = {} } = $props()
 
   // Mode detection
-  $: contactId = params.id ? parseInt(params.id) : null
-  $: isViewMode = $location.includes('/view/')
-  $: isEditMode = contactId !== null && !isViewMode
-  $: isReadOnly = isViewMode
+  const contactId = $derived(params.id ? parseInt(params.id) : null)
+  const isViewMode = $derived(router.location.includes('/view/'))
+  const isEditMode = $derived(contactId !== null && !isViewMode)
+  const isReadOnly = $derived(isViewMode)
 
   // Form state
-  let formData = {
+  let formData = $state({
     callsign: '',
     date: '',
     time: '',
@@ -26,12 +26,12 @@
     qslSent: false,
     qslReceived: false,
     remarks: ''
-  }
+  })
 
-  let errors = {}
-  let saving = false
-  let errorMessage = ''
-  let loading = false
+  let errors = $state({})
+  let saving = $state(false)
+  let errorMessage = $state('')
+  let loading = $state(false)
 
   onMount(async () => {
     if (isEditMode || isViewMode) {
@@ -208,7 +208,7 @@
         </div>
       {/if}
 
-      <form class="contact-form" on:submit={handleSubmit}>
+      <form class="contact-form" onsubmit={handleSubmit}>
         <!-- Primary Field: Callsign -->
         <div class="form-row">
           <div class="form-field full-width">
@@ -387,7 +387,7 @@
               {/if}
             </button>
             {#if !isEditMode}
-              <button type="button" class="btn-secondary" on:click={handleClear} disabled={saving}>
+              <button type="button" class="btn-secondary" onclick={handleClear} disabled={saving}>
                 {$_('logbook.clearForm')}
               </button>
               <a href="/logbook" use:link class="btn-text">{$_('common.cancel')}</a>
