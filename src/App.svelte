@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte'
-  import Router, { location } from 'svelte-spa-router'
+  import Router, { router } from 'svelte-spa-router'
   import { wrap } from 'svelte-spa-router/wrap'
   import { isLoading, waitLocale, _ } from 'svelte-i18n'
   import { setupI18n } from './lib/i18n.js'
@@ -36,25 +36,11 @@
     localStorage.setItem('lastSeenVersion', currentVersion)
   })
 
-  // Track pageviews for analytics
-  onMount(() => {
-    let isInitialCall = true
-
-    // Subscribe to route changes
-    // Note: subscription fires immediately with current value, then on each change
-    const unsubscribe = location.subscribe((newLocation) => {
-      if (isInitialCall) {
-        // Track initial page load
-        isInitialCall = false
-        analytics.trackPageview(newLocation)
-      } else {
-        // Track subsequent route changes
-        analytics.trackPageview(newLocation)
-      }
-    })
-
-    // Cleanup subscription on component destroy
-    return unsubscribe
+  // Track pageviews for analytics. The effect runs once on mount and again on
+  // every route change, matching what the v4 store subscription did — and it
+  // tears itself down, so there is no unsubscribe to manage.
+  $effect(() => {
+    analytics.trackPageview(router.location)
   })
 
   // Routes with code splitting - components are loaded on demand

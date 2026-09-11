@@ -1,6 +1,6 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
-  import { link, location } from 'svelte-spa-router'
+  import { link, router } from 'svelte-spa-router'
   import { _ } from 'svelte-i18n'
   import { locale, changeLanguage, SUPPORTED_LOCALES } from '../../lib/i18n.js'
   import { navigationBlocked } from '../../lib/navigationGuard.js'
@@ -11,10 +11,10 @@
   const maintainerCallsign = __MAINTAINER_CALLSIGN__
   const githubRepo = __GITHUB_REPO__
 
-  let showMobileMenu = false
-  let showHelpMenu = false
-  let showFeaturesModal = false
-  let showAboutModal = false
+  let showMobileMenu = $state(false)
+  let showHelpMenu = $state(false)
+  let showFeaturesModal = $state(false)
+  let showAboutModal = $state(false)
 
   function toggleMobileMenu() {
     showMobileMenu = !showMobileMenu
@@ -81,18 +81,21 @@
   })
 
   // Close mobile menu when route changes
-  $: if ($location) {
-    showMobileMenu = false
-  }
+  $effect(() => {
+    if (router.location) {
+      showMobileMenu = false
+    }
+  })
 
   // Disable language switching during prep mode (simulated mode already disables entire nav)
-  $: isInPrepMode = $location.includes('/prep')
+  const isInPrepMode = $derived(router.location.includes('/prep'))
 
   // Documentation URL based on current locale
-  $: documentationUrl =
+  const documentationUrl = $derived(
     $locale === 'bg'
       ? 'https://github.com/batinkov/lzradio/wiki/bg-Home'
       : 'https://github.com/batinkov/lzradio/wiki/en-Home'
+  )
 </script>
 
 <nav class="nav" class:nav-blocked={$navigationBlocked}>
@@ -103,10 +106,10 @@
 
     <!-- Desktop Navigation -->
     <div class="nav-links desktop">
-      <a href="/logbook" use:link class:active={$location === '/logbook'}>
+      <a href="/logbook" use:link class:active={router.location === '/logbook'}>
         {$_('nav.logbook')}
       </a>
-      <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
+      <a href="/exam" use:link class:active={router.location.startsWith('/exam')}>
         {$_('nav.examPrep')}
       </a>
     </div>
@@ -118,7 +121,7 @@
           <button
             class="lang-btn"
             class:active={$locale === lang}
-            on:click={() => switchLanguage(lang)}
+            onclick={() => switchLanguage(lang)}
             disabled={isInPrepMode}
             title={isInPrepMode ? $_('nav.languageDisabledDuringExam') : `Switch to ${lang}`}
             aria-label="Switch to {lang}"
@@ -131,7 +134,7 @@
       <!-- Theme Toggle -->
       <button
         class="icon-btn"
-        on:click={switchTheme}
+        onclick={switchTheme}
         aria-label={$_('nav.toggleTheme')}
         title={$theme === 'light' ? $_('nav.switchToDark') : $_('nav.switchToLight')}
       >
@@ -142,7 +145,7 @@
       <div class="help-menu-container">
         <button
           class="icon-btn"
-          on:click={toggleHelpMenu}
+          onclick={toggleHelpMenu}
           aria-label={$_('nav.help')}
           aria-expanded={showHelpMenu}
         >
@@ -154,14 +157,14 @@
               href={documentationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              on:click={closeHelpMenu}
+              onclick={closeHelpMenu}
             >
               📖 {$_('helpMenu.documentation')}
             </a>
-            <button on:click={openFeaturesModal}>
+            <button onclick={openFeaturesModal}>
               📋 {$_('helpMenu.features')}
             </button>
-            <button on:click={openAboutModal}>
+            <button onclick={openAboutModal}>
               ℹ️ {$_('helpMenu.about')}
             </button>
           </div>
@@ -171,7 +174,7 @@
       <!-- Mobile Menu Toggle -->
       <button
         class="icon-btn mobile-menu-btn"
-        on:click={toggleMobileMenu}
+        onclick={toggleMobileMenu}
         aria-label={$_('nav.menu')}
       >
         {showMobileMenu ? '×' : '≡'}
@@ -182,10 +185,10 @@
   <!-- Mobile Menu -->
   {#if showMobileMenu}
     <div class="mobile-menu">
-      <a href="/logbook" use:link class:active={$location === '/logbook'}>
+      <a href="/logbook" use:link class:active={router.location === '/logbook'}>
         {$_('nav.logbook')}
       </a>
-      <a href="/exam" use:link class:active={$location.startsWith('/exam')}>
+      <a href="/exam" use:link class:active={router.location.startsWith('/exam')}>
         {$_('nav.examPrep')}
       </a>
     </div>
@@ -194,17 +197,17 @@
 
 <!-- Features Modal -->
 {#if showFeaturesModal}
-  <div class="modal-backdrop" on:click={closeFeaturesModal} role="presentation">
+  <div class="modal-backdrop" onclick={closeFeaturesModal} role="presentation">
     <div
       class="modal"
-      on:click|stopPropagation
-      on:keydown|stopPropagation
+      onclick={(e) => e.stopPropagation()}
+      onkeydown={(e) => e.stopPropagation()}
       role="dialog"
       tabindex="-1"
     >
       <div class="modal-header">
         <h2>{$_('features.title')}</h2>
-        <button class="icon-btn" on:click={closeFeaturesModal} aria-label={$_('common.close')}>
+        <button class="icon-btn" onclick={closeFeaturesModal} aria-label={$_('common.close')}>
           ×
         </button>
       </div>
@@ -235,17 +238,17 @@
 
 <!-- About Modal -->
 {#if showAboutModal}
-  <div class="modal-backdrop" on:click={closeAboutModal} role="presentation">
+  <div class="modal-backdrop" onclick={closeAboutModal} role="presentation">
     <div
       class="modal"
-      on:click|stopPropagation
-      on:keydown|stopPropagation
+      onclick={(e) => e.stopPropagation()}
+      onkeydown={(e) => e.stopPropagation()}
       role="dialog"
       tabindex="-1"
     >
       <div class="modal-header">
         <h2>{$_('about.title')}</h2>
-        <button class="icon-btn" on:click={closeAboutModal} aria-label={$_('common.close')}>
+        <button class="icon-btn" onclick={closeAboutModal} aria-label={$_('common.close')}>
           ×
         </button>
       </div>

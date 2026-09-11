@@ -1,6 +1,6 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
-  import { link, location, querystring } from 'svelte-spa-router'
+  import { link, router } from 'svelte-spa-router'
   import { _, locale } from 'svelte-i18n'
   import { getQuestions, getClassInfo } from '../lib/questions.js'
   import { parseExamParams } from '../lib/urlParams.js'
@@ -13,15 +13,22 @@
   import QuestionNavigator from '../components/exam/QuestionNavigator.svelte'
 
   // Parse URL parameters
-  $: ({ classNum, questionOrder, sections } = parseExamParams($location, $querystring))
+  const examParams = $derived(parseExamParams(router.location, router.querystring))
+  const classNum = $derived(examParams.classNum)
+  const questionOrder = $derived(examParams.questionOrder)
+  const sections = $derived(examParams.sections)
 
   // State for loaded questions and class info
-  let questions = []
-  let classInfo = { class: '', update: '' }
-  let isLoading = true
+  let questions = $state([])
+  let classInfo = $state({ class: '', update: '' })
+  let isLoading = $state(true)
 
-  // Load questions when locale, class, sections, or order changes
-  $: loadQuestions($locale, classNum, sections, questionOrder)
+  // Load questions when locale, class, sections, or order changes.
+  // Every dependency is read synchronously here: $effect only tracks reads that
+  // happen before the first await, and loadQuestions is async.
+  $effect(() => {
+    loadQuestions($locale, classNum, sections, questionOrder)
+  })
 
   async function loadQuestions(currentLocale, cls, secs, order) {
     isLoading = true
@@ -42,19 +49,18 @@
   }
 
   // State
-  let currentQuestionIndex = 0
-  let userAnswers = {} // { questionIndex: selectedAnswerKey (А/Б/В/Г or A/B/C/D) }
-  let showNavigator = false
+  let currentQuestionIndex = $state(0)
+  let userAnswers = $state({}) // { questionIndex: selectedAnswerKey (А/Б/В/Г or A/B/C/D) }
+  let showNavigator = $state(false)
 
   // Reactive current question
-  $: currentQuestion = questions[currentQuestionIndex]
-  $: selectedAnswer = userAnswers[currentQuestionIndex]
-  $: totalQuestions = questions.length
-  $: answeredCount = Object.keys(userAnswers).length
+  const currentQuestion = $derived(questions[currentQuestionIndex])
+  const selectedAnswer = $derived(userAnswers[currentQuestionIndex])
+  const totalQuestions = $derived(questions.length)
+  const answeredCount = $derived(Object.keys(userAnswers).length)
 
   function selectAnswer(answerKey) {
     userAnswers[currentQuestionIndex] = answerKey
-    userAnswers = userAnswers // Trigger reactivity
   }
 
   function nextQuestion() {
@@ -100,7 +106,7 @@
   <!-- Header -->
   <div class="header">
     <div class="header-left">
-      <button class="btn-navigator" on:click={toggleNavigator}>
+      <button class="btn-navigator" onclick={toggleNavigator}>
         ☰ {$_('exam.questionsMenu')}
       </button>
       <div class="progress-text">

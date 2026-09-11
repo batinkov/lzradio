@@ -1,17 +1,17 @@
 <script>
-  import { link, push, location } from 'svelte-spa-router'
+  import { link, push, router } from 'svelte-spa-router'
   import { _, locale } from 'svelte-i18n'
   import { examConfig } from '../lib/examConfig.js'
 
   // Extract class number from URL path (/exam/class1 or /exam/class2)
-  $: classNum = $location.includes('class2') ? '2' : '1'
+  const classNum = $derived(router.location.includes('class2') ? '2' : '1')
 
   // Get section names for current locale and class (injected at build time)
-  $: currentLocale = $locale?.substring(0, 2) || 'en'
-  $: sectionNamesForClass = __SECTION_NAMES__[currentLocale]?.[classNum] || {}
+  const currentLocale = $derived($locale?.substring(0, 2) || 'en')
+  const sectionNamesForClass = $derived(__SECTION_NAMES__[currentLocale]?.[classNum] || {})
 
-  let questionOrder = 'sequential'
-  let selectedCategories = [1, 2, 3]
+  let questionOrder = $state('sequential')
+  let selectedCategories = $state([1, 2, 3])
 
   function toggleCategory(category) {
     if (selectedCategories.includes(category)) {
@@ -70,7 +70,7 @@
               <input
                 type="checkbox"
                 checked={selectedCategories.includes(1)}
-                on:change={() => toggleCategory(1)}
+                onchange={() => toggleCategory(1)}
               />
               <span>{sectionNamesForClass[1] || `${$_('exam.category')} 1`}</span>
             </label>
@@ -78,7 +78,7 @@
               <input
                 type="checkbox"
                 checked={selectedCategories.includes(2)}
-                on:change={() => toggleCategory(2)}
+                onchange={() => toggleCategory(2)}
               />
               <span>{sectionNamesForClass[2] || `${$_('exam.category')} 2`}</span>
             </label>
@@ -86,7 +86,7 @@
               <input
                 type="checkbox"
                 checked={selectedCategories.includes(3)}
-                on:change={() => toggleCategory(3)}
+                onchange={() => toggleCategory(3)}
               />
               <span>{sectionNamesForClass[3] || `${$_('exam.category')} 3`}</span>
             </label>
@@ -95,7 +95,7 @@
 
         <button
           class="btn-primary"
-          on:click={startPreparation}
+          onclick={startPreparation}
           disabled={selectedCategories.length === 0}
         >
           {$_('exam.startPreparation')}
