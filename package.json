@@ -40,7 +40,7 @@
     "vitest": "^5.0.0"
   },
   "dependencies": {
-    "dexie": "^4.4.5",
+    "dexie": "^4.4.6",
     "fuse.js": "^7.5.0",
     "katex": "^0.18.7",
     "svelte-i18n": "^4.0.1",
