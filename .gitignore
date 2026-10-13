@@ -26,3 +26,6 @@ dist-ssr
 # Playwright
 playwright-report/
 test-results/
+
+# Ticket drafts: disposable, deleted once the issue is on the board
+docs/initiatives/*/tickets/
