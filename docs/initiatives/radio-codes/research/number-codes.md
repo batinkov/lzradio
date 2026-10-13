@@ -19,12 +19,26 @@ code.
 | **73** | Best regards | The universal sign-off. Singular — "73," never "73s." | common |
 | **88** | Love and kisses | Warm sign-off; often between spouses / close friends. | common |
 | **33** | Fondest regards | Traditionally **YL-to-YL** (between female operators); "love sealed with friendship." From the Young Ladies Radio League. | occasional |
-| **55** | Best success / good luck | Mostly **European CW** (German "viel Erfolg"). Less standardized. | occasional |
+| **55** | Best success / good luck | Mostly **European CW** (German "viel Erfolg"). **Disputed** — see below. | disputed |
 | **161** | 73 + 88 | Combination (88+73=161); "best regards and love," used between couples. | niche |
 | **30** | End / no more | Journalism/telegraph end-mark ("that's all"). Rare on air today but recognized. | archaic |
 
+## Verification notes
+
+Checked 2026-10-13.
+
+- **73** and **88** are confirmed by the ON4UN/ON4WW operating manual, including
+  the "never 73s" rule.
+- **55** — the same manual says "51 and 55 is CB slang. Do not use it", which
+  contradicts the entry above. **Open:** drop it, or ship it marked as disputed.
+- **161** and **30** appear in Wikipedia's abbreviation table; **33** does not.
+  None of the three was found in a primary source.
+- Wikipedia also lists **99** ("get lost!"); not included here.
+
 ## Sources
 
+- [ON4UN / ON4WW — Ethics and Operating Procedures for the Radio Amateur (PDF)](https://www.uba.be/sites/default/files/media/files/eth-en-site-on-uba-1jul2008.pdf)
+- [Morse code abbreviations — Wikipedia](https://en.wikipedia.org/wiki/Morse_code_abbreviations)
 - [On the Origin of "73" (Signal Harbor)](http://www.signalharbor.com/73.html)
 - [Why Do We Say 73? — Phillips code (CAARA)](https://members.caara.net/main/phillips/)
 - [Origins of Hamspeak — CQ, 73, DX (AC6V)](https://www.ac6v.com/73.php)

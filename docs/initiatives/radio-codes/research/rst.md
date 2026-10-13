@@ -14,8 +14,11 @@ contact to tell the other operator how well you're receiving them.
 - **CW / digital:** three digits — R, S and T (e.g. **"599"**).
 - **Contests:** T and S often spoken as **"5NN"** (`N` = 9, faster to send).
 
-History: devised by **Arthur W. Braaten (W2BSR) in 1934**; influenced the 1938 ITU
-Radio Regulations.
+History: devised by **Arthur W. Braaten (W2BSR) in 1934**; similar to the code
+later adopted in the 1938 ITU Radio Regulations (Cairo).
+
+**How it appears in the reference:** as its own explainer section, not as lookup
+rows. `RST`, `59`, `599` and `5NN` are searchable entries that point to it.
 
 ## Readability (R): 1–5
 
@@ -52,9 +55,20 @@ rigs almost everything is "9," so T is nearly always 9 in practice.
 
 ## Optional suffix letters
 
-Appended to flag a defect: **A** (auroral distortion), **C** (chirp), **K** (key
-clicks), **X** (stable/crystal-controlled).
+Appended to flag a defect: **A** (auroral distortion), **C** (chirp), **D**
+(drift), **K** (key clicks), **M** (multipath distortion), **S** (scatter
+distortion), **X** (stable/crystal-controlled).
+
+Rarely used today: the ON4UN/ON4WW manual notes that few operators still know
+what `C` and `K` stand for and recommends sending "CHIRP" or "CLICKS" in words.
+
+## Verification notes
+
+Checked 2026-10-13. The scales and history match Wikipedia; the tone scale and
+the `C`/`K` suffixes are also confirmed by the ON4UN/ON4WW manual. Suffixes
+**D**, **M** and **S** were missing and rest on Wikipedia alone.
 
 ## Sources
 
 - [R-S-T system — Wikipedia](https://en.wikipedia.org/wiki/R-S-T_system)
+- [ON4UN / ON4WW — Ethics and Operating Procedures for the Radio Amateur (PDF)](https://www.uba.be/sites/default/files/media/files/eth-en-site-on-uba-1jul2008.pdf)
