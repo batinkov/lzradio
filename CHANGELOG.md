@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.1] - 2026-10-13
+
+Maintenance release. Nothing should look or behave differently; what changed is
+the code underneath, and enough of it that it is worth shipping on its own.
+
+### Changed
+
+- Routing moved to `svelte-spa-router` 5. The 4.x line is finished, and 5
+  replaces the `location` and `querystring` stores with a `router` object that
+  only Svelte 5 runes can track, so six components (`App`, `Nav`, `LogBookAdd`,
+  `ExamClassHome`, `ExamSimulated`, `ExamPrep`) were converted to runes mode
+- Dependency updates reaching the app: `katex` 0.18.7 → 0.19.0, `dexie` 4.4.5 →
+  4.4.6, and the `svelte` runtime 5.57.0 → 5.57.2
+- The codebase is now formatted with Prettier (`semi: false`), and CI fails on
+  formatting drift
+- Build and test tooling: `vite` 8.3.4, `vitest` 5.0.3, `eslint` 10.12.0,
+  `@playwright/test` 1.64.0
+
+### Security
+
+- Dependency updates for advisories in `devalue` (5.8.1 → 5.9.4),
+  `brace-expansion` (5.0.9 → 5.0.12) and `source-map-js` (1.2.1 → 1.2.2). None
+  of the affected code is part of the shipped bundle: `devalue` is used by
+  Svelte only for server-side rendering, and the other two are development
+  tools
+
 ## [0.6.0] - 2026-09-10
 
 The first release with user-visible changes since 0.5.3. Bulgarian users were
