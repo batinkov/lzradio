@@ -1,7 +1,7 @@
 /**
  * Exam Questions Data Layer
  *
- * Dynamically loads exam questions from data_en/ or data_bg/ based on current locale.
+ * Dynamically loads exam questions from data_en/exam/ or data_bg/exam/ based on current locale.
  * Provides utilities for filtering, randomizing, and accessing question data.
  * Questions are organized in JSON files: ClassX_SectionY.json
  */
@@ -28,12 +28,12 @@ async function loadSections() {
 
   // Dynamically import based on locale
   const modules = await Promise.all([
-    import(`../../data_${lang}/Class1_Section1.json`),
-    import(`../../data_${lang}/Class1_Section2.json`),
-    import(`../../data_${lang}/Class1_Section3.json`),
-    import(`../../data_${lang}/Class2_Section1.json`),
-    import(`../../data_${lang}/Class2_Section2.json`),
-    import(`../../data_${lang}/Class2_Section3.json`)
+    import(`../../data_${lang}/exam/Class1_Section1.json`),
+    import(`../../data_${lang}/exam/Class1_Section2.json`),
+    import(`../../data_${lang}/exam/Class1_Section3.json`),
+    import(`../../data_${lang}/exam/Class2_Section1.json`),
+    import(`../../data_${lang}/exam/Class2_Section2.json`),
+    import(`../../data_${lang}/exam/Class2_Section3.json`)
   ])
 
   cachedSections = {

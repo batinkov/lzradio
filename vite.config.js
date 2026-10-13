@@ -17,7 +17,7 @@ function extractSectionNames() {
     for (const cls of classes) {
       result[locale][cls] = {}
       for (const sec of sections) {
-        const filePath = `./data_${locale}/Class${cls}_Section${sec}.json`
+        const filePath = `./data_${locale}/exam/Class${cls}_Section${sec}.json`
         try {
           const data = JSON.parse(readFileSync(filePath, 'utf-8'))
           result[locale][cls][sec] = data.section

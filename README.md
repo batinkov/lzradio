@@ -168,11 +168,13 @@ lzradio/
 │   │   ├── examScoring.js   # Exam scoring logic
 │   │   ├── i18n.js          # Internationalization setup
 │   │   └── storage/         # Storage adapter architecture
-│   ├── locales/             # Translation files
-│   │   ├── en.json          # English translations
-│   │   └── bg.json          # Bulgarian translations
-│   ├── data_en/             # English question banks
-│   └── data_bg/             # Bulgarian question banks
+│   └── locales/             # Translation files
+│       ├── en.json          # English translations
+│       └── bg.json          # Bulgarian translations
+├── data_en/                 # English static data
+│   └── exam/                # English question banks
+├── data_bg/                 # Bulgarian static data
+│   └── exam/                # Bulgarian question banks
 ├── tests/
 │   └── e2e/                 # End-to-end tests
 ├── public/                  # Static assets

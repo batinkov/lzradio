@@ -248,7 +248,7 @@ None. Fully offline-capable. No external APIs or services.
 - **Default Language**: English
 - **Language Detection**: Falls back to browser language, then English
 - **Persistence**: Language preference saved via `localStorageAdapter`
-- **Question Banks**: Separate JSON files for each language (`data_en/`, `data_bg/`)
+- **Question Banks**: Separate JSON files for each language (`data_en/exam/`, `data_bg/exam/`)
 - **UI Translations**: All UI text uses translation keys from locale files
 - **Implementation**: `i18n.js` uses storage adapter for consistent persistence
 
