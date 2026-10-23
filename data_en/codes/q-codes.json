@@ -1,0 +1,288 @@
+{
+  "title": "Q-codes",
+  "intro": "Three-letter codes starting with Q. Each one is a question when followed by a question mark (QRL?) and a statement without it (QRL). Most come from the ITU list; on the air, hams often use them more loosely.",
+  "entries": [
+    {
+      "id": "qra",
+      "code": "QRA",
+      "origin": "itu",
+      "question": "What is the name of your station?",
+      "answer": "The name of my station is …",
+      "usage": "Often used for a station's call sign, though the ITU text means the name."
+    },
+    {
+      "id": "qrb",
+      "code": "QRB",
+      "origin": "itu",
+      "question": "How far are you from my station?",
+      "answer": "The distance between our stations is about …"
+    },
+    {
+      "id": "qrg",
+      "code": "QRG",
+      "origin": "itu",
+      "question": "What is my exact frequency?",
+      "answer": "Your exact frequency is …"
+    },
+    {
+      "id": "qrh",
+      "code": "QRH",
+      "origin": "itu",
+      "question": "Does my frequency drift?",
+      "answer": "Your frequency drifts."
+    },
+    {
+      "id": "qri",
+      "code": "QRI",
+      "origin": "itu",
+      "question": "How does the tone of my signal sound?",
+      "answer": "The tone of your signal is …",
+      "scale": [
+        { "value": 1, "label": "good" },
+        { "value": 2, "label": "variable" },
+        { "value": 3, "label": "bad" }
+      ]
+    },
+    {
+      "id": "qrk",
+      "code": "QRK",
+      "origin": "itu",
+      "question": "How readable are my signals?",
+      "answer": "Your signals are readable at …",
+      "scale": [
+        { "value": 1, "label": "bad" },
+        { "value": 2, "label": "poor" },
+        { "value": 3, "label": "fair" },
+        { "value": 4, "label": "good" },
+        { "value": 5, "label": "excellent" }
+      ]
+    },
+    {
+      "id": "qrl",
+      "code": "QRL",
+      "origin": "itu",
+      "question": "Are you busy?",
+      "answer": "I am busy, please do not interfere.",
+      "usage": "QRL? is sent before calling CQ to ask whether the frequency is already in use."
+    },
+    {
+      "id": "qrm",
+      "code": "QRM",
+      "origin": "itu",
+      "question": "Is something interfering with my transmission?",
+      "answer": "Your transmission has interference …",
+      "usage": "Interference from other stations; hams usually say it about what they hear (\"I have QRM\").",
+      "scale": [
+        { "value": 1, "label": "none" },
+        { "value": 2, "label": "slight" },
+        { "value": 3, "label": "moderate" },
+        { "value": 4, "label": "severe" },
+        { "value": 5, "label": "extreme" }
+      ]
+    },
+    {
+      "id": "qrn",
+      "code": "QRN",
+      "origin": "itu",
+      "question": "Are you troubled by static?",
+      "answer": "I am troubled by static …",
+      "usage": "Atmospheric or natural noise, such as from thunderstorms.",
+      "scale": [
+        { "value": 1, "label": "none" },
+        { "value": 2, "label": "slight" },
+        { "value": 3, "label": "moderate" },
+        { "value": 4, "label": "severe" },
+        { "value": 5, "label": "extreme" }
+      ]
+    },
+    {
+      "id": "qro",
+      "code": "QRO",
+      "origin": "itu",
+      "question": "Shall I increase my transmitter power?",
+      "answer": "Increase your transmitter power.",
+      "usage": "Also means high-power operating."
+    },
+    {
+      "id": "qrp",
+      "code": "QRP",
+      "origin": "itu",
+      "question": "Shall I reduce my transmitter power?",
+      "answer": "Reduce your transmitter power.",
+      "usage": "Also means low-power operating, usually 5 W or less."
+    },
+    {
+      "id": "qrq",
+      "code": "QRQ",
+      "origin": "itu",
+      "question": "Shall I send faster?",
+      "answer": "Send faster (… words per minute)."
+    },
+    {
+      "id": "qrs",
+      "code": "QRS",
+      "origin": "itu",
+      "question": "Shall I send more slowly?",
+      "answer": "Send more slowly (… words per minute)."
+    },
+    {
+      "id": "qrt",
+      "code": "QRT",
+      "origin": "itu",
+      "question": "Shall I stop sending?",
+      "answer": "Stop sending.",
+      "usage": "\"Going QRT\" means closing down the station for now."
+    },
+    {
+      "id": "qru",
+      "code": "QRU",
+      "origin": "itu",
+      "question": "Do you have anything for me?",
+      "answer": "I have nothing for you."
+    },
+    {
+      "id": "qrv",
+      "code": "QRV",
+      "origin": "itu",
+      "question": "Are you ready?",
+      "answer": "I am ready.",
+      "usage": "Also means active or available on a band (\"QRV on 40 m\")."
+    },
+    {
+      "id": "qrx",
+      "code": "QRX",
+      "origin": "itu",
+      "question": "When will you call me again?",
+      "answer": "I will call you again at …",
+      "usage": "Used for \"wait\" or \"stand by\"."
+    },
+    {
+      "id": "qrz",
+      "code": "QRZ",
+      "origin": "itu",
+      "question": "Who is calling me?",
+      "answer": "You are being called by …",
+      "usage": "Asks who called; it is not a replacement for CQ."
+    },
+    {
+      "id": "qsa",
+      "code": "QSA",
+      "origin": "itu",
+      "question": "How strong are my signals?",
+      "answer": "Your signal strength is …",
+      "scale": [
+        { "value": 1, "label": "barely perceptible" },
+        { "value": 2, "label": "weak" },
+        { "value": 3, "label": "fairly good" },
+        { "value": 4, "label": "good" },
+        { "value": 5, "label": "very good" }
+      ]
+    },
+    {
+      "id": "qsb",
+      "code": "QSB",
+      "origin": "itu",
+      "question": "Are my signals fading?",
+      "answer": "Your signals are fading."
+    },
+    {
+      "id": "qsd",
+      "code": "QSD",
+      "origin": "itu",
+      "question": "Are my signals garbled?",
+      "answer": "Your signals are garbled.",
+      "note": "Older lists word it as \"Is my keying defective?\""
+    },
+    {
+      "id": "qsk",
+      "code": "QSK",
+      "origin": "itu",
+      "question": "Can you hear me between your signals, and may I break in?",
+      "answer": "I can hear you between my signals; break in.",
+      "usage": "Full break-in keying: the receiver is heard between the transmitted elements."
+    },
+    {
+      "id": "qsl",
+      "code": "QSL",
+      "origin": "itu",
+      "question": "Can you confirm that you received it?",
+      "answer": "I confirm that I received it.",
+      "usage": "\"QSL\" means confirmed; a QSL card confirms a contact in writing."
+    },
+    {
+      "id": "qso",
+      "code": "QSO",
+      "origin": "itu",
+      "question": "Can you communicate with … directly or by relay?",
+      "answer": "I can communicate with … directly (or through …).",
+      "usage": "\"A QSO\" is a radio contact."
+    },
+    {
+      "id": "qsp",
+      "code": "QSP",
+      "origin": "itu",
+      "question": "Will you pass a message on to …?",
+      "answer": "I will pass it on to …"
+    },
+    {
+      "id": "qsx",
+      "code": "QSX",
+      "origin": "itu",
+      "question": "Will you listen for … on … kHz?",
+      "answer": "I am listening for … on … kHz.",
+      "usage": "Used in split operation to say where you listen (\"QSX 1822\")."
+    },
+    {
+      "id": "qsy",
+      "code": "QSY",
+      "origin": "itu",
+      "question": "Shall I move to another frequency?",
+      "answer": "Move to another frequency (or to … kHz).",
+      "usage": "\"QSY to …\" means moving to another frequency."
+    },
+    {
+      "id": "qsz",
+      "code": "QSZ",
+      "origin": "itu",
+      "question": "Shall I send every word more than once?",
+      "answer": "Send every word twice (or … times)."
+    },
+    {
+      "id": "qtc",
+      "code": "QTC",
+      "origin": "itu",
+      "question": "How many messages do you have for me?",
+      "answer": "I have … messages for you."
+    },
+    {
+      "id": "qth",
+      "code": "QTH",
+      "origin": "itu",
+      "question": "Where are you located?",
+      "answer": "My location is …",
+      "usage": "\"My QTH\" is the station's location, usually a town or locator."
+    },
+    {
+      "id": "qtr",
+      "code": "QTR",
+      "origin": "itu",
+      "question": "What is the exact time?",
+      "answer": "The exact time is …"
+    },
+    {
+      "id": "qst",
+      "code": "QST",
+      "origin": "amateur",
+      "answer": "A message for all radio amateurs follows.",
+      "note": "Amateur usage, mostly in North America. Not in the ITU list."
+    },
+    {
+      "id": "qlf",
+      "code": "QLF",
+      "origin": "slang",
+      "question": "Are you sending with your left foot?",
+      "answer": "Try sending with your left foot.",
+      "note": "A joke about poor Morse sending. Not a real Q-code."
+    }
+  ]
+}

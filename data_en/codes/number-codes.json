@@ -1,0 +1,20 @@
+{
+  "title": "Number codes",
+  "intro": "Numeric shorthand inherited from landline telegraphy, where numbered codes stood for common phrases. Two are still in everyday use.",
+  "entries": [
+    {
+      "id": "73",
+      "code": "73",
+      "origin": "amateur",
+      "meanings": ["Best regards"],
+      "note": "The usual sign-off. Always \"73\", never \"73s\"."
+    },
+    {
+      "id": "88",
+      "code": "88",
+      "origin": "amateur",
+      "meanings": ["Love and kisses"],
+      "note": "A warm sign-off between family or close friends."
+    }
+  ]
+}
