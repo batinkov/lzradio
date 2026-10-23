@@ -1,0 +1,60 @@
+{
+  "title": "Prosigns",
+  "intro": "Procedure signals sent in Morse as one character, with no gap between the letters. They are usually written with a line over the letters, and some have two spellings.",
+  "entries": [
+    {
+      "id": "ar",
+      "code": "AR",
+      "origin": "itu",
+      "meanings": ["End of message"],
+      "morse": ".-.-."
+    },
+    {
+      "id": "as",
+      "code": "AS",
+      "origin": "itu",
+      "meanings": ["Wait, stand by"],
+      "morse": ".-..."
+    },
+    {
+      "id": "bt",
+      "code": "BT",
+      "origin": "itu",
+      "meanings": ["Break between parts of a message"],
+      "morse": "-...-"
+    },
+    {
+      "id": "hh",
+      "code": "HH",
+      "origin": "itu",
+      "meanings": ["Error; the correction follows"],
+      "morse": "........",
+      "note": "Sent as eight dots."
+    },
+    {
+      "id": "ka",
+      "code": "KA",
+      "aliases": ["CT"],
+      "origin": "itu",
+      "meanings": ["Start of transmission; attention"],
+      "morse": "-.-.-"
+    },
+    {
+      "id": "sk",
+      "code": "SK",
+      "aliases": ["VA"],
+      "origin": "itu",
+      "meanings": ["End of contact", "Silent key: an operator who has died"],
+      "morse": "...-.-",
+      "note": "The second meaning is written, not sent as a prosign."
+    },
+    {
+      "id": "sn",
+      "code": "SN",
+      "aliases": ["VE"],
+      "origin": "itu",
+      "meanings": ["Understood"],
+      "morse": "...-."
+    }
+  ]
+}

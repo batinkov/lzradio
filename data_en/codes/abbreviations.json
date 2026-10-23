@@ -1,0 +1,411 @@
+{
+  "title": "Abbreviations",
+  "intro": "Shortened words sent as ordinary letters. They began in Morse to save time and are now used on voice and in writing too.",
+  "entries": [
+    {
+      "id": "5nn",
+      "code": "5NN",
+      "origin": "amateur",
+      "meanings": [
+        "599 in contest shorthand"
+      ],
+      "note": "Contest form of a 599 signal report.",
+      "see": "rst"
+    },
+    {
+      "id": "agn",
+      "code": "AGN",
+      "origin": "amateur",
+      "meanings": [
+        "Again"
+      ]
+    },
+    {
+      "id": "ant",
+      "code": "ANT",
+      "origin": "amateur",
+      "meanings": [
+        "Antenna"
+      ]
+    },
+    {
+      "id": "bk",
+      "code": "BK",
+      "origin": "itu",
+      "meanings": [
+        "Break: hand over without call signs"
+      ],
+      "note": "Used for a quick back-and-forth. ITU defines it as a signal to interrupt a transmission."
+    },
+    {
+      "id": "cfm",
+      "code": "CFM",
+      "origin": "itu",
+      "meanings": [
+        "Confirm",
+        "I confirm"
+      ]
+    },
+    {
+      "id": "cl",
+      "code": "CL",
+      "origin": "itu",
+      "meanings": [
+        "Closing down my station"
+      ],
+      "note": "The official signal for going off the air."
+    },
+    {
+      "id": "cpy",
+      "code": "CPY",
+      "origin": "amateur",
+      "meanings": [
+        "Copy"
+      ]
+    },
+    {
+      "id": "cq",
+      "code": "CQ",
+      "origin": "itu",
+      "meanings": [
+        "Calling any station"
+      ]
+    },
+    {
+      "id": "cul",
+      "code": "CUL",
+      "origin": "amateur",
+      "meanings": [
+        "See you later"
+      ]
+    },
+    {
+      "id": "de",
+      "code": "DE",
+      "origin": "itu",
+      "meanings": [
+        "From; this is"
+      ],
+      "note": "Comes before the sender's call sign."
+    },
+    {
+      "id": "dx",
+      "code": "DX",
+      "origin": "amateur",
+      "meanings": [
+        "Long distance",
+        "A distant station"
+      ]
+    },
+    {
+      "id": "es",
+      "code": "ES",
+      "origin": "amateur",
+      "meanings": [
+        "And"
+      ],
+      "note": "From the telegraph sign for \"&\"."
+    },
+    {
+      "id": "fb",
+      "code": "FB",
+      "origin": "amateur",
+      "meanings": [
+        "Fine business: excellent"
+      ]
+    },
+    {
+      "id": "ga",
+      "code": "GA",
+      "origin": "amateur",
+      "meanings": [
+        "Good afternoon",
+        "Go ahead"
+      ]
+    },
+    {
+      "id": "gd",
+      "code": "GD",
+      "origin": "amateur",
+      "meanings": [
+        "Good day",
+        "Good"
+      ]
+    },
+    {
+      "id": "ge",
+      "code": "GE",
+      "origin": "amateur",
+      "meanings": [
+        "Good evening"
+      ]
+    },
+    {
+      "id": "gl",
+      "code": "GL",
+      "origin": "amateur",
+      "meanings": [
+        "Good luck"
+      ]
+    },
+    {
+      "id": "gm",
+      "code": "GM",
+      "origin": "amateur",
+      "meanings": [
+        "Good morning"
+      ]
+    },
+    {
+      "id": "gn",
+      "code": "GN",
+      "origin": "amateur",
+      "meanings": [
+        "Good night"
+      ]
+    },
+    {
+      "id": "gud",
+      "code": "GUD",
+      "origin": "amateur",
+      "meanings": [
+        "Good"
+      ]
+    },
+    {
+      "id": "hi",
+      "code": "HI",
+      "origin": "amateur",
+      "meanings": [
+        "Laughter"
+      ],
+      "note": "The Morse equivalent of a smiley."
+    },
+    {
+      "id": "hr",
+      "code": "HR",
+      "origin": "amateur",
+      "meanings": [
+        "Here"
+      ]
+    },
+    {
+      "id": "hw",
+      "code": "HW",
+      "origin": "amateur",
+      "meanings": [
+        "How"
+      ],
+      "note": "Usually as HW? or HW CPY?: how do you copy me?"
+    },
+    {
+      "id": "k",
+      "code": "K",
+      "origin": "itu",
+      "meanings": [
+        "Over: any station may reply"
+      ]
+    },
+    {
+      "id": "kn",
+      "code": "KN",
+      "origin": "amateur",
+      "meanings": [
+        "Over: only the station I am working may reply"
+      ],
+      "note": "Amateur usage, not an ITU signal."
+    },
+    {
+      "id": "nr",
+      "code": "NR",
+      "origin": "amateur",
+      "meanings": [
+        "Number",
+        "Near"
+      ]
+    },
+    {
+      "id": "nw",
+      "code": "NW",
+      "origin": "itu",
+      "meanings": [
+        "Now"
+      ]
+    },
+    {
+      "id": "om",
+      "code": "OM",
+      "origin": "amateur",
+      "meanings": [
+        "Old man: a male operator"
+      ],
+      "note": "Friendly, whatever the age."
+    },
+    {
+      "id": "op",
+      "code": "OP",
+      "origin": "amateur",
+      "meanings": [
+        "Operator"
+      ]
+    },
+    {
+      "id": "pse",
+      "code": "PSE",
+      "origin": "itu",
+      "meanings": [
+        "Please"
+      ]
+    },
+    {
+      "id": "pwr",
+      "code": "PWR",
+      "origin": "amateur",
+      "meanings": [
+        "Power"
+      ]
+    },
+    {
+      "id": "r",
+      "code": "R",
+      "origin": "itu",
+      "meanings": [
+        "Received, understood"
+      ]
+    },
+    {
+      "id": "rig",
+      "code": "RIG",
+      "origin": "amateur",
+      "meanings": [
+        "Radio equipment"
+      ]
+    },
+    {
+      "id": "rprt",
+      "code": "RPRT",
+      "origin": "amateur",
+      "meanings": [
+        "Report"
+      ]
+    },
+    {
+      "id": "rpt",
+      "code": "RPT",
+      "origin": "itu",
+      "meanings": [
+        "Repeat"
+      ]
+    },
+    {
+      "id": "rx",
+      "code": "RX",
+      "origin": "amateur",
+      "meanings": [
+        "Receiver"
+      ]
+    },
+    {
+      "id": "sri",
+      "code": "SRI",
+      "origin": "amateur",
+      "meanings": [
+        "Sorry"
+      ]
+    },
+    {
+      "id": "tnx",
+      "code": "TNX",
+      "aliases": [
+        "TKS"
+      ],
+      "origin": "amateur",
+      "meanings": [
+        "Thanks"
+      ]
+    },
+    {
+      "id": "trx",
+      "code": "TRX",
+      "origin": "amateur",
+      "meanings": [
+        "Transceiver"
+      ]
+    },
+    {
+      "id": "tu",
+      "code": "TU",
+      "origin": "itu",
+      "meanings": [
+        "Thank you"
+      ]
+    },
+    {
+      "id": "tx",
+      "code": "TX",
+      "origin": "amateur",
+      "meanings": [
+        "Transmitter"
+      ]
+    },
+    {
+      "id": "ufb",
+      "code": "UFB",
+      "origin": "amateur",
+      "meanings": [
+        "Ultra fine business: outstanding"
+      ]
+    },
+    {
+      "id": "ur",
+      "code": "UR",
+      "origin": "amateur",
+      "meanings": [
+        "Your",
+        "You are"
+      ]
+    },
+    {
+      "id": "vy",
+      "code": "VY",
+      "origin": "amateur",
+      "meanings": [
+        "Very"
+      ]
+    },
+    {
+      "id": "wid",
+      "code": "WID",
+      "origin": "amateur",
+      "meanings": [
+        "With"
+      ]
+    },
+    {
+      "id": "wx",
+      "code": "WX",
+      "origin": "itu",
+      "meanings": [
+        "Weather"
+      ]
+    },
+    {
+      "id": "xyl",
+      "code": "XYL",
+      "origin": "amateur",
+      "meanings": [
+        "Wife"
+      ],
+      "note": "From \"ex-young lady\"."
+    },
+    {
+      "id": "yl",
+      "code": "YL",
+      "origin": "amateur",
+      "meanings": [
+        "Young lady: a female operator"
+      ],
+      "note": "Used whatever the age."
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "title": "RST signal reports",
+  "intro": "A signal report tells the other station how well you receive them. Each digit rates one quality, so a report is worked out from what you hear, not looked up.",
+  "aliases": ["RST", "59", "599", "5NN"],
+  "formats": [
+    { "mode": "Voice", "example": "59", "description": "Readability and strength." },
+    {
+      "mode": "Morse and digital",
+      "example": "599",
+      "description": "Readability, strength and tone."
+    },
+    {
+      "mode": "Contests",
+      "example": "5NN",
+      "description": "599 sent faster: N is a shortened 9."
+    }
+  ],
+  "scales": [
+    {
+      "id": "r",
+      "name": "Readability",
+      "values": [
+        { "value": 1, "label": "Unreadable" },
+        { "value": 2, "label": "Barely readable, a word now and then" },
+        { "value": 3, "label": "Readable with considerable difficulty" },
+        { "value": 4, "label": "Readable with hardly any difficulty" },
+        { "value": 5, "label": "Perfectly readable" }
+      ]
+    },
+    {
+      "id": "s",
+      "name": "Strength",
+      "values": [
+        { "value": 1, "label": "Faint, barely perceptible" },
+        { "value": 2, "label": "Very weak" },
+        { "value": 3, "label": "Weak" },
+        { "value": 4, "label": "Fair" },
+        { "value": 5, "label": "Fairly good" },
+        { "value": 6, "label": "Good" },
+        { "value": 7, "label": "Moderately strong" },
+        { "value": 8, "label": "Strong" },
+        { "value": 9, "label": "Very strong" }
+      ]
+    },
+    {
+      "id": "t",
+      "name": "Tone",
+      "note": "Morse and digital only. Modern equipment almost always earns a 9.",
+      "values": [
+        { "value": 1, "label": "Very rough, like raw AC hum" },
+        { "value": 2, "label": "Very rough AC, harsh and broad" },
+        { "value": 3, "label": "Rough AC, rectified but not filtered" },
+        { "value": 4, "label": "Rough, with some filtering" },
+        { "value": 5, "label": "Filtered, but strongly ripple-modulated" },
+        { "value": 6, "label": "Filtered, with a clear trace of ripple" },
+        { "value": 7, "label": "Near pure, with a trace of ripple" },
+        { "value": 8, "label": "Near perfect, with a slight trace of modulation" },
+        { "value": 9, "label": "Perfect, pure tone" }
+      ]
+    }
+  ],
+  "suffixes": [
+    { "letter": "A", "meaning": "Auroral distortion" },
+    { "letter": "C", "meaning": "Chirp" },
+    { "letter": "D", "meaning": "Drift" },
+    { "letter": "K", "meaning": "Key clicks" },
+    { "letter": "M", "meaning": "Multipath distortion" },
+    { "letter": "S", "meaning": "Scatter distortion" },
+    { "letter": "X", "meaning": "Stable, crystal-controlled tone" }
+  ]
+}
