@@ -105,9 +105,8 @@ test.describe('Banner Component', () => {
       page
     }) => {
       // Set language to English via localStorage before navigation
-      await page.goto('/#/')
-      await page.evaluate(() => {
-        localStorage.setItem('svelte-i18n-locale', '"en"')
+      await page.addInitScript(() => {
+        localStorage.setItem('lzradio-language', JSON.stringify('en'))
       })
 
       await page.goto('/#/exam')
@@ -152,9 +151,8 @@ test.describe('Banner Component', () => {
 
     test('should NOT have close button on ExamHome banner', async ({ page }) => {
       // Set language to English
-      await page.goto('/#/')
-      await page.evaluate(() => {
-        localStorage.setItem('svelte-i18n-locale', '"en"')
+      await page.addInitScript(() => {
+        localStorage.setItem('lzradio-language', JSON.stringify('en'))
       })
 
       await page.goto('/#/exam')
@@ -173,9 +171,8 @@ test.describe('Banner Component', () => {
 
     test('should be positioned above the title on ExamHome', async ({ page }) => {
       // Set language to English
-      await page.goto('/#/')
-      await page.evaluate(() => {
-        localStorage.setItem('svelte-i18n-locale', '"en"')
+      await page.addInitScript(() => {
+        localStorage.setItem('lzradio-language', JSON.stringify('en'))
       })
 
       await page.goto('/#/exam')
@@ -196,9 +193,8 @@ test.describe('Banner Component', () => {
 
     test('should NOT display banner on exam class pages (only on /exam home)', async ({ page }) => {
       // Set language to English
-      await page.goto('/#/')
-      await page.evaluate(() => {
-        localStorage.setItem('svelte-i18n-locale', '"en"')
+      await page.addInitScript(() => {
+        localStorage.setItem('lzradio-language', JSON.stringify('en'))
       })
 
       // Visit exam class selection page
@@ -214,9 +210,8 @@ test.describe('Banner Component', () => {
 
     test('should NOT display banner on exam prep pages', async ({ page }) => {
       // Set language to English
-      await page.goto('/#/')
-      await page.evaluate(() => {
-        localStorage.setItem('svelte-i18n-locale', '"en"')
+      await page.addInitScript(() => {
+        localStorage.setItem('lzradio-language', JSON.stringify('en'))
       })
 
       // Visit exam prep page

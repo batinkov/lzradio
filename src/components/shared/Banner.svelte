@@ -51,8 +51,9 @@
     border-color: #b45309;
   }
 
+  /* White text needs a darker amber: #b45309 gives 5.02:1 (#f59e0b was 2.15:1) */
   .badge {
-    background: #f59e0b;
+    background: #b45309;
     color: #fff;
     font-size: 0.75rem;
     font-weight: 700;
@@ -60,10 +61,6 @@
     border-radius: var(--radius-sm);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-  }
-
-  :global([data-theme='dark']) .badge {
-    background: #d97706;
   }
 
   .message {
