@@ -317,7 +317,7 @@
 <div class="page">
   <!-- Alpha Version Banner -->
   <Banner
-    badgeText="Alpha Version"
+    badgeText={$_('common.alphaVersion')}
     message={$_('logbook.alphaBanner.message')}
     dismissible={false}
   />
