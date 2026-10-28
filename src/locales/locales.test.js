@@ -31,10 +31,22 @@ function flatten(obj, prefix = '') {
 /**
  * Extract interpolation placeholder names from a message.
  * 'Min {count} correct to pass' -> ['count']
+ * Only top-level braces are placeholders: the branches of an ICU plural hold
+ * translated text, '{count, plural, one {# code} other {# codes}}' -> ['count']
  */
 function placeholders(message) {
-  const matches = String(message).match(/\{[^}]+\}/g) || []
-  return matches.map((m) => m.slice(1, -1).split(',')[0].trim()).sort()
+  const text = String(message)
+  const names = []
+  let depth = 0
+  let start = 0
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === '{' && depth++ === 0) {
+      start = i + 1
+    } else if (text[i] === '}' && --depth === 0) {
+      names.push(text.slice(start, i).split(',')[0].trim())
+    }
+  }
+  return names.sort()
 }
 
 const flatEn = flatten(en)

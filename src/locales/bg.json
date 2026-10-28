@@ -249,7 +249,7 @@
     "clearSearch": "Изчисти търсенето",
     "noResults": "Няма кодове за „{query}“.",
     "jumpTo": "Към раздел",
-    "total": "{count} кода",
+    "total": "{count, plural, one {# код} other {# кода}}",
     "onAir": "В ефир:",
     "alsoKnownAs": "също {aliases}",
     "morse": "Морзов код",

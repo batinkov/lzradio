@@ -249,7 +249,7 @@
     "clearSearch": "Clear search",
     "noResults": "No codes match “{query}”.",
     "jumpTo": "Jump to section",
-    "total": "{count} codes",
+    "total": "{count, plural, one {# code} other {# codes}}",
     "onAir": "On air:",
     "alsoKnownAs": "also {aliases}",
     "morse": "Morse code",

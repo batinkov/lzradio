@@ -16,10 +16,14 @@
   const result = $derived(codes ? searchCodes(codes, query, index) : null)
   const highlight = $derived(searching ? query.trim() : '')
 
+  // RST is not a code row, but a search that finds it should not read "0 codes"
   const total = $derived(
-    result ? result.categories.reduce((sum, category) => sum + category.entries.length, 0) : 0
+    result
+      ? result.categories.reduce((sum, category) => sum + category.entries.length, 0) +
+          (searching && result.rst ? 1 : 0)
+      : 0
   )
-  const nothingFound = $derived(searching && total === 0 && !result.rst)
+  const nothingFound = $derived(searching && total === 0)
 
   onMount(async () => {
     codes = await loadCodes()
@@ -43,6 +47,14 @@
     query = ''
     await tick()
     jumpTo(codes.rst.id)
+  }
+
+  // Results start at the top of the list; scrolled further down, they would sit
+  // above the screen and the search would look like it found nothing
+  function handleSearchInput() {
+    if (window.scrollY > 0) {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
   }
 
   function handleSearchKeydown(event) {
@@ -84,6 +96,7 @@
           spellcheck="false"
           aria-label={$_('codes.searchLabel')}
           placeholder={$_('codes.searchPlaceholder')}
+          oninput={handleSearchInput}
           onkeydown={handleSearchKeydown}
         />
         {#if query}
@@ -287,6 +300,8 @@
 
   .empty {
     text-align: center;
+    /* The message repeats the query, which may be one long word */
+    overflow-wrap: anywhere;
     color: var(--color-text-muted);
     padding: var(--space-12) 0;
   }
