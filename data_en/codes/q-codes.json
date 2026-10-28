@@ -1,6 +1,6 @@
 {
   "title": "Q-codes",
-  "intro": "Three-letter codes starting with Q. Each one is a question when followed by a question mark (QRL?) and a statement without it (QRL). Most come from the ITU list; on the air, hams often use them more loosely.",
+  "intro": "Three-letter codes starting with Q. Each one is a question when followed by a question mark (QRL?) and a statement without it (QRL). Most come from the list of the International Telecommunication Union (ITU); on the air, hams often use them more loosely.",
   "entries": [
     {
       "id": "qra",

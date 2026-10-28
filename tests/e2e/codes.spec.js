@@ -500,6 +500,29 @@ test.describe('Radio Codes page', () => {
         ).toHaveCount(countOrigin(ALL_ENTRIES, o))
       }
     })
+
+    // No UC id yet: the ITU badge spells out its full name on hover
+    test('should spell out ITU in the badge tooltip, in both languages', async ({ page }) => {
+      await openCodes(page)
+      const ituCount = countOrigin(ALL_ENTRIES, 'itu')
+
+      for (const loc of [EN, BG]) {
+        if (loc === BG) await switchLanguage(page, 'bg')
+        const full = loc.codes.originFull.itu
+        const tooltips = page.getByTitle(full, { exact: true })
+
+        await expect(tooltips, `"${full}" on every ITU badge`).toHaveCount(ituCount)
+        await expect(tooltips.first(), 'tooltip sits on the badge text').toHaveText(
+          loc.codes.origin.itu
+        )
+        for (const o of ORIGINS.filter((x) => x !== 'itu')) {
+          const titled = await page
+            .getByText(loc.codes.origin[o], { exact: true })
+            .evaluateAll((els) => els.filter((e) => e.closest('[title]')).length)
+          expect(titled, `"${loc.codes.origin[o]}" badges carry no tooltip`).toBe(0)
+        }
+      }
+    })
   })
 
   test.describe('C. Entry content', () => {

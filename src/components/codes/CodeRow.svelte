@@ -88,7 +88,11 @@
   </div>
 
   <span class="badge" class:slang={entry.origin === 'slang'}>
-    {$_(`codes.origin.${entry.origin}`)}
+    {#if entry.origin === 'itu'}
+      <abbr title={$_('codes.originFull.itu')}>{$_('codes.origin.itu')}</abbr>
+    {:else}
+      {$_(`codes.origin.${entry.origin}`)}
+    {/if}
   </span>
 </li>
 
@@ -213,6 +217,12 @@
   }
 
   /* Amber text on white is unreadable, so the warning colour marks only the frame */
+  /* The badge border already marks it; a dotted underline would be noise */
+  .badge abbr {
+    text-decoration: none;
+    cursor: help;
+  }
+
   .badge.slang {
     border-color: var(--color-warning);
     background: color-mix(in srgb, var(--color-warning) 15%, transparent);
