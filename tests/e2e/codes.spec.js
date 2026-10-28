@@ -965,11 +965,7 @@ test.describe('Radio Codes page', () => {
           'Amateur badge': page.getByText(EN.codes.origin.amateur, { exact: true }).first(),
           'Slang badge': page.getByText(EN.codes.origin.slang, { exact: true }).first(),
           'jump chip': chip(page, Q.title),
-          // Excluded in light theme until --color-primary is darkened app-wide (3.68:1 today).
-          // TODO: remove this exception with the ticket "Raise --color-primary contrast in light theme".
-          ...(scheme === 'dark' && {
-            'See RST button': page.getByRole('button', { name: EN.codes.seeRst })
-          }),
+          'See RST button': page.getByRole('button', { name: EN.codes.seeRst }),
           'RST scale label': rstBlock(page).getByText(RST.scales[0].values[4].label).first()
         }
         // Collect every failure, so one run reports all low-contrast elements
