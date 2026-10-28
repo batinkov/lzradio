@@ -40,7 +40,7 @@ Meanings paraphrased. Several abbreviations have **more than one meaning**
 | KN | Over to you only | Only the named station should reply. Amateur usage, not ITU. |
 | BK | Break | Quick back-and-forth without call signs; ITU: signal used to interrupt a transmission in progress. |
 | R | Received / roger | |
-| CL | Closing my station | |
+| CL | Closing my station | Also "call" (Wikipedia; not in the ITU text). |
 | CFM | Confirm / I confirm | |
 | AGN | Again | |
 | RPT | Repeat | |

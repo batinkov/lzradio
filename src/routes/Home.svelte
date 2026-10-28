@@ -19,6 +19,11 @@
       <h2>{$_('home.examPrep.title')}</h2>
       <p>{$_('home.examPrep.description')}</p>
     </a>
+
+    <a href="/codes" use:link class="feature-card">
+      <h2>{$_('home.codes.title')}</h2>
+      <p>{$_('home.codes.description')}</p>
+    </a>
   </div>
 </div>
 
@@ -49,7 +54,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-6);
-    max-width: 800px;
+    max-width: 920px;
     margin: 0 auto;
   }
 
