@@ -16,13 +16,13 @@ Status: **draft** · last updated 2026-10-13 (source verification pass)
 
 ## The families at a glance
 
-| Family | What it is | Structure | Telegraphy origin | Count (common ham subset) |
-|---|---|---|---|---|
-| **Q-codes** | 3-letter `Q__` codes | **Dual form** (question / answer), plus ham usage | Yes (1909→1912) | ~30 |
-| **Number codes** | Numeric shorthand (73, 88…) | Single meaning | Yes (1859/1879) | ~6 |
-| **Abbreviations** | Shortened words (CQ, ES, OM…) | One or more meanings | Yes (telegraph) | ~45 curated, of ~100 |
-| **Prosigns** | Run-together procedure signals (AR, SK…) | Single meaning, with alias spellings | Yes | 7 |
-| **RST** | Signal report (Readability/Strength/Tone) | **Rating scales**, not a lookup | Yes (1934) | 3 scales |
+| Family            | What it is                                | Structure                                         | Telegraphy origin | Count (common ham subset) |
+| ----------------- | ----------------------------------------- | ------------------------------------------------- | ----------------- | ------------------------- |
+| **Q-codes**       | 3-letter `Q__` codes                      | **Dual form** (question / answer), plus ham usage | Yes (1909→1912)   | ~30                       |
+| **Number codes**  | Numeric shorthand (73, 88…)               | Single meaning                                    | Yes (1859/1879)   | ~6                        |
+| **Abbreviations** | Shortened words (CQ, ES, OM…)             | One or more meanings                              | Yes (telegraph)   | ~45 curated, of ~100      |
+| **Prosigns**      | Run-together procedure signals (AR, SK…)  | Single meaning, with alias spellings              | Yes               | 7                         |
+| **RST**           | Signal report (Readability/Strength/Tone) | **Rating scales**, not a lookup                   | Yes (1934)        | 3 scales                  |
 
 ## Resolved open questions
 
@@ -31,7 +31,7 @@ Status: **draft** · last updated 2026-10-13 (source verification pass)
    abbreviations, and prosigns are single-meaning. RST is neither.
 
 2. **RST — now IN scope** (per your call, for completeness). But it is a
-   *rating system*, not a lookup vocabulary, so it is a short **explainer + the
+   _rating system_, not a lookup vocabulary, so it is a short **explainer + the
    three scales**, not flat "59 = …" rows. See [`rst.md`](rst.md).
 
 3. **Overlapping entries (2026-10-13).** Each signal appears once. `K` and `R`
@@ -64,6 +64,7 @@ retrieved).
 
 **Essentially all of them.** Every family predates or coincides with early radio
 and comes from landline/wireless telegraphy:
+
 - Number codes → Western Union **92 code (1859)** / **Phillips Code (1879)**.
 - Q-codes → British lists **c.1909**, formalized **1912/1913**, ITU-standardized **1947**.
 - Prosigns & abbreviations → direct from telegraph practice.

@@ -32,62 +32,62 @@ Meanings paraphrased. Several abbreviations have **more than one meaning**
 
 ### Procedure
 
-| Abbr | Meaning | Notes |
-|---|---|---|
-| CQ | General call to any station | |
-| DE | From / this is | Precedes the sender's call. |
-| K | Invitation to transmit ("over") | Leaves the door open for any station. |
-| KN | Over to you only | Only the named station should reply. Amateur usage, not ITU. |
-| BK | Break | Quick back-and-forth without call signs; ITU: signal used to interrupt a transmission in progress. |
-| R | Received / roger | |
-| CL | Closing my station | Also "call" (Wikipedia; not in the ITU text). |
-| CFM | Confirm / I confirm | |
-| AGN | Again | |
-| RPT | Repeat | |
-| PSE | Please | |
-| NR | Number | Also "near". |
-| HW | How | Usually as `HW?` or `HW CPY?` = "how do you copy?" |
-| CPY | Copy | |
+| Abbr | Meaning                         | Notes                                                                                              |
+| ---- | ------------------------------- | -------------------------------------------------------------------------------------------------- |
+| CQ   | General call to any station     |                                                                                                    |
+| DE   | From / this is                  | Precedes the sender's call.                                                                        |
+| K    | Invitation to transmit ("over") | Leaves the door open for any station.                                                              |
+| KN   | Over to you only                | Only the named station should reply. Amateur usage, not ITU.                                       |
+| BK   | Break                           | Quick back-and-forth without call signs; ITU: signal used to interrupt a transmission in progress. |
+| R    | Received / roger                |                                                                                                    |
+| CL   | Closing my station              | Also "call" (Wikipedia; not in the ITU text).                                                      |
+| CFM  | Confirm / I confirm             |                                                                                                    |
+| AGN  | Again                           |                                                                                                    |
+| RPT  | Repeat                          |                                                                                                    |
+| PSE  | Please                          |                                                                                                    |
+| NR   | Number                          | Also "near".                                                                                       |
+| HW   | How                             | Usually as `HW?` or `HW CPY?` = "how do you copy?"                                                 |
+| CPY  | Copy                            |                                                                                                    |
 
 ### Courtesy and conversation
 
-| Abbr | Meaning | Notes |
-|---|---|---|
-| ES | And | From telegraph "&". |
-| OM | Old man (any male op) | Friendly, any age. |
-| YL | Young lady (female op) | Any age. |
-| XYL | Wife | "Ex-young lady". |
-| FB | Fine business (excellent) | |
-| UFB | Ultra fine business | |
-| TU | Thank you | |
-| TNX / TKS | Thanks | |
-| SRI | Sorry | |
-| HI | Laughter | The CW "smiley". |
-| GM / GA / GE / GN | Good morning / afternoon / evening / night | |
-| GA | Go ahead | Second meaning of `GA`. |
-| GD | Good day | Also "good". |
-| GL | Good luck | |
-| CUL | See you later | |
-| UR | Your | |
-| HR | Here | |
-| VY | Very | |
-| WID | With | Attested in use ("SKED WID …") but absent from the reference tables checked. |
-| GUD | Good | |
-| NW | Now | |
+| Abbr              | Meaning                                    | Notes                                                                        |
+| ----------------- | ------------------------------------------ | ---------------------------------------------------------------------------- |
+| ES                | And                                        | From telegraph "&".                                                          |
+| OM                | Old man (any male op)                      | Friendly, any age.                                                           |
+| YL                | Young lady (female op)                     | Any age.                                                                     |
+| XYL               | Wife                                       | "Ex-young lady".                                                             |
+| FB                | Fine business (excellent)                  |                                                                              |
+| UFB               | Ultra fine business                        |                                                                              |
+| TU                | Thank you                                  |                                                                              |
+| TNX / TKS         | Thanks                                     |                                                                              |
+| SRI               | Sorry                                      |                                                                              |
+| HI                | Laughter                                   | The CW "smiley".                                                             |
+| GM / GA / GE / GN | Good morning / afternoon / evening / night |                                                                              |
+| GA                | Go ahead                                   | Second meaning of `GA`.                                                      |
+| GD                | Good day                                   | Also "good".                                                                 |
+| GL                | Good luck                                  |                                                                              |
+| CUL               | See you later                              |                                                                              |
+| UR                | Your                                       |                                                                              |
+| HR                | Here                                       |                                                                              |
+| VY                | Very                                       |                                                                              |
+| WID               | With                                       | Attested in use ("SKED WID …") but absent from the reference tables checked. |
+| GUD               | Good                                       |                                                                              |
+| NW                | Now                                        |                                                                              |
 
 ### Station and conditions
 
-| Abbr | Meaning | Notes |
-|---|---|---|
-| DX | Long distance / distant station | |
-| WX | Weather | |
-| RIG | Station equipment | |
-| ANT | Antenna | |
-| RX / TX | Receiver / transmitter | |
-| TRX | Transceiver | |
-| PWR | Power | |
-| OP | Operator | |
-| RPRT | Report | |
+| Abbr    | Meaning                         | Notes |
+| ------- | ------------------------------- | ----- |
+| DX      | Long distance / distant station |       |
+| WX      | Weather                         |       |
+| RIG     | Station equipment               |       |
+| ANT     | Antenna                         |       |
+| RX / TX | Receiver / transmitter          |       |
+| TRX     | Transceiver                     |       |
+| PWR     | Power                           |       |
+| OP      | Operator                        |       |
+| RPRT    | Report                          |       |
 
 `RST`, `59`, `599` and `5NN` are not abbreviation rows: they are searchable
 entries that point to the RST section (see [`rst.md`](rst.md)).
@@ -98,15 +98,15 @@ Written with an overbar in Morse literature (shown here as run-together). The
 same sound can be spelled with different letters, so each prosign is **one
 entry with aliases** — searching either spelling must find it.
 
-| Prosign | Aliases | Meaning | ITU name | Morse |
-|---|---|---|---|---|
-| AR | | End of transmission / end of message | Cross sign; end of transmission | `.-.-.` |
-| SK | VA | End of contact | End of work | `...-.-` |
-| AS | | Wait / stand by | Wait | `.-...` |
-| BT | | Separator between parts of a transmission | Double hyphen | `-...-` |
-| KA | CT | Start of transmission / attention | Starting signal | `-.-.-` |
-| SN | VE | Understood | Understood | `...-.` |
-| HH | | Error, correction follows | Error (eight dots) | `........` |
+| Prosign | Aliases | Meaning                                   | ITU name                        | Morse      |
+| ------- | ------- | ----------------------------------------- | ------------------------------- | ---------- |
+| AR      |         | End of transmission / end of message      | Cross sign; end of transmission | `.-.-.`    |
+| SK      | VA      | End of contact                            | End of work                     | `...-.-`   |
+| AS      |         | Wait / stand by                           | Wait                            | `.-...`    |
+| BT      |         | Separator between parts of a transmission | Double hyphen                   | `-...-`    |
+| KA      | CT      | Start of transmission / attention         | Starting signal                 | `-.-.-`    |
+| SN      | VE      | Understood                                | Understood                      | `...-.`    |
+| HH      |         | Error, correction follows                 | Error (eight dots)              | `........` |
 
 ITU names its signals by function and spells the letter forms `VA` and `KA`;
 `SK` and `CT` are the amateur spellings. `SK` is also used as an abbreviation

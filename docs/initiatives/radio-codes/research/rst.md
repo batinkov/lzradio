@@ -22,27 +22,27 @@ rows. `RST`, `59`, `599` and `5NN` are searchable entries that point to it.
 
 ## Readability (R): 1–5
 
-| R | Meaning |
-|---|---|
-| 1 | Unreadable |
-| 2 | Barely readable, occasional words |
-| 3 | Readable with considerable difficulty |
-| 4 | Readable with practically no difficulty |
-| 5 | Perfectly readable |
+| R   | Meaning                                 |
+| --- | --------------------------------------- |
+| 1   | Unreadable                              |
+| 2   | Barely readable, occasional words       |
+| 3   | Readable with considerable difficulty   |
+| 4   | Readable with practically no difficulty |
+| 5   | Perfectly readable                      |
 
 ## Signal strength (S): 1–9
 
-| S | Meaning |
-|---|---|
-| 1 | Faint, barely perceptible |
-| 2 | Very weak |
-| 3 | Weak |
-| 4 | Fair |
-| 5 | Fairly good |
-| 6 | Good |
-| 7 | Moderately strong |
-| 8 | Strong |
-| 9 | Extremely strong |
+| S   | Meaning                   |
+| --- | ------------------------- |
+| 1   | Faint, barely perceptible |
+| 2   | Very weak                 |
+| 3   | Weak                      |
+| 4   | Fair                      |
+| 5   | Fairly good               |
+| 6   | Good                      |
+| 7   | Moderately strong         |
+| 8   | Strong                    |
+| 9   | Extremely strong          |
 
 (On HF, **S9 ≈ 50 µV** at the receiver input, 50 Ω. Signals over S9 are reported
 as "S9 + xx dB".)

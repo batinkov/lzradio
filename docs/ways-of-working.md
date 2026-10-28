@@ -14,17 +14,17 @@ Two roles. The point of this section is a single thing: **who has the final
 call**, so an async disagreement never deadlocks.
 
 - **Product Owner / Project Manager (PO/PM)** — one person, both hats. Owns the
-  *what* and *why*: final call on backlog priority and scope (what's in, what's
+  _what_ and _why_: final call on backlog priority and scope (what's in, what's
   out), and grooms the board. As PM, also owns how the work is run — cadence,
   process, and keeping the board and docs healthy.
-- **Maintainer** — owns the *how*. Final call on technical and implementation
+- **Maintainer** — owns the _how_. Final call on technical and implementation
   decisions (architecture, libraries, code).
 - **Both** — changes to an initiative's **goals or non-goals** require
   agreement from both. These are the stable frame; they change rarely and never
   unilaterally.
 
 When in doubt about which bucket a decision falls in, the person who'd own the
-*consequence* owns the call.
+_consequence_ owns the call.
 
 ## The board vs. the brief
 
