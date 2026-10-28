@@ -1,10 +1,14 @@
 <script>
   import { onMount, tick } from 'svelte'
   import { _ } from 'svelte-i18n'
+  import { router, replace } from 'svelte-spa-router'
   import { loadCodes } from '../lib/codes.js'
+  import { parseCodesParams, buildCodesLocation } from '../lib/urlParams.js'
   import { createCodesIndex, normalizeCodeQuery, searchCodes } from '../lib/codesSearch.js'
   import CodeRow from '../components/codes/CodeRow.svelte'
   import RstBlock from '../components/codes/RstBlock.svelte'
+
+  const URL_UPDATE_DELAY_MS = 300
 
   let codes = $state(null)
   let query = $state('')
@@ -27,6 +31,32 @@
 
   onMount(async () => {
     codes = await loadCodes()
+  })
+
+  // The search lives in the URL (/#/codes?q=qth) so it can be shared and reopened.
+  // Remember what this page wrote, so its own URL updates are not read back:
+  // that would trim the query while the user is still typing ("end of ").
+  let writtenQuerystring = null
+
+  // URL to search box: on load, and when a link changes ?q= while on the page
+  $effect(() => {
+    const querystring = router.querystring ?? ''
+    if (querystring !== writtenQuerystring) {
+      query = parseCodesParams(querystring).query
+    }
+  })
+
+  // Search box to URL, once typing pauses. replace, not push: typing should
+  // not fill the Back history.
+  $effect(() => {
+    const location = buildCodesLocation(query)
+    const timer = setTimeout(() => {
+      if (location !== buildCodesLocation(parseCodesParams(router.querystring ?? '').query)) {
+        writtenQuerystring = location.split('?')[1] ?? ''
+        replace(location)
+      }
+    }, URL_UPDATE_DELAY_MS)
+    return () => clearTimeout(timer)
   })
 
   // Hash routing rules out href="#section" anchors, so section jumps scroll from JS
