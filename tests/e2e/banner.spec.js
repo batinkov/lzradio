@@ -70,6 +70,36 @@ test.describe('Banner Component', () => {
     })
   })
 
+  test.describe('Radio Codes Alpha Version Banner', () => {
+    test('should display a non-dismissible "Alpha Version" banner above the title', async ({
+      page
+    }) => {
+      await page.goto('/#/codes')
+      await page.waitForSelector('h1')
+
+      const banner = page.locator('.banner')
+      await expect(banner).toBeVisible()
+      await expect(banner.locator('.badge')).toHaveText('Alpha Version')
+      await expect(banner.locator('.message')).toContainText('Spotted a mistake?')
+      await expect(banner.locator('button[aria-label="Close banner"]')).not.toBeVisible()
+
+      const bannerBox = await banner.boundingBox()
+      const titleBox = await page.locator('h1').boundingBox()
+      expect(bannerBox.y).toBeLessThan(titleBox.y)
+    })
+
+    test('should translate the badge in Bulgarian', async ({ page }) => {
+      // Set before the app starts: it reads the language once, on load
+      await page.addInitScript(() => {
+        localStorage.setItem('lzradio-language', JSON.stringify('bg'))
+      })
+      await page.goto('/#/codes')
+      await page.waitForSelector('h1')
+
+      await expect(page.locator('.banner .badge')).toHaveText('Алфа версия')
+    })
+  })
+
   test.describe('ExamHome Language Warning Banner', () => {
     test('should display "Important" banner on /exam when English is selected', async ({
       page

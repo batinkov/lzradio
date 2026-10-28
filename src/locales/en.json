@@ -238,6 +238,7 @@
     "edit": "Edit",
     "view": "View",
     "actions": "Actions",
+    "alphaVersion": "Alpha Version",
     "loading": "Loading...",
     "saving": "Saving..."
   },
@@ -249,6 +250,9 @@
   "codes": {
     "title": "Radio Codes",
     "subtitle": "Q-codes, abbreviations, prosigns, number codes and signal reports used on the air.",
+    "alphaBanner": {
+      "message": "Codes and meanings are still being reviewed. Spotted a mistake? Please report it."
+    },
     "searchLabel": "Search codes",
     "searchPlaceholder": "Search a code or a meaning: QTH, location, 73…",
     "clearSearch": "Clear search",

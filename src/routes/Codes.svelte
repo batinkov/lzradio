@@ -7,6 +7,7 @@
   import { createCodesIndex, normalizeCodeQuery, searchCodes } from '../lib/codesSearch.js'
   import CodeRow from '../components/codes/CodeRow.svelte'
   import RstBlock from '../components/codes/RstBlock.svelte'
+  import Banner from '../components/shared/Banner.svelte'
 
   const URL_UPDATE_DELAY_MS = 300
 
@@ -109,6 +110,12 @@
 <svelte:window onkeydown={handleWindowKeydown} />
 
 <div class="codes-page">
+  <Banner
+    badgeText={$_('common.alphaVersion')}
+    message={$_('codes.alphaBanner.message')}
+    dismissible={false}
+  />
+
   <h1>{$_('codes.title')}</h1>
   <p class="subtitle">{$_('codes.subtitle')}</p>
 
