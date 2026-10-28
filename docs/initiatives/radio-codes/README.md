@@ -64,6 +64,13 @@ route. No per-user behaviour is tracked, by design.
 
 <!-- Newest at top. Items below are proposed, pending PO/PM sign-off. -->
 
+- **2026-10-28** — Bulgarian code data added (`data_bg/codes/`). The Bulgarian
+  page searches Bulgarian meaning text only (codes match in any language), so
+  `location` finds nothing there and `местонахождение` finds QTH. Wording comes
+  from the exam question bank first, then the LZ2NB Q-code and CW lists
+  (qsl.net/lz2nb), then our own (usage lines, notes, RST tone labels and
+  suffixes). Pending review by a Bulgarian operator.
+
 - **2026-10-28** — RST is in scope as an explainer block (report formats, the
   three scales, suffix letters), not as code rows: a report is worked out from
   what you hear, not looked up. `59`, `599`, `5NN` and `RST` find it by search.

@@ -120,7 +120,7 @@ npm run test:ui
 npm run test:e2e
 ```
 
-**Test Coverage:** 445 passing unit tests across all business logic modules.
+**Test Coverage:** 468 passing unit tests across all business logic modules.
 
 ### Linting
 
@@ -171,7 +171,7 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 - **Library** (`src/lib/`):
   - `i18n.js` - Internationalization setup and language switching (uses localStorageAdapter)
   - `questions.js` - Dynamic question loading based on locale
-  - `codes.js` - Radio codes loading (`data_en/codes/`) and data validation (tested)
+  - `codes.js` - Radio codes loading by locale, data validation and EN/BG parity check (tested)
   - `codesSearch.js` - Codes search: code/alias match first, Fuse.js fuzzy over meanings otherwise (tested)
   - `katex.js` - Math formula rendering
   - `examConfig.js` - Exam configuration constants
@@ -337,12 +337,12 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Import preview modal showing new/duplicate/total counts
 - Toast notifications for export/import feedback
 
-**Radio Codes (English data; Bulgarian UI):**
+**Radio Codes (English and Bulgarian):**
 
 - Q-codes (question/answer form, scales), abbreviations, prosigns, number codes, RST explainer
 - One search box for forward and reverse lookup, with highlighting; `/` focuses it
 - Search kept in the URL (`/#/codes?q=qth`) for sharing and bookmarks
-- Bulgarian code data (`data_bg/codes/`) not yet written
+- Data in `data_en/codes/` and `data_bg/codes/`; a unit test keeps everything but the text identical
 
 **Architecture & Code Quality:**
 
@@ -352,11 +352,11 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Type-safe URL parameter parsing
 - Navigation guard system
 - Loading states for async operations
-- Testing framework (Vitest) with 445 passing unit tests
+- Testing framework (Vitest) with 468 passing unit tests
   - urlParams.js (42 tests)
   - importValidator.js (40 tests) ✅
-  - codesSearch.js (30 tests) ✅
-  - codes.js (23 tests) ✅
+  - codesSearch.js (35 tests) ✅
+  - codes.js (35 tests) ✅
   - storageAdapter.js (31 tests)
   - toastStore.js (27 tests) ✅
   - analytics.js (23 tests) ✅

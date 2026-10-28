@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import { loadCodes, validateCodes, CATEGORY_IDS, RST_ID } from './codes.js'
+import {
+  loadCodes,
+  validateCodes,
+  compareCodes,
+  codesLanguage,
+  CATEGORY_IDS,
+  RST_ID
+} from './codes.js'
 
 /**
  * Build a minimal valid codes reference; tests break one thing at a time
@@ -195,21 +202,109 @@ describe('codes', () => {
     })
   })
 
+  describe('codesLanguage', () => {
+    it('should pick Bulgarian for Bulgarian locales', () => {
+      expect(codesLanguage('bg')).toBe('bg')
+      expect(codesLanguage('bg-BG')).toBe('bg')
+    })
+
+    it('should pick English for anything else', () => {
+      expect(codesLanguage('en')).toBe('en')
+      expect(codesLanguage('de')).toBe('en')
+      expect(codesLanguage(null)).toBe('en')
+      expect(codesLanguage(undefined)).toBe('en')
+    })
+  })
+
   describe('loadCodes', () => {
     it('should load every category in display order, plus RST', async () => {
-      const codes = await loadCodes()
+      const codes = await loadCodes('en')
       expect(codes.categories.map((c) => c.id)).toEqual(CATEGORY_IDS)
       expect(codes.rst.id).toBe(RST_ID)
     })
 
+    it('should load the Bulgarian files for a Bulgarian locale', async () => {
+      const codes = await loadCodes('bg')
+      expect(codes.categories.map((c) => c.id)).toEqual(CATEGORY_IDS)
+      expect(codes.categories[0].title).toBe('Q-кодове')
+    })
+
+    it('should fall back to English without a locale', async () => {
+      expect(await loadCodes()).toBe(await loadCodes('en'))
+    })
+
     it('should return the cached reference on later calls', async () => {
-      expect(await loadCodes()).toBe(await loadCodes())
+      expect(await loadCodes('en')).toBe(await loadCodes('en'))
+      expect(await loadCodes('bg')).toBe(await loadCodes('bg'))
+      expect(await loadCodes('bg')).not.toBe(await loadCodes('en'))
+    })
+  })
+
+  describe('compareCodes', () => {
+    it('should accept a translation that changes only text', () => {
+      const translation = validCodes()
+      translation.categories[0].title = 'Q-кодове'
+      translation.categories[0].entries[0].answer = 'Превод'
+      translation.categories[1].entries[0].meanings = ['Добър следобед']
+      translation.rst.scales[0].name = 'Разбираемост'
+      expect(compareCodes(validCodes(), translation)).toEqual([])
+    })
+
+    it('should report entries in a different order', () => {
+      const translation = validCodes()
+      translation.categories[1].entries.reverse()
+      expect(compareCodes(validCodes(), translation)).toEqual([
+        'abbreviations: entry ids or order differ'
+      ])
+    })
+
+    it('should report a changed code, alias, origin or see target', () => {
+      const translation = validCodes()
+      const [ga, fiveNn] = translation.categories[1].entries
+      ga.code = 'GE'
+      ga.aliases = ['GAA']
+      ga.origin = 'itu'
+      delete fiveNn.see
+      expect(compareCodes(validCodes(), translation)).toEqual([
+        'abbreviations/ga: code differs',
+        'abbreviations/ga: aliases differs',
+        'abbreviations/ga: origin differs',
+        'abbreviations/5nn: see differs'
+      ])
+    })
+
+    it('should report an optional field present in one language only', () => {
+      const translation = validCodes()
+      translation.categories[0].entries[0].usage = 'Само на български'
+      expect(compareCodes(validCodes(), translation)).toEqual([
+        'q-codes/qrm: usage is in one language only'
+      ])
+    })
+
+    it('should report different scale values', () => {
+      const translation = validCodes()
+      translation.categories[0].entries[0].scale.pop()
+      expect(compareCodes(validCodes(), translation)).toEqual(['q-codes/qrm: scale values differ'])
+    })
+
+    it('should report RST differences that searches and layout rely on', () => {
+      const translation = validCodes()
+      translation.rst.aliases = ['RST']
+      translation.rst.suffixes = []
+      expect(compareCodes(validCodes(), translation)).toEqual([
+        'rst: aliases differ',
+        'rst: suffix letters differ'
+      ])
     })
   })
 
   describe('shipped data', () => {
-    it('should pass validation', async () => {
-      expect(validateCodes(await loadCodes())).toEqual([])
+    it.each(['en', 'bg'])('should pass validation (%s)', async (locale) => {
+      expect(validateCodes(await loadCodes(locale))).toEqual([])
+    })
+
+    it('should translate only the text in the Bulgarian data', async () => {
+      expect(compareCodes(await loadCodes('en'), await loadCodes('bg'))).toEqual([])
     })
   })
 })

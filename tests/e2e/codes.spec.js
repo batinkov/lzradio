@@ -24,6 +24,14 @@ const ROW_SECTIONS = [Q, ABBR, PROSIGNS, NUMBERS]
 const ALL_ENTRIES = ROW_SECTIONS.flatMap((s) => s.entries)
 const TOTAL = ALL_ENTRIES.length
 const SECTION_TITLES = [...ROW_SECTIONS.map((s) => s.title), RST.title]
+
+// The Bulgarian translation: same codes, Bulgarian text
+const loadBgCodes = (name) => readJson(`../../data_bg/codes/${name}.json`)
+const BG_Q = loadBgCodes('q-codes')
+const BG_ABBR = loadBgCodes('abbreviations')
+const BG_ROW_SECTIONS = [BG_Q, BG_ABBR, loadBgCodes('prosigns'), loadBgCodes('number-codes')]
+const BG_RST = loadBgCodes('rst')
+const BG_SECTION_TITLES = [...BG_ROW_SECTIONS.map((s) => s.title), BG_RST.title]
 const ORIGINS = ['itu', 'amateur', 'slang']
 const countOrigin = (entries, origin) => entries.filter((e) => e.origin === origin).length
 
@@ -83,7 +91,7 @@ const scaleName = (name) => new RegExp(esc(name) + '\\s*$')
 
 /** The RST block: nearest ancestor of the RST heading that holds the suffix list. */
 const rstBlock = (page, loc = EN) =>
-  sectionHeading(page, RST.title).locator(
+  sectionHeading(page, loc === BG ? BG_RST.title : RST.title).locator(
     `xpath=ancestor::*[contains(normalize-space(.), "${loc.codes.rstSuffixes}")][1]`
   )
 
@@ -811,7 +819,7 @@ test.describe('Radio Codes page', () => {
 
   test.describe('F. Bulgarian UI', () => {
     // UC-37, UC-38
-    test('should show Bulgarian labels with English code data', async ({ page }) => {
+    test('should show Bulgarian labels and Bulgarian code data', async ({ page }) => {
       await page.goto('/')
       await switchLanguage(page, 'bg')
       await navLink(page, BG.nav.codes).click()
@@ -872,25 +880,36 @@ test.describe('Radio Codes page', () => {
       )
       await expect(page.getByText(EN.codes.subtitle), 'UC-37: no English subtitle').toHaveCount(0)
 
-      // UC-38: data stays English.
+      // UC-38: the code data is the Bulgarian translation, the codes themselves unchanged.
       await expect(rows(page, BG), 'UC-38: all rows present').toHaveCount(TOTAL)
-      for (const s of [...ROW_SECTIONS, RST]) {
+      for (const s of [...BG_ROW_SECTIONS, BG_RST]) {
         await expect(sectionHeading(page, s.title), `UC-38: heading "${s.title}"`).toBeVisible()
         await expect(
           page.getByText(s.intro, { exact: true }),
           `UC-38: intro "${s.title}"`
         ).toBeVisible()
       }
-      const qth = Q.entries.find((e) => e.code === 'QTH')
+      const qth = BG_Q.entries.find((e) => e.code === 'QTH')
       await expect(rowFor(page, 'QTH', BG), 'UC-38: QTH question').toContainText(qth.question)
-      for (const m of ABBR.entries.find((e) => e.code === 'GA').meanings) {
+      for (const m of BG_ABBR.entries.find((e) => e.code === 'GA').meanings) {
         await expect(rowFor(page, 'GA', BG), `UC-38: GA "${m}"`).toContainText(m)
       }
       const rst = rstBlock(page, BG)
-      for (const s of RST.scales) {
+      for (const s of BG_RST.scales) {
         await expect(rst.getByText(scaleName(s.name)), `UC-38: scale "${s.name}"`).toBeVisible()
         await expect(rst, `UC-38: "${s.values[0].label}"`).toContainText(s.values[0].label)
       }
+
+      // No English code data left.
+      for (const s of [...ROW_SECTIONS, RST]) {
+        await expect(
+          page.getByText(s.intro, { exact: true }),
+          `UC-38: no English intro "${s.title}"`
+        ).toHaveCount(0)
+      }
+      await expect(rowFor(page, 'QTH', BG), 'UC-38: no English QTH question').not.toContainText(
+        Q.entries.find((e) => e.code === 'QTH').question
+      )
     })
 
     // UC-39, UC-40
@@ -1122,7 +1141,7 @@ test.describe('Radio Codes page', () => {
       )
 
       const clickAllChips = async (loc) => {
-        for (const title of SECTION_TITLES) {
+        for (const title of loc === BG ? BG_SECTION_TITLES : SECTION_TITLES) {
           await chip(page, title, loc).click()
           await waitScrollEnd(page)
         }
