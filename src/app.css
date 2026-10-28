@@ -4,7 +4,7 @@
 /* Design System Variables */
 :root {
   /* Primary Colors */
-  --color-primary: #3b82f6;
+  --color-primary: #2563eb; /* 5.17:1 on white; #3b82f6 was 3.68:1, below WCAG AA */
   --color-success: #10b981;
   --color-error: #ef4444;
   --color-warning: #f59e0b;

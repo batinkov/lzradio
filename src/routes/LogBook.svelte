@@ -605,7 +605,7 @@
 
   .search-input-wrapper:focus-within {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 
   .search-input-wrapper.disabled {
