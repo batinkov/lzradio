@@ -1,9 +1,9 @@
 /**
  * Radio Codes Data Layer
  *
- * Loads the radio codes reference from data_en/codes/ and validates its shape.
- * Each category lives in its own file; RST is a set of rating scales rather
- * than a list of codes, so it has a structure of its own.
+ * Loads the radio codes reference from data_en/codes/ or data_bg/codes/ and
+ * validates its shape. Each category lives in its own file; RST is a set of
+ * rating scales rather than a list of codes, so it has a structure of its own.
  */
 
 /**
@@ -21,35 +21,40 @@ export const RST_ID = 'rst'
  */
 export const ORIGINS = ['itu', 'amateur', 'slang']
 
-// Cache for loaded codes
-let cachedCodes = null
+// Cache for loaded codes, one reference per language
+const cachedCodes = new Map()
 
 /**
- * Load the codes reference
- *
- * Only English data exists for now, so every locale gets it. When data_bg/codes/
- * is added, choose the language here the same way questions.js does.
+ * Pick the data language for a UI locale
+ * @param {string|null|undefined} locale - UI locale, e.g. 'bg' or 'en-US'
+ * @returns {'bg'|'en'} Data language
+ */
+export function codesLanguage(locale) {
+  return locale?.startsWith('bg') ? 'bg' : 'en'
+}
+
+/**
+ * Load the codes reference for a locale
+ * @param {string|null|undefined} locale - UI locale; anything but Bulgarian gets English
  * @returns {Promise<{ categories: Array, rst: Object }>} Categories in display order, plus RST
  */
-export async function loadCodes() {
-  if (cachedCodes) {
-    return cachedCodes
+export async function loadCodes(locale) {
+  const lang = codesLanguage(locale)
+  if (cachedCodes.has(lang)) {
+    return cachedCodes.get(lang)
   }
 
-  const modules = await Promise.all([
-    import('../../data_en/codes/q-codes.json'),
-    import('../../data_en/codes/abbreviations.json'),
-    import('../../data_en/codes/prosigns.json'),
-    import('../../data_en/codes/number-codes.json'),
-    import('../../data_en/codes/rst.json')
-  ])
+  const [rstModule, ...categoryModules] = await Promise.all(
+    [RST_ID, ...CATEGORY_IDS].map((id) => import(`../../data_${lang}/codes/${id}.json`))
+  )
 
-  cachedCodes = {
-    categories: CATEGORY_IDS.map((id, index) => ({ id, ...modules[index].default })),
-    rst: { id: RST_ID, ...modules[CATEGORY_IDS.length].default }
+  const codes = {
+    categories: CATEGORY_IDS.map((id, index) => ({ id, ...categoryModules[index].default })),
+    rst: { id: RST_ID, ...rstModule.default }
   }
+  cachedCodes.set(lang, codes)
 
-  return cachedCodes
+  return codes
 }
 
 /**
@@ -233,6 +238,85 @@ export function validateCodes(codes) {
   }
 
   errors.push(...validateRst(codes.rst))
+
+  return errors
+}
+
+/**
+ * Compare a translation with the English reference
+ *
+ * Only the text is translated. Everything a search or a link relies on must
+ * match: category and entry order, ids, codes, aliases, origins, `see`
+ * targets, Morse patterns, which optional fields are present, scale values,
+ * and the RST aliases, examples, scales and suffix letters.
+ * @param {{ categories: Array, rst: Object }} reference - English codes reference
+ * @param {{ categories: Array, rst: Object }} translation - Translated codes reference
+ * @returns {string[]} Differences, empty if the translation matches
+ */
+export function compareCodes(reference, translation) {
+  const errors = []
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b)
+  const ids = (list) => (list ?? []).map((item) => item?.id)
+  const values = (scale) => scale?.map((step) => step.value)
+
+  if (!same(ids(reference.categories), ids(translation.categories))) {
+    return ['categories: ids or order differ']
+  }
+
+  reference.categories.forEach((category, index) => {
+    const entries = translation.categories[index].entries ?? []
+    if (!same(ids(category.entries), ids(entries))) {
+      errors.push(`${category.id}: entry ids or order differ`)
+      return
+    }
+    category.entries.forEach((entry, i) => {
+      const other = entries[i]
+      const where = `${category.id}/${entry.id}`
+      for (const key of ['code', 'aliases', 'origin', 'see', 'morse']) {
+        if (!same(entry[key], other[key])) {
+          errors.push(`${where}: ${key} differs`)
+        }
+      }
+      for (const key of ['question', 'usage', 'note']) {
+        if (key in entry !== key in other) {
+          errors.push(`${where}: ${key} is in one language only`)
+        }
+      }
+      if (!same(values(entry.scale), values(other.scale))) {
+        errors.push(`${where}: scale values differ`)
+      }
+    })
+  })
+
+  const rst = reference.rst
+  const other = translation.rst
+  if (!same(rst.aliases, other.aliases)) {
+    errors.push('rst: aliases differ')
+  }
+  if (
+    !same(
+      rst.formats?.map((f) => f.example),
+      other.formats?.map((f) => f.example)
+    )
+  ) {
+    errors.push('rst: format examples differ')
+  }
+  if (
+    !same(
+      rst.scales?.map((scale) => [scale.id, values(scale.values), 'note' in scale]),
+      other.scales?.map((scale) => [scale.id, values(scale.values), 'note' in scale])
+    )
+  ) {
+    errors.push('rst: scales differ')
+  }
+  if (
+    !same(
+      rst.suffixes?.map((s) => s.letter),
+      other.suffixes?.map((s) => s.letter)
+    )
+  ) {
+    errors.push('rst: suffix letters differ')
+  }
 
   return errors
 }

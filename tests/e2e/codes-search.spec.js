@@ -309,7 +309,7 @@ test.describe('Radio Codes search', () => {
     })
 
     // S-2
-    test('should search English data with Bulgarian UI strings', async ({ page }) => {
+    test('should search Bulgarian data with Bulgarian UI strings', async ({ page }) => {
       await openCodes(page)
       await switchLanguage(page, 'bg')
       const box = searchbox(page, BG)
@@ -324,8 +324,11 @@ test.describe('Radio Codes search', () => {
       await expect(rowFor(page, 'QTH', BG), 'S-2: QTH').toBeVisible()
       await expect(totalText(page, 1, BG), `S-2: total "${fill(BG.codes.total, 1)}"`).toBeVisible()
 
+      // Meaning text is searched in the UI language only
+      await search(page, 'местонахождение', BG)
+      await expect(rowFor(page, 'QTH', BG), 'S-2: Bulgarian meaning search').toBeVisible()
       await search(page, 'location', BG)
-      await expect(rowFor(page, 'QTH', BG), 'S-2: English meaning search').toBeVisible()
+      await expect(noResults(page, 'location', BG), 'S-2: no English meaning search').toBeVisible()
 
       await search(page, 'zzzz', BG)
       await expect(noResults(page, 'zzzz', BG), 'S-2: BG empty state').toBeVisible()

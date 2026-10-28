@@ -160,6 +160,45 @@ describe('codesSearch', () => {
       })
     })
 
+    describe('Bulgarian data', () => {
+      let bg
+      let bgIndex
+
+      beforeAll(async () => {
+        bg = await loadCodes('bg')
+        bgIndex = createCodesIndex(bg)
+      })
+
+      it('should find QTH by its official Bulgarian meaning, in any case and with a typo', () => {
+        for (const query of ['местонахождение', 'Местонахождение', 'местонахождене']) {
+          expect(codesIn(searchCodes(bg, query, bgIndex), 'q-codes')).toContain('QTH')
+        }
+      })
+
+      it('should find codes by the wording of the exam questions', () => {
+        expect(allCodes(searchCodes(bg, 'викам всички', bgIndex))).toContain('CQ')
+        expect(allCodes(searchCodes(bg, 'най-добри пожелания', bgIndex))).toContain('73')
+        expect(allCodes(searchCodes(bg, 'смущения', bgIndex))).toEqual(
+          expect.arrayContaining(['QRM', 'QRN'])
+        )
+      })
+
+      it('should find RST by its Bulgarian scale names', () => {
+        expect(searchCodes(bg, 'разбираемост', bgIndex).rst).toBe(true)
+      })
+
+      it('should match codes the same way as in English', () => {
+        expect(allCodes(searchCodes(bg, 'qth', bgIndex))).toEqual(['QTH'])
+        expect(searchCodes(bg, '5nn', bgIndex).rst).toBe(true)
+      })
+
+      it('should not match English meaning text', () => {
+        const result = searchCodes(bg, 'location', bgIndex)
+        expect(allCodes(result)).toEqual([])
+        expect(result.rst).toBe(false)
+      })
+    })
+
     it('should build its own index when none is given', () => {
       expect(allCodes(searchCodes(codes, 'QRM'))).toEqual(['QRM'])
     })

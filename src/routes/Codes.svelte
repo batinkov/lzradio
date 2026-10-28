@@ -1,6 +1,6 @@
 <script>
-  import { onMount, tick } from 'svelte'
-  import { _ } from 'svelte-i18n'
+  import { tick } from 'svelte'
+  import { _, locale } from 'svelte-i18n'
   import { router, replace } from 'svelte-spa-router'
   import { loadCodes } from '../lib/codes.js'
   import { parseCodesParams, buildCodesLocation } from '../lib/urlParams.js'
@@ -30,8 +30,19 @@
   )
   const nothingFound = $derived(searching && total === 0)
 
-  onMount(async () => {
-    codes = await loadCodes()
+  // Load the data in the UI language, again whenever the language changes.
+  // The previous language stays on screen until the new one has loaded.
+  $effect(() => {
+    const current = $locale
+    let cancelled = false
+    loadCodes(current).then((loaded) => {
+      if (!cancelled) {
+        codes = loaded
+      }
+    })
+    return () => {
+      cancelled = true
+    }
   })
 
   // The search lives in the URL (/#/codes?q=qth) so it can be shared and reopened.

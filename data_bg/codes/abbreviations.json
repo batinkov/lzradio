@@ -1,0 +1,412 @@
+{
+  "title": "Съкращения",
+  "intro": "Съкратени думи, предавани с обикновени букви. Появили са се в телеграфията, за да пестят време, а днес се използват и на телефония, и в писмен вид.",
+  "entries": [
+    {
+      "id": "5nn",
+      "code": "5NN",
+      "origin": "amateur",
+      "meanings": [
+        "599 в съкратения запис при състезания"
+      ],
+      "note": "Състезателна форма на рапорта 599.",
+      "see": "rst"
+    },
+    {
+      "id": "agn",
+      "code": "AGN",
+      "origin": "amateur",
+      "meanings": [
+        "Отново"
+      ]
+    },
+    {
+      "id": "ant",
+      "code": "ANT",
+      "origin": "amateur",
+      "meanings": [
+        "Антена"
+      ]
+    },
+    {
+      "id": "bk",
+      "code": "BK",
+      "origin": "itu",
+      "meanings": [
+        "Прекъсване: предаване на думата без опознавателни знаци"
+      ],
+      "note": "Използва се за бърза размяна на реплики. МСД го определя като сигнал за прекъсване на предаване."
+    },
+    {
+      "id": "cfm",
+      "code": "CFM",
+      "origin": "itu",
+      "meanings": [
+        "Потвърдете",
+        "Потвърждавам"
+      ]
+    },
+    {
+      "id": "cl",
+      "code": "CL",
+      "origin": "itu",
+      "meanings": [
+        "Затварям станцията",
+        "Повикване"
+      ],
+      "note": "Официалният сигнал за излизане от ефир."
+    },
+    {
+      "id": "cpy",
+      "code": "CPY",
+      "origin": "amateur",
+      "meanings": [
+        "Приемам, разбирам"
+      ]
+    },
+    {
+      "id": "cq",
+      "code": "CQ",
+      "origin": "itu",
+      "meanings": [
+        "Викам всички"
+      ]
+    },
+    {
+      "id": "cul",
+      "code": "CUL",
+      "origin": "amateur",
+      "meanings": [
+        "Ще се чуем по-късно"
+      ]
+    },
+    {
+      "id": "de",
+      "code": "DE",
+      "origin": "itu",
+      "meanings": [
+        "От; тук е"
+      ],
+      "note": "Предхожда опознавателния знак на предаващата станция."
+    },
+    {
+      "id": "dx",
+      "code": "DX",
+      "origin": "amateur",
+      "meanings": [
+        "Голямо разстояние",
+        "Далечна станция"
+      ]
+    },
+    {
+      "id": "es",
+      "code": "ES",
+      "origin": "amateur",
+      "meanings": [
+        "И"
+      ],
+      "note": "От телеграфния знак за „&“."
+    },
+    {
+      "id": "fb",
+      "code": "FB",
+      "origin": "amateur",
+      "meanings": [
+        "Отлично (от „fine business“)"
+      ]
+    },
+    {
+      "id": "ga",
+      "code": "GA",
+      "origin": "amateur",
+      "meanings": [
+        "Добър следобед",
+        "Започнете да предавате"
+      ]
+    },
+    {
+      "id": "gd",
+      "code": "GD",
+      "origin": "amateur",
+      "meanings": [
+        "Добър ден",
+        "Добър"
+      ]
+    },
+    {
+      "id": "ge",
+      "code": "GE",
+      "origin": "amateur",
+      "meanings": [
+        "Добър вечер"
+      ]
+    },
+    {
+      "id": "gl",
+      "code": "GL",
+      "origin": "amateur",
+      "meanings": [
+        "Успех"
+      ]
+    },
+    {
+      "id": "gm",
+      "code": "GM",
+      "origin": "amateur",
+      "meanings": [
+        "Добро утро"
+      ]
+    },
+    {
+      "id": "gn",
+      "code": "GN",
+      "origin": "amateur",
+      "meanings": [
+        "Лека нощ"
+      ]
+    },
+    {
+      "id": "gud",
+      "code": "GUD",
+      "origin": "amateur",
+      "meanings": [
+        "Добър"
+      ]
+    },
+    {
+      "id": "hi",
+      "code": "HI",
+      "origin": "amateur",
+      "meanings": [
+        "Смях"
+      ],
+      "note": "Телеграфният еквивалент на усмивка."
+    },
+    {
+      "id": "hr",
+      "code": "HR",
+      "origin": "amateur",
+      "meanings": [
+        "Тук"
+      ]
+    },
+    {
+      "id": "hw",
+      "code": "HW",
+      "origin": "amateur",
+      "meanings": [
+        "Как"
+      ],
+      "note": "Обикновено като HW? или HW CPY?: как ме приемате?"
+    },
+    {
+      "id": "k",
+      "code": "K",
+      "origin": "itu",
+      "meanings": [
+        "Покана за предаване: може да отговори всяка станция"
+      ]
+    },
+    {
+      "id": "kn",
+      "code": "KN",
+      "origin": "amateur",
+      "meanings": [
+        "Покана за предаване: може да отговори само станцията, с която работя"
+      ],
+      "note": "Радиолюбителска употреба, не е сигнал на МСД."
+    },
+    {
+      "id": "nr",
+      "code": "NR",
+      "origin": "amateur",
+      "meanings": [
+        "Номер",
+        "Близо"
+      ]
+    },
+    {
+      "id": "nw",
+      "code": "NW",
+      "origin": "itu",
+      "meanings": [
+        "Сега"
+      ]
+    },
+    {
+      "id": "om",
+      "code": "OM",
+      "origin": "amateur",
+      "meanings": [
+        "Оператор мъж (букв. „стари човече“)"
+      ],
+      "note": "Приятелско обръщение, независимо от възрастта."
+    },
+    {
+      "id": "op",
+      "code": "OP",
+      "origin": "amateur",
+      "meanings": [
+        "Оператор"
+      ]
+    },
+    {
+      "id": "pse",
+      "code": "PSE",
+      "origin": "itu",
+      "meanings": [
+        "Моля"
+      ]
+    },
+    {
+      "id": "pwr",
+      "code": "PWR",
+      "origin": "amateur",
+      "meanings": [
+        "Мощност"
+      ]
+    },
+    {
+      "id": "r",
+      "code": "R",
+      "origin": "itu",
+      "meanings": [
+        "Прието, разбрано"
+      ]
+    },
+    {
+      "id": "rig",
+      "code": "RIG",
+      "origin": "amateur",
+      "meanings": [
+        "Радиоапаратура"
+      ]
+    },
+    {
+      "id": "rprt",
+      "code": "RPRT",
+      "origin": "amateur",
+      "meanings": [
+        "Рапорт"
+      ]
+    },
+    {
+      "id": "rpt",
+      "code": "RPT",
+      "origin": "itu",
+      "meanings": [
+        "Повторете"
+      ]
+    },
+    {
+      "id": "rx",
+      "code": "RX",
+      "origin": "amateur",
+      "meanings": [
+        "Приемник"
+      ]
+    },
+    {
+      "id": "sri",
+      "code": "SRI",
+      "origin": "amateur",
+      "meanings": [
+        "Съжалявам"
+      ]
+    },
+    {
+      "id": "tnx",
+      "code": "TNX",
+      "aliases": [
+        "TKS"
+      ],
+      "origin": "amateur",
+      "meanings": [
+        "Благодаря"
+      ]
+    },
+    {
+      "id": "trx",
+      "code": "TRX",
+      "origin": "amateur",
+      "meanings": [
+        "Приемо-предавател"
+      ]
+    },
+    {
+      "id": "tu",
+      "code": "TU",
+      "origin": "itu",
+      "meanings": [
+        "Благодаря ви"
+      ]
+    },
+    {
+      "id": "tx",
+      "code": "TX",
+      "origin": "amateur",
+      "meanings": [
+        "Предавател"
+      ]
+    },
+    {
+      "id": "ufb",
+      "code": "UFB",
+      "origin": "amateur",
+      "meanings": [
+        "Изключително добре (от „ultra fine business“)"
+      ]
+    },
+    {
+      "id": "ur",
+      "code": "UR",
+      "origin": "amateur",
+      "meanings": [
+        "Вашият",
+        "Вие сте"
+      ]
+    },
+    {
+      "id": "vy",
+      "code": "VY",
+      "origin": "amateur",
+      "meanings": [
+        "Много"
+      ]
+    },
+    {
+      "id": "wid",
+      "code": "WID",
+      "origin": "amateur",
+      "meanings": [
+        "С"
+      ]
+    },
+    {
+      "id": "wx",
+      "code": "WX",
+      "origin": "itu",
+      "meanings": [
+        "Време (метеорологично)"
+      ]
+    },
+    {
+      "id": "xyl",
+      "code": "XYL",
+      "origin": "amateur",
+      "meanings": [
+        "Съпруга"
+      ],
+      "note": "От „ex-young lady“ („бивша млада дама“)."
+    },
+    {
+      "id": "yl",
+      "code": "YL",
+      "origin": "amateur",
+      "meanings": [
+        "Млада дама: оператор жена"
+      ],
+      "note": "Използва се независимо от възрастта."
+    }
+  ]
+}
