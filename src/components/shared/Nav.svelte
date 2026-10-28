@@ -229,10 +229,16 @@
           {$_('features.examPrep.description')}
         </p>
 
+        <p>
+          <strong>{$_('features.codes.title')}</strong><br />
+          {$_('features.codes.description')}
+        </p>
+
         <h3>{$_('features.keyboardShortcuts')}</h3>
         <ul>
           <li><code>← →</code> → {$_('features.shortcuts.arrowKeys')}</li>
           <li><code>1-4</code> → {$_('features.shortcuts.numberKeys')}</li>
+          <li><code>/</code> → {$_('features.shortcuts.slash')}</li>
           <li><code>Esc</code> → {$_('features.shortcuts.closeModals')}</li>
         </ul>
 

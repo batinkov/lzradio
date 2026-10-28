@@ -103,6 +103,7 @@ Ham humor and jargon. Not found in any primary source checked.
 
 - **QLF** — "Try sending with your left foot" (jab at poor CW).
 - **QRRR** — old ARRL land-distress signal (historical; SOS is the real one).
+  Not shipped: no primary source found.
 
 ## Verification notes
 

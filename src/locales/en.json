@@ -43,10 +43,15 @@
       "title": "📝 Exam Prep",
       "description": "Practice for Technician, General, and Extra class exams with question pools."
     },
+    "codes": {
+      "title": "📡 Radio Codes",
+      "description": "Look up Q-codes, abbreviations, prosigns and RST reports by code or by meaning. Works offline."
+    },
     "keyboardShortcuts": "Keyboard Shortcuts",
     "shortcuts": {
       "arrowKeys": "Navigate between questions (during exams)",
       "numberKeys": "Select answer (1-4)",
+      "slash": "Focus the search (Radio Codes)",
       "closeModals": "Close modals"
     },
     "footer": "Made for ham radio operators"
