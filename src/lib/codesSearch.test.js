@@ -129,6 +129,11 @@ describe('codesSearch', () => {
       it('should match RST by its description', () => {
         expect(searchCodes(codes, 'signal report', index).rst).toBe(true)
       })
+
+      it('should match RST by its scale names', () => {
+        expect(searchCodes(codes, 'readability', index).rst).toBe(true)
+        expect(searchCodes(codes, 'strength', index).rst).toBe(true)
+      })
     })
 
     describe('meaning matches', () => {

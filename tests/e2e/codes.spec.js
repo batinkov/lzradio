@@ -28,7 +28,15 @@ const ORIGINS = ['itu', 'amateur', 'slang']
 const countOrigin = (entries, origin) => entries.filter((e) => e.origin === origin).length
 
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-const fill = (template, value) => template.replace(/\{\w+\}/, value)
+
+// Also resolves a simple ICU plural: {count, plural, one {# code} other {# codes}}
+const fill = (template, value) => {
+  const plural = template.match(/^\{\w+, plural, one \{([^}]*)\} other \{([^}]*)\}\}$/)
+  if (plural) {
+    return plural[value === 1 ? 1 : 2].replace('#', value)
+  }
+  return template.replace(/\{\w+\}/, value)
+}
 
 /** Exact code text, tolerating a combining overline after each letter (A10). */
 const codeRe = (code) =>

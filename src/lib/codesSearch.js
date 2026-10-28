@@ -21,10 +21,17 @@ export function createCodesIndex(codes) {
   const items = codes.categories.flatMap((category) =>
     category.entries.map((entry) => ({ categoryId: category.id, entry }))
   )
-  // RST has no entries; its title and intro stand in for the meaning text
+  // RST has no entries; its explainer text stands in for the meaning text
   items.push({
     categoryId: codes.rst.id,
-    entry: { answer: codes.rst.title, note: codes.rst.intro }
+    entry: {
+      answer: codes.rst.title,
+      note: codes.rst.intro,
+      meanings: [
+        ...codes.rst.formats.map((format) => format.description),
+        ...codes.rst.scales.map((scale) => scale.name)
+      ]
+    }
   })
 
   return new Fuse(items, {
