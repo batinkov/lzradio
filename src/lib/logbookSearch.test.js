@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { createFuseInstance, filterContacts, highlightMatch } from './logbookSearch.js'
+import { createFuseInstance, filterContacts, highlightMatch, escapeHtml } from './logbookSearch.js'
 
 describe('logbookSearch', () => {
   describe('filterContacts', () => {
@@ -112,6 +112,41 @@ describe('logbookSearch', () => {
     it('handles whitespace-only query gracefully', () => {
       const result = highlightMatch('LZ1ABC', '   ')
       expect(result).toBe('LZ1ABC')
+    })
+
+    describe('markup in the text', () => {
+      const payload = '<img src=x onerror="alert(1)">'
+      const escaped = '&lt;img src=x onerror=&quot;alert(1)&quot;&gt;'
+
+      it('escapes markup when nothing matches', () => {
+        expect(highlightMatch(payload, 'zz')).toBe(escaped)
+      })
+
+      it('escapes markup when the query is too short or empty', () => {
+        expect(highlightMatch(payload, 'a')).toBe(escaped)
+        expect(highlightMatch(payload, '')).toBe(escaped)
+      })
+
+      it('escapes markup around and inside the match', () => {
+        expect(highlightMatch('a <b>bold</b> remark', '<b>bold')).toBe(
+          'a <mark>&lt;b&gt;bold</mark>&lt;/b&gt; remark'
+        )
+      })
+
+      it('matches the text as typed, not its escaped form', () => {
+        expect(highlightMatch('Tom & Jerry', 'amp')).toBe('Tom &amp; Jerry')
+        expect(highlightMatch('Tom & Jerry', '& J')).toBe('Tom <mark>&amp; J</mark>erry')
+      })
+    })
+  })
+
+  describe('escapeHtml', () => {
+    it('escapes the five HTML special characters', () => {
+      expect(escapeHtml(`&<>"'`)).toBe('&amp;&lt;&gt;&quot;&#39;')
+    })
+
+    it('leaves other text unchanged', () => {
+      expect(escapeHtml('LZ1ABC/P 73 — място')).toBe('LZ1ABC/P 73 — място')
     })
   })
 

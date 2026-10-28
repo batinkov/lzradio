@@ -947,6 +947,88 @@ test.describe('LogBook', () => {
     fs.unlinkSync(tmpFile)
   })
 
+  test('should show imported remarks with markup as text', async ({ page }) => {
+    await page.goto('/#/logbook')
+
+    // Add a dummy contact so actions bar appears
+    await page.evaluate(async () => {
+      const { addContact } = await import('/src/lib/logbookDB.js')
+      await addContact({
+        baseCallsign: 'DUMMY',
+        prefix: null,
+        suffix: null,
+        date: '2025-01-01',
+        time: '12:00:00',
+        frequency: 14.0,
+        mode: 'SSB'
+      })
+    })
+
+    await page.reload()
+    await page.waitForSelector('.contact-table')
+
+    // A remark that would run script if it were rendered as HTML
+    const remarks = '<img src=x onerror="window.__xss = true"> <b>bold</b> QSO'
+    const importData = {
+      metadata: {
+        appName: 'LZ Radio',
+        appVersion: '1.0.0',
+        exportDate: '2025-01-20T10:00:00.000Z',
+        contactCount: 1,
+        schemaVersion: 1
+      },
+      contacts: [
+        {
+          baseCallsign: 'K2XYZ',
+          prefix: null,
+          suffix: null,
+          date: '2025-01-21',
+          time: '10:00:00',
+          frequency: 7.1,
+          mode: 'CW',
+          power: null,
+          rstSent: null,
+          rstReceived: null,
+          qslSent: false,
+          qslReceived: false,
+          remarks
+        }
+      ]
+    }
+
+    const fileChooserPromise = page.waitForEvent('filechooser')
+    await page.locator('.actions-right .dropdown-button').click()
+    await page.locator('button:has-text("Import")').click()
+    const fileChooser = await fileChooserPromise
+
+    const fs = await import('fs')
+    const path = await import('path')
+    const os = await import('os')
+    const tmpFile = path.join(os.tmpdir(), 'test-import-markup.json')
+    fs.writeFileSync(tmpFile, JSON.stringify(importData))
+    await fileChooser.setFiles(tmpFile)
+
+    await page.waitForSelector('.modal-backdrop')
+    await page.locator('.modal-footer button:has-text("Import")').click()
+    await expect(page.locator('.toast-success')).toContainText('Imported 1 contact')
+
+    // The remark shows as typed, and none of it became elements or ran
+    const table = page.locator('.contact-table')
+    await expect(table).toContainText(remarks)
+    await expect(table.locator('img, b')).toHaveCount(0)
+
+    // Same when the search highlights part of the remark
+    await page.locator('.search-input').fill('bold')
+    await expect(table.locator('mark')).toHaveText('bold')
+    await expect(table).toContainText(remarks)
+    await expect(table.locator('img, b')).toHaveCount(0)
+
+    expect(await page.evaluate(() => window.__xss)).toBeUndefined()
+
+    // Cleanup
+    fs.unlinkSync(tmpFile)
+  })
+
   test('should detect and skip duplicate contacts during import', async ({ page }) => {
     // First, add a contact directly
     await page.goto('/#/logbook/add')
