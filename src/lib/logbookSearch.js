@@ -36,15 +36,29 @@ export function filterContacts(contacts, query, fuse) {
   return fuse.search(trimmedQuery).map((result) => result.item)
 }
 
+// Characters that would otherwise be read as markup by {@html}
+const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }
+
+/**
+ * Escape text so it renders as text, not markup
+ * @param {string} text - Plain text
+ * @returns {string} Text safe to insert as HTML
+ */
+export function escapeHtml(text) {
+  return text.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char])
+}
+
 /**
  * Highlight matched text in a string with <mark> tags
+ * The result is meant for {@html}, so the text itself is escaped: contact
+ * remarks are user input and may arrive in an imported file.
  * @param {string} text - Text to search in
  * @param {string} query - Search query to highlight
- * @returns {string} Text with <mark> tags around first match
+ * @returns {string} Escaped text with <mark> tags around first match
  */
 export function highlightMatch(text, query) {
   if (!text || !query || query.trim().length < 2) {
-    return text || ''
+    return escapeHtml(text || '')
   }
 
   const lowerText = text.toLowerCase()
@@ -52,12 +66,14 @@ export function highlightMatch(text, query) {
   const index = lowerText.indexOf(lowerQuery)
 
   if (index === -1) {
-    return text
+    return escapeHtml(text)
   }
 
   const before = text.slice(0, index)
   const match = text.slice(index, index + query.length)
   const after = text.slice(index + query.length)
 
-  return `${before}<mark>${match}</mark>${after}`
+  // Split first, then escape: matching against escaped text would let a query
+  // like "amp" hit inside "&amp;"
+  return `${escapeHtml(before)}<mark>${escapeHtml(match)}</mark>${escapeHtml(after)}`
 }
