@@ -75,6 +75,7 @@ LZ Radio is a fully client-side web application for amateur radio operators. It 
 
 - **LogBook**: Log and track radio contacts with full CRUD operations and IndexedDB persistence
 - **Exam Prep**: Practice for Bulgarian amateur radio license exams (Class 1 and Class 2)
+- **Radio Codes**: Offline reference of Q-codes, abbreviations, prosigns, number codes and RST, searchable by code or meaning
 
 **Technology Stack:**
 
@@ -119,7 +120,7 @@ npm run test:ui
 npm run test:e2e
 ```
 
-**Test Coverage:** 377 passing unit tests across all business logic modules.
+**Test Coverage:** 445 passing unit tests across all business logic modules.
 
 ### Linting
 
@@ -164,19 +165,21 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 
 ### Key Components
 
-- **Routes** (`src/routes/`): Page-level components (Home, LogBook, Exam pages)
+- **Routes** (`src/routes/`): Page-level components (Home, LogBook, Exam, Codes pages)
 - **Shared Components** (`src/components/shared/`): Navigation, modals
-- **Feature Components** (`src/components/logbook/`, `src/components/exam/`): Directories exist but not yet utilized
+- **Feature Components** (`src/components/exam/`, `src/components/codes/`; `src/components/logbook/` exists but is unused)
 - **Library** (`src/lib/`):
   - `i18n.js` - Internationalization setup and language switching (uses localStorageAdapter)
   - `questions.js` - Dynamic question loading based on locale
+  - `codes.js` - Radio codes loading (`data_en/codes/`) and data validation (tested)
+  - `codesSearch.js` - Codes search: code/alias match first, Fuse.js fuzzy over meanings otherwise (tested)
   - `katex.js` - Math formula rendering
   - `examConfig.js` - Exam configuration constants
   - `examScoring.js` - Exam scoring and answer validation logic (pure functions, tested)
   - `examTimer.js` - Timer utilities and time formatting (pure functions, tested)
   - `examProgress.js` - Progress tracking calculations (pure functions, tested)
   - `navigationGuard.js` - Navigation protection during exams (tested)
-  - `urlParams.js` - Type-safe URL parameter parsing (tested)
+  - `urlParams.js` - Type-safe URL parameter parsing for exam and codes routes (tested)
   - `logbookDB.js` - IndexedDB operations with Dexie.js (tested)
   - `callsignParser.js` - Parse/build callsigns with prefix/base/suffix (tested)
   - `importValidator.js` - Validate LogBook import JSON files (tested)
@@ -213,6 +216,7 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 - `/exam/class2/prep` - Class 2 practice mode
 - `/exam/class1/simulated` - Class 1 timed exam
 - `/exam/class2/simulated` - Class 2 timed exam
+- `/codes` - Radio codes reference (`?q=` holds the search)
 
 ### Data Storage
 
@@ -333,6 +337,13 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Import preview modal showing new/duplicate/total counts
 - Toast notifications for export/import feedback
 
+**Radio Codes (English data; Bulgarian UI):**
+
+- Q-codes (question/answer form, scales), abbreviations, prosigns, number codes, RST explainer
+- One search box for forward and reverse lookup, with highlighting; `/` focuses it
+- Search kept in the URL (`/#/codes?q=qth`) for sharing and bookmarks
+- Bulgarian code data (`data_bg/codes/`) not yet written
+
 **Architecture & Code Quality:**
 
 - Business logic separation from UI components
@@ -341,9 +352,11 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Type-safe URL parameter parsing
 - Navigation guard system
 - Loading states for async operations
-- Testing framework (Vitest) with 377 passing unit tests
+- Testing framework (Vitest) with 445 passing unit tests
+  - urlParams.js (42 tests)
   - importValidator.js (40 tests) ✅
-  - urlParams.js (33 tests)
+  - codesSearch.js (30 tests) ✅
+  - codes.js (23 tests) ✅
   - storageAdapter.js (31 tests)
   - toastStore.js (27 tests) ✅
   - analytics.js (23 tests) ✅
@@ -361,7 +374,6 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 
 - Operator settings page (store user's own callsign)
 - Country flag indicators based on callsign prefix
-- Q-code and C-code reference section
 - Exam history/statistics tracking (save results via storage adapters)
 - PWA support (manifest.json, service worker)
 - Keyboard shortcuts for exam navigation
