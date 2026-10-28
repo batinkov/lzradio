@@ -1,7 +1,7 @@
 /**
  * URL Parameters Module
  *
- * Utilities for parsing and validating URL parameters for exam routes.
+ * Utilities for parsing and validating URL parameters for the exam and codes routes.
  * Provides type-safe parameter extraction with sensible defaults.
  */
 
@@ -120,4 +120,30 @@ export function isValidClass(classNum) {
  */
 export function isValidSection(section) {
   return VALID_SECTIONS.includes(section)
+}
+
+/**
+ * Parses the codes page parameters from the query string
+ *
+ * @param {string} querystring - The query string (without '?')
+ * @returns {Object} Parsed codes parameters
+ * @returns {string} return.query - Search query, trimmed; empty when missing
+ */
+export function parseCodesParams(querystring) {
+  const urlParams = new URLSearchParams(querystring)
+
+  return {
+    query: (urlParams.get('q') || '').trim()
+  }
+}
+
+/**
+ * Builds the codes page location for a search query
+ *
+ * @param {string} query - Search query
+ * @returns {string} '/codes?q=<query>', or '/codes' when the query is blank
+ */
+export function buildCodesLocation(query) {
+  const trimmed = (query || '').trim()
+  return trimmed ? `/codes?${new URLSearchParams({ q: trimmed })}` : '/codes'
 }

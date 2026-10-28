@@ -63,6 +63,12 @@ route. No per-user behaviour is tracked, by design.
 
 <!-- Newest at top. Items below are proposed, pending PO/PM sign-off. -->
 
+- **2026-10-28** — Resolved deep-linking (open since 2026-07-12) as a search
+  link, not a per-code route: `/#/codes?q=qrm`. A link to one code is a search
+  for it, so a single mechanism covers sharing a search and sharing a code, and
+  there is no `/#/codes/:code` route to keep in sync with the data. The URL
+  follows typing via `replace`, so the Back history is not filled.
+
 - **2026-07-20** — Scoped the brief around three access patterns (forward /
   reverse / browse) from PO/PM use cases. Reverse lookup implies searching
   Bulgarian meaning text too, not just English — "search location" has to work

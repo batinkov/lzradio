@@ -679,4 +679,67 @@ test.describe('Radio Codes search', () => {
       expect(problems, 'S-35: no errors').toEqual([])
     })
   })
+
+  // Ticket 05: the search is part of the URL. Written against the ticket, not
+  // from a use-case list, so these tests carry no S-<n> tags.
+  test.describe('I. Search in the URL', () => {
+    const URL_DELAY = 300 // ms the page waits after typing before updating the URL
+
+    test('should open with the search from ?q=', async ({ page }) => {
+      await page.goto('/#/codes?q=qrm')
+      await expect(searchbox(page), 'URL: box holds q').toHaveValue('qrm')
+      await expect(rowFor(page, 'QRM'), 'URL: QRM shown').toBeVisible()
+      await expect(rowFor(page, 'QRN'), 'URL: QRN not shown').toBeHidden()
+
+      await page.goto('/#/codes?q=end%20of%20contact')
+      await expect(searchbox(page), 'URL: encoded q decoded').toHaveValue('end of contact')
+      await expect(rowFor(page, 'QSO'), 'URL: QSO shown').toBeVisible()
+
+      await page.goto('/#/codes?q=%20%20')
+      await expect(searchbox(page), 'URL: blank q is no search').toHaveValue('')
+      await expect(rows(page), 'URL: all rows for blank q').toHaveCount(TOTAL)
+    })
+
+    test('should follow typing with replace, keeping focus and Back history', async ({ page }) => {
+      await page.goto('/#/')
+      await page.goto('/#/codes')
+      const historyLength = await page.evaluate(() => history.length)
+
+      const box = searchbox(page)
+      await box.click()
+      await box.pressSequentially('qth', { delay: 50 })
+      await expect(page, 'URL: q follows typing').toHaveURL(/#\/codes\?q=qth$/)
+      await expect(box, 'URL: focus stays in the box').toBeFocused()
+      expect(await page.evaluate(() => history.length), 'URL: no history entries added').toBe(
+        historyLength
+      )
+
+      // A trailing space is trimmed in the URL but must survive in the box
+      await box.pressSequentially(' ', { delay: 50 })
+      await page.waitForTimeout(URL_DELAY * 2)
+      await expect(box, 'URL: typed text kept as typed').toHaveValue('qth ')
+
+      await page.goBack()
+      await expect(page, 'URL: Back leaves the codes page').toHaveURL(/#\/$/)
+    })
+
+    test('should drop ?q= when the search is cleared', async ({ page }) => {
+      await page.goto('/#/codes?q=qth')
+      await clearButton(page).click()
+      await expect(page, 'URL: clear button drops q').toHaveURL(/#\/codes$/)
+
+      await page.goto('/#/codes?q=qth')
+      await searchbox(page).press('Escape')
+      await expect(page, 'URL: Esc drops q').toHaveURL(/#\/codes$/)
+    })
+
+    test('should keep the search after a reload', async ({ page }) => {
+      await page.goto('/#/codes')
+      await search(page, 'location')
+      await expect(page).toHaveURL(/#\/codes\?q=location$/)
+      await page.reload()
+      await expect(searchbox(page), 'URL: search restored').toHaveValue('location')
+      await expect(rowFor(page, 'QTH'), 'URL: QTH shown after reload').toBeVisible()
+    })
+  })
 })

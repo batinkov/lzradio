@@ -4,6 +4,8 @@ import {
   parseQuestionOrder,
   parseSections,
   parseExamParams,
+  parseCodesParams,
+  buildCodesLocation,
   isValidClass,
   isValidSection,
   QUESTION_ORDER,
@@ -154,6 +156,57 @@ describe('urlParams', () => {
         questionOrder: 'random',
         sections: [2, 3]
       })
+    })
+  })
+
+  describe('parseCodesParams', () => {
+    it('should return the search query', () => {
+      expect(parseCodesParams('q=qth')).toEqual({ query: 'qth' })
+    })
+
+    it('should return an empty query when q is missing', () => {
+      expect(parseCodesParams('')).toEqual({ query: '' })
+      expect(parseCodesParams('order=random')).toEqual({ query: '' })
+    })
+
+    it('should return an empty query when q is empty or whitespace', () => {
+      expect(parseCodesParams('q=')).toEqual({ query: '' })
+      expect(parseCodesParams('q=%20%20')).toEqual({ query: '' })
+    })
+
+    it('should trim the query', () => {
+      expect(parseCodesParams('q=%20qth%20')).toEqual({ query: 'qth' })
+    })
+
+    it('should decode URL-encoded values', () => {
+      expect(parseCodesParams('q=qrm%3F')).toEqual({ query: 'qrm?' })
+      expect(parseCodesParams('q=end%20of%20contact')).toEqual({ query: 'end of contact' })
+      expect(parseCodesParams('q=end+of+contact')).toEqual({ query: 'end of contact' })
+      expect(parseCodesParams('q=%D0%BC%D1%8F%D1%81%D1%82%D0%BE')).toEqual({ query: 'място' })
+    })
+  })
+
+  describe('buildCodesLocation', () => {
+    it('should put the query in q', () => {
+      expect(buildCodesLocation('qth')).toBe('/codes?q=qth')
+    })
+
+    it('should drop q for a blank query', () => {
+      expect(buildCodesLocation('')).toBe('/codes')
+      expect(buildCodesLocation('   ')).toBe('/codes')
+      expect(buildCodesLocation(undefined)).toBe('/codes')
+    })
+
+    it('should trim and encode the query', () => {
+      expect(buildCodesLocation(' qrm? ')).toBe('/codes?q=qrm%3F')
+      expect(buildCodesLocation('a&b=c')).toBe('/codes?q=a%26b%3Dc')
+    })
+
+    it('should round-trip through parseCodesParams', () => {
+      for (const query of ['qth', 'qrm?', 'end of contact', 'място', 'a&b=c#d']) {
+        const querystring = buildCodesLocation(query).split('?')[1]
+        expect(parseCodesParams(querystring).query).toBe(query)
+      }
     })
   })
 
