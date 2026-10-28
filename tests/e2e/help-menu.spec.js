@@ -64,13 +64,21 @@ test.describe('Help Menu', () => {
       await expect(page.locator('.modal-body')).toContainText('Exam Prep')
     })
 
+    test('should display Radio Codes feature description', async ({ page }) => {
+      await page.click('button[aria-label*="Help"]')
+      await page.click('.help-dropdown button:has-text("Features")')
+
+      // Should show Radio Codes feature
+      await expect(page.locator('.modal-body')).toContainText('Radio Codes')
+    })
+
     test('should display keyboard shortcuts', async ({ page }) => {
       await page.click('button[aria-label*="Help"]')
       await page.click('.help-dropdown button:has-text("Features")')
 
       // Should show keyboard shortcuts
       await expect(page.locator('.modal-body')).toContainText('Keyboard Shortcuts')
-      await expect(page.locator('.modal-body code')).toHaveCount(3) // ← →, 1-4, Esc
+      await expect(page.locator('.modal-body code')).toHaveCount(4) // ← →, 1-4, /, Esc
     })
 
     test('should close Features modal with close button', async ({ page }) => {

@@ -18,10 +18,10 @@ code.
 |---|---|---|---|
 | **73** | Best regards | The universal sign-off. Singular — "73," never "73s." | common |
 | **88** | Love and kisses | Warm sign-off; often between spouses / close friends. | common |
-| **33** | Fondest regards | Traditionally **YL-to-YL** (between female operators); "love sealed with friendship." From the Young Ladies Radio League. | occasional |
-| **55** | Best success / good luck | Mostly **European CW** (German "viel Erfolg"). **Disputed** — see below. | disputed |
-| **161** | 73 + 88 | Combination (88+73=161); "best regards and love," used between couples. | niche |
-| **30** | End / no more | Journalism/telegraph end-mark ("that's all"). Rare on air today but recognized. | archaic |
+| **33** | Fondest regards | Traditionally **YL-to-YL** (between female operators); "love sealed with friendship." From the Young Ladies Radio League. | occasional, not shipped |
+| **55** | Best success / good luck | Mostly **European CW** (German "viel Erfolg"). **Disputed** — see below. | disputed, not shipped |
+| **161** | 73 + 88 | Combination (88+73=161); "best regards and love," used between couples. | niche, not shipped |
+| **30** | End / no more | Journalism/telegraph end-mark ("that's all"). Rare on air today but recognized. | archaic, not shipped |
 
 ## Verification notes
 
@@ -30,9 +30,9 @@ Checked 2026-10-13.
 - **73** and **88** are confirmed by the ON4UN/ON4WW operating manual, including
   the "never 73s" rule.
 - **55** — the same manual says "51 and 55 is CB slang. Do not use it", which
-  contradicts the entry above. **Open:** drop it, or ship it marked as disputed.
+  contradicts the entry above. **Decided:** not shipped (decisions log, 2026-10-28).
 - **161** and **30** appear in Wikipedia's abbreviation table; **33** does not.
-  None of the three was found in a primary source.
+  None of the three was found in a primary source, so none is shipped.
 - Wikipedia also lists **99** ("get lost!"); not included here.
 
 ## Sources

@@ -10,7 +10,7 @@ Status: **draft** · last updated 2026-10-13 (source verification pass)
 ## Files
 
 - [`q-codes.md`](q-codes.md) — Q-codes, with both interrogative and affirmative forms
-- [`number-codes.md`](number-codes.md) — 73, 88, 33, 55, 161, 30 (telegraph-era number codes)
+- [`number-codes.md`](number-codes.md) — 73, 88 (shipped); 33, 55, 161, 30 (researched, not shipped)
 - [`abbreviations-and-prosigns.md`](abbreviations-and-prosigns.md) — CW abbreviations + prosigns
 - [`rst.md`](rst.md) — the RST signal-report system
 
@@ -53,8 +53,8 @@ the ARRL Q-signals sheet and the ON4UN/ON4WW operating manual. Each file has a
 - **Prosigns are only the run-together signals**; `K`, `KN`, `BK`, `R` and `CL`
   are abbreviations.
 
-Still open: whether rare and slang Q-codes ship in v1, the final size of the
-abbreviation set, and whether `55` stays (one source calls it CB slang).
+Settled for v1 (2026-10-28, see the decisions log): 33 Q-codes (31 ITU, QST,
+QLF) and 48 abbreviations ship; `55`, `33`, `161`, `30` and `QRRR` do not.
 
 Not verified against a primary source: `33`, `161`, `30`, `QLF`, `QRRR`, the
 RST suffixes D/M/S, and the ARRL CW abbreviations sheet (could not be

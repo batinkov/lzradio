@@ -30,8 +30,8 @@ People reach for it three ways:
   searching over meaning text, not just code strings, and it must not get
   dropped under time pressure.
 - Q-codes represented in **both** forms — the interrogative and the affirmative
-  (`QRM?` = "Are you being interfered with?" / `QRM.` = "I am being
-  interfered with") — so the reference is actually correct, not flattened.
+  (`QRM?` = "Is my transmission being interfered with?" / `QRM` = "Your
+  transmission is being interfered with") — so the reference is actually correct, not flattened.
 - Fully offline and client-side, consistent with the rest of the app; static
   data files following the existing `data_en/` + `data_bg/` pattern.
 
@@ -41,7 +41,8 @@ People reach for it three ways:
 
 - No user-editable or user-added entries. Curated, read-only data.
 - No per-country / per-region code variants. Standard ITU + common ham usage.
-- No RST calculator. _(Open: whether RST appears at all — see questions.)_
+- No RST calculator. RST is explained (formats, scales, suffix letters), not
+  computed.
 - No integration into LogBook contact entry (autocomplete, inline lookup) in
   v1. Standalone page only; integration is a possible later initiative.
 - Not a Morse/CW trainer. Codes only, not code *learning*.
@@ -63,6 +64,17 @@ route. No per-user behaviour is tracked, by design.
 
 <!-- Newest at top. Items below are proposed, pending PO/PM sign-off. -->
 
+- **2026-10-28** — RST is in scope as an explainer block (report formats, the
+  three scales, suffix letters), not as code rows: a report is worked out from
+  what you hear, not looked up. `59`, `599`, `5NN` and `RST` find it by search.
+- **2026-10-28** — English v1 ships 33 Q-codes (31 ITU, QST, QLF), 48
+  abbreviations, 7 prosigns and the number codes 73 and 88. Left out: `55`
+  (disputed; called CB slang by ON4UN/ON4WW), `33`, `161`, `30` and `QRRR` (no
+  primary source found). The research files keep them, marked as not shipped.
+- **2026-10-28** — Corrected the QRM example in Goals to the ITU wording (the
+  question asks about _my_ transmission). The earlier receiver-side phrasing
+  was wrong; see research/q-codes.md.
+
 - **2026-10-28** — Resolved deep-linking (open since 2026-07-12) as a search
   link, not a per-code route: `/#/codes?q=qrm`. A link to one code is a search
   for it, so a single mechanism covers sharing a search and sharing a code, and
@@ -81,7 +93,7 @@ route. No per-user behaviour is tracked, by design.
   Q-code allocation, not copied from a copyrighted glossary (project is MIT).
   Bulgarian phrasing follows conventional LZ usage; mine existing `data_bg/`
   exam content for vetted wording where it overlaps.
-- **2026-07-12** — _Open:_ deep-linking to a single code. Hash routing forbids
+- **2026-07-12** — _Open (resolved 2026-10-28, see above):_ deep-linking to a single code. Hash routing forbids
   in-page anchors, so a shareable per-code link needs a route param
   (`/#/codes/qrm`); the alternative is a filter-only page with no deep links.
   Reuse the existing `logbookSearch.js` pattern for the filter either way.
