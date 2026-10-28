@@ -14,14 +14,14 @@ code.
 
 ## The codes actually used in amateur radio
 
-| Code | Meaning | Notes | Status |
-|---|---|---|---|
-| **73** | Best regards | The universal sign-off. Singular — "73," never "73s." | common |
-| **88** | Love and kisses | Warm sign-off; often between spouses / close friends. | common |
-| **33** | Fondest regards | Traditionally **YL-to-YL** (between female operators); "love sealed with friendship." From the Young Ladies Radio League. | occasional, not shipped |
-| **55** | Best success / good luck | Mostly **European CW** (German "viel Erfolg"). **Disputed** — see below. | disputed, not shipped |
-| **161** | 73 + 88 | Combination (88+73=161); "best regards and love," used between couples. | niche, not shipped |
-| **30** | End / no more | Journalism/telegraph end-mark ("that's all"). Rare on air today but recognized. | archaic, not shipped |
+| Code    | Meaning                  | Notes                                                                                                                     | Status                  |
+| ------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| **73**  | Best regards             | The universal sign-off. Singular — "73," never "73s."                                                                     | common                  |
+| **88**  | Love and kisses          | Warm sign-off; often between spouses / close friends.                                                                     | common                  |
+| **33**  | Fondest regards          | Traditionally **YL-to-YL** (between female operators); "love sealed with friendship." From the Young Ladies Radio League. | occasional, not shipped |
+| **55**  | Best success / good luck | Mostly **European CW** (German "viel Erfolg"). **Disputed** — see below.                                                  | disputed, not shipped   |
+| **161** | 73 + 88                  | Combination (88+73=161); "best regards and love," used between couples.                                                   | niche, not shipped      |
+| **30**  | End / no more            | Journalism/telegraph end-mark ("that's all"). Rare on air today but recognized.                                           | archaic, not shipped    |
 
 ## Verification notes
 

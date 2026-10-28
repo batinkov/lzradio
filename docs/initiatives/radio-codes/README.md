@@ -45,7 +45,7 @@ People reach for it three ways:
   computed.
 - No integration into LogBook contact entry (autocomplete, inline lookup) in
   v1. Standalone page only; integration is a possible later initiative.
-- Not a Morse/CW trainer. Codes only, not code *learning*.
+- Not a Morse/CW trainer. Codes only, not code _learning_.
 
 ## Success measure
 
