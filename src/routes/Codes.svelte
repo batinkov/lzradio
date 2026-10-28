@@ -1,15 +1,25 @@
 <script>
-  import { onMount } from 'svelte'
+  import { onMount, tick } from 'svelte'
   import { _ } from 'svelte-i18n'
   import { loadCodes } from '../lib/codes.js'
+  import { createCodesIndex, normalizeCodeQuery, searchCodes } from '../lib/codesSearch.js'
   import CodeRow from '../components/codes/CodeRow.svelte'
   import RstBlock from '../components/codes/RstBlock.svelte'
 
   let codes = $state(null)
+  let query = $state('')
+  let searchInput = $state()
+
+  // Build the fuzzy index once per load, not on every keystroke
+  const index = $derived(codes ? createCodesIndex(codes) : null)
+  const searching = $derived(normalizeCodeQuery(query) !== '')
+  const result = $derived(codes ? searchCodes(codes, query, index) : null)
+  const highlight = $derived(searching ? query.trim() : '')
 
   const total = $derived(
-    codes ? codes.categories.reduce((sum, category) => sum + category.entries.length, 0) : 0
+    result ? result.categories.reduce((sum, category) => sum + category.entries.length, 0) : 0
   )
+  const nothingFound = $derived(searching && total === 0 && !result.rst)
 
   onMount(async () => {
     codes = await loadCodes()
@@ -21,7 +31,40 @@
       .getElementById(`codes-${sectionId}`)
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+
+  function clearSearch() {
+    query = ''
+    searchInput?.focus()
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  // The RST section is hidden while a search does not match it, so clear first
+  async function seeRst() {
+    query = ''
+    await tick()
+    jumpTo(codes.rst.id)
+  }
+
+  function handleSearchKeydown(event) {
+    if (event.key === 'Escape') {
+      clearSearch()
+    }
+  }
+
+  // "/" focuses the search box, unless the user is already typing somewhere
+  function handleWindowKeydown(event) {
+    const target = event.target
+    const typing =
+      target instanceof HTMLElement &&
+      (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))
+    if (event.key === '/' && !typing && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      event.preventDefault()
+      searchInput?.focus()
+    }
+  }
 </script>
+
+<svelte:window onkeydown={handleWindowKeydown} />
 
 <div class="codes-page">
   <h1>{$_('codes.title')}</h1>
@@ -31,36 +74,84 @@
     <p class="loading">{$_('common.loading')}</p>
   {:else}
     <div class="toolbar">
-      <nav class="jump" aria-label={$_('codes.jumpTo')}>
-        {#each codes.categories as category (category.id)}
-          <button type="button" onclick={() => jumpTo(category.id)}>{category.title}</button>
-        {/each}
-        <button type="button" onclick={() => jumpTo(codes.rst.id)}>{codes.rst.title}</button>
-      </nav>
-      <span class="total">{$_('codes.total', { values: { count: total } })}</span>
+      <div class="search">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          bind:this={searchInput}
+          bind:value={query}
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label={$_('codes.searchLabel')}
+          placeholder={$_('codes.searchPlaceholder')}
+          onkeydown={handleSearchKeydown}
+        />
+        {#if query}
+          <button
+            type="button"
+            class="clear"
+            onclick={clearSearch}
+            aria-label={$_('codes.clearSearch')}
+          >
+            ×
+          </button>
+        {:else}
+          <kbd aria-hidden="true">/</kbd>
+        {/if}
+      </div>
+
+      <div class="jump-row">
+        <nav class="jump" aria-label={$_('codes.jumpTo')}>
+          {#each result.categories as category (category.id)}
+            <button
+              type="button"
+              disabled={category.entries.length === 0}
+              onclick={() => jumpTo(category.id)}>{category.title}</button
+            >
+          {/each}
+          <button type="button" disabled={!result.rst} onclick={() => jumpTo(codes.rst.id)}
+            >{codes.rst.title}</button
+          >
+        </nav>
+        <span class="total" aria-live="polite"
+          >{$_('codes.total', { values: { count: total } })}</span
+        >
+      </div>
     </div>
 
-    {#each codes.categories as category (category.id)}
-      <section id="codes-{category.id}">
-        <header>
-          <h2>{category.title} <span class="count">{category.entries.length}</span></h2>
-        </header>
-        <p class="intro">{category.intro}</p>
-        <ul class="rows">
-          {#each category.entries as entry (entry.id)}
-            <CodeRow {entry} categoryId={category.id} onSee={() => jumpTo(entry.see)} />
-          {/each}
-        </ul>
-      </section>
+    {#if nothingFound}
+      <p class="empty">{$_('codes.noResults', { values: { query: query.trim() } })}</p>
+    {/if}
+
+    {#each result.categories as category (category.id)}
+      {#if category.entries.length > 0}
+        <section id="codes-{category.id}">
+          <header>
+            <h2>{category.title} <span class="count">{category.entries.length}</span></h2>
+          </header>
+          {#if !searching}
+            <p class="intro">{category.intro}</p>
+          {/if}
+          <ul class="rows">
+            {#each category.entries as entry (entry.id)}
+              <CodeRow {entry} categoryId={category.id} {highlight} onSee={seeRst} />
+            {/each}
+          </ul>
+        </section>
+      {/if}
     {/each}
 
-    <section id="codes-{codes.rst.id}">
-      <header>
-        <h2>{codes.rst.title}</h2>
-      </header>
-      <p class="intro">{codes.rst.intro}</p>
-      <RstBlock rst={codes.rst} />
-    </section>
+    {#if result.rst}
+      <section id="codes-{codes.rst.id}">
+        <header>
+          <h2>{codes.rst.title}</h2>
+        </header>
+        {#if !searching}
+          <p class="intro">{codes.rst.intro}</p>
+        {/if}
+        <RstBlock rst={codes.rst} />
+      </section>
+    {/if}
   {/if}
 </div>
 
@@ -84,12 +175,79 @@
     position: sticky;
     top: 0;
     z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
     padding: var(--space-3) 0;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* The box shows focus for the input inside it, like a focused input in app.css */
+  .search:focus-within {
+    border-color: var(--color-primary);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .search input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: 1rem;
+  }
+
+  /* The clear button below replaces the browser's own */
+  .search input::-webkit-search-cancel-button {
+    appearance: none;
+  }
+
+  .search input:focus {
+    outline: 0;
+  }
+
+  .search kbd {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0 0.3rem;
+  }
+
+  .clear {
+    border: 0;
+    padding: 0 var(--space-1);
+    background: none;
+    color: var(--color-text-muted);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .clear:hover {
+    color: var(--color-text);
+  }
+
+  .jump-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
   }
 
   .jump {
@@ -111,8 +269,13 @@
     cursor: pointer;
   }
 
-  .jump button:hover {
+  .jump button:hover:not(:disabled) {
     border-color: var(--color-primary);
+  }
+
+  .jump button:disabled {
+    opacity: 0.4;
+    cursor: default;
   }
 
   .total {
@@ -122,10 +285,16 @@
     white-space: nowrap;
   }
 
+  .empty {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: var(--space-12) 0;
+  }
+
   section {
     margin-top: var(--space-8);
     /* Keep the section heading clear of the sticky toolbar after a jump */
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 7.5rem;
   }
 
   section > header {
@@ -171,7 +340,12 @@
       scrollbar-width: none;
     }
 
-    .total {
+    .total,
+    .search input:focus {
+      outline: 0;
+    }
+
+    .search kbd {
       display: none;
     }
   }

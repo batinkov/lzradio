@@ -1,12 +1,22 @@
 <script>
   import { _ } from 'svelte-i18n'
+  import { highlightMatch } from '../../lib/logbookSearch.js'
+  import { splitCodeMatch } from '../../lib/codesSearch.js'
 
   /**
    * One code laid out as a row: code | content | origin badge.
    * The content depends on the category: Q-codes have a question and an
-   * answer form, the rest have a list of meanings.
+   * answer form, the rest have a list of meanings. Meaning text marks the
+   * `highlight` query; the data is ours and holds no markup, so {@html} is safe.
    */
-  let { entry, categoryId, onSee } = $props()
+  let { entry, categoryId, highlight = '', onSee } = $props()
+
+  const mark = (text) => highlightMatch(text, highlight)
+
+  // The locale string places the alias list; split it there so each alias can be marked
+  const aliasesText = $derived(
+    $_('codes.alsoKnownAs', { values: { aliases: '\u0000' } }).split('\u0000')
+  )
 
   const isQCode = $derived(categoryId === 'q-codes')
   const isProsign = $derived(categoryId === 'prosigns')
@@ -15,12 +25,19 @@
   const morse = $derived(entry.morse?.replaceAll('.', '·').replaceAll('-', '−'))
 </script>
 
+{#snippet code(text)}
+  {@const parts = splitCodeMatch(text, highlight)}
+  {#if parts}<mark>{parts.match}</mark>{parts.rest}{:else}{text}{/if}
+{/snippet}
+
 <li class="row">
   <div class="code">
-    <span class:overline={isProsign}>{entry.code}</span>
+    <span class:overline={isProsign}>{@render code(entry.code)}</span>
     {#if entry.aliases}
       <span class="aliases">
-        {$_('codes.alsoKnownAs', { values: { aliases: entry.aliases.join(', ') } })}
+        {aliasesText[0]}{#each entry.aliases as alias, i (alias)}{i > 0 ? ', ' : ''}{@render code(
+            alias
+          )}{/each}{aliasesText[1]}
       </span>
     {/if}
   </div>
@@ -29,14 +46,18 @@
     {#if isQCode}
       {#if entry.question}
         <div class="qa">
-          <p><span class="label">{entry.code}?</span>{entry.question}</p>
-          <p><span class="label">{entry.code}</span>{entry.answer}</p>
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+          <p><span class="label">{entry.code}?</span>{@html mark(entry.question)}</p>
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+          <p><span class="label">{entry.code}</span>{@html mark(entry.answer)}</p>
         </div>
       {:else}
-        <p>{entry.answer}</p>
+        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+        <p>{@html mark(entry.answer)}</p>
       {/if}
       {#if entry.usage}
-        <p class="muted">{$_('codes.onAir')} {entry.usage}</p>
+        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+        <p class="muted">{$_('codes.onAir')} {@html mark(entry.usage)}</p>
       {/if}
       {#if entry.scale}
         <ol class="scale">
@@ -48,7 +69,8 @@
     {:else}
       <ul class="meanings">
         {#each entry.meanings as meaning (meaning)}
-          <li>{meaning}</li>
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+          <li>{@html mark(meaning)}</li>
         {/each}
       </ul>
       {#if morse}
@@ -57,7 +79,8 @@
     {/if}
 
     {#if entry.note}
-      <p class="muted">{entry.note}</p>
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+      <p class="muted">{@html mark(entry.note)}</p>
     {/if}
     {#if entry.see}
       <button type="button" class="see" onclick={onSee}>{$_('codes.seeRst')}</button>

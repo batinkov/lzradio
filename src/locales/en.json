@@ -244,6 +244,10 @@
   "codes": {
     "title": "Radio Codes",
     "subtitle": "Q-codes, abbreviations, prosigns, number codes and signal reports used on the air.",
+    "searchLabel": "Search codes",
+    "searchPlaceholder": "Search a code or a meaning: QTH, location, 73…",
+    "clearSearch": "Clear search",
+    "noResults": "No codes match “{query}”.",
     "jumpTo": "Jump to section",
     "total": "{count} codes",
     "onAir": "On air:",
