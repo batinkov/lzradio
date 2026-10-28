@@ -21,9 +21,9 @@ test.describe('Home Page', () => {
     await expect(subtitle).toBeVisible()
     await expect(subtitle).toHaveText('Amateur Radio Tools')
 
-    // DOM Assertion 3: Verify both feature cards are present
+    // DOM Assertion 3: Verify all feature cards are present
     const featureCards = page.locator('.feature-card')
-    await expect(featureCards).toHaveCount(2)
+    await expect(featureCards).toHaveCount(3)
 
     // DOM Assertion 4: Check LogBook card content
     const logbookCard = featureCards.nth(0)

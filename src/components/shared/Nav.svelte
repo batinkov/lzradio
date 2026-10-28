@@ -112,6 +112,9 @@
       <a href="/exam" use:link class:active={router.location.startsWith('/exam')}>
         {$_('nav.examPrep')}
       </a>
+      <a href="/codes" use:link class:active={router.location === '/codes'}>
+        {$_('nav.codes')}
+      </a>
     </div>
 
     <div class="nav-actions">
@@ -190,6 +193,9 @@
       </a>
       <a href="/exam" use:link class:active={router.location.startsWith('/exam')}>
         {$_('nav.examPrep')}
+      </a>
+      <a href="/codes" use:link class:active={router.location === '/codes'}>
+        {$_('nav.codes')}
       </a>
     </div>
   {/if}

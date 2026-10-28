@@ -60,6 +60,9 @@
     '/logbook/edit/:id': wrap({
       asyncComponent: () => import('./routes/LogBookAdd.svelte')
     }),
+    '/codes': wrap({
+      asyncComponent: () => import('./routes/Codes.svelte')
+    }),
     '/exam': wrap({
       asyncComponent: () => import('./routes/ExamHome.svelte')
     }),

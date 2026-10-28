@@ -8,7 +8,8 @@
     "toggleTheme": "Toggle theme",
     "switchToDark": "Switch to dark mode",
     "switchToLight": "Switch to light mode",
-    "themeSwitchingDisabled": "Theme switching is disabled during exam"
+    "themeSwitchingDisabled": "Theme switching is disabled during exam",
+    "codes": "Radio Codes"
   },
   "home": {
     "title": "LZ Radio",
@@ -20,6 +21,10 @@
     "examPrep": {
       "title": "📝 Exam Prep",
       "description": "Practice for your amateur radio license exam"
+    },
+    "codes": {
+      "title": "📡 Radio Codes",
+      "description": "Look up Q-codes, abbreviations and signal reports"
     }
   },
   "helpMenu": {
@@ -235,5 +240,21 @@
     "title": "404 - Page Not Found",
     "message": "The page you're looking for doesn't exist.",
     "goHome": "Go Home"
+  },
+  "codes": {
+    "title": "Radio Codes",
+    "subtitle": "Q-codes, abbreviations, prosigns, number codes and signal reports used on the air.",
+    "jumpTo": "Jump to section",
+    "total": "{count} codes",
+    "onAir": "On air:",
+    "alsoKnownAs": "also {aliases}",
+    "morse": "Morse code",
+    "seeRst": "See RST signal reports",
+    "rstSuffixes": "Suffix letters",
+    "origin": {
+      "itu": "ITU",
+      "amateur": "Amateur",
+      "slang": "Slang"
+    }
   }
 }
