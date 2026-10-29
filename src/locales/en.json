@@ -132,8 +132,8 @@
       "stationCallsignHelp": "Your amateur radio callsign",
       "stationCallsignPlaceholder": "e.g., LZ1ABC"
     },
-    "alphaBanner": {
-      "message": "Use with caution. Export your data regularly."
+    "betaBanner": {
+      "message": "Export your data regularly and report any problems you find."
     },
     "settingsSaveFailed": "Failed to save settings. Please try again.",
     "importFailed": "Failed to import contacts. Please try again.",
@@ -239,6 +239,7 @@
     "view": "View",
     "actions": "Actions",
     "alphaVersion": "Alpha Version",
+    "betaVersion": "Beta Version",
     "loading": "Loading...",
     "saving": "Saving..."
   },

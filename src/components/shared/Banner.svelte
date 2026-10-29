@@ -5,6 +5,7 @@
   export let message = ''
   export let dismissible = true
   export let autoDismiss = 0 // 0 = never auto-dismiss, >0 = auto-dismiss after X milliseconds
+  export let variant = 'warning' // 'warning' (amber: alpha features, notices) or 'beta' (blue)
 
   let visible = true
 
@@ -23,7 +24,7 @@
 </script>
 
 {#if visible}
-  <div class="banner">
+  <div class="banner" class:beta={variant === 'beta'}>
     <span class="badge">{badgeText}</span>
     <span class="message">{message}</span>
     {#if dismissible}
@@ -99,5 +100,31 @@
 
   :global([data-theme='dark']) .close-btn:hover {
     background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Beta: blue, so it reads as less cautionary than the amber alpha banner */
+  .banner.beta {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-color: #3b82f6;
+  }
+
+  :global([data-theme='dark']) .banner.beta {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    border-color: #2563eb;
+  }
+
+  /* #1d4ed8 gives 6.70:1 against white */
+  .beta .badge {
+    background: #1d4ed8;
+  }
+
+  .beta .message,
+  .beta .close-btn {
+    color: #1e3a8a;
+  }
+
+  :global([data-theme='dark']) .beta .message,
+  :global([data-theme='dark']) .beta .close-btn {
+    color: #dbeafe;
   }
 </style>

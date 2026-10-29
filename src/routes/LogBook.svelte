@@ -315,10 +315,11 @@
 </script>
 
 <div class="page">
-  <!-- Alpha Version Banner -->
+  <!-- Beta Version Banner -->
   <Banner
-    badgeText={$_('common.alphaVersion')}
-    message={$_('logbook.alphaBanner.message')}
+    variant="beta"
+    badgeText={$_('common.betaVersion')}
+    message={$_('logbook.betaBanner.message')}
     dismissible={false}
   />
 

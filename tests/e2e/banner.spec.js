@@ -1,8 +1,8 @@
 import { test, expect } from './fixtures.js'
 
 test.describe('Banner Component', () => {
-  test.describe('LogBook Alpha Version Banner', () => {
-    test('should display "Alpha Version" banner on /logbook', async ({ page }) => {
+  test.describe('LogBook Beta Version Banner', () => {
+    test('should display "Beta Version" banner on /logbook', async ({ page }) => {
       await page.goto('/#/logbook')
 
       // Wait for page to load
@@ -14,11 +14,31 @@ test.describe('Banner Component', () => {
 
       // Check badge text
       const badge = banner.locator('.badge')
-      await expect(badge).toHaveText('Alpha Version')
+      await expect(badge).toHaveText('Beta Version')
 
-      // Check message is present (verify it's a banner about alpha status)
+      // Check message is present
       const message = banner.locator('.message')
       await expect(message).toBeVisible()
+    })
+
+    test('should use the blue beta style, not the amber alpha one', async ({ page }) => {
+      await page.goto('/#/logbook')
+      await page.waitForSelector('h1')
+
+      const banner = page.locator('.banner')
+      await expect(banner).toHaveClass(/\bbeta\b/)
+      await expect(banner.locator('.badge')).toHaveCSS('background-color', 'rgb(29, 78, 216)')
+    })
+
+    test('should translate the badge in Bulgarian', async ({ page }) => {
+      // Set before the app starts: it reads the language once, on load
+      await page.addInitScript(() => {
+        localStorage.setItem('lzradio-language', JSON.stringify('bg'))
+      })
+      await page.goto('/#/logbook')
+      await page.waitForSelector('h1')
+
+      await expect(page.locator('.banner .badge')).toHaveText('Бета версия')
     })
 
     test('should NOT have close button on LogBook banner', async ({ page }) => {
@@ -80,6 +100,7 @@ test.describe('Banner Component', () => {
       const banner = page.locator('.banner')
       await expect(banner).toBeVisible()
       await expect(banner.locator('.badge')).toHaveText('Alpha Version')
+      await expect(banner).not.toHaveClass(/\bbeta\b/)
       await expect(banner.locator('.message')).toContainText('Spotted a mistake?')
       await expect(banner.locator('button[aria-label="Close banner"]')).not.toBeVisible()
 
