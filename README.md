@@ -7,7 +7,7 @@
 [![Deploy](https://img.shields.io/badge/deploy-GitHub%20Pages-brightgreen?style=flat-square)](https://github.com/batinkov/lzradio/actions)
 [![Version](https://img.shields.io/github/package-json/v/batinkov/lzradio?style=flat-square&color=orange)](CHANGELOG.md)
 
-**LZ Radio** is a fully client-side web application designed for amateur radio operators in Bulgaria and worldwide. It provides tools for logging contacts (QSOs) and practicing for Bulgarian amateur radio license exams.
+**LZ Radio** is a fully client-side web application designed for amateur radio operators in Bulgaria and worldwide. It provides tools for logging contacts (QSOs), practicing for Bulgarian amateur radio license exams, and looking up radio codes.
 
 🌐 **Live Application:** [lzradio.eu](https://lzradio.eu)
 📚 **Documentation:** [Wiki](https://github.com/batinkov/lzradio/wiki) ([English](https://github.com/batinkov/lzradio/wiki/en-Home) | [Български](https://github.com/batinkov/lzradio/wiki/bg-Home))
@@ -16,13 +16,13 @@
 
 ## ✨ Features
 
-### 📖 LogBook
+### 📖 LogBook (Beta)
 
 - **Contact Management** - Full CRUD operations for radio contacts
 - **Smart Callsign Parsing** - Handles prefix/base/suffix (e.g., HB/W1ABC/P)
 - **Data Persistence** - Local storage using IndexedDB (Dexie.js)
 - **Export/Import** - JSON format with validation and duplicate detection
-- **Offline-Capable** - Works completely offline, no backend required
+- **Offline-Capable** - Keeps working without internet once loaded, no backend required
 
 ### 🎓 Exam Preparation
 
@@ -32,6 +32,13 @@
 - **Simulated Exams** - Timed 40-minute exams with real exam rules
 - **Math Formula Rendering** - Technical questions with proper mathematical notation (KaTeX)
 - **Bilingual Support** - Full English and Bulgarian translations
+
+### 📡 Radio Codes (Alpha)
+
+- **Code Reference** - Q-codes, abbreviations, prosigns, number codes and RST signal reports
+- **Two-Way Search** - Find a code by name or by its meaning, typos tolerated
+- **Shareable Searches** - The search is kept in the URL (`/#/codes?q=qth`)
+- **Bilingual Data** - English and Bulgarian, kept in sync by a unit test
 
 ### 🌍 Internationalization
 
@@ -160,21 +167,25 @@ lzradio/
 │   │   └── ...
 │   ├── components/          # Reusable components
 │   │   ├── shared/          # Shared UI components
-│   │   ├── logbook/         # LogBook-specific components
-│   │   └── exam/            # Exam-specific components
+│   │   ├── exam/            # Exam-specific components
+│   │   └── codes/           # Radio Codes components
 │   ├── lib/                 # Business logic & utilities
 │   │   ├── analytics.js     # Analytics observer pattern
 │   │   ├── logbookDB.js     # IndexedDB operations
 │   │   ├── examScoring.js   # Exam scoring logic
+│   │   ├── codes.js         # Radio codes loading and validation
+│   │   ├── codesSearch.js   # Radio codes search
 │   │   ├── i18n.js          # Internationalization setup
 │   │   └── storage/         # Storage adapter architecture
 │   └── locales/             # Translation files
 │       ├── en.json          # English translations
 │       └── bg.json          # Bulgarian translations
 ├── data_en/                 # English static data
-│   └── exam/                # English question banks
+│   ├── exam/                # English question banks
+│   └── codes/               # English radio codes
 ├── data_bg/                 # Bulgarian static data
-│   └── exam/                # Bulgarian question banks
+│   ├── exam/                # Bulgarian question banks
+│   └── codes/               # Bulgarian radio codes
 ├── tests/
 │   └── e2e/                 # End-to-end tests
 ├── public/                  # Static assets

@@ -167,7 +167,7 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 
 - **Routes** (`src/routes/`): Page-level components (Home, LogBook, Exam, Codes pages)
 - **Shared Components** (`src/components/shared/`): Navigation, modals
-- **Feature Components** (`src/components/exam/`, `src/components/codes/`; `src/components/logbook/` exists but is unused)
+- **Feature Components** (`src/components/exam/`, `src/components/codes/`)
 - **Library** (`src/lib/`):
   - `i18n.js` - Internationalization setup and language switching (uses localStorageAdapter)
   - `questions.js` - Dynamic question loading based on locale
@@ -236,11 +236,13 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 - **Exam simulated mode**: In-memory state only (intentionally NOT persisted - real exam behavior)
 - **LogBook contacts**: IndexedDB with Dexie.js v4.2.1 - full CRUD operations, persistent local storage
 - **LogBook export/import**: JSON files with validation, duplicate detection, and metadata
+- **LogBook settings**: Station callsign in LocalStorage via `logbookSettings.js`
+- **Theme preference**: LocalStorage via `theme.js`, falls back to the system setting
 
 **Planned for Future:**
 
 - **Exam history/statistics**: Use storage adapters to save past exam results
-- **Operator settings**: Store user's own callsign and station preferences
+- **Operator settings**: Station preferences beyond the callsign
 
 ### External Dependencies
 
