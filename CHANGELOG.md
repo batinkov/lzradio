@@ -5,6 +5,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] - 2026-10-31
+
+Adds a Radio Codes reference, promotes LogBook to beta and fixes a LogBook
+search bug that let contact text run as HTML.
+
+### Added
+
+- Radio Codes page (`/#/codes`), in alpha: Q-codes, abbreviations, prosigns,
+  number codes and an RST explainer, in English and Bulgarian. One search box
+  looks up a code's meaning or the code for a meaning, highlights matches and
+  keeps the search in the URL (`/#/codes?q=qth`) for sharing and bookmarks; `/`
+  focuses it. The ITU badge shows the full name on hover
+- A blue "Beta" banner for features past alpha
+
+### Changed
+
+- LogBook is now in beta, with a banner asking users to export their data
+  regularly and report problems
+- Dependency updates reaching the app: `dexie` 4.4.6 → 4.4.7; `fuse.js` 7.5.0
+  added for the codes search
+- Build and test tooling: `vite` 8.3.5, `vitest` 5.0.5, `eslint` 10.13.0,
+  `prettier` 3.9.10, `@playwright/test` 1.64.1, `fake-indexeddb` 6.2.6
+
+### Fixed
+
+- LogBook windows, form errors and screen-reader labels are now translated into
+  Bulgarian
+- English Class 1 Section 1 shows the 2025 syllabus date
+- Contrast raised to WCAG AA for links and primary buttons in the light theme,
+  and for the alpha banner badge in both themes
+
+### Security
+
+- LogBook search highlighting rendered contact text as HTML without escaping
+  it, so markup in a contact, typed or imported from a file, ran in the page.
+  The text is now escaped
+
 ## [0.6.1] - 2026-10-13
 
 Maintenance release. Nothing should look or behave differently; what changed is
