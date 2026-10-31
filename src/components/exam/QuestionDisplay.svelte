@@ -52,7 +52,7 @@
       <div class="question-image">
         <img
           src="/images/questions/{currentLocale.startsWith('bg') ? 'bg' : 'en'}/{question.image}"
-          alt="Question diagram"
+          alt={$_('exam.questionDiagram')}
         />
       </div>
     {/if}

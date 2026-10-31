@@ -355,7 +355,11 @@
             on:keydown={handleSearchKeydown}
           />
           {#if searchQuery}
-            <button class="clear-button" on:click={clearSearch} aria-label="Clear search">
+            <button
+              class="clear-button"
+              on:click={clearSearch}
+              aria-label={$_('logbook.clearSearch')}
+            >
               ×
             </button>
           {/if}

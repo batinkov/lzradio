@@ -34,50 +34,50 @@
   >
     <div class="modal-content" role="dialog">
       <div class="modal-header">
-        <h2>📥 Import LogBook Contacts</h2>
+        <h2>📥 {$_('logbook.importModal.title')}</h2>
       </div>
 
       <div class="modal-body">
         <div class="file-info">
           <div class="info-row">
-            <span class="label">File:</span>
+            <span class="label">{$_('logbook.importModal.file')}:</span>
             <span class="value">{importData.fileName}</span>
           </div>
           {#if importData.metadata.stationCallsign}
             <div class="info-row">
-              <span class="label">Station:</span>
+              <span class="label">{$_('logbook.importModal.station')}:</span>
               <span class="value monospace">{importData.metadata.stationCallsign}</span>
             </div>
           {/if}
           {#if importData.metadata.exportDate}
             <div class="info-row">
-              <span class="label">Export Date:</span>
+              <span class="label">{$_('logbook.importModal.exportDate')}:</span>
               <span class="value">{new Date(importData.metadata.exportDate).toLocaleString()}</span>
             </div>
           {/if}
         </div>
 
         <div class="statistics-box">
-          <h3>Import Summary</h3>
+          <h3>{$_('logbook.importModal.summary')}</h3>
           <div class="stat-row">
             <span class="stat-icon">📊</span>
-            <span class="stat-label">Existing contacts in your logbook:</span>
+            <span class="stat-label">{$_('logbook.importModal.existing')}:</span>
             <span class="stat-value">{statistics.existingCount}</span>
           </div>
           <div class="stat-row">
             <span class="stat-icon">📂</span>
-            <span class="stat-label">Total contacts in import file:</span>
+            <span class="stat-label">{$_('logbook.importModal.total')}:</span>
             <span class="stat-value">{statistics.importFileCount}</span>
           </div>
           <div class="stat-row highlight-success">
             <span class="stat-icon">✅</span>
-            <span class="stat-label">New contacts to be imported:</span>
+            <span class="stat-label">{$_('logbook.importModal.new')}:</span>
             <span class="stat-value">{statistics.newCount}</span>
           </div>
           {#if statistics.duplicateCount > 0}
             <div class="stat-row highlight-warning">
               <span class="stat-icon">⚠️</span>
-              <span class="stat-label">Duplicate contacts (skipped):</span>
+              <span class="stat-label">{$_('logbook.importModal.duplicates')}:</span>
               <span class="stat-value">{statistics.duplicateCount}</span>
             </div>
           {/if}
@@ -85,13 +85,21 @@
 
         {#if showDuplicates}
           <div class="duplicates-section">
-            <h4>ℹ️ Duplicates detected:</h4>
+            <h4>ℹ️ {$_('logbook.importModal.duplicatesDetected')}:</h4>
             <ul class="duplicate-list">
               {#each statistics.duplicates.slice(0, 5) as dup, index (index)}
-                <li>{dup.callsign} on {dup.date} at {dup.time}</li>
+                <li>
+                  {$_('logbook.importModal.duplicateItem', {
+                    values: { callsign: dup.callsign, date: dup.date, time: dup.time }
+                  })}
+                </li>
               {/each}
               {#if statistics.duplicates.length > 5}
-                <li class="more">and {statistics.duplicates.length - 5} more...</li>
+                <li class="more">
+                  {$_('logbook.importModal.more', {
+                    values: { count: statistics.duplicates.length - 5 }
+                  })}
+                </li>
               {/if}
             </ul>
           </div>
@@ -99,15 +107,12 @@
 
         {#if !hasNewContacts}
           <div class="warning-box">
-            <p>⚠️ All contacts in this file already exist in your logbook.</p>
-            <p>No new contacts to import.</p>
+            <p>⚠️ {$_('logbook.importModal.allExist')}</p>
+            <p>{$_('logbook.importModal.noNew')}</p>
           </div>
         {:else}
           <div class="info-note">
-            <p>
-              Note: Contacts with matching callsign, date, and time will be skipped to avoid
-              duplicates.
-            </p>
+            <p>{$_('logbook.importModal.note')}</p>
           </div>
         {/if}
       </div>
@@ -119,11 +124,11 @@
         {#if hasNewContacts}
           <button class="btn-primary" on:click={onConfirm} disabled={importing}>
             {importing
-              ? '📥 Importing...'
-              : `📥 Import ${statistics.newCount} Contact${statistics.newCount === 1 ? '' : 's'}`}
+              ? `📥 ${$_('logbook.importModal.importing')}`
+              : `📥 ${$_('logbook.importModal.confirm', { values: { count: statistics.newCount } })}`}
           </button>
         {:else}
-          <button class="btn-primary" on:click={onCancel}> OK </button>
+          <button class="btn-primary" on:click={onCancel}>{$_('common.ok')}</button>
         {/if}
       </div>
     </div>

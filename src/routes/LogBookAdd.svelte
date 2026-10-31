@@ -28,6 +28,7 @@
     remarks: ''
   })
 
+  // Error fields hold locale keys, translated when shown
   let errors = $state({})
   let saving = $state(false)
   let errorMessage = $state('')
@@ -44,7 +45,7 @@
     try {
       const contact = await getContact(contactId)
       if (!contact) {
-        errorMessage = 'Contact not found'
+        errorMessage = 'logbook.errors.contactNotFound'
         return
       }
 
@@ -64,7 +65,7 @@
       }
     } catch (error) {
       console.error('Failed to load contact:', error)
-      errorMessage = 'Failed to load contact'
+      errorMessage = 'logbook.errors.loadFailed'
     } finally {
       loading = false
     }
@@ -75,16 +76,16 @@
     errors = {}
 
     if (!formData.callsign.trim()) {
-      errors.callsign = 'Callsign is required'
+      errors.callsign = 'logbook.errors.callsignRequired'
     }
 
     if (!formData.date) {
-      errors.date = 'Date is required'
+      errors.date = 'logbook.errors.dateRequired'
     } else {
       // Validate date is actually valid
       const dateObj = new Date(formData.date + 'T00:00:00')
       if (isNaN(dateObj.getTime())) {
-        errors.date = 'Invalid date'
+        errors.date = 'logbook.errors.dateInvalid'
       } else {
         // Verify the date components match (prevents dates like 2025-02-30 becoming 2025-03-02)
         const [year, month, day] = formData.date.split('-').map(Number)
@@ -93,23 +94,23 @@
           dateObj.getMonth() + 1 !== month ||
           dateObj.getDate() !== day
         ) {
-          errors.date = 'Invalid date (day/month out of range)'
+          errors.date = 'logbook.errors.dateOutOfRange'
         }
       }
     }
 
     if (!formData.time) {
-      errors.time = 'Time is required'
+      errors.time = 'logbook.errors.timeRequired'
     }
 
     if (!formData.frequency) {
-      errors.frequency = 'Frequency is required'
+      errors.frequency = 'logbook.errors.frequencyRequired'
     } else if (isNaN(formData.frequency) || formData.frequency <= 0) {
-      errors.frequency = 'Frequency must be a positive number'
+      errors.frequency = 'logbook.errors.frequencyPositive'
     }
 
     if (!formData.mode) {
-      errors.mode = 'Mode is required'
+      errors.mode = 'logbook.errors.modeRequired'
     }
 
     return Object.keys(errors).length === 0
@@ -159,7 +160,7 @@
       push('/logbook')
     } catch (error) {
       console.error('Failed to save contact:', error)
-      errorMessage = `Failed to ${isEditMode ? 'update' : 'save'} contact. Please try again.`
+      errorMessage = isEditMode ? 'logbook.errors.updateFailed' : 'logbook.errors.saveFailed'
     } finally {
       saving = false
     }
@@ -200,11 +201,11 @@
   <!-- Contact Entry Form -->
   <div class="card">
     {#if loading}
-      <div class="loading-message">⏳ Loading contact...</div>
+      <div class="loading-message">⏳ {$_('logbook.loadingContact')}</div>
     {:else}
       {#if errorMessage}
         <div class="error-message">
-          ❌ {errorMessage}
+          ❌ {$_(errorMessage)}
         </div>
       {/if}
 
@@ -223,7 +224,7 @@
               disabled={saving || isReadOnly}
             />
             {#if errors.callsign}
-              <span class="error-text">{errors.callsign}</span>
+              <span class="error-text">{$_(errors.callsign)}</span>
             {/if}
           </div>
         </div>
@@ -240,7 +241,7 @@
               disabled={saving || isReadOnly}
             />
             {#if errors.date}
-              <span class="error-text">{errors.date}</span>
+              <span class="error-text">{$_(errors.date)}</span>
             {/if}
           </div>
           <div class="form-field">
@@ -254,7 +255,7 @@
               disabled={saving || isReadOnly}
             />
             {#if errors.time}
-              <span class="error-text">{errors.time}</span>
+              <span class="error-text">{$_(errors.time)}</span>
             {/if}
           </div>
         </div>
@@ -273,7 +274,7 @@
               disabled={saving || isReadOnly}
             />
             {#if errors.frequency}
-              <span class="error-text">{errors.frequency}</span>
+              <span class="error-text">{$_(errors.frequency)}</span>
             {/if}
           </div>
           <div class="form-field">
@@ -295,7 +296,7 @@
               <option value="PSK31">PSK31</option>
             </select>
             {#if errors.mode}
-              <span class="error-text">{errors.mode}</span>
+              <span class="error-text">{$_(errors.mode)}</span>
             {/if}
           </div>
           <div class="form-field">

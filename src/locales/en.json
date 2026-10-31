@@ -143,7 +143,49 @@
     "deleteFailed": "Failed to delete contact. Please try again.",
     "importInvalidJson": "Invalid JSON file. Please select a valid LZ Radio export file.",
     "importValidationFailed": "Import validation failed: {error}",
-    "importProcessFailed": "Failed to process import file. Please try again."
+    "importProcessFailed": "Failed to process import file. Please try again.",
+    "clearSearch": "Clear search",
+    "loadingContact": "Loading contact...",
+    "errors": {
+      "callsignRequired": "Callsign is required",
+      "dateRequired": "Date is required",
+      "dateInvalid": "Invalid date",
+      "dateOutOfRange": "Invalid date (day/month out of range)",
+      "timeRequired": "Time is required",
+      "frequencyRequired": "Frequency is required",
+      "frequencyPositive": "Frequency must be a positive number",
+      "modeRequired": "Mode is required",
+      "contactNotFound": "Contact not found",
+      "loadFailed": "Failed to load contact",
+      "saveFailed": "Failed to save contact. Please try again.",
+      "updateFailed": "Failed to update contact. Please try again."
+    },
+    "deleteModal": {
+      "title": "Delete Contact",
+      "warning": "Are you sure you want to delete this contact? This action cannot be undone.",
+      "frequency": "Frequency",
+      "deleting": "Deleting...",
+      "confirm": "Delete Contact"
+    },
+    "importModal": {
+      "title": "Import LogBook Contacts",
+      "file": "File",
+      "station": "Station",
+      "exportDate": "Export Date",
+      "summary": "Import Summary",
+      "existing": "Existing contacts in your logbook",
+      "total": "Total contacts in import file",
+      "new": "New contacts to be imported",
+      "duplicates": "Duplicate contacts (skipped)",
+      "duplicatesDetected": "Duplicates detected",
+      "duplicateItem": "{callsign} on {date} at {time}",
+      "more": "and {count} more...",
+      "allExist": "All contacts in this file already exist in your logbook.",
+      "noNew": "No new contacts to import.",
+      "note": "Note: Contacts with matching callsign, date, and time will be skipped to avoid duplicates.",
+      "importing": "Importing...",
+      "confirm": "{count, plural, one {Import # Contact} other {Import # Contacts}}"
+    }
   },
   "exam": {
     "title": "Exam Preparation",
@@ -228,7 +270,8 @@
     "leaveExamButton": "Exit Exam",
     "leaveExamTooltip": "Leave the exam and return to exam selection",
     "leaveExamConfirm": "Are you sure you want to leave the exam? Your progress will be lost.",
-    "loadQuestionsFailed": "Failed to load exam questions. Please try again."
+    "loadQuestionsFailed": "Failed to load exam questions. Please try again.",
+    "questionDiagram": "Question diagram"
   },
   "common": {
     "close": "Close",
@@ -241,7 +284,10 @@
     "alphaVersion": "Alpha Version",
     "betaVersion": "Beta Version",
     "loading": "Loading...",
-    "saving": "Saving..."
+    "saving": "Saving...",
+    "ok": "OK",
+    "closeBanner": "Close banner",
+    "closeNotification": "Close notification"
   },
   "notFound": {
     "title": "404 - Page Not Found",

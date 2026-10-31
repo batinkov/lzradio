@@ -1,6 +1,7 @@
 <script>
   import { toast as toastStore } from '../../lib/toastStore.js'
   import { fly } from 'svelte/transition'
+  import { _ } from 'svelte-i18n'
 
   $: toasts = $toastStore
 </script>
@@ -35,7 +36,7 @@
       <button
         class="toast-close"
         on:click={() => toastStore.dismiss(toast.id)}
-        aria-label="Close notification"
+        aria-label={$_('common.closeNotification')}
       >
         ✕
       </button>

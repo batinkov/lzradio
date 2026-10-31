@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte'
+  import { _ } from 'svelte-i18n'
 
   export let badgeText = 'Notice'
   export let message = ''
@@ -28,7 +29,7 @@
     <span class="badge">{badgeText}</span>
     <span class="message">{message}</span>
     {#if dismissible}
-      <button class="close-btn" on:click={dismiss} aria-label="Close banner">✕</button>
+      <button class="close-btn" on:click={dismiss} aria-label={$_('common.closeBanner')}>✕</button>
     {/if}
   </div>
 {/if}

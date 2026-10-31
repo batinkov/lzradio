@@ -33,34 +33,32 @@
   >
     <div class="modal-content" role="dialog">
       <div class="modal-header">
-        <h2>🗑️ Delete Contact</h2>
+        <h2>🗑️ {$_('logbook.deleteModal.title')}</h2>
       </div>
 
       <div class="modal-body">
-        <p class="warning-text">
-          Are you sure you want to delete this contact? This action cannot be undone.
-        </p>
+        <p class="warning-text">{$_('logbook.deleteModal.warning')}</p>
 
         <div class="contact-info">
           <div class="info-row">
-            <span class="label">Callsign:</span>
+            <span class="label">{$_('logbook.callsign')}:</span>
             <span class="value monospace">{callsign}</span>
           </div>
           <div class="info-row">
-            <span class="label">Date:</span>
+            <span class="label">{$_('logbook.date')}:</span>
             <span class="value">{contact.date} {contact.time}</span>
           </div>
           <div class="info-row">
-            <span class="label">Frequency:</span>
+            <span class="label">{$_('logbook.deleteModal.frequency')}:</span>
             <span class="value">{contact.frequency} MHz</span>
           </div>
           <div class="info-row">
-            <span class="label">Mode:</span>
+            <span class="label">{$_('logbook.mode')}:</span>
             <span class="value">{contact.mode}</span>
           </div>
           {#if contact.remarks}
             <div class="info-row">
-              <span class="label">Remarks:</span>
+              <span class="label">{$_('logbook.remarks')}:</span>
               <span class="value">{contact.remarks}</span>
             </div>
           {/if}
@@ -72,7 +70,9 @@
           {$_('common.cancel')}
         </button>
         <button class="btn-danger" on:click={onConfirm} disabled={deleting}>
-          {deleting ? '🗑️ Deleting...' : '🗑️ Delete Contact'}
+          {deleting
+            ? `🗑️ ${$_('logbook.deleteModal.deleting')}`
+            : `🗑️ ${$_('logbook.deleteModal.confirm')}`}
         </button>
       </div>
     </div>
