@@ -120,7 +120,7 @@ npm run test:ui
 npm run test:e2e
 ```
 
-**Test Coverage:** 468 passing unit tests across all business logic modules.
+**Test Coverage:** 528 passing unit tests across all business logic modules.
 
 ### Linting
 
@@ -173,6 +173,7 @@ Fully client-side single-page application (SPA). No backend server. All data sto
   - `questions.js` - Dynamic question loading based on locale
   - `codes.js` - Radio codes loading by locale, data validation and EN/BG parity check (tested)
   - `codesSearch.js` - Codes search: code/alias match first, Fuse.js fuzzy over meanings otherwise (tested)
+  - `questionBank.js` - Exam question bank validation, BG/EN comparison and image check (tested)
   - `katex.js` - Math formula rendering
   - `examConfig.js` - Exam configuration constants
   - `examScoring.js` - Exam scoring and answer validation logic (pure functions, tested)
@@ -354,7 +355,8 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Type-safe URL parameter parsing
 - Navigation guard system
 - Loading states for async operations
-- Testing framework (Vitest) with 468 passing unit tests
+- Testing framework (Vitest) with 528 passing unit tests
+  - questionBank.js (60 tests) ✅
   - urlParams.js (42 tests)
   - importValidator.js (40 tests) ✅
   - codesSearch.js (35 tests) ✅
