@@ -470,11 +470,11 @@
             "choices": [
                 {
                     "key": "A",
-                    "text": "$\\tau = R/C$"
+                    "text": "$\\tau = \\dfrac{R}{C}$"
                 },
                 {
                     "key": "B",
-                    "text": "$\\tau = C/R$"
+                    "text": "$\\tau = \\dfrac{C}{R}$"
                 },
                 {
                     "key": "C",
@@ -1329,7 +1329,7 @@
                 },
                 {
                     "key": "C",
-                    "text": "$f = 2\\pi \\sqrt{LC}$"
+                    "text": "$f = 2\\pi\\sqrt{LC}$"
                 },
                 {
                     "key": "D",
@@ -3230,7 +3230,7 @@
             "choices": [
                 {
                     "key": "A",
-                    "text": "A dipole with 1/4λ length"
+                    "text": "A dipole with 1/4$\\lambda$ length"
                 },
                 {
                     "key": "B",
@@ -3238,7 +3238,7 @@
                 },
                 {
                     "key": "C",
-                    "text": "A half-wave dipole whose ends are connected with a conductor of 1/2λ length"
+                    "text": "A half-wave dipole whose ends are connected with a conductor of 1/2$\\lambda$ length"
                 },
                 {
                     "key": "D",
