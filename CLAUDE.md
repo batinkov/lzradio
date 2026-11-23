@@ -235,7 +235,7 @@ Fully client-side single-page application (SPA). No backend server. All data sto
 - **Question banks**: Static JSON files bundled with app (separate files for Bulgarian and English)
 - **Exam practice answers**: In-memory state only (intentionally NOT persisted - ephemeral by design)
 - **Exam simulated mode**: In-memory state only (intentionally NOT persisted - real exam behavior)
-- **LogBook contacts**: IndexedDB with Dexie.js v4.2.1 - full CRUD operations, persistent local storage
+- **LogBook contacts**: IndexedDB with Dexie.js - full CRUD operations, persistent local storage
 - **LogBook export/import**: JSON files with validation, duplicate detection, and metadata
 - **LogBook settings**: Station callsign in LocalStorage via `logbookSettings.js`
 - **Theme preference**: LocalStorage via `theme.js`, falls back to the system setting
@@ -325,7 +325,7 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 
 **LogBook (Fully Implemented):**
 
-- IndexedDB persistence with Dexie.js v4.2.1
+- IndexedDB persistence with Dexie.js
 - Complete CRUD operations (Create, Read, Update, Delete)
 - Contact form with validation (callsign, date, time, frequency, mode required)
 - Smart callsign parsing (handles prefix/base/suffix: HB/W1ABC/P)

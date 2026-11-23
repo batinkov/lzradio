@@ -143,7 +143,7 @@ npm run format
 
 ### Testing & Quality
 
-- **[Vitest](https://vitest.dev/)** - Unit testing framework (377 tests)
+- **[Vitest](https://vitest.dev/)** - Unit testing framework
 - **[Playwright](https://playwright.dev/)** - E2E testing
 - **[ESLint](https://eslint.org/)** + **[Prettier](https://prettier.io/)** - Code quality and formatting
 
@@ -210,7 +210,7 @@ lzradio/
 - **Client-Side Only** - No backend server, no external dependencies
 - **Offline-First** - All functionality works without internet
 - **Privacy-Focused** - No data collection, no tracking by default
-- **Test-Driven** - Comprehensive unit test coverage (377 tests)
+- **Test-Driven** - Comprehensive unit test coverage
 - **Separation of Concerns** - Business logic isolated from UI components
 
 ### Hash-Based Routing
@@ -256,7 +256,7 @@ npm run build
 
 ### Unit Tests
 
-- **377 passing tests** across all business logic modules
+- **Unit tests** across all business logic modules
 - **Test-Driven Development** - Pure functions fully tested
 - **Frameworks:** Vitest with jsdom
 
