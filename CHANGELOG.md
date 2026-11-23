@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] - 2026-11-23
+
+Corrections to the exam question banks.
+
+### Fixed
+
+- Bulgarian question banks updated from the corrected official PDF: Latin
+  letters instead of look-alike Cyrillic ones in codes, units and call signs,
+  the micro sign instead of Greek mu, Greek letters typeset as formulas, and
+  Bulgarian quotes and spelling
+- Content corrections carried over to English: Class 2 Section 3 question 61
+  now has answer A, Class 1 Section 2 question 6 asks about QRPP, and formulas
+  match the Bulgarian ones
+- Updated diagram for Class 2 Section 1 question 47, in both languages
+
+### Changed
+
+- Dependency updates reaching the app: `svelte` runtime 5.57.2 → 5.58.0,
+  `katex` 0.19.0 → 0.19.1
+- Build and test tooling: `vite` 8.3.8, `vitest` 5.1.1, `eslint` 10.15.0,
+  `prettier` 3.10.1, `prettier-plugin-svelte` 4.2.0, `@playwright/test` 1.65.1
+- Unit tests now validate every question bank and check that the Bulgarian and
+  English banks agree on answers, choices, images and formulas
+
 ## [0.7.0] - 2026-10-31
 
 Adds a Radio Codes reference, promotes LogBook to beta and fixes a LogBook
