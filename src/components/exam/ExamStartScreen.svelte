@@ -13,9 +13,9 @@
 <div class="page page-centered">
   <div class="header">
     <h1>{$_('exam.simulatedExam')}</h1>
-    <a href="/exam/class{classNum}" use:link class="btn-secondary"
-      >← {$_('exam.backToClass', { values: { classNum } })}</a
-    >
+    <a href="/exam/class{classNum}" use:link class="btn-secondary">
+      ← {$_('exam.backToClass', { values: { classNum } })}
+    </a>
   </div>
 
   <!-- Class info -->
