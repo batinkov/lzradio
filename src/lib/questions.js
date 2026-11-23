@@ -8,6 +8,7 @@
 
 import { get } from 'svelte/store'
 import { locale } from 'svelte-i18n'
+import { syllabusDates } from './questionBank.js'
 
 // Cache for loaded questions
 let cachedLocale = null
@@ -133,4 +134,13 @@ export async function getClassInfo(classNum) {
     class: classSections[0].class,
     update: classSections[0].update
   }
+}
+
+/**
+ * Get the syllabus dates of all question banks for the current locale
+ * @returns {Promise<string[]>} Distinct dates as DD.MM.YYYY, oldest first
+ */
+export async function getSyllabusDates() {
+  const sections = await loadSections()
+  return syllabusDates([...sections[1], ...sections[2]])
 }

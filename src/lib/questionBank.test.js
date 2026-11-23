@@ -4,6 +4,7 @@ import {
   validateQuestionBank,
   compareQuestionBanks,
   checkQuestionImages,
+  syllabusDates,
   SECTION_FILES
 } from './questionBank.js'
 
@@ -254,6 +255,26 @@ describe('questionBank', () => {
     })
   })
 
+  describe('syllabusDates', () => {
+    it('should return each date once', () => {
+      const banks = [validBank('en'), validBank('bg')]
+      expect(syllabusDates(banks)).toEqual(['11.08.2025'])
+    })
+
+    it('should sort several dates oldest first', () => {
+      const banks = [
+        { update: 'Updated syllabus 01.03.2026' },
+        { update: 'Updated syllabus 11.08.2025' },
+        { update: 'Updated syllabus 20.12.2025' }
+      ]
+      expect(syllabusDates(banks)).toEqual(['11.08.2025', '20.12.2025', '01.03.2026'])
+    })
+
+    it('should skip banks without a date', () => {
+      expect(syllabusDates([{ update: 'Updated syllabus' }, {}, null])).toEqual([])
+    })
+  })
+
   describe('shipped data', () => {
     const files = LANGS.flatMap((lang) => SECTION_FILES.map((section) => [lang, section]))
 
@@ -267,6 +288,14 @@ describe('questionBank', () => {
 
     it.each(SECTION_FILES)('should match English in Bulgarian (%s)', (section) => {
       expect(compareQuestionBanks(readBank('en', section), readBank('bg', section))).toEqual([])
+    })
+
+    it('should have the same syllabus dates in both languages', () => {
+      const dates = LANGS.map((lang) =>
+        syllabusDates(SECTION_FILES.map((section) => readBank(lang, section)))
+      )
+      expect(dates[0]).not.toEqual([])
+      expect(dates[1]).toEqual(dates[0])
     })
 
     it.each(LANGS)('should have exactly the images the questions use (%s)', (lang) => {

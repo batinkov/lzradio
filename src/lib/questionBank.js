@@ -244,3 +244,21 @@ export function checkQuestionImages(banks, files) {
       .map((file) => `${file}: not used by any question`)
   ]
 }
+
+/**
+ * Syllabus dates of the question banks, for display
+ *
+ * Each bank's `update` field holds the date printed on the official PDF
+ * (e.g. "Updated syllabus 11.08.2025"). Banks without a date are skipped.
+ * @param {Object[]} banks - Parsed section files
+ * @returns {string[]} Distinct dates as DD.MM.YYYY, oldest first
+ */
+export function syllabusDates(banks) {
+  const dates = new Set()
+  for (const bank of banks) {
+    const match = /\b(\d{2})\.(\d{2})\.(\d{4})\b/.exec(bank?.update ?? '')
+    if (match) dates.add(match[0])
+  }
+  const sortKey = (date) => date.split('.').reverse().join('')
+  return [...dates].sort((a, b) => sortKey(a).localeCompare(sortKey(b)))
+}
