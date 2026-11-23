@@ -167,16 +167,18 @@
             <button
               type="button"
               disabled={category.entries.length === 0}
-              onclick={() => jumpTo(category.id)}>{category.title}</button
+              onclick={() => jumpTo(category.id)}
             >
+              {category.title}
+            </button>
           {/each}
-          <button type="button" disabled={!result.rst} onclick={() => jumpTo(codes.rst.id)}
-            >{codes.rst.title}</button
-          >
+          <button type="button" disabled={!result.rst} onclick={() => jumpTo(codes.rst.id)}>
+            {codes.rst.title}
+          </button>
         </nav>
-        <span class="total" aria-live="polite"
-          >{$_('codes.total', { values: { count: total } })}</span
-        >
+        <span class="total" aria-live="polite">
+          {$_('codes.total', { values: { count: total } })}
+        </span>
       </div>
     </div>
 
