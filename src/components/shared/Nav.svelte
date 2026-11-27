@@ -279,7 +279,7 @@
           <h4>{$_('about.feedback')}</h4>
           <div class="feedback-links">
             <a
-              href="https://github.com/{githubRepo}/issues/new?template=question_error.md"
+              href="https://github.com/{githubRepo}/issues/new?template=bug_report.md"
               target="_blank"
               rel="noopener noreferrer"
             >
