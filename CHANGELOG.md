@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2026-11-27
+
+The exam page now says where the questions come from and how to report one
+that is wrong.
+
+### Added
+
+- The exam home page shows the date of the CRC syllabus the questions follow,
+  with links to how the question banks are kept up to date (wiki, in the current
+  language) and to report a question error
+- A "Question Error" issue template, in English and Bulgarian, for questions
+  that do not match the official CRC PDF
+
 ## [0.7.1] - 2026-11-23
 
 Corrections to the exam question banks.

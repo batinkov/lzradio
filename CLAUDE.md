@@ -120,7 +120,7 @@ npm run test:ui
 npm run test:e2e
 ```
 
-**Test Coverage:** 528 passing unit tests across all business logic modules.
+**Test Coverage:** Unit tests across all business logic modules.
 
 ### Linting
 
@@ -355,23 +355,23 @@ CSS variables in `src/app.css` define colors, spacing, typography, shadows. All 
 - Type-safe URL parameter parsing
 - Navigation guard system
 - Loading states for async operations
-- Testing framework (Vitest) with 528 passing unit tests
-  - questionBank.js (60 tests) ✅
-  - urlParams.js (42 tests)
-  - importValidator.js (40 tests) ✅
-  - codesSearch.js (35 tests) ✅
-  - codes.js (35 tests) ✅
-  - storageAdapter.js (31 tests)
-  - toastStore.js (27 tests) ✅
-  - analytics.js (23 tests) ✅
-  - callsignParser.js (23 tests) ✅
-  - navigationGuard.js (23 tests)
-  - examProgress.js (22 tests)
-  - examTimer.js (19 tests)
-  - logbookDB.js (18 tests) ✅
-  - importStatistics.js (17 tests) ✅
-  - examScoring.js (16 tests)
-  - theme.js (14 tests) ✅
+- Testing framework (Vitest), unit tests for these modules
+  - questionBank.js ✅
+  - urlParams.js
+  - importValidator.js ✅
+  - codesSearch.js ✅
+  - codes.js ✅
+  - storageAdapter.js
+  - toastStore.js ✅
+  - analytics.js ✅
+  - callsignParser.js ✅
+  - navigationGuard.js
+  - examProgress.js
+  - examTimer.js
+  - logbookDB.js ✅
+  - importStatistics.js ✅
+  - examScoring.js
+  - theme.js ✅
 - Linting (ESLint + Prettier with Svelte support)
 
 ### 📋 Planned Features
